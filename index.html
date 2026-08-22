@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="robots" content="index,follow" />
+<title>Riveu · Taller de Patinets i Bicicletes Elèctriques a Girona</title>
+<meta name="description" content="Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia del taller. Girona, Figueres i tota la província." />
+<meta name="keywords" content="taller patinetes Girona, reparación patinetes eléctricos Girona, bicicletas eléctricas Girona, reparación bici eléctrica gama alta, taller patinetes Figueres, reparación patinetes Figueres, taller patinetes Banyoles, Olot, l'Escala, batería patinete, rueda patinete, movilidad eléctrica Girona, taller e-bike, Bosch Shimano Brose" />
+<!-- TODO: cambia riveu.com por tu dominio real cuando lo tengas -->
+<link rel="canonical" href="https://riveu.com/" />
+<meta property="og:title" content="Riveu · Taller de Patinets i Bicicletes Elèctriques a Girona" />
+<meta property="og:description" content="Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://riveu.com/" />
+<meta property="og:locale" content="ca_ES" />
+<!-- TODO: las redes exigen URL absoluta → https://tudominio.com/logo.png -->
+<meta property="og:image" content="logo.png" />
+<link rel="icon" type="image/png" href="logo.png" />
+
+<!-- SEO: cuando verifiques el sitio, descomenta y pega tus códigos -->
+<!-- <meta name="google-site-verification" content="TU_CODIGO_DE_GOOGLE_SEARCH_CONSOLE" /> -->
+<!-- <meta name="msvalidate.01" content="TU_CODIGO_DE_BING_WEBMASTER" /> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          carbon: { 950: '#0a0a0a', 900: '#121212', 850: '#141414', 800: '#181818', 700: '#212121' },
+          riveu:  { red: '#E53935', redDark: '#D32F2F', silver: '#C0C0C0', steel: '#9E9E9E' },
+          wa: '#25D366'
+        },
+        fontFamily: {
+          display: ['"Chakra Petch"', 'sans-serif'],
+          sans:    ['"IBM Plex Sans"', 'sans-serif'],
+          mono:    ['"IBM Plex Mono"', 'monospace']
+        },
+        keyframes: {
+          ticker: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
+          waPing: { '0%': { transform: 'scale(1)', opacity: '0.45' }, '70%, 100%': { transform: 'scale(1.6)', opacity: '0' } }
+        },
+        animation: {
+          ticker:     'ticker 28s linear infinite',
+          'ticker-s': 'ticker 40s linear infinite',
+          'wa-ping':  'waPing 2.2s cubic-bezier(0,0,0.2,1) infinite'
+        }
+      }
+    }
+  }
+</script>
+
+<!-- Placeholder automático si falta alguna foto -->
+<script>
+function imgFallback(el){
+  var w = parseInt(el.getAttribute('width'),10)  || 800;
+  var h = parseInt(el.getAttribute('height'),10) || 600;
+  var s = "<svg xmlns='http://www.w3.org/2000/svg' width='"+w+"' height='"+h+"'>"+
+          "<rect width='100%' height='100%' fill='#141414'/>"+
+          "<rect x='10' y='10' width='"+(w-20)+"' height='"+(h-20)+"' fill='none' stroke='#2a2a2a' stroke-width='2'/>"+
+          "<text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='"+Math.round(Math.min(w,h)/12)+"' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";
+  el.onerror = null;
+  el.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(s);
+}
+</script>
+
+<style>
+  :root { color-scheme: dark; }
+  html  { scroll-behavior: smooth; }
+  body  { background: #0a0a0a; -webkit-font-smoothing: antialiased; }
+
+  ::selection { background: #e53935; color: #fff; }
+  :focus-visible { outline: 2px solid #e53935; outline-offset: 2px; }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0a0a0a; }
+  ::-webkit-scrollbar-thumb { background: #2a2a2a; border: 2px solid #0a0a0a; }
+  ::-webkit-scrollbar-thumb:hover { background: #e53935; }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  .blueprint-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .hazard { background: repeating-linear-gradient(-45deg, #e53935 0 12px, #0a0a0a 12px 24px); }
+
+  .mask-line { display: block; overflow: hidden; }
+  .mask-line > span { display: block; transform: translateY(110%); opacity: 0; }
+  .mask-line.active > span { animation: rise 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
+  @keyframes rise {
+    from { transform: translateY(110%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+
+  .map-frame iframe { filter: grayscale(1) invert(0.92) contrast(0.92) brightness(0.95); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  .corners::before, .corners::after, .corners > .corner-bl, .corners > .corner-br {
+    content: ''; position: absolute; width: 12px; height: 12px;
+    border: 2px solid rgba(229,57,53,0.55); pointer-events: none; transition: border-color .3s;
+  }
+  .corners::before      { top: 0;    left: 0;  border-right: 0; border-bottom: 0; }
+  .corners::after       { top: 0;    right: 0; border-left: 0;  border-bottom: 0; }
+  .corners > .corner-bl { bottom: 0; left: 0;  border-right: 0; border-top: 0; }
+  .corners > .corner-br { bottom: 0; right: 0; border-left: 0;  border-top: 0; }
+  .corners:hover::before, .corners:hover::after,
+  .corners:hover > .corner-bl, .corners:hover > .corner-br { border-color: #e53935; }
+
+  .faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s ease; }
+  .faq-body.open { grid-template-rows: 1fr; }
+  .faq-body > div { overflow: hidden; }
+
+  /* ── FOTO 1: FONDO DEL HERO (solo PC) ── */
+  .hero-bg-img {
+    background-image:
+      linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.9) 100%),
+      url('images/fondo-hero.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+<!-- SEO local: cambia también aquí el teléfono (busca 34625772188) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Riveu — Taller de Patinetes y Bicicletas Eléctricas",
+  "description": "Taller especializado multimarca en movilidad eléctrica en Girona: patinetes y bicicletas eléctricas de gama alta. Diagnóstico, pinchazos, baterías, frenos y electrónica con garantía del taller. Servicio en toda la provincia: Figueres, Banyoles, Olot, l'Escala.",
+  "url": "https://riveu.com",
+  "telephone": "+34625772188",
+  "priceRange": "€€",
+  "image": "logo.png",
+  "hasMap": "https://maps.app.goo.gl/WzGEK7ouw7YASTPo9",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Carrer Finestrelles, 9",
+    "postalCode": "17006",
+    "addressLocality": "Girona",
+    "addressRegion": "Catalunya",
+    "addressCountry": "ES"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 41.9741, "longitude": 2.8199 },
+  "areaServed": [
+    { "@type": "City", "name": "Girona" },
+    { "@type": "City", "name": "Salt" },
+    { "@type": "City", "name": "Cassà de la Selva" },
+    { "@type": "City", "name": "Sarrià de Ter" },
+    { "@type": "City", "name": "Figueres" },
+    { "@type": "City", "name": "Banyoles" },
+    { "@type": "City", "name": "Olot" },
+    { "@type": "City", "name": "l'Escala" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de reparación de movilidad eléctrica",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de patinetes eléctricos" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cambio de ruedas y neumáticos" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de baterías y electrónica" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de bicicletas eléctricas de gama alta" } }
+    ]
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "14:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "16:00", "closes": "20:00" }
+  ]
+}
+</script>
+</head>
+
+<body class="bg-carbon-950 font-sans text-white antialiased">
+
+<noscript>
+  <div style="background:#D32F2F;color:#fff;text-align:center;padding:10px;font-family:monospace;font-size:12px">
+    Aquesta web necessita JavaScript · Esta web necesita JavaScript · 625 772 188
+  </div>
+</noscript>
+
+<!-- Sprite de iconos -->
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.03c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 21.5S5.5 15.9 5.5 11a6.5 6.5 0 1 1 13 0c0 4.9-6.5 10.5-6.5 10.5z"/><circle fill="none" stroke="currentColor" stroke-width="1.5" cx="12" cy="11" r="2.5"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="5.5" cy="17.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="5" r="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 17.5V14l-3-3 4-3 2 3h2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.9 6.26 6.6.7-4.9 4.5 1.35 6.54L12 16.9 6.05 20l1.35-6.54-4.9-4.5 6.6-.7L12 2z"/></symbol>
+</svg>
+
+<div aria-hidden class="noise pointer-events-none fixed inset-0 z-[60] opacity-[0.05]"></div>
+
+<!-- ============== HEADER ============== -->
+<div class="fixed inset-x-0 top-0 z-50">
+  <div class="hazard flex h-7 items-center overflow-hidden">
+    <div class="flex w-max animate-ticker hover:[animation-play-state:paused]">
+      <div id="ticker1" class="flex shrink-0 items-center"></div>
+      <div id="ticker2" class="flex shrink-0 items-center" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <header class="border-b border-white/10 bg-carbon-950/85 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
+      <a href="#" class="group flex items-center gap-3" aria-label="Riveu — Taller de Patinets">
+        <img src="logo.png" alt="Riveu · Taller de Patinets" width="160" height="120"
+             class="h-10 w-auto select-none mix-blend-lighten transition-transform duration-300 group-hover:-translate-y-0.5 sm:h-12" />
+        <span class="hidden font-mono text-[9px] tracking-[0.32em] text-riveu-steel md:block" data-i18n="logo.sub">· GIRONA</span>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <a data-phone-link href="tel:+34625772188"
+           class="hidden items-center gap-2 border border-white/15 px-3 py-1.5 font-mono text-xs tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white lg:flex">
+          <svg class="size-4" aria-hidden="true"><use href="#i-phone"/></svg>
+          <span data-phone-text>625 772 188</span>
+        </a>
+
+        <a id="headerCta" href="#" target="_blank" rel="noopener noreferrer"
+           class="hidden items-center gap-2 border border-wa/50 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-wa transition-colors hover:bg-wa hover:text-carbon-950 md:flex">
+          <svg class="size-4" aria-hidden="true"><use href="#i-wa"/></svg>
+          <span data-i18n="nav.whatsapp">WhatsApp</span>
+        </a>
+
+        <nav aria-label="Idioma" class="flex divide-x divide-white/15 border border-white/15 font-mono text-xs">
+          <button data-lang-btn="ca" class="px-3 py-1.5 uppercase tracking-widest transition-colors hover:text-white">CA</button>
+          <button data-lang-btn="es" class="px-3 py-1.5 uppercase tracking-widest transition-colors hover:text-white">ES</button>
+        </nav>
+      </div>
+    </div>
+    <span id="scrollBar" class="block h-[2px] bg-riveu-red transition-[width] duration-150 ease-out" style="width:0%"></span>
+  </header>
+</div>
+
+<!-- ============== HERO ============== -->
+<section class="relative overflow-hidden pb-16 pt-36 sm:pt-40">
+  <div aria-hidden class="pointer-events-none absolute inset-0 hidden hero-bg-img opacity-40 lg:block"></div>
+  <div aria-hidden class="pointer-events-none absolute -right-32 top-16 size-[520px] rounded-full bg-riveu-red/10 blur-[130px]"></div>
+
+  <div class="blueprint-grid relative mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+    <div>
+      <p class="font-mono text-[11px] tracking-[0.28em] text-riveu-red sm:text-xs" data-i18n="hero.status">RIVEU // TALLER GIRONA — DIAGNÒSTIC EN CURS</p>
+
+      <h1 class="mt-5 font-display font-bold uppercase leading-[0.98] text-white [font-size:clamp(2.15rem,7.5vw,4.3rem)]">
+        <span class="mask-line active"><span data-i18n="hero.title0" style="animation-delay:.1s">Taller i Reparació de</span></span>
+        <span class="mask-line active"><span data-i18n="hero.title1" style="animation-delay:.25s">Patinets Elèctrics</span></span>
+        <span class="mask-line active"><span data-i18n="hero.title2" style="animation-delay:.4s" class="text-riveu-red">a Girona</span></span>
+      </h1>
+
+      <p class="mt-5 max-w-xl text-base leading-relaxed text-riveu-silver sm:text-lg" data-i18n="hero.subtitle">
+        Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia professional.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <a id="heroCta" href="#" target="_blank" rel="noopener noreferrer"
+           class="inline-flex w-full items-center justify-center gap-2.5 bg-wa px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-[#052e16] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-10px_rgba(37,211,102,0.55)] sm:w-auto">
+          <svg class="size-5" aria-hidden="true"><use href="#i-wa"/></svg>
+          <span data-i18n="hero.cta">Demanar Pressupost per WhatsApp</span>
+        </a>
+        <a href="#serveis" class="inline-flex w-full items-center justify-center gap-2 border border-white/20 px-7 py-4 font-display text-sm font-semibold uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white sm:w-auto">
+          <span data-i18n="hero.secondary">Veure serveis</span> <span aria-hidden>↓</span>
+        </a>
+      </div>
+
+      <div class="mt-10 grid grid-cols-3 divide-x divide-white/10 border-y border-white/10">
+        <div class="px-3 py-4 sm:px-5">
+          <div class="font-display text-xl font-bold text-white sm:text-2xl" data-i18n="hero.stats.0.value">400+</div>
+          <div class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-steel sm:text-[10px]" data-i18n="hero.stats.0.label">reparacions completades</div>
+        </div>
+        <div class="px-3 py-4 sm:px-5">
+          <div class="font-display text-xl font-bold text-white sm:text-2xl" data-i18n="hero.stats.1.value">24–48h</div>
+          <div class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-steel sm:text-[10px]" data-i18n="hero.stats.1.label">lliurament estàndard</div>
+        </div>
+        <div class="px-3 py-4 sm:px-5">
+          <div class="font-display text-xl font-bold text-white sm:text-2xl" data-i18n="hero.stats.2.value">6 mesos</div>
+          <div class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-steel sm:text-[10px]" data-i18n="hero.stats.2.label">garantia del taller</div>
+        </div>
+      </div>
+
+      <!-- CÓMO LLEGAR -->
+      <div class="mt-6 border border-white/10 bg-carbon-900/70 p-4 backdrop-blur-sm sm:p-5">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-3">
+            <svg class="size-5 shrink-0 text-riveu-red" aria-hidden="true"><use href="#i-pin"/></svg>
+            <div>
+              <p class="font-mono text-[9px] uppercase tracking-[0.28em] text-riveu-red" data-i18n="hero.mapKicker">Com arribar-hi</p>
+              <p class="mt-0.5 text-sm text-riveu-silver" data-i18n="location.address">Carrer Finestrelles, 9 · 17006 Girona</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider">
+              <span data-open-dot class="size-2 rounded-full bg-riveu-steel"></span>
+              <span data-open-text class="text-riveu-steel">…</span>
+            </span>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Carrer+Finestrelles+9,+17006+Girona"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 border border-riveu-red/60 px-4 py-2.5 font-mono text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-riveu-red">
+              <span data-i18n="hero.mapCta">Ruta en Maps</span> <span aria-hidden>↗</span>
+            </a>
+            <a href="#ubicacio" class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel underline decoration-riveu-red/50 underline-offset-4 transition-colors hover:text-white" data-i18n="hero.mapLink">Veure el mapa</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div aria-hidden class="absolute -inset-4 bg-riveu-red/5 blur-2xl"></div>
+
+      <!-- ══ FOTO 2: PATINETE EN REVISIÓN (horizontal 900×500) ══ -->
+      <div class="corners relative mb-4 overflow-hidden border border-white/10">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <img src="images/patinet-revisio.jpg" alt="Patinete en revisión en el taller Riveu"
+             width="900" height="500" onerror="imgFallback(this)"
+             class="h-40 w-full object-cover grayscale transition-all duration-500 hover:grayscale-0 sm:h-48" />
+        <div class="absolute bottom-2 left-2 bg-carbon-950/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="hero.diag.unit">UNITAT EN REVISIÓ</div>
+      </div>
+
+      <div class="corners relative border border-white/10 bg-carbon-900/90 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)] backdrop-blur-sm">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+
+        <div class="flex items-center justify-between border-b border-white/10 px-5 py-3">
+          <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-riveu-steel" data-i18n="hero.diag.title">Quadre de diagnòstic</span>
+          <span class="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-riveu-red">
+            <span class="size-1.5 animate-pulse rounded-full bg-riveu-red"></span>
+            <span data-i18n="hero.diag.badge">En curs</span>
+          </span>
+        </div>
+
+        <div class="px-5 pb-5 pt-3">
+          <div class="relative">
+            <svg viewBox="0 0 180 150" class="mx-auto w-full max-w-[340px]" aria-hidden="true">
+              <circle cx="90" cy="90" r="56" fill="none" stroke="#242424" stroke-width="7" pathLength="100" stroke-dasharray="66.667 100" stroke-linecap="round" transform="rotate(150 90 90)" />
+              <circle cx="90" cy="90" r="56" fill="none" stroke="#E53935" stroke-width="7" pathLength="100" stroke-dasharray="6.667 100" stroke-dashoffset="-60" opacity="0.85" transform="rotate(150 90 90)" />
+              <circle id="gaugeArc" cx="90" cy="90" r="56" fill="none" stroke="#E53935" stroke-width="7" pathLength="100" stroke-dasharray="0 100" stroke-linecap="round" transform="rotate(150 90 90)" />
+              <g id="gaugeTicks"></g>
+              <g id="gaugeNeedle" transform="rotate(-120 90 90)">
+                <line x1="90" y1="90" x2="90" y2="44" stroke="#E53935" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="90" y1="90" x2="90" y2="99" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" />
+              </g>
+              <circle cx="90" cy="90" r="6" fill="#1a1a1a" stroke="#C0C0C0" stroke-width="1.5" />
+              <text x="28" y="144" fill="#6f6f6f" font-size="9" font-family="IBM Plex Mono">0</text>
+              <text x="142" y="144" fill="#6f6f6f" font-size="9" font-family="IBM Plex Mono">100</text>
+            </svg>
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 text-center">
+              <div class="font-display text-3xl font-bold tabular-nums text-white">
+                <span id="gaugeValue">0.0</span><span class="ml-1 text-base text-riveu-steel">V</span>
+              </div>
+              <div class="font-mono text-[9px] tracking-[0.3em] text-riveu-steel" data-i18n="hero.diag.voltage">BUS BATERIA</div>
+            </div>
+          </div>
+          <div class="mt-2 font-mono text-[11px]" id="diagRows"></div>
+        </div>
+
+        <div class="flex items-center justify-between border-t border-white/10 bg-carbon-850 px-5 py-2.5 font-mono text-[10px] tracking-widest text-riveu-steel">
+          <span data-i18n="hero.diag.model">UNITAT · XIAOMI MI PRO 2</span>
+          <span class="animate-pulse text-riveu-red">▮</span>
+        </div>
+      </div>
+      <p class="mt-3 text-right font-mono text-[10px] uppercase tracking-widest text-riveu-steel" data-i18n="hero.diag.note">A punt per lliurar · avui 18:30</p>
+    </div>
+  </div>
+
+  <div class="mt-16 border-y border-white/10 py-4">
+    <p class="mb-3 px-4 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-steel sm:px-8" data-i18n="hero.brandsNote">Treballem totes les marques</p>
+    <div class="overflow-hidden">
+      <div class="flex w-max animate-ticker-s">
+        <div class="flex shrink-0 items-center">
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Xiaomi<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">SmartGyro<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Cecotec<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Ninebot<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Segway<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Dualtron<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Kaabo<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Vsett<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+        </div>
+        <div class="flex shrink-0 items-center" aria-hidden="true">
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Xiaomi<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">SmartGyro<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Cecotec<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Ninebot<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Segway<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Dualtron<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Kaabo<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+          <span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">Vsett<span class="mx-8 text-sm text-riveu-red/40">//</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SERVICIOS ============== -->
+<section id="serveis" class="scroll-mt-28 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <div class="reveal">
+      <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
+        <span class="size-1.5 animate-pulse bg-riveu-red"></span>
+        <span data-i18n="services.index">// 01</span>
+        <span class="h-px w-10 bg-riveu-red/50"></span>
+        <span class="text-riveu-steel" data-i18n="services.kicker">Serveis</span>
+      </div>
+      <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="services.title">Tot el que el teu patinet necessita, en un sol banc de treball</h2>
+    </div>
+    <div class="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" id="servicesGrid"></div>
+
+    <!-- ══ BICICLETAS ELÉCTRICAS / MOVILIDAD ELÉCTRICA ══ -->
+    <div class="corners reveal relative mt-6 border border-riveu-red/40 bg-gradient-to-r from-carbon-850 via-carbon-850 to-[#1c0e0e] p-6 sm:p-8">
+      <span class="corner-bl"></span><span class="corner-br"></span>
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div class="flex items-start gap-4">
+          <span class="grid size-12 shrink-0 place-items-center border border-riveu-red/60 bg-[#160a0a] text-riveu-red">
+            <svg class="size-6" aria-hidden="true"><use href="#i-bike"/></svg>
+          </span>
+          <div>
+            <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-red">
+              <span data-i18n="ebike.index">// 01.5</span> · <span data-i18n="ebike.kicker">Mobilitat elèctrica</span>
+            </p>
+            <h3 class="mt-2 font-display text-xl font-bold uppercase leading-tight text-white sm:text-2xl" data-i18n="ebike.title">També bicicletes elèctriques de gamma alta</h3>
+            <p class="mt-2 max-w-2xl text-sm leading-relaxed text-riveu-steel" data-i18n="ebike.lead">Del patinet a l'e-bike: el teu taller de referència per a tota la mobilitat elèctrica a Girona.</p>
+          </div>
+        </div>
+        <ul class="grid gap-2 sm:grid-cols-2">
+          <li class="flex gap-2 text-xs text-riveu-silver sm:text-sm"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="ebike.items.0">Motors Bosch, Shimano Steps, Brose i Fazua</span></li>
+          <li class="flex gap-2 text-xs text-riveu-silver sm:text-sm"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="ebike.items.1">Bateries, cel·les i BMS de qualsevol marca</span></li>
+          <li class="flex gap-2 text-xs text-riveu-silver sm:text-sm"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="ebike.items.2">Diagnòstic electrònic i actualitzacions de firmware</span></li>
+          <li class="flex gap-2 text-xs text-riveu-silver sm:text-sm"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="ebike.items.3">Manteniment complet de transmissió i frens</span></li>
+        </ul>
+        <a id="ebikeCta" href="#" target="_blank" rel="noopener noreferrer"
+           class="inline-flex shrink-0 items-center gap-2.5 border border-wa/60 px-5 py-3.5 font-display text-xs font-bold uppercase tracking-wider text-wa transition-all hover:bg-wa hover:text-[#052e16]">
+          <svg class="size-4" aria-hidden="true"><use href="#i-wa"/></svg>
+          <span data-i18n="ebike.cta">Pressupost e-bike per WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PROCESO ============== -->
+<section id="proces" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <div class="reveal">
+      <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
+        <span class="size-1.5 animate-pulse bg-riveu-red"></span>
+        <span data-i18n="process.index">// 02</span>
+        <span class="h-px w-10 bg-riveu-red/50"></span>
+        <span class="text-riveu-steel" data-i18n="process.kicker">Com treballem</span>
+      </div>
+      <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="process.title">De l'avaria al carrer, sense sorpreses</h2>
+    </div>
+    <ol class="mt-12 grid gap-8 lg:grid-cols-4 lg:gap-6" id="processList"></ol>
+  </div>
+</section>
+
+<!-- ============== GALERÍA ============== -->
+<section id="galeria" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <div class="reveal">
+      <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
+        <span class="size-1.5 animate-pulse bg-riveu-red"></span>
+        <span>// 02.5</span>
+        <span class="h-px w-10 bg-riveu-red/50"></span>
+        <span class="text-riveu-steel" data-i18n="gallery.kicker">Al taller</span>
+      </div>
+      <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="gallery.title">Cada dia, una avaria menys</h2>
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+      <!-- ══ FOTO 3: DIAGNÓSTICO (vertical 700×900) ══ -->
+      <div class="corners reveal group relative aspect-[3/4] overflow-hidden border border-white/10">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <img src="images/taller-1.jpg" alt="Diagnóstico inicial de un patinete eléctrico" width="700" height="933"
+             loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="gallery.alt1"
+             class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-x-2 bottom-2 bg-carbon-950/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="gallery.c1">DIAGNÒSTIC INICIAL</div>
+      </div>
+      <!-- ══ FOTO 4: CAMBIO DE RUEDA (vertical 700×900) ══ -->
+      <div class="corners reveal group relative aspect-[3/4] overflow-hidden border border-white/10" style="transition-delay:.08s">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <img src="images/taller-2.jpg" alt="Cambio de rueda y neumático de patinete" width="700" height="933"
+             loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="gallery.alt2"
+             class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-x-2 bottom-2 bg-carbon-950/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="gallery.c2">CANVI DE RODA</div>
+      </div>
+      <!-- ══ FOTO 5: BANCO DE PRUEBAS (vertical 700×900) ══ -->
+      <div class="corners reveal group relative aspect-[3/4] overflow-hidden border border-white/10" style="transition-delay:.16s">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <img src="images/taller-3.jpg" alt="Banco de pruebas y herramientas del taller" width="700" height="933"
+             loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="gallery.alt3"
+             class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-x-2 bottom-2 bg-carbon-950/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="gallery.c3">BANC DE PROVES</div>
+      </div>
+      <!-- ══ FOTO 6: LISTO PARA ENTREGA (vertical 700×900) ══ -->
+      <div class="corners reveal group relative aspect-[3/4] overflow-hidden border border-white/10" style="transition-delay:.24s">
+        <span class="corner-bl"></span><span class="corner-br"></span>
+        <img src="images/taller-4.jpg" alt="Patinete reparado listo para entregar" width="700" height="933"
+             loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="gallery.alt4"
+             class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-x-2 bottom-2 bg-carbon-950/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="gallery.c4">A PUNT PER LLIURAR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== POR QUÉ ELEGIRNOS ============== -->
+<section id="per-que" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-5">
+      <div class="lg:sticky lg:top-32">
+        <div class="reveal">
+          <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
+            <span class="size-1.5 animate-pulse bg-riveu-red"></span>
+            <span data-i18n="why.index">// 03</span>
+            <span class="h-px w-10 bg-riveu-red/50"></span>
+            <span class="text-riveu-steel" data-i18n="why.kicker">Per què nosaltres</span>
+          </div>
+          <h2 class="mt-4 max-w-md font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl" data-i18n="why.title">Confiança que es guanya cargol a cargol</h2>
+          <p class="mt-6 max-w-md text-base leading-relaxed text-riveu-steel" data-i18n="why.lead">No som una botiga que repara de tant en tant: som un taller dedicat en exclusiva al patinet elèctric. Així treballem cada avaria.</p>
+
+          <!-- ══ FOTO 7: BANCO DE TRABAJO (horizontal 900×500) ══ -->
+          <div class="corners reveal mt-6 overflow-hidden border border-white/10">
+            <span class="corner-bl"></span><span class="corner-br"></span>
+            <img src="images/banc-treball.jpg" alt="Banco de trabajo del taller Riveu" width="900" height="500"
+                 loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="why.alt"
+                 class="h-44 w-full object-cover grayscale transition-all duration-500 hover:grayscale-0" />
+          </div>
+
+          <a id="whyCta" href="#" target="_blank" rel="noopener noreferrer"
+             class="mt-8 inline-flex items-center gap-2.5 border border-riveu-red/60 px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-riveu-red hover:shadow-[0_10px_30px_-10px_rgba(229,57,53,0.7)]">
+            <svg class="size-4" aria-hidden="true"><use href="#i-wa"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 space-y-4 lg:col-span-7 lg:mt-0" id="whyList"></div>
+  </div>
+</section>
+
+<!-- ============== TESTIMONIOS ============== -->
+<section id="opinions" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <div class="reveal">
+      <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
+        <span class="size-1.5 animate-pulse bg-riveu-red"></span>
+        <span data-i18n="reviews.index">// 04</span>
+        <span class="h-px w-10 bg-riveu-red/50"></span>
+        <span class="text-riveu-steel" data-i18n="reviews.kicker">Opinions</span>
+      </div>
+      <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="reviews.title">El que diuen els que ja roden</h2>
+    </div>
+    <div class="mt-12 grid gap-4 sm:grid-cols-3" id="reviewsGrid"></div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section id="faq" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-4">
+      <div class="reveal">
+        <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
+          <span class="size-1.5 animate-pulse bg-riveu-red"></span>
+          <span data-i18n="faq.index">// 05</span>
+          <span class="h-px w-10 bg-riveu-red/50"></span>
+          <span class="text-riveu-steel" data-i18n="faq.kicker">FAQ</span>
+        </div>
+        <h2 class="mt-4 font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl" data-i18n="faq.title">Dubtes freqüents abans de venir</h2>
+      </div>
+    </div>
+    <div class="mt-10 lg:col-span-8 lg:mt-0">
+      <div class="border-t border-white/10" id="faqList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== UBICACIÓN ============== -->
+<section id="ubicacio" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <div class="reveal">
+      <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
+        <span class="size-1.5 animate-pulse bg-riveu-red"></span>
+        <span data-i18n="location.index">// 06</span>
+        <span class="h-px w-10 bg-riveu-red/50"></span>
+        <span class="text-riveu-steel" data-i18n="location.kicker">Taller físic a Girona</span>
+      </div>
+      <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="location.title">Ens trobes al Carrer Finestrelles</h2>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-2">
+      <div class="reveal">
+        <div class="flex h-full flex-col gap-8">
+          <div class="border border-white/10 bg-carbon-850 p-6">
+            <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-red" data-i18n="location.addressLabel">Adreça</p>
+            <p class="mt-2 font-display text-xl font-semibold text-white" data-i18n="location.address">Carrer Finestrelles, 9 · 17006 Girona</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <a href="https://maps.app.goo.gl/WzGEK7ouw7YASTPo9" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 border border-white/20 px-4 py-2.5 font-mono text-xs uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">
+                <svg class="size-4 text-riveu-red" aria-hidden="true"><use href="#i-pin"/></svg>
+                <span data-i18n="location.directions">Obrir a Google Maps</span>
+              </a>
+              <a data-phone-link href="tel:+34625772188"
+                 class="inline-flex items-center gap-2 border border-wa/50 px-4 py-2.5 font-mono text-xs uppercase tracking-wider text-wa transition-colors hover:bg-wa hover:text-carbon-950">
+                <svg class="size-4" aria-hidden="true"><use href="#i-phone"/></svg>
+                <span data-phone-text>625 772 188</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="border border-white/10 bg-carbon-850 p-6">
+            <div class="flex items-center justify-between">
+              <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-red" data-i18n="location.hoursLabel">Horari</p>
+              <div class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider">
+                <span data-open-dot class="size-2 rounded-full bg-riveu-steel"></span>
+                <span data-open-text class="text-riveu-steel">…</span>
+              </div>
+            </div>
+            <div class="mt-4 space-y-2 font-mono text-sm">
+              <div class="flex justify-between border-b border-dotted border-white/10 pb-2">
+                <span class="text-riveu-steel" data-i18n="location.days">Dilluns – Divendres</span>
+                <span class="text-riveu-silver">10:00 – 14:00</span>
+              </div>
+              <div class="flex justify-between border-b border-dotted border-white/10 pb-2">
+                <span class="text-riveu-steel"> </span>
+                <span class="text-riveu-silver">16:00 – 20:00</span>
+              </div>
+              <div class="flex justify-between pt-1">
+                <span class="text-riveu-steel" data-i18n="location.weekend">Dissabte i diumenge — tancat</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-sm leading-relaxed text-riveu-steel" data-i18n="location.seo">Oferim servei tècnic especialitzat a Girona (Eixample, Carrer Barcelona, Santa Eugènia), Salt, Cassà de la Selva i Sarrià de Ter. També rebem clients de Figueres, Banyoles, Olot, l'Escala i de tota la província — molts prefereixen el nostre taller abans que baixar a Barcelona.</p>
+            <p class="mt-4 font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-red" data-i18n="location.areasLabel">Zones de servei</p>
+            <ul class="mt-3 flex flex-wrap gap-2">
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Girona · Eixample</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Carrer Barcelona</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Santa Eugènia</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Salt</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Cassà de la Selva</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Sarrià de Ter</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Figueres</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Banyoles</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">Olot</li>
+              <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver transition-colors hover:border-riveu-red/60">l'Escala</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="corners map-frame relative h-full border border-white/10 bg-carbon-850 p-2">
+          <span class="corner-bl"></span><span class="corner-br"></span>
+          <iframe title="Mapa Riveu — Carrer Finestrelles 9, Girona"
+                  src="https://www.google.com/maps?q=Carrer+Finestrelles,+9,+17006+Girona&output=embed"
+                  class="h-[320px] w-full sm:h-[420px] lg:h-full lg:min-h-[480px]"
+                  style="border:0" loading="lazy" allowfullscreen
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="pointer-events-none absolute inset-x-2 bottom-2 flex justify-center">
+            <span class="bg-carbon-950/90 px-4 py-1.5 font-mono text-[10px] tracking-[0.25em] text-riveu-steel backdrop-blur" data-i18n="location.mapNote">41.9741° N · 2.8199° E — GIRONA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA FINAL ============== -->
+<section class="relative overflow-hidden bg-riveu-redDark">
+  <div class="hazard h-2" aria-hidden></div>
+  <div aria-hidden class="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_15%_20%,rgba(255,255,255,0.16),transparent_60%)]"></div>
+  <span aria-hidden class="pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-display text-[8rem] font-bold leading-none text-white/5 sm:text-[12rem]">48h</span>
+  <div class="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 py-16 sm:px-8 md:flex-row md:items-center md:justify-between">
+    <div>
+      <h2 class="max-w-xl font-display text-3xl font-bold uppercase leading-tight text-white sm:text-4xl" data-i18n="ctaFinal.title">El teu patinet, rodant en 24–48 hores.</h2>
+      <p class="mt-3 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base" data-i18n="ctaFinal.sub">Escriu-nos per WhatsApp amb l'avaria i el teu model.</p>
+      <p class="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/70" data-i18n="ctaFinal.note">Dl–Dv · 10:00–14:00 / 16:00–20:00</p>
+    </div>
+    <a id="ctaFinalBtn" href="#" target="_blank" rel="noopener noreferrer"
+       class="inline-flex items-center gap-3 bg-wa px-8 py-5 font-display text-sm font-bold uppercase tracking-wider text-[#052e16] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_-12px_rgba(37,211,102,0.7)]">
+      <svg class="size-6" aria-hidden="true"><use href="#i-wa"/></svg>
+      <span data-i18n="ctaFinal.btn">Demanar Pressupost per WhatsApp</span>
+    </a>
+  </div>
+  <div class="hazard h-2" aria-hidden></div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="border-t border-white/10 bg-carbon-950 pb-28 pt-14 sm:pb-14">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-8 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <img src="logo.png" alt="Riveu · Taller de Patinets" width="200" height="150" class="h-16 w-auto select-none mix-blend-lighten sm:h-20" />
+      <p class="mt-4 max-w-sm text-sm leading-relaxed text-riveu-steel" data-i18n="footer.tagline">Taller especialitzat en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta a Girona.</p>
+      <p class="mt-4 font-mono text-[10px] tracking-[0.25em] text-riveu-steel/60">41.9741° N · 2.8199° E — GIRONA</p>
+    </div>
+    <div class="md:col-span-3">
+      <h3 class="font-mono text-[11px] uppercase tracking-[0.25em] text-riveu-red" data-i18n="footer.navTitle">Seccions</h3>
+      <ul class="mt-4 space-y-2.5">
+        <li><a href="#serveis"  class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.0">Serveis</a></li>
+        <li><a href="#proces"   class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.1">Com treballem</a></li>
+        <li><a href="#galeria"  class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.5">Galeria</a></li>
+        <li><a href="#per-que"  class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.2">Per què nosaltres</a></li>
+        <li><a href="#faq"      class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.3">FAQ</a></li>
+        <li><a href="#ubicacio" class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.4">Ubicació</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-4">
+      <h3 class="font-mono text-[11px] uppercase tracking-[0.25em] text-riveu-red" data-i18n="footer.contactTitle">Contacte</h3>
+      <ul class="mt-4 space-y-2.5 text-sm text-riveu-steel">
+        <li data-i18n="location.address">Carrer Finestrelles, 9 · 17006 Girona</li>
+        <li><span data-i18n="location.days">Dilluns – Divendres</span> · 10:00–14:00 / 16:00–20:00</li>
+        <li>
+          <a data-phone-link href="tel:+34625772188" class="inline-flex items-center gap-2 text-riveu-silver transition-colors hover:text-white">
+            <svg class="size-4" aria-hidden="true"><use href="#i-phone"/></svg>
+            <span data-phone-text>625 772 188</span>
+          </a>
+        </li>
+        <li>
+          <a id="footerWa" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-wa transition-opacity hover:opacity-80">
+            <svg class="size-4" aria-hidden="true"><use href="#i-wa"/></svg>
+            WhatsApp
+          </a>
+        </li>
+        <li>
+          <button id="switchLangBtn" class="font-mono text-xs uppercase tracking-widest underline decoration-riveu-red/60 underline-offset-4 hover:text-white">Versió en español</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="mx-auto mt-12 flex max-w-7xl flex-col gap-3 border-t border-white/10 px-4 pt-6 font-mono text-[10px] uppercase tracking-wider text-riveu-steel/70 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+    <span data-i18n="footer.rights">© 2025 Riveu · Taller de patinets elèctrics, Girona</span>
+    <span class="flex gap-4">
+      <a href="#" data-i18n="footer.legal.0">Avís legal</a>
+      <a href="#" data-i18n="footer.legal.1">Privacitat</a>
+      <span class="text-riveu-red/70" data-i18n="footer.made">Fet a Girona, amb el banc de treball ple</span>
+    </span>
+  </div>
+</footer>
+
+<!-- ============== FLOTANTE WHATSAPP ============== -->
+<a id="floatingWa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Contactar Taller"
+   class="fixed bottom-4 right-4 z-[70] flex items-center gap-2.5 rounded-full bg-wa px-4 py-3 font-display text-sm font-bold text-[#052e16] shadow-[0_10px_35px_-8px_rgba(37,211,102,0.6)] transition-transform duration-300 hover:scale-105 sm:bottom-6 sm:right-6 sm:px-5">
+  <span class="relative grid size-7 place-items-center">
+    <span aria-hidden class="absolute inset-0 rounded-full bg-wa opacity-50 animate-wa-ping"></span>
+    <svg class="relative size-6" aria-hidden="true"><use href="#i-wa"/></svg>
+  </span>
+  <span data-i18n="floating">Contactar Taller</span>
+</a>
+
+<script>
+/* ══════════ CONFIGURACIÓN RÁPIDA ══════════ */
+const WA_PHONE      = '34625772188';
+const PHONE_TEL     = '+34625772188';
+const PHONE_DISPLAY = '625 772 188';
+/* ══════════════════════════════════════════ */
+
+const waLink = (msg) => `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+
+const i18n = {
+  ca: {
+    meta: { title: 'Riveu · Taller de Patinets i Bicicletes Elèctriques a Girona' },
+    logo: { sub: '· GIRONA' },
+    nav: { whatsapp: 'WhatsApp' },
+    hero: {
+      status: 'RIVEU // TALLER GIRONA — DIAGNÒSTIC EN CURS',
+      title0: 'Taller i Reparació de', title1: 'Patinets Elèctrics', title2: 'a Girona',
+      subtitle: 'Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia professional.',
+      cta: 'Demanar Pressupost per WhatsApp', secondary: 'Veure serveis', brandsNote: 'Treballem totes les marques',
+      mapKicker: 'Com arribar-hi', mapCta: 'Ruta en Maps', mapLink: 'Veure el mapa',
+      stats: {
+        0: { value: '400+', label: 'reparacions completades' },
+        1: { value: '24–48h', label: 'lliurament estàndard' },
+        2: { value: '6 mesos', label: 'garantia del taller' }
+      },
+      diag: {
+        title: 'Quadre de diagnòstic', badge: 'En curs', voltage: 'BUS BATERIA',
+        model: 'UNITAT · XIAOMI MI PRO 2', note: 'A punt per lliurar · avui 18:30', unit: 'UNITAT EN REVISIÓ',
+        rows: [
+          { k: 'BATERIA', v: '52.4V', s: 'OK' },
+          { k: 'MOTOR', v: 'SENSORS HALL', s: 'OK' },
+          { k: 'CONTROLADORA', v: 'FW 2.1.8', s: 'OK' },
+          { k: 'PNEUMÀTICS', v: '42 PSI', s: 'OK' }
+        ]
+      }
+    },
+    ebike: {
+      index: '// 01.5', kicker: 'Mobilitat elèctrica',
+      title: 'També bicicletes elèctriques de gamma alta',
+      lead: 'Del patinet a l\'e-bike: el teu taller de referència per a tota la mobilitat elèctrica a Girona.',
+      items: [
+        'Motors Bosch, Shimano Steps, Brose i Fazua',
+        'Bateries, cel·les i BMS de qualsevol marca',
+        'Diagnòstic electrònic i actualitzacions de firmware',
+        'Manteniment complet de transmissió i frens'
+      ],
+      cta: 'Pressupost e-bike per WhatsApp',
+      msg: 'Hola Riveu 👋 Tinc una bicicleta elèctrica i voldria demanar pressupost.'
+    },
+    gallery: {
+      kicker: 'Al taller', title: 'Cada dia, una avaria menys',
+      c1: 'DIAGNÒSTIC INICIAL', c2: 'CANVI DE RODA', c3: 'BANC DE PROVES', c4: 'A PUNT PER LLIURAR',
+      alt1: 'Diagnòstic inicial d\'un patinet elèctric', alt2: 'Canvi de roda i pneumàtic',
+      alt3: 'Banc de proves i eines del taller', alt4: 'Patinet reparat a punt per lliurar'
+    },
+    ticker: ['Diagnòstic sense compromís', 'Reparacions en 24–48 h', 'Bicicletes elèctriques de gamma alta', 'Garantia del taller', 'Servei multimarca', 'Carrer Finestrelles 9 · Girona'],
+    services: {
+      index: '// 01', kicker: 'Serveis',
+      title: 'Tot el que el teu patinet necessita, en un sol banc de treball',
+      items: [
+        { title: 'Pinxades i Pneumàtics', tag: 'Càmeres · Tubeless · Massisses', icon: 'wheel',
+          list: ['Substitució de càmeres i cobertes', 'Muntatge tubeless i líquid segellant', 'Rodes massisses antipinxada'] },
+        { title: 'Bateries i Electrònica', tag: 'Controladores · Cel·les · BMS', icon: 'battery',
+          list: ['Reconstrucció i canvi de cel·les', 'Controladores i errors d\'encesa', 'Diagnòstic electrònic complet'] },
+        { title: 'Frens i Mecànica', tag: 'Discos · Pastilles · Folgançes', icon: 'brake',
+          list: ['Ajust de discos i pastilles', 'Frens hidràulics i elèctrics', 'Eliminem folgançes i sorolls'] },
+        { title: 'Especialistes Multimarca', tag: 'Xiaomi · Ninebot · Dualtron…', icon: 'brands',
+          list: ['SmartGyro, Cecotec, Segway, Kaabo…', 'Coneixem l\'esquema de cada model', 'Recanvis en estoc', 'També bicicletes elèctriques de gamma alta'] }
+      ]
+    },
+    process: {
+      index: '// 02', kicker: 'Com treballem', title: 'De l\'avaria al carrer, sense sorpreses',
+      steps: [
+        { t: 'Diagnòstic', d: 'Porta el patinet al taller i el revisem al moment. T\'expliquem què li passa, sense tecnicismes.' },
+        { t: 'Pressupost tancat', d: 'Preu clar abans de tocar res. L\'aproves per WhatsApp o en persona: sense compromís.' },
+        { t: 'Reparació', d: 'Muntem recanvis verificats i provem el patinet a fons. Normalment, a punt en 24–48 h.' },
+        { t: 'Lliurament i garantia', d: 'Reculls el patinet provat, amb la garantia del taller i les peces substituïdes a la vista.' }
+      ]
+    },
+    why: {
+      index: '// 03', kicker: 'Per què nosaltres', title: 'Confiança que es guanya cargol a cargol',
+      lead: 'No som una botiga que repara de tant en tant: som un taller dedicat en exclusiva al patinet elèctric. Així treballem cada avaria.',
+      alt: 'Banc de treball del taller Riveu',
+      items: [
+        { code: 'G·01', t: 'Pressupost previ sense compromís', d: 'Diagnòstic clar i preu tancat abans de desmuntar cap peça. Si no et convenç, no pagues res.' },
+        { code: 'G·02', t: 'Recanvis d\'alta qualitat comprovats', d: 'Treballem només amb peces verificades al banc de proves. Res de recanvis dubtosos d\'origen desconegut.' },
+        { code: 'G·03', t: 'Reparacions ràpides en 24/48 h', d: 'La majoria d\'avaries estan llestes en un o dos dies. Si et quedes sense patinet, t\'assessorem per minimitzar l\'espera.' }
+      ]
+    },
+    reviews: {
+      index: '// 04', kicker: 'Opinions', title: 'El que diuen els que ja roden',
+      items: [
+        { text: 'Vaig arribar amb el Xiaomi punxat i vaig sortir el mateix dia amb la roda nova i el fre ajustat. Tracte de deu.', name: 'Marc S.', scooter: 'Xiaomi Pro 2' },
+        { text: 'La bateria havia perdut mitja vida. Van canviar les cel·les i ara fa els mateixos quilòmetres que el primer dia.', name: 'Laura P.', scooter: 'Ninebot Max G30' },
+        { text: 'Pressupost clar abans de tocar res i el patinet a punt en dos dies. Així dóna gust.', name: 'Jordi V.', scooter: 'Dualtron Mini' }
+      ]
+    },
+    faq: {
+      index: '// 05', kicker: 'FAQ', title: 'Dubtes freqüents abans de venir',
+      items: [
+        { q: 'Quant triga una reparació?', a: 'La majoria d\'avaries (pinxades, frens, ajustos) queden llestes en 24–48 hores. Bateries i electrònica complexa poden necessitar 3–5 dies: t\'ho indiquem al pressupost.' },
+        { q: 'El diagnòstic té cost?', a: 'El diagnòstic i el pressupost són gratuïts i sense compromís. Si finalment no reps, només hauràs de venir a recollir el patinet.' },
+        { q: 'Quines marques repareu?', a: 'Som taller multimarca: Xiaomi, SmartGyro, Cecotec, Ninebot, Segway, Dualtron, Kaabo i la majoria de models del mercat.' },
+        { q: 'Les reparacions tenen garantia?', a: 'Sí. Totes les reparacions inclouen garantia del taller sobre les peces substituïdes i la mà d\'obra, i t\'ho expliquem cara a cara en lliurar-te el patinet.' },
+        { q: 'Puc venir sense cita?', a: 'Sí, però recomanem escriure\'ns abans per WhatsApp: t\'assignem franja i redueixes l\'espera.' },
+        { q: 'Repareu bicicletes elèctriques?', a: 'Sí. Treballem bicis elèctriques de gamma alta (Specialized, Trek, Orbea, Cube, Scott…): motors Bosch/Shimano/Brose, bateries, firmware i manteniment complet.' }
+      ]
+    },
+    location: {
+      index: '// 06', kicker: 'Taller físic a Girona', title: 'Ens trobes al Carrer Finestrelles',
+      addressLabel: 'Adreça', address: 'Carrer Finestrelles, 9 · 17006 Girona',
+      directions: 'Obrir a Google Maps', hoursLabel: 'Horari', days: 'Dilluns – Divendres',
+      weekend: 'Dissabte i diumenge — tancat',
+      seo: 'Oferim servei tècnic especialitzat a Girona (Eixample, Carrer Barcelona, Santa Eugènia), Salt, Cassà de la Selva i Sarrià de Ter. També rebem clients de Figueres, Banyoles, Olot, l\'Escala i de tota la província — molts prefereixen el nostre taller abans que baixar a Barcelona.',
+      areasLabel: 'Zones de servei', mapNote: '41.9741° N · 2.8199° E — GIRONA'
+    },
+    ctaFinal: {
+      title: 'El teu patinet, rodant en 24–48 hores.',
+      sub: 'Escriu-nos per WhatsApp amb l\'avaria i el teu model. Et responem amb un pressupost orientatiu en menys de 15 minuts.',
+      note: 'Dl–Dv · 10:00–14:00 / 16:00–20:00', btn: 'Demanar Pressupost per WhatsApp'
+    },
+    footer: {
+      tagline: 'Taller especialitzat en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta a Girona.',
+      navTitle: 'Seccions',
+      nav: { 0: 'Serveis', 1: 'Com treballem', 2: 'Per què nosaltres', 3: 'FAQ', 4: 'Ubicació', 5: 'Galeria' },
+      contactTitle: 'Contacte',
+      rights: '© 2025 Riveu · Taller de patinets elèctrics, Girona',
+      legal: { 0: 'Avís legal', 1: 'Privacitat' },
+      made: 'Fet a Girona, amb el banc de treball ple'
+    },
+    floating: 'Contactar el Taller',
+    openNow: 'Obert ara', closedNow: 'Tancat ara',
+    whatsappMsg: 'Hola Riveu 👋 Vull demanar pressupost per al meu patinet.',
+    switchLabel: 'Versió en español'
+  },
+
+  es: {
+    meta: { title: 'Riveu · Taller de Patinetes y Bicicletas Eléctricas en Girona' },
+    logo: { sub: '· GIRONA' },
+    nav: { whatsapp: 'WhatsApp' },
+    hero: {
+      status: 'RIVEU // TALLER GIRONA — DIAGNÓSTICO EN CURSO',
+      title0: 'Taller y Reparación de', title1: 'Patinetes Eléctricos', title2: 'en Girona',
+      subtitle: 'Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta. Diagnóstico, ruedas, baterías y electrónica con garantía profesional.',
+      cta: 'Pedir Presupuesto por WhatsApp', secondary: 'Ver servicios', brandsNote: 'Trabajamos todas las marcas',
+      mapKicker: 'Cómo llegar', mapCta: 'Ruta en Maps', mapLink: 'Ver el mapa',
+      stats: {
+        0: { value: '400+', label: 'reparaciones completadas' },
+        1: { value: '24–48 h', label: 'entrega estándar' },
+        2: { value: '6 meses', label: 'garantía del taller' }
+      },
+      diag: {
+        title: 'Panel de diagnóstico', badge: 'En curso', voltage: 'BUS BATERÍA',
+        model: 'UNIDAD · XIAOMI MI PRO 2', note: 'Listo para entrega · hoy 18:30', unit: 'UNIDAD EN REVISIÓN',
+        rows: [
+          { k: 'BATERÍA', v: '52.4V', s: 'OK' },
+          { k: 'MOTOR', v: 'SENSORES HALL', s: 'OK' },
+          { k: 'CONTROLADORA', v: 'FW 2.1.8', s: 'OK' },
+          { k: 'NEUMÁTICOS', v: '42 PSI', s: 'OK' }
+        ]
+      }
+    },
+    ebike: {
+      index: '// 01.5', kicker: 'Movilidad eléctrica',
+      title: 'También bicicletas eléctricas de gama alta',
+      lead: 'Del patinete a la e-bike: somos tu taller de referencia para toda la movilidad eléctrica en Girona.',
+      items: [
+        'Motores Bosch, Shimano Steps, Brose y Fazua',
+        'Baterías, celdas y BMS de cualquier marca',
+        'Diagnóstico electrónico y actualizaciones de firmware',
+        'Mantenimiento completo de transmisión y frenos'
+      ],
+      cta: 'Presupuesto e-bike por WhatsApp',
+      msg: 'Hola Riveu 👋 Tengo una bicicleta eléctrica y quisiera pedir presupuesto.'
+    },
+    gallery: {
+      kicker: 'En el taller', title: 'Cada día, una avería menos',
+      c1: 'DIAGNÓSTICO INICIAL', c2: 'CAMBIO DE RUEDA', c3: 'BANCO DE PRUEBAS', c4: 'LISTO PARA ENTREGAR',
+      alt1: 'Diagnóstico inicial de un patinete eléctrico', alt2: 'Cambio de rueda y neumático',
+      alt3: 'Banco de pruebas y herramientas del taller', alt4: 'Patinete reparado listo para entregar'
+    },
+    ticker: ['Diagnóstico sin compromiso', 'Reparaciones en 24–48 h', 'Bicicletas eléctricas de gama alta', 'Garantía del taller', 'Servicio multimarca', 'Carrer Finestrelles 9 · Girona'],
+    services: {
+      index: '// 01', kicker: 'Servicios',
+      title: 'Todo lo que tu patinete necesita, en un solo banco de trabajo',
+      items: [
+        { title: 'Pinchazos y Neumáticos', tag: 'Cámaras · Tubeless · Macizas', icon: 'wheel',
+          list: ['Sustitución de cámaras y cubiertas', 'Montaje tubeless y líquido sellante', 'Ruedas macizas antipinchazo'] },
+        { title: 'Baterías y Electrónica', tag: 'Controladoras · Celdas · BMS', icon: 'battery',
+          list: ['Reconstrucción y cambio de celdas', 'Controladoras y errores de encendido', 'Diagnóstico electrónico completo'] },
+        { title: 'Frenos y Mecánica', tag: 'Discos · Pastillas · Holguras', icon: 'brake',
+          list: ['Ajuste de discos y pastillas', 'Frenos hidráulicos y eléctricos', 'Eliminamos holguras y ruidos'] },
+        { title: 'Especialistas Multimarca', tag: 'Xiaomi · Ninebot · Dualtron…', icon: 'brands',
+          list: ['SmartGyro, Cecotec, Segway, Kaabo…', 'Conocemos el esquema de cada modelo', 'Recambios en stock', 'También bicicletas eléctricas de gama alta'] }
+      ]
+    },
+    process: {
+      index: '// 02', kicker: 'Cómo trabajamos', title: 'De la avería a la calle, sin sorpresas',
+      steps: [
+        { t: 'Diagnóstico', d: 'Trae el patinete al taller y lo revisamos en el momento. Te explicamos qué le pasa, sin tecnicismos.' },
+        { t: 'Presupuesto cerrado', d: 'Precio claro antes de tocar nada. Lo apruebas por WhatsApp o en persona: sin compromiso.' },
+        { t: 'Reparación', d: 'Montamos recambios verificados y probamos el patinete a fondo. Normalmente, listo en 24–48 h.' },
+        { t: 'Entrega y garantía', d: 'Recoges el patinete probado, con la garantía del taller y las piezas sustituidas a la vista.' }
+      ]
+    },
+    why: {
+      index: '// 03', kicker: 'Por qué elegirnos', title: 'Confianza que se gana tornillo a tornillo',
+      lead: 'No somos una tienda que repara de vez en cuando: somos un taller dedicado en exclusiva al patinete eléctrico. Así trabajamos cada avería.',
+      alt: 'Banco de trabajo del taller Riveu',
+      items: [
+        { code: 'G·01', t: 'Presupuesto previo sin compromiso', d: 'Diagnóstico claro y precio cerrado antes de desmontar una sola pieza. Si no te convence, no pagas nada.' },
+        { code: 'G·02', t: 'Recambios de alta calidad comprobados', d: 'Trabajamos solo con piezas verificadas en el banco de pruebas. Nada de recambios dudosos de origen desconocido.' },
+        { code: 'G·03', t: 'Reparaciones rápidas en 24/48 h', d: 'La mayoría de averías están listas en uno o dos días. Si te quedas sin patinete, te asesoramos para minimizar la espera.' }
+      ]
+    },
+    reviews: {
+      index: '// 04', kicker: 'Opiniones', title: 'Lo que dicen los que ya ruedan',
+      items: [
+        { text: 'Llegué con el Xiaomi pinchado y salí el mismo día con rueda nueva y los frenos ajustados. Trato de diez.', name: 'Marc S.', scooter: 'Xiaomi Pro 2' },
+        { text: 'La batería había perdido media vida. Cambiaron las celdas y ahora hace los mismos kilómetros que el primer día.', name: 'Laura P.', scooter: 'Ninebot Max G30' },
+        { text: 'Presupuesto claro antes de tocar nada y el patinete listo en dos días. Así da gusto.', name: 'Jordi V.', scooter: 'Dualtron Mini' }
+      ]
+    },
+    faq: {
+      index: '// 05', kicker: 'FAQ', title: 'Dudas frecuentes antes de venir',
+      items: [
+        { q: '¿Cuánto tarda una reparación?', a: 'La mayoría de averías (pinchazos, frenos, ajustes) quedan listas en 24–48 horas. Baterías y electrónica compleja pueden necesitar 3–5 días: te lo indicamos en el presupuesto.' },
+        { q: '¿El diagnóstico tiene coste?', a: 'El diagnóstico y el presupuesto son gratuitos y sin compromiso. Si finalmente no reparas, solo tendrás que venir a recoger el patinete.' },
+        { q: '¿Qué marcas reparáis?', a: 'Somos taller multimarca: Xiaomi, SmartGyro, Cecotec, Ninebot, Segway, Dualtron, Kaabo y la mayoría de modelos del mercado.' },
+        { q: '¿Las reparaciones tienen garantía?', a: 'Sí. Todas las reparaciones incluyen garantía del taller sobre las piezas sustituidas y la mano de obra, y te lo explicamos cara a cara al entregarte el patinete.' },
+        { q: '¿Puedo venir sin cita?', a: 'Sí, pero recomendamos escribirnos antes por WhatsApp: te asignamos franja y reduces la espera.' },
+        { q: '¿Reparáis bicicletas eléctricas?', a: 'Sí. Trabajamos bicis eléctricas de gama alta (Specialized, Trek, Orbea, Cube, Scott…): motores Bosch/Shimano/Brose, baterías, firmware y mantenimiento completo.' }
+      ]
+    },
+    location: {
+      index: '// 06', kicker: 'Taller físico en Girona', title: 'Nos encuentras en el Carrer Finestrelles',
+      addressLabel: 'Dirección', address: 'Carrer Finestrelles, 9 · 17006 Girona',
+      directions: 'Abrir en Google Maps', hoursLabel: 'Horario', days: 'Lunes – Viernes',
+      weekend: 'Sábado y domingo — cerrado',
+      seo: 'Damos servicio técnico especializado en Girona (Eixample, Carrer Barcelona, Santa Eugènia), Salt, Cassà de la Selva y Sarrià de Ter. También recibimos clientes de Figueres, Banyoles, Olot, l\'Escala y de toda la provincia — muchos prefieren nuestro taller antes que bajar a Barcelona.',
+      areasLabel: 'Zonas de servicio', mapNote: '41.9741° N · 2.8199° E — GIRONA'
+    },
+    ctaFinal: {
+      title: 'Tu patinete, rodando en 24–48 horas.',
+      sub: 'Escríbenos por WhatsApp con la avería y tu modelo. Te respondemos con un presupuesto orientativo en menos de 15 minutos.',
+      note: 'L–V · 10:00–14:00 / 16:00–20:00', btn: 'Pedir Presupuesto por WhatsApp'
+    },
+    footer: {
+      tagline: 'Taller especializado en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta en Girona.',
+      navTitle: 'Secciones',
+      nav: { 0: 'Servicios', 1: 'Cómo trabajamos', 2: 'Por qué elegirnos', 3: 'FAQ', 4: 'Ubicación', 5: 'Galería' },
+      contactTitle: 'Contacto',
+      rights: '© 2025 Riveu · Taller de patinetes eléctricos, Girona',
+      legal: { 0: 'Aviso legal', 1: 'Privacidad' },
+      made: 'Hecho en Girona, con el banco de trabajo lleno'
+    },
+    floating: 'Contactar Taller',
+    openNow: 'Abierto ahora', closedNow: 'Cerrado ahora',
+    whatsappMsg: 'Hola Riveu 👋 Quiero pedir presupuesto para mi patinete.',
+    switchLabel: 'Versió en català'
+  }
+};
+
+/* ---------- HELPERS ---------- */
+const getByPath = (obj, path) =>
+  String(path).split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
+
+function retriggerMaskLines() {
+  document.querySelectorAll('.mask-line').forEach(line => {
+    line.classList.remove('active');
+    const child = line.querySelector('span');
+    if (child) {
+      const delay = child.style.animationDelay;
+      child.style.animation = 'none';
+      void child.offsetHeight;
+      child.style.animation = '';
+      if (delay) child.style.animationDelay = delay;
+    }
+    requestAnimationFrame(() => line.classList.add('active'));
+  });
+}
+
+const applyI18n = (lang) => {
+  document.documentElement.lang = lang;
+  document.title = i18n[lang].meta.title;
+
+  const descNode = document.querySelector('meta[name="description"]');
+  if (descNode) descNode.setAttribute('content', i18n[lang].hero.subtitle);
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', i18n[lang].meta.title);
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', i18n[lang].hero.subtitle);
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  if (ogLocale) ogLocale.setAttribute('content', lang === 'ca' ? 'ca_ES' : 'es_ES');
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = getByPath(i18n[lang], el.getAttribute('data-i18n'));
+    if (val !== undefined) el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    const val = getByPath(i18n[lang], el.getAttribute('data-i18n-alt'));
+    if (val !== undefined) el.setAttribute('alt', val);
+  });
+
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+    const active = btn.getAttribute('data-lang-btn') === lang;
+    btn.classList.toggle('bg-riveu-red', active);
+    btn.classList.toggle('text-white', active);
+    btn.classList.toggle('text-riveu-steel', !active);
+  });
+
+  const href = waLink(i18n[lang].whatsappMsg);
+  ['headerCta','heroCta','whyCta','ctaFinalBtn','footerWa','floatingWa'].forEach(id => {
+    const a = document.getElementById(id);
+    if (a) a.href = href;
+  });
+
+  const ebikeCta = document.getElementById('ebikeCta');
+  if (ebikeCta) ebikeCta.href = waLink(i18n[lang].ebike.msg);
+
+  document.querySelectorAll('[data-phone-link]').forEach(a => a.setAttribute('href', 'tel:' + PHONE_TEL));
+  document.querySelectorAll('[data-phone-text]').forEach(el => el.textContent = PHONE_DISPLAY);
+
+  const other = lang === 'ca' ? 'es' : 'ca';
+  const swBtn = document.getElementById('switchLangBtn');
+  if (swBtn) {
+    swBtn.textContent = i18n[other].switchLabel;
+    swBtn.setAttribute('data-next', other);
+  }
+
+  renderTicker(lang); renderDiagRows(lang); renderServices(lang);
+  renderProcess(lang); renderWhy(lang); renderReviews(lang); renderFaq(lang);
+  retriggerMaskLines();
+};
+
+/* ---------- ICONOS DE SERVICIOS ---------- */
+const ICONS = {
+  wheel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg>',
+  battery: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="7.5" width="16" height="9" rx="1.5"/><path d="M21.5 10.5v3" stroke-width="2.5" stroke-linecap="round"/><path d="M11.5 9.2l-2.4 3.3h2.8l-2.4 3.3" stroke-linejoin="round" stroke-linecap="round"/></svg>',
+  brake: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="5.8" r="0.9"/><circle cx="18.2" cy="12" r="0.9"/><circle cx="12" cy="18.2" r="0.9"/><circle cx="5.8" cy="12" r="0.9"/></svg>',
+  brands: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.5l8 4.2v7.6l-8 4.2-8-4.2V6.7l8-4.2z" stroke-linejoin="round"/><path d="M8.2 12.2l2.5 2.5 5-5.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
+const STAR = '<svg viewBox="0 0 24 24" class="size-3.5" aria-hidden="true"><use href="#i-star"/></svg>';
+
+/* ---------- RENDERS ---------- */
+function renderTicker(lang) {
+  const html = i18n[lang].ticker.map(t => `
+    <span class="flex items-center font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-white">
+      <span class="rounded-sm bg-carbon-950/80 px-3 py-0.5">${t}</span>
+      <span class="mx-4 size-1.5 rotate-45 bg-carbon-950/70"></span>
+    </span>`).join('');
+  document.getElementById('ticker1').innerHTML = html;
+  document.getElementById('ticker2').innerHTML = html;
+}
+
+function renderDiagRows(lang) {
+  document.getElementById('diagRows').innerHTML = i18n[lang].hero.diag.rows.map(r => `
+    <div class="flex items-center justify-between gap-3 border-b border-white/5 py-2.5 last:border-0">
+      <span class="text-riveu-steel">${r.k}</span>
+      <span class="hidden flex-1 border-b border-dotted border-white/15 sm:block"></span>
+      <span class="text-riveu-silver">${r.v}</span>
+      <span class="rounded-sm border border-riveu-red/40 px-1.5 text-[9px] text-riveu-red">${r.s}</span>
+    </div>`).join('');
+}
+
+function renderServices(lang) {
+  document.getElementById('servicesGrid').innerHTML = i18n[lang].services.items.map((s, i) => `
+    <article class="corners group relative h-full border border-white/10 bg-carbon-850 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-riveu-red/70 hover:shadow-[0_16px_40px_-18px_rgba(229,57,53,0.45)] sm:p-6 reveal">
+      <span class="corner-bl"></span><span class="corner-br"></span>
+      <div class="flex items-start justify-between">
+        <span class="font-mono text-[11px] tracking-[0.25em] text-riveu-steel/70">0${i+1}</span>
+        <div class="size-6 text-riveu-red transition-transform duration-300 group-hover:scale-110 sm:size-7">${ICONS[s.icon]}</div>
+      </div>
+      <h3 class="mt-5 font-display text-base font-semibold uppercase leading-tight text-white sm:text-lg">${s.title}</h3>
+      <p class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-red sm:text-[11px]">${s.tag}</p>
+      <ul class="mt-4 space-y-2">
+        ${s.list.map(it => `<li class="flex gap-2 text-xs leading-snug text-riveu-steel sm:text-sm"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span>${it}</li>`).join('')}
+      </ul>
+    </article>`).join('');
+  setupReveal();
+}
+
+function renderProcess(lang) {
+  document.getElementById('processList').innerHTML = i18n[lang].process.steps.map((st, i) => `
+    <li>
+      <div class="reveal flex gap-4 lg:block">
+        <div class="flex flex-col items-center lg:mb-5 lg:flex-row lg:gap-3">
+          <span class="grid size-11 shrink-0 place-items-center border border-riveu-red/60 bg-[#160a0a] font-mono text-sm text-riveu-red">0${i+1}</span>
+          <span class="mt-2 hidden h-px flex-1 bg-gradient-to-r from-riveu-red/50 to-transparent lg:block"></span>
+        </div>
+        <div>
+          <h3 class="font-display text-lg font-semibold uppercase text-white">${st.t}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-riveu-steel">${st.d}</p>
+        </div>
+      </div>
+    </li>`).join('');
+  setupReveal();
+}
+
+function renderWhy(lang) {
+  document.getElementById('whyList').innerHTML = i18n[lang].why.items.map(g => `
+    <div class="reveal group flex gap-5 border border-white/10 border-l-2 border-l-riveu-red bg-carbon-850 p-5 transition-colors hover:border-riveu-red/60 sm:p-6">
+      <span class="w-12 shrink-0 font-mono text-sm tracking-widest text-riveu-red">${g.code}</span>
+      <div>
+        <h3 class="font-display text-lg font-semibold uppercase leading-tight text-white">${g.t}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-riveu-steel">${g.d}</p>
+      </div>
+    </div>`).join('');
+  setupReveal();
+}
+
+function renderReviews(lang) {
+  document.getElementById('reviewsGrid').innerHTML = i18n[lang].reviews.items.map(r => `
+    <figure class="reveal relative flex h-full flex-col border border-white/10 bg-carbon-850 p-6 transition-colors hover:border-riveu-red/50">
+      <div class="flex gap-1 text-riveu-red">${Array.from({length:5}).map(()=>STAR).join('')}</div>
+      <blockquote class="mt-4 flex-1 text-sm leading-relaxed text-riveu-silver">«${r.text}»</blockquote>
+      <figcaption class="mt-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-wider">
+        <span class="text-riveu-steel">${r.name}</span>
+        <span class="text-riveu-red">${r.scooter}</span>
+      </figcaption>
+    </figure>`).join('');
+  setupReveal();
+}
+
+function renderFaq(lang) {
+  document.getElementById('faqList').innerHTML = i18n[lang].faq.items.map((f, i) => `
+    <div class="border-b border-white/10">
+      <button data-faq-toggle="${i}" aria-expanded="${i===0}" class="group flex w-full items-center justify-between gap-4 py-5 text-left">
+        <span class="font-display text-base font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-riveu-red sm:text-lg">${f.q}</span>
+        <span class="grid size-8 shrink-0 place-items-center border border-white/15 font-mono text-lg text-riveu-steel transition-all duration-300 group-hover:border-white/40 ${i===0 ? 'rotate-45 border-riveu-red text-riveu-red' : ''}">+</span>
+      </button>
+      <div class="faq-body ${i===0 ? 'open' : ''}"><div>
+        <p class="pb-5 pr-10 text-sm leading-relaxed text-riveu-steel">${f.a}</p>
+      </div></div>
+    </div>`).join('');
+
+  document.querySelectorAll('[data-faq-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling;
+      const icon = btn.querySelector('span:last-child');
+      const isOpen = body.classList.toggle('open');
+      icon.classList.toggle('rotate-45', isOpen);
+      icon.classList.toggle('border-riveu-red', isOpen);
+      icon.classList.toggle('text-riveu-red', isOpen);
+      btn.setAttribute('aria-expanded', isOpen);
+    });
+  });
+}
+
+/* ---------- GAUGE ---------- */
+function animateGauge(target = 87) {
+  const arc = document.getElementById('gaugeArc');
+  const needle = document.getElementById('gaugeNeedle');
+  const valEl = document.getElementById('gaugeValue');
+  if (!arc || !needle || !valEl) return;
+
+  const ticks = document.getElementById('gaugeTicks');
+  if (ticks && !ticks.hasChildNodes()) {
+    let svg = '';
+    for (let i = 0; i <= 12; i++) {
+      const a = -120 + i * 20, major = i % 3 === 0;
+      svg += `<g transform="rotate(${a} 90 90)"><line x1="90" y1="26" x2="90" y2="${major?33:29}" stroke="${i>=11?'#E53935':'#4a4a4a'}" stroke-width="${major?2:1}"/></g>`;
+    }
+    ticks.innerHTML = svg;
+  }
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    arc.setAttribute('stroke-dasharray', `${(target/100)*66.667} 100`);
+    needle.setAttribute('transform', `rotate(${-120 + (target/100)*240} 90 90)`);
+    valEl.textContent = (38 + target * 0.166).toFixed(1);
+    return;
+  }
+
+  const t0 = performance.now();
+  const step = (t) => {
+    const p = Math.min(1, (t - t0) / 1800);
+    const v = (1 - Math.pow(1 - p, 3)) * target;
+    arc.setAttribute('stroke-dasharray', `${(v/100)*66.667} 100`);
+    needle.setAttribute('transform', `rotate(${-120 + (v/100)*240} 90 90)`);
+    valEl.textContent = (38 + v * 0.166).toFixed(1);
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+/* ---------- ABIERTO / CERRADO (multi-instancia) ---------- */
+function updateOpenStatus(lang) {
+  const dots = document.querySelectorAll('[data-open-dot]');
+  const txts = document.querySelectorAll('[data-open-text]');
+  if (!dots.length && !txts.length) return;
+  try {
+    let d = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Madrid' }));
+    if (isNaN(d.getTime())) d = new Date();
+    const total = d.getHours() * 60 + d.getMinutes();
+    const isOpen = d.getDay() >= 1 && d.getDay() <= 5 &&
+                   ((total >= 600 && total < 840) || (total >= 960 && total < 1200));
+    dots.forEach(dot => { dot.className = `size-2 rounded-full ${isOpen ? 'animate-pulse bg-wa' : 'bg-riveu-red'}`; });
+    txts.forEach(txt => {
+      txt.className = isOpen ? 'text-wa' : 'text-riveu-red';
+      txt.textContent = isOpen ? i18n[lang].openNow : i18n[lang].closedNow;
+    });
+  } catch { txts.forEach(txt => txt.textContent = '…'); }
+}
+
+/* ---------- REVEAL ---------- */
+let revealObserver = null;
+function setupReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+}
+
+/* ---------- PROGRESO ---------- */
+function setupScrollProgress() {
+  const bar = document.getElementById('scrollBar');
+  if (!bar) return;
+  const onScroll = () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / Math.max(1, h.scrollHeight - window.innerHeight) * 100) + '%';
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* ---------- INIT ---------- */
+(function init() {
+  let lang = 'ca';
+  try {
+    const stored = localStorage.getItem('riveu-lang');
+    if (stored === 'ca' || stored === 'es') lang = stored;
+    else lang = (navigator.language || 'ca').toLowerCase().startsWith('ca') ? 'ca' : 'es';
+  } catch {}
+
+  applyI18n(lang);
+  animateGauge(87);
+  updateOpenStatus(lang);
+  setupReveal();
+  setupScrollProgress();
+
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const l = btn.getAttribute('data-lang-btn');
+      try { localStorage.setItem('riveu-lang', l); } catch {}
+      applyI18n(l); updateOpenStatus(l);
+    });
+  });
+
+  document.getElementById('switchLangBtn').addEventListener('click', () => {
+    const next = document.getElementById('switchLangBtn').getAttribute('data-next') || 'es';
+    try { localStorage.setItem('riveu-lang', next); } catch {}
+    applyI18n(next); updateOpenStatus(next);
+  });
+
+  setInterval(() => updateOpenStatus(document.documentElement.lang), 60000);
+})();
+</script>
+
+</body>
+</html>
