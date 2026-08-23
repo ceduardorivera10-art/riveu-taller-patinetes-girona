@@ -15,9 +15,9 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://riveu.com/" />
 <meta property="og:locale" content="ca_ES" />
-<!-- TODO: las redes exigen URL absoluta → https://tudominio.com/logo.png -->
-<meta property="og:image" content="logo.png" />
-<link rel="icon" type="image/png" href="logo.png" />
+<!-- TODO: las redes exigen URL absoluta → https://tudominio.com/logo-riveu.jpg -->
+<meta property="og:image" content="logo-riveu.jpg" />
+<link rel="icon" type="image/jpeg" href="logo-riveu.jpg" />
 
 <!-- SEO: cuando verifiques el sitio, descomenta y pega tus códigos -->
 <!-- <meta name="google-site-verification" content="TU_CODIGO_DE_GOOGLE_SEARCH_CONSOLE" /> -->
@@ -124,11 +124,11 @@ function imgFallback(el){
   .faq-body.open { grid-template-rows: 1fr; }
   .faq-body > div { overflow: hidden; }
 
-  /* ── FOTO 1: FONDO DEL HERO (solo PC) ── */
+  /* ── FONDO DEL HERO (solo PC): tu foto del local ── */
   .hero-bg-img {
     background-image:
       linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.9) 100%),
-      url('images/fondo-hero.jpg');
+      url('foto-del-local.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -153,7 +153,7 @@ function imgFallback(el){
   "url": "https://riveu.com",
   "telephone": "+34625772188",
   "priceRange": "€€",
-  "image": "logo.png",
+  "image": "logo-riveu.jpg",
   "hasMap": "https://maps.app.goo.gl/WzGEK7ouw7YASTPo9",
   "address": {
     "@type": "PostalAddress",
@@ -223,7 +223,7 @@ function imgFallback(el){
   <header class="border-b border-white/10 bg-carbon-950/85 backdrop-blur-md">
     <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
       <a href="#" class="group flex items-center gap-3" aria-label="Riveu — Taller de Patinets">
-        <img src="logo.png" alt="Riveu · Taller de Patinets" width="160" height="120"
+        <img src="logo-riveu.jpg" alt="Riveu · Taller de Patinets" width="160" height="120"
              class="h-10 w-auto select-none mix-blend-lighten transition-transform duration-300 group-hover:-translate-y-0.5 sm:h-12" />
         <span class="hidden font-mono text-[9px] tracking-[0.32em] text-riveu-steel md:block" data-i18n="logo.sub">· GIRONA</span>
       </a>
@@ -325,13 +325,13 @@ function imgFallback(el){
     <div class="relative">
       <div aria-hidden class="absolute -inset-4 bg-riveu-red/5 blur-2xl"></div>
 
-      <!-- ══ FOTO 2: PATINETE EN REVISIÓN (horizontal 900×500) ══ -->
+      <!-- ══ TU FOTO DEL LOCAL ══ -->
       <div class="corners relative mb-4 overflow-hidden border border-white/10">
         <span class="corner-bl"></span><span class="corner-br"></span>
-        <img src="images/patinet-revisio.jpg" alt="Patinete en revisión en el taller Riveu"
+        <img src="foto-del-local.jpg" alt="Taller Riveu en Girona"
              width="900" height="500" onerror="imgFallback(this)"
              class="h-40 w-full object-cover grayscale transition-all duration-500 hover:grayscale-0 sm:h-48" />
-        <div class="absolute bottom-2 left-2 bg-carbon-950/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="hero.diag.unit">UNITAT EN REVISIÓ</div>
+        <div class="absolute bottom-2 left-2 bg-carbon-950/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="hero.photoCaption">EL NOSTRE TALLER</div>
       </div>
 
       <div class="corners relative border border-white/10 bg-carbon-900/90 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)] backdrop-blur-sm">
@@ -470,7 +470,7 @@ function imgFallback(el){
   </div>
 </section>
 
-<!-- ============== GALERÍA ============== -->
+<!-- ============== EL LOCAL (tu foto en grande) ============== -->
 <section id="galeria" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal">
@@ -478,43 +478,18 @@ function imgFallback(el){
         <span class="size-1.5 animate-pulse bg-riveu-red"></span>
         <span>// 02.5</span>
         <span class="h-px w-10 bg-riveu-red/50"></span>
-        <span class="text-riveu-steel" data-i18n="gallery.kicker">Al taller</span>
+        <span class="text-riveu-steel" data-i18n="gallery.kicker">El taller</span>
       </div>
-      <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="gallery.title">Cada dia, una avaria menys</h2>
+      <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="gallery.title">El nostre local a Girona</h2>
     </div>
 
-    <div class="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-      <!-- ══ FOTO 3: DIAGNÓSTICO (vertical 700×900) ══ -->
-      <div class="corners reveal group relative aspect-[3/4] overflow-hidden border border-white/10">
-        <span class="corner-bl"></span><span class="corner-br"></span>
-        <img src="images/taller-1.jpg" alt="Diagnóstico inicial de un patinete eléctrico" width="700" height="933"
-             loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="gallery.alt1"
-             class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
-        <div class="absolute inset-x-2 bottom-2 bg-carbon-950/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="gallery.c1">DIAGNÒSTIC INICIAL</div>
-      </div>
-      <!-- ══ FOTO 4: CAMBIO DE RUEDA (vertical 700×900) ══ -->
-      <div class="corners reveal group relative aspect-[3/4] overflow-hidden border border-white/10" style="transition-delay:.08s">
-        <span class="corner-bl"></span><span class="corner-br"></span>
-        <img src="images/taller-2.jpg" alt="Cambio de rueda y neumático de patinete" width="700" height="933"
-             loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="gallery.alt2"
-             class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
-        <div class="absolute inset-x-2 bottom-2 bg-carbon-950/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="gallery.c2">CANVI DE RODA</div>
-      </div>
-      <!-- ══ FOTO 5: BANCO DE PRUEBAS (vertical 700×900) ══ -->
-      <div class="corners reveal group relative aspect-[3/4] overflow-hidden border border-white/10" style="transition-delay:.16s">
-        <span class="corner-bl"></span><span class="corner-br"></span>
-        <img src="images/taller-3.jpg" alt="Banco de pruebas y herramientas del taller" width="700" height="933"
-             loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="gallery.alt3"
-             class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
-        <div class="absolute inset-x-2 bottom-2 bg-carbon-950/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="gallery.c3">BANC DE PROVES</div>
-      </div>
-      <!-- ══ FOTO 6: LISTO PARA ENTREGA (vertical 700×900) ══ -->
-      <div class="corners reveal group relative aspect-[3/4] overflow-hidden border border-white/10" style="transition-delay:.24s">
-        <span class="corner-bl"></span><span class="corner-br"></span>
-        <img src="images/taller-4.jpg" alt="Patinete reparado listo para entregar" width="700" height="933"
-             loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="gallery.alt4"
-             class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
-        <div class="absolute inset-x-2 bottom-2 bg-carbon-950/90 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur" data-i18n="gallery.c4">A PUNT PER LLIURAR</div>
+    <div class="corners reveal group relative mt-12 overflow-hidden border border-white/10">
+      <span class="corner-bl"></span><span class="corner-br"></span>
+      <img src="foto-del-local.jpg" alt="Taller Riveu en Girona" width="1400" height="700"
+           loading="lazy" decoding="async" onerror="imgFallback(this)"
+           class="h-64 w-full object-cover grayscale transition-all duration-700 hover:grayscale-0 sm:h-96" />
+      <div class="absolute inset-x-2 bottom-2 flex justify-center">
+        <span class="bg-carbon-950/90 px-4 py-1.5 font-mono text-[10px] tracking-[0.25em] text-riveu-steel backdrop-blur" data-i18n="gallery.caption">CARRER FINESTRELLES 9 · GIRONA</span>
       </div>
     </div>
   </div>
@@ -535,11 +510,11 @@ function imgFallback(el){
           <h2 class="mt-4 max-w-md font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl" data-i18n="why.title">Confiança que es guanya cargol a cargol</h2>
           <p class="mt-6 max-w-md text-base leading-relaxed text-riveu-steel" data-i18n="why.lead">No som una botiga que repara de tant en tant: som un taller dedicat en exclusiva al patinet elèctric. Així treballem cada avaria.</p>
 
-          <!-- ══ FOTO 7: BANCO DE TRABAJO (horizontal 900×500) ══ -->
+          <!-- ══ TU FOTO DEL LOCAL (también aquí) ══ -->
           <div class="corners reveal mt-6 overflow-hidden border border-white/10">
             <span class="corner-bl"></span><span class="corner-br"></span>
-            <img src="images/banc-treball.jpg" alt="Banco de trabajo del taller Riveu" width="900" height="500"
-                 loading="lazy" decoding="async" onerror="imgFallback(this)" data-i18n-alt="why.alt"
+            <img src="foto-del-local.jpg" alt="Taller Riveu en Girona" width="900" height="500"
+                 loading="lazy" decoding="async" onerror="imgFallback(this)"
                  class="h-44 w-full object-cover grayscale transition-all duration-500 hover:grayscale-0" />
           </div>
 
@@ -707,7 +682,7 @@ function imgFallback(el){
 <footer class="border-t border-white/10 bg-carbon-950 pb-28 pt-14 sm:pb-14">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-8 md:grid-cols-12">
     <div class="md:col-span-5">
-      <img src="logo.png" alt="Riveu · Taller de Patinets" width="200" height="150" class="h-16 w-auto select-none mix-blend-lighten sm:h-20" />
+      <img src="logo-riveu.jpg" alt="Riveu · Taller de Patinets" width="200" height="150" class="h-16 w-auto select-none mix-blend-lighten sm:h-20" />
       <p class="mt-4 max-w-sm text-sm leading-relaxed text-riveu-steel" data-i18n="footer.tagline">Taller especialitzat en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta a Girona.</p>
       <p class="mt-4 font-mono text-[10px] tracking-[0.25em] text-riveu-steel/60">41.9741° N · 2.8199° E — GIRONA</p>
     </div>
@@ -785,6 +760,7 @@ const i18n = {
       subtitle: 'Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia professional.',
       cta: 'Demanar Pressupost per WhatsApp', secondary: 'Veure serveis', brandsNote: 'Treballem totes les marques',
       mapKicker: 'Com arribar-hi', mapCta: 'Ruta en Maps', mapLink: 'Veure el mapa',
+      photoCaption: 'EL NOSTRE TALLER',
       stats: {
         0: { value: '400+', label: 'reparacions completades' },
         1: { value: '24–48h', label: 'lliurament estàndard' },
@@ -792,7 +768,7 @@ const i18n = {
       },
       diag: {
         title: 'Quadre de diagnòstic', badge: 'En curs', voltage: 'BUS BATERIA',
-        model: 'UNITAT · XIAOMI MI PRO 2', note: 'A punt per lliurar · avui 18:30', unit: 'UNITAT EN REVISIÓ',
+        model: 'UNITAT · XIAOMI MI PRO 2', note: 'A punt per lliurar · avui 18:30',
         rows: [
           { k: 'BATERIA', v: '52.4V', s: 'OK' },
           { k: 'MOTOR', v: 'SENSORS HALL', s: 'OK' },
@@ -815,10 +791,9 @@ const i18n = {
       msg: 'Hola Riveu 👋 Tinc una bicicleta elèctrica i voldria demanar pressupost.'
     },
     gallery: {
-      kicker: 'Al taller', title: 'Cada dia, una avaria menys',
-      c1: 'DIAGNÒSTIC INICIAL', c2: 'CANVI DE RODA', c3: 'BANC DE PROVES', c4: 'A PUNT PER LLIURAR',
-      alt1: 'Diagnòstic inicial d\'un patinet elèctric', alt2: 'Canvi de roda i pneumàtic',
-      alt3: 'Banc de proves i eines del taller', alt4: 'Patinet reparat a punt per lliurar'
+      kicker: 'El taller',
+      title: 'El nostre local a Girona',
+      caption: 'CARRER FINESTRELLES 9 · GIRONA'
     },
     ticker: ['Diagnòstic sense compromís', 'Reparacions en 24–48 h', 'Bicicletes elèctriques de gamma alta', 'Garantia del taller', 'Servei multimarca', 'Carrer Finestrelles 9 · Girona'],
     services: {
@@ -847,7 +822,6 @@ const i18n = {
     why: {
       index: '// 03', kicker: 'Per què nosaltres', title: 'Confiança que es guanya cargol a cargol',
       lead: 'No som una botiga que repara de tant en tant: som un taller dedicat en exclusiva al patinet elèctric. Així treballem cada avaria.',
-      alt: 'Banc de treball del taller Riveu',
       items: [
         { code: 'G·01', t: 'Pressupost previ sense compromís', d: 'Diagnòstic clar i preu tancat abans de desmuntar cap peça. Si no et convenç, no pagues res.' },
         { code: 'G·02', t: 'Recanvis d\'alta qualitat comprovats', d: 'Treballem només amb peces verificades al banc de proves. Res de recanvis dubtosos d\'origen desconegut.' },
@@ -911,6 +885,7 @@ const i18n = {
       subtitle: 'Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta. Diagnóstico, ruedas, baterías y electrónica con garantía profesional.',
       cta: 'Pedir Presupuesto por WhatsApp', secondary: 'Ver servicios', brandsNote: 'Trabajamos todas las marcas',
       mapKicker: 'Cómo llegar', mapCta: 'Ruta en Maps', mapLink: 'Ver el mapa',
+      photoCaption: 'NUESTRO TALLER',
       stats: {
         0: { value: '400+', label: 'reparaciones completadas' },
         1: { value: '24–48 h', label: 'entrega estándar' },
@@ -918,7 +893,7 @@ const i18n = {
       },
       diag: {
         title: 'Panel de diagnóstico', badge: 'En curso', voltage: 'BUS BATERÍA',
-        model: 'UNIDAD · XIAOMI MI PRO 2', note: 'Listo para entrega · hoy 18:30', unit: 'UNIDAD EN REVISIÓN',
+        model: 'UNIDAD · XIAOMI MI PRO 2', note: 'Listo para entrega · hoy 18:30',
         rows: [
           { k: 'BATERÍA', v: '52.4V', s: 'OK' },
           { k: 'MOTOR', v: 'SENSORES HALL', s: 'OK' },
@@ -941,10 +916,9 @@ const i18n = {
       msg: 'Hola Riveu 👋 Tengo una bicicleta eléctrica y quisiera pedir presupuesto.'
     },
     gallery: {
-      kicker: 'En el taller', title: 'Cada día, una avería menos',
-      c1: 'DIAGNÓSTICO INICIAL', c2: 'CAMBIO DE RUEDA', c3: 'BANCO DE PRUEBAS', c4: 'LISTO PARA ENTREGAR',
-      alt1: 'Diagnóstico inicial de un patinete eléctrico', alt2: 'Cambio de rueda y neumático',
-      alt3: 'Banco de pruebas y herramientas del taller', alt4: 'Patinete reparado listo para entregar'
+      kicker: 'El taller',
+      title: 'Nuestro local en Girona',
+      caption: 'CARRER FINESTRELLES 9 · GIRONA'
     },
     ticker: ['Diagnóstico sin compromiso', 'Reparaciones en 24–48 h', 'Bicicletas eléctricas de gama alta', 'Garantía del taller', 'Servicio multimarca', 'Carrer Finestrelles 9 · Girona'],
     services: {
@@ -973,7 +947,6 @@ const i18n = {
     why: {
       index: '// 03', kicker: 'Por qué elegirnos', title: 'Confianza que se gana tornillo a tornillo',
       lead: 'No somos una tienda que repara de vez en cuando: somos un taller dedicado en exclusiva al patinete eléctrico. Así trabajamos cada avería.',
-      alt: 'Banco de trabajo del taller Riveu',
       items: [
         { code: 'G·01', t: 'Presupuesto previo sin compromiso', d: 'Diagnóstico claro y precio cerrado antes de desmontar una sola pieza. Si no te convence, no pagas nada.' },
         { code: 'G·02', t: 'Recambios de alta calidad comprobados', d: 'Trabajamos solo con piezas verificadas en el banco de pruebas. Nada de recambios dudosos de origen desconocido.' },
@@ -1063,10 +1036,6 @@ const applyI18n = (lang) => {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const val = getByPath(i18n[lang], el.getAttribute('data-i18n'));
     if (val !== undefined) el.textContent = val;
-  });
-  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-    const val = getByPath(i18n[lang], el.getAttribute('data-i18n-alt'));
-    if (val !== undefined) el.setAttribute('alt', val);
   });
 
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
