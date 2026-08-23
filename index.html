@@ -18,15 +18,10 @@
 <meta property="og:image" content="logo-riveu.jpg" />
 <link rel="icon" type="image/jpeg" href="logo-riveu.jpg" />
 
-<!-- SEO: cuando verifiques el sitio, descomenta y pega tus códigos -->
-<!-- <meta name="google-site-verification" content="TU_CODIGO_DE_GOOGLE_SEARCH_CONSOLE" /> -->
+<!-- ✅ VERIFICACIÓN GOOGLE SEARCH CONSOLE (añadida para indexar) -->
+<meta name="google-site-verification" content="sat2SMJ4tfjguY6V_v_Qn0GAmEkrrW3iV636F88ocdE" />
+<!-- Cuando quieras verificar también en Bing, descomenta y pega tu código -->
 <!-- <meta name="msvalidate.01" content="TU_CODIGO_DE_BING_WEBMASTER" /> -->
-
-<!-- Vercel Web Analytics -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -129,6 +124,7 @@ function imgFallback(el){
   .faq-body.open { grid-template-rows: 1fr; }
   .faq-body > div { overflow: hidden; }
 
+  /* Fondo del hero (solo PC) */
   .hero-bg-img {
     background-image:
       linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.9) 100%),
@@ -147,7 +143,7 @@ function imgFallback(el){
   }
 </style>
 
-<!-- SEO local: el teléfono ya es el real (+34 633 62 43 45) -->
+<!-- SEO local -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -765,13 +761,10 @@ function imgFallback(el){
 </a>
 
 <script>
-/* ══════════ CONFIGURACIÓN RÁPIDA ══════════
-   ✅ NÚMERO REAL ACTUALIZADO: +34 633 62 43 45
-   Si algún día cambiáis de número, solo hay que
-   tocar estas 3 líneas (y nada más en todo el archivo). */
-const WA_PHONE      = '34633624345';   // WhatsApp (sin + ni espacios)
-const PHONE_TEL     = '+34633624345';  // botón de llamar
-const PHONE_DISPLAY = '633 62 43 45';  // tal como se muestra
+/* ══════════ CONFIGURACIÓN RÁPIDA ══════════ */
+const WA_PHONE      = '34633624345';
+const PHONE_TEL     = '+34633624345';
+const PHONE_DISPLAY = '633 62 43 45';
 /* ══════════════════════════════════════════ */
 
 const waLink = (msg) => `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
