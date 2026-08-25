@@ -223,14 +223,14 @@ function placeholderUri(){
   </div>
 </section>
 
-<!-- ============ TIENDA ONLINE: 2 SECCIONES + LAZY LOAD ============ -->
+<!-- TIENDA: 2 SECCIONES + LAZY LOAD -->
 <section id="botiga" class="scroll-mt-28 border-t border-white/10 bg-gradient-to-b from-carbon-900/80 via-carbon-900/40 to-carbon-950 py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="shop.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="shop.kicker"></span></div>
     <h2 class="mt-4 max-w-4xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="shop.title"></h2>
-    <p class="mt-5 max-w-2xl text-base leading-relaxed text-riveu-steel" data-i18n="shop.lead"></p></div>
+    <p class="mt-5 max-w-2xl text-base leading-relaxed text-riveu-steel" data-i18n="shop.lead"></p>
+    <p class="mt-3 max-w-2xl text-xs leading-relaxed text-riveu-steel/70" data-i18n="shop.disclaimer"></p></div>
 
-    <!-- Controles -->
     <div class="mt-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
       <div class="flex flex-wrap gap-3" id="shopFilters">
         <button data-filter="all" class="shop-filter active border-2 border-white/20 px-5 py-2.5 font-mono text-xs uppercase tracking-wider transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.all"></button>
@@ -241,7 +241,6 @@ function placeholderUri(){
       <div class="relative w-full lg:w-80"><input id="shopSearch" type="search" class="w-full border-2 border-white/15 bg-carbon-950 px-5 py-3 font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none" placeholder="Buscar..." /></div>
     </div>
 
-    <!-- SECCIÓN 1: PATINETES -->
     <div id="scooterSection" class="mt-16">
       <div class="flex items-center gap-3"><span class="text-2xl">🛴</span><h3 class="font-display text-2xl font-bold uppercase text-white" data-i18n="shop.scootersTitle"></h3><span id="scooterCount" class="font-mono text-xs text-riveu-steel"></span></div>
       <div id="scooterGrid" class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
@@ -250,7 +249,6 @@ function placeholderUri(){
 
     <div class="my-16 h-px bg-gradient-to-r from-transparent via-riveu-red/40 to-transparent"></div>
 
-    <!-- SECCIÓN 2: RECAMBIOS (lazy load 16) -->
     <div id="partsSection">
       <div class="flex items-center gap-3"><span class="text-2xl">🔧</span><h3 class="font-display text-2xl font-bold uppercase text-white" data-i18n="shop.partsTitle"></h3><span id="partsCount" class="font-mono text-xs text-riveu-steel"></span></div>
       <div id="partsGrid" class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
@@ -405,7 +403,7 @@ const i18n={
 ca:{meta:{title:'Riveu · Taller de Patinets i Bicicletes Elèctriques a Girona'},logo:{sub:'· GIRONA'},nav:{whatsapp:'WhatsApp'},
 hero:{status:'RIVEU // TALLER GIRONA — DIAGNÒSTIC EN CURS',title0:'Taller i Reparació de',title1:'Patinets Elèctrics',title2:'a Girona',subtitle:'Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia professional.',cta:'Demanar Pressupost per WhatsApp',secondary:'Veure serveis',brandsNote:'Treballem totes les marques',mapKicker:'Com arribar-hi',mapCta:'Ruta en Maps',mapLink:'Veure el mapa',stats:{0:{value:'400+',label:'reparacions completades'},1:{value:'24–48h',label:'lliurament estàndard'},2:{value:'6 mesos',label:'garantia del taller'}},diag:{title:'Quadre de diagnòstic',badge:'En curs',voltage:'BUS BATERIA',model:'UNITAT · XIAOMI MI PRO 2',note:'A punt per lliurar · avui 18:30',unit:'UNITAT EN REVISIÓ',rows:[{k:'BATERIA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORS HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'PNEUMÀTICS',v:'42 PSI',s:'OK'}]}},
 ebike:{index:'// 01.5',kicker:'Mobilitat elèctrica',title:'També bicicletes elèctriques de gamma alta',lead:'Del patinet a l\'e-bike: el teu taller de referència per a tota la mobilitat elèctrica a Girona.',items:['Motors Bosch, Shimano Steps, Brose i Fazua','Bateries, cel·les i BMS de qualsevol marca','Diagnòstic electrònic i actualitzacions de firmware','Manteniment complet de transmissió i frens'],cta:'Pressupost e-bike per WhatsApp',msg:'Hola Riveu 👋 Tinc una bicicleta elèctrica i voldria demanar pressupost.'},
-shop:{index:'// 01.8',kicker:'Botiga Online',title:'Patinets i Recanvis en Estoc',lead:'Catàleg complet amb stock actualitzat en temps real. Compra directament per WhatsApp.',filter:{all:'Tots els Productes',scooter:'Patinets',electronic:'Electrònica',cable:'Cables'},scootersTitle:'Patinets Elèctrics',partsTitle:'Recanvis i Accessoris',seeAll:'Veure tots els patinets',showLess:'Mostrar menys',end:'Fi del catàleg',empty:'Cap producte trobat. Escriu-nos per WhatsApp i t\'ho busquem.',stock:'En estoc',outOfStock:'Consultar',buy:'Comprar per WhatsApp',loading:'Carregant catàleg...',errorMsg:'No hem pogut carregar el catàleg. Escriu-nos per WhatsApp.'},
+shop:{index:'// 01.8',kicker:'Botiga Online',title:'Patinets i Recanvis en Estoc',lead:'Catàleg complet amb stock actualitzat en temps real. Compra directament per WhatsApp.',disclaimer:'Les imatges i regals mostrats són del catàleg oficial del fabricant. Les promocions depenen del stock del proveïdor; confirma-les per WhatsApp abans de comprar.',filter:{all:'Tots els Productes',scooter:'Patinets',electronic:'Electrònica',cable:'Cables'},scootersTitle:'Patinets Elèctrics',partsTitle:'Recanvis i Accessoris',seeAll:'Veure tots els patinets',showLess:'Mostrar menys',end:'Fi del catàleg',empty:'Cap producte trobat. Escriu-nos per WhatsApp i t\'ho busquem.',stock:'En estoc',outOfStock:'Consultar',buy:'Comprar per WhatsApp',loading:'Carregant catàleg...',errorMsg:'No hem pogut carregar el catàleg. Escriu-nos per WhatsApp.'},
 gallery:{kicker:'Al taller',title:'Cada dia, una avaria menys',c1:'DIAGNÒSTIC INICIAL',c2:'CANVI DE RODA',c3:'BANC DE PROVES',c4:'A PUNT PER LLIURAR',alt1:'Tècnic diagnosticant un patinet',alt2:'Reparació del motor de la roda',alt3:'Reparació de l\'electrònica',alt4:'Persones muntant patinets'},
 ticker:['Diagnòstic sense compromís','Reparacions en 24–48 h','Bicicletes elèctriques de gamma alta','Garantia del taller','Servei multimarca','Carrer Finestrelles 9 · Girona'],
 services:{index:'// 01',kicker:'Serveis',title:'Tot el que el teu patinet necessita, en un sol banc de treball',items:[{title:'Pinxades i Pneumàtics',tag:'Càmeres · Tubeless · Massisses',icon:'wheel',list:['Substitució de càmeres i cobertes','Muntatge tubeless i líquid segellant','Rodes massisses antipinxada']},{title:'Bateries i Electrònica',tag:'Controladores · Cel·les · BMS',icon:'battery',list:['Reconstrucció i canvi de cel·les','Controladores i errors d\'encesa','Diagnòstic electrònic complet']},{title:'Frens i Mecànica',tag:'Discos · Pastilles · Folgançes',icon:'brake',list:['Ajust de discos i pastilles','Frens hidràulics i elèctrics','Eliminem folgançes i sorolls']},{title:'Especialistes Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…','Coneixem l\'esquema de cada model','Recanvis en estoc','També bicicletes elèctriques de gamma alta']}]},
@@ -420,10 +418,10 @@ floating:'Contactar el Taller',openNow:'Obert ara',closedNow:'Tancat ara',whatsa
 es:{meta:{title:'Riveu · Taller de Patinetes y Bicicletas Eléctricas en Girona'},logo:{sub:'· GIRONA'},nav:{whatsapp:'WhatsApp'},
 hero:{status:'RIVEU // TALLER GIRONA — DIAGNÓSTICO EN CURSO',title0:'Taller y Reparación de',title1:'Patinetes Eléctricos',title2:'en Girona',subtitle:'Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta. Diagnóstico, ruedas, baterías y electrónica con garantía profesional.',cta:'Pedir Presupuesto por WhatsApp',secondary:'Ver servicios',brandsNote:'Trabajamos todas las marcas',mapKicker:'Cómo llegar',mapCta:'Ruta en Maps',mapLink:'Ver el mapa',stats:{0:{value:'400+',label:'reparaciones completadas'},1:{value:'24–48 h',label:'entrega estándar'},2:{value:'6 meses',label:'garantía del taller'}},diag:{title:'Panel de diagnóstico',badge:'En curso',voltage:'BUS BATERÍA',model:'UNIDAD · XIAOMI MI PRO 2',note:'Listo para entrega · hoy 18:30',unit:'UNIDAD EN REVISIÓN',rows:[{k:'BATERÍA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORS HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'NEUMÁTICOS',v:'42 PSI',s:'OK'}]}},
 ebike:{index:'// 01.5',kicker:'Movilidad eléctrica',title:'También bicicletas eléctricas de gama alta',lead:'Del patinete a la e-bike: somos tu taller de referencia en Girona.',items:['Motores Bosch, Shimano Steps, Brose y Fazua','Baterías, celdas y BMS de cualquier marca','Diagnóstico electrónico y firmware','Mantenimiento de transmisión y frenos'],cta:'Presupuesto e-bike por WhatsApp',msg:'Hola Riveu 👋 Tengo una bicicleta eléctrica y quisiera pedir presupuesto.'},
-shop:{index:'// 01.8',kicker:'Tienda Online',title:'Patinetes y Recambios en Stock',lead:'Catálogo completo con stock actualizado en tiempo real. Compra directamente por WhatsApp.',filter:{all:'Todos los Productos',scooter:'Patinetes',electronic:'Electrónica',cable:'Cables'},scootersTitle:'Patinetes Eléctricos',partsTitle:'Recambios y Accesorios',seeAll:'Ver todos los patinetes',showLess:'Mostrar menos',end:'Fin del catálogo',empty:'Ningún producto encontrado. Escríbenos por WhatsApp.',stock:'En stock',outOfStock:'Consultar',buy:'Comprar por WhatsApp',loading:'Cargando catálogo...',errorMsg:'No hemos podido cargar el catálogo. Escríbenos por WhatsApp.'},
+shop:{index:'// 01.8',kicker:'Tienda Online',title:'Patinetes y Recambios en Stock',lead:'Catálogo completo con stock actualizado en tiempo real. Compra directamente por WhatsApp.',disclaimer:'Las imágenes y regalos mostrados son del catálogo oficial del fabricante. Las promociones dependen del stock del proveedor; confírmalas por WhatsApp antes de comprar.',filter:{all:'Todos los Productos',scooter:'Patinetes',electronic:'Electrónica',cable:'Cables'},scootersTitle:'Patinetes Eléctricos',partsTitle:'Recambios y Accesorios',seeAll:'Ver todos los patinetes',showLess:'Mostrar menos',end:'Fin del catálogo',empty:'Ningún producto encontrado. Escríbenos por WhatsApp.',stock:'En stock',outOfStock:'Consultar',buy:'Comprar por WhatsApp',loading:'Cargando catálogo...',errorMsg:'No hemos podido cargar el catálogo. Escríbenos por WhatsApp.'},
 gallery:{kicker:'En el taller',title:'Cada día, una avería menos',c1:'DIAGNÓSTICO INICIAL',c2:'CAMBIO DE RUEDA',c3:'BANCO DE PRUEBAS',c4:'LISTO PARA ENTREGAR',alt1:'Técnico diagnosticando un patinete',alt2:'Reparación del motor de la rueda',alt3:'Reparación de la electrónica',alt4:'Personas montando patinetes'},
 ticker:['Diagnóstico sin compromiso','Reparaciones en 24–48 h','Bicicletas eléctricas de gama alta','Garantía del taller','Servicio multimarca','Carrer Finestrelles 9 · Girona'],
-services:{index:'// 01',kicker:'Servicios',title:'Todo lo que tu patinete necesita, en un solo banco de trabajo',items:[{title:'Pinchazos y Neumáticos',tag:'Cámaras · Tubeless · Macizas',icon:'wheel',list:['Sustitución de cámaras y cubiertas','Montaje tubeless y líquido sellante','Ruedas macizas antipinchazo']},{title:'Baterías y Electrónica',tag:'Controladoras · Celdas · BMS',icon:'battery',list:['Reconstrucción y cambio de celdas','Controladoras y errores de encendido','Diagnóstico electrónico completo']},{title:'Frenos y Mecánica',tag:'Discos · Pastillas · Holguras',icon:'brake',list:['Ajuste de discos y pastillas','Frenos hidráulicos y eléctricos','Eliminamos holguras y ruidos']},{title:'Especialistas Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…','Conocemos el esquema de cada modelo','Recambios en stock','También bicicletas eléctricas de gama alta']}]},
+services:{index:'// 01',kicker:'Servicios',title:'Todo lo que tu patinete necesita, en un solo banco de trabajo',items:[{title:'Pinchazos y Neumáticos',tag:'Cámaras · Tubeless · Macizas',icon:'wheel',list:['Sustitución de cámaras y cubiertas','Montaje tubeless y líquido sellante','Ruedas macizas antipinchazo']},{title:'Baterías y Electrónica',tag:'Controladoras · Celdas · BMS',icon:'battery',list:['Reconstrucción y cambio de celdas','Controladoras y errores de encendido','Diagnóstico electrónico completo']},{title:'Frenos y Mecánica',tag:'Discos · Pastillas · Holguras',icon:'brake',list:['Ajuste de discos y pastillas','Frenos hidráulicos y eléctricos','Eliminamos holguras y ruidos']},{title:'Especialistes Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…','Conocemos el esquema de cada modelo','Recambios en stock','También bicicletas eléctricas de gama alta']}]},
 process:{index:'// 02',kicker:'Cómo trabajamos',title:'De la avería a la calle, sin sorpresas',steps:[{t:'Diagnóstico',d:'Trae el patinete y lo revisamos en el momento.'},{t:'Presupuesto cerrado',d:'Precio claro antes de tocar nada.'},{t:'Reparación',d:'Montamos recambios verificados y probamos a fondo.'},{t:'Entrega y garantía',d:'Recoges el patinete probado, con garantía del taller.'}]},
 why:{index:'// 03',kicker:'Por qué elegirnos',title:'Confianza que se gana tornillo a tornillo',lead:'Somos un taller dedicado en exclusiva al patinete eléctrico.',alt:'Técnico reparando un patinete',items:[{code:'G·01',t:'Presupuesto previo sin compromiso',d:'Diagnóstico claro y precio cerrado antes de desmontar.'},{code:'G·02',t:'Recambios de alta calidad comprobados',d:'Solo piezas verificadas en el banco de pruebas.'},{code:'G·03',t:'Reparaciones rápidas en 24/48 h',d:'La mayoría de averías listas en uno o dos días.'}]},
 reviews:{index:'// 04',kicker:'Opiniones',title:'Lo que dicen los que ya ruedan',items:[{text:'Llegué con el Xiaomi pinchado y salí el mismo día con rueda nueva. Trato de diez.',name:'Marc S.',scooter:'Xiaomi Pro 2'},{text:'La batería había perdido media vida. Cambiaron las celdas y ahora hace los mismos km.',name:'Laura P.',scooter:'Ninebot Max G30'},{text:'Presupuesto claro y el patinete listo en dos días. Así da gusto.',name:'Jordi V.',scooter:'Dualtron Mini'}]},
@@ -466,10 +464,13 @@ function renderReviews(l){byId('reviewsGrid').innerHTML=i18n[l].reviews.items.ma
 function renderFaq(l){byId('faqList').innerHTML=i18n[l].faq.items.map((f,i)=>`<div class="border-b border-white/10"><button data-faq-toggle="${i}" aria-expanded="${i===0}" class="group flex w-full items-center justify-between gap-4 py-5 text-left"><span class="font-display text-base font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-riveu-red sm:text-lg">${f.q}</span><span class="grid size-8 shrink-0 place-items-center border border-white/15 font-mono text-lg text-riveu-steel transition-all duration-300 group-hover:border-white/40 ${i===0?'rotate-45 border-riveu-red text-riveu-red':''}">+</span></button><div class="faq-body ${i===0?'open':''}"><div><p class="pb-5 pr-10 text-sm leading-relaxed text-riveu-steel">${f.a}</p></div></div></div>`).join('');
 document.querySelectorAll('[data-faq-toggle]').forEach(b=>{b.addEventListener('click',()=>{const body=b.nextElementSibling;const ic=b.querySelector('span:last-child');const o=body.classList.toggle('open');ic.classList.toggle('rotate-45',o);ic.classList.toggle('border-riveu-red',o);ic.classList.toggle('text-riveu-red',o);b.setAttribute('aria-expanded',o);});});}
 
-/* ===== TIENDA: 2 secciones + lazy load + fotos por SKU ===== */
+/* ===== TIENDA: 2 secciones + lazy load + fotos por SKU + fotos fijas ===== */
 const SHOP={all:[],filter:'all',search:'',scootersExpanded:false,partsList:[],partsShown:0,PAGE:16};
 const imgCache={}; const pendingQueue=[]; const inFlight=new Set();
-function loadImgCache(){try{Object.assign(imgCache,JSON.parse(localStorage.getItem('riveu-imgcache')||'{}'));}catch(e){}}
+async function loadImgCache(){
+  try{const r=await fetch('fotos-sku.json',{cache:'no-store'});if(r.ok)Object.assign(imgCache,await r.json());}catch(e){}
+  try{Object.assign(imgCache,JSON.parse(localStorage.getItem('riveu-imgcache')||'{}'));}catch(e){}
+}
 function saveImgCache(){try{localStorage.setItem('riveu-imgcache',JSON.stringify(imgCache));}catch(e){}}
 
 function classifyProduct(p){const t=(p.title||'').toLowerCase(),s=(p.sku||'').toLowerCase(),x=t+' '+s;
@@ -528,12 +529,13 @@ async function loadShop(){const grid=byId('partsGrid');grid.innerHTML=`<div clas
  if(products&&products.length){SHOP.all=products;window._shopData=products;renderShop();}
  else{grid.innerHTML='';byId('shopEmpty').classList.remove('hidden');byId('shopEmpty').textContent=i18n[lang()].shop.errorMsg;}}
 
-function initShop(){loadImgCache();
+function initShop(){
  document.querySelectorAll('#shopFilters [data-filter]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('#shopFilters [data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');SHOP.filter=b.getAttribute('data-filter');SHOP.scootersExpanded=false;if(SHOP.all.length)renderShop();});});
  const s=byId('shopSearch');if(s)s.addEventListener('input',()=>{SHOP.search=s.value;if(SHOP.all.length)renderShop();});
  byId('scooterMore').addEventListener('click',()=>{SHOP.scootersExpanded=!SHOP.scootersExpanded;renderScooters();queueImages();});
  new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const l=SHOP.partsList||[];if(SHOP.partsShown<l.length)renderPartsPage(false);}});},{rootMargin:'500px 0px'}).observe(byId('partsSentinel'));
- loadShop();}
+ loadImgCache().then(()=>loadShop());
+}
 
 /* ===== resto ===== */
 function animateGauge(t=87){const arc=byId('gaugeArc'),nd=byId('gaugeNeedle'),v=byId('gaugeValue');if(!arc||!nd||!v)return;const tk=byId('gaugeTicks');if(tk&&!tk.hasChildNodes()){let s='';for(let i=0;i<=12;i++){const a=-120+i*20,mj=i%3===0;s+=`<g transform="rotate(${a} 90 90)"><line x1="90" y1="26" x2="90" y2="${mj?33:29}" stroke="${i>=11?'#E53935':'#4a4a4a'}" stroke-width="${mj?2:1}"/></g>`;}tk.innerHTML=s;}
@@ -549,7 +551,17 @@ function setupScrollProgress(){const b=byId('scrollBar');if(!b)return;const f=()
  applyI18n(l);animateGauge(87);updateOpenStatus(l);setupReveal();setupScrollProgress();initShop();
  document.querySelectorAll('[data-lang-btn]').forEach(b=>{b.addEventListener('click',()=>{const x=b.getAttribute('data-lang-btn');try{localStorage.setItem('riveu-lang',x);}catch(e){}applyI18n(x);updateOpenStatus(x);});});
  byId('switchLangBtn').addEventListener('click',()=>{const n=byId('switchLangBtn').getAttribute('data-next')||'es';try{localStorage.setItem('riveu-lang',n);}catch(e){}applyI18n(n);updateOpenStatus(n);});
- setInterval(()=>updateOpenStatus(lang()),60000);})();
+ setInterval(()=>updateOpenStatus(lang()),60000);
+
+ // Botón oculto para exportar fotos (abre tu web con ?export=1 en Chrome)
+ if(location.search.includes('export=1')){
+   const data=localStorage.getItem('riveu-imgcache')||'{}';
+   const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(data);a.download='fotos-sku.json';
+   const b=document.createElement('button');b.textContent='⬇ Descargar fotos-sku.json';
+   b.style.cssText='position:fixed;top:90px;left:50%;transform:translateX(-50%);z-index:999;background:#25D366;color:#052e16;font-weight:bold;padding:12px 20px;border:none;border-radius:8px;';
+   b.onclick=()=>a.click();document.body.appendChild(b);
+ }
+})();
 </script>
 </body>
 </html>
