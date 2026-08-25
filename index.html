@@ -127,11 +127,11 @@ function imgFallback(el){
     background-position: center;
   }
 
-  /* Catálogo de productos */
-  .prod-card { transition: all .3s ease; }
-  .prod-card:hover { transform: translateY(-4px); border-color: rgba(229,57,53,0.7); }
-  .prod-img { aspect-ratio: 1/1; }
-  .prod-filter.active { background: #E53935; color: #fff; border-color: #E53935; }
+  /* TIENDA ONLINE PROFESIONAL */
+  .shop-card { transition: all .3s ease; }
+  .shop-card:hover { transform: translateY(-6px); border-color: rgba(229,57,53,0.7); box-shadow: 0 20px 60px -20px rgba(229,57,53,0.4); }
+  .shop-img { aspect-ratio: 1/1; }
+  .shop-filter.active { background: #E53935; color: #fff; border-color: #E53935; }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -206,7 +206,7 @@ function imgFallback(el){
   <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 21.5S5.5 15.9 5.5 11a6.5 6.5 0 1 1 13 0c0 4.9-6.5 10.5-6.5 10.5z"/><circle fill="none" stroke="currentColor" stroke-width="1.5" cx="12" cy="11" r="2.5"/></symbol>
   <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="5.5" cy="17.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="5" r="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 17.5V14l-3-3 4-3 2 3h2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.9 6.26 6.6.7-4.9 4.5 1.35 6.54L12 16.9 6.05 20l1.35-6.54-4.9-4.5 6.6-.7L12 2z"/></symbol>
-  <symbol id="i-box" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M21 8v13H3V8M1 3h22v5H1zM10 12h4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
 <div aria-hidden class="noise pointer-events-none fixed inset-0 z-[60] opacity-[0.05]"></div>
@@ -451,39 +451,39 @@ function imgFallback(el){
   </div>
 </section>
 
-<!-- ============== CATÁLOGO DE PRODUCTOS (NUEVO) ============== -->
-<section id="productes" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
+<!-- ============== TIENDA ONLINE PROFESIONAL ============== -->
+<section id="botiga" class="scroll-mt-28 border-t border-white/10 bg-gradient-to-b from-carbon-900/80 via-carbon-900/40 to-carbon-950 py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal">
       <div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
         <span class="size-1.5 animate-pulse bg-riveu-red"></span>
-        <span data-i18n="products.index">// 01.8</span>
+        <span data-i18n="shop.index">// 01.8</span>
         <span class="h-px w-10 bg-riveu-red/50"></span>
-        <span class="text-riveu-steel" data-i18n="products.kicker">Catàleg</span>
+        <span class="text-riveu-steel" data-i18n="shop.kicker">Botiga Online</span>
       </div>
-      <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="products.title">Patinets i recanvis en estoc</h2>
-      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-riveu-steel sm:text-base" data-i18n="products.lead">Disposem de patinetes complets i recanvis originals. Consulta disponibilitat i preu final per WhatsApp.</p>
+      <h2 class="mt-4 max-w-4xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="shop.title">Patinets i Recanvis en Estoc</h2>
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-riveu-steel" data-i18n="shop.lead">Catàleg complet de patinetes elèctrics, recanvis i accessoris. Stock actualitzat en temps real. Consulta disponibilitat i compra directament per WhatsApp.</p>
     </div>
 
-    <!-- Filtros y buscador -->
-    <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <div class="flex flex-wrap gap-2" id="prodFilters">
-        <button data-filter="all" class="prod-filter active border border-white/20 px-3.5 py-2 font-mono text-[11px] uppercase tracking-wider transition-colors hover:border-riveu-red hover:text-white" data-i18n="products.filter.all">Tots</button>
-        <button data-filter="patinet" class="prod-filter border border-white/20 px-3.5 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white" data-i18n="products.filter.scooter">Patinets</button>
-        <button data-filter="electronic" class="prod-filter border border-white/20 px-3.5 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white" data-i18n="products.filter.electronic">Recanvis elèctrics</button>
-        <button data-filter="cable" class="prod-filter border border-white/20 px-3.5 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white" data-i18n="products.filter.cable">Cables i connectors</button>
+    <!-- Filtros y buscador estilo tienda -->
+    <div class="mt-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-wrap gap-3" id="shopFilters">
+        <button data-filter="all" class="shop-filter active border-2 border-white/20 px-5 py-2.5 font-mono text-xs uppercase tracking-wider transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.all">Tots els Productes</button>
+        <button data-filter="patinet" class="shop-filter border-2 border-white/20 px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.scooter">Patinets</button>
+        <button data-filter="electronic" class="shop-filter border-2 border-white/20 px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.electronic">Electrònica</button>
+        <button data-filter="cable" class="shop-filter border-2 border-white/20 px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.cable">Cables</button>
       </div>
-      <div class="relative w-full sm:w-72">
-        <input id="prodSearch" type="search" placeholder="Buscar per nom o SKU..."
-               class="w-full border border-white/15 bg-carbon-950 px-4 py-2.5 pr-10 font-mono text-xs text-riveu-silver placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none" />
+      <div class="relative w-full sm:w-80">
+        <input id="shopSearch" type="search" placeholder="Buscar per nom, SKU o marca..."
+               class="w-full border-2 border-white/15 bg-carbon-950 px-5 py-3 pr-12 font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none" />
       </div>
     </div>
 
-    <!-- Grid de productos -->
-    <div id="prodGrid" class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+    <!-- Grid de productos estilo tienda profesional -->
+    <div id="shopGrid" class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
 
     <!-- Mensaje si no hay resultados -->
-    <p id="prodEmpty" class="mt-8 hidden text-center font-mono text-xs uppercase tracking-wider text-riveu-steel" data-i18n="products.empty">Cap producte trobat. Escriu-nos per WhatsApp i t'ho busquem.</p>
+    <p id="shopEmpty" class="mt-12 hidden text-center font-mono text-sm uppercase tracking-wider text-riveu-steel" data-i18n="shop.empty">Cap producte trobat. Escriu-nos per WhatsApp i t'ho busquem.</p>
   </div>
 </section>
 
@@ -743,7 +743,7 @@ function imgFallback(el){
       <h3 class="font-mono text-[11px] uppercase tracking-[0.25em] text-riveu-red" data-i18n="footer.navTitle">Seccions</h3>
       <ul class="mt-4 space-y-2.5">
         <li><a href="#serveis"  class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.0">Serveis</a></li>
-        <li><a href="#productes" class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.6">Productes</a></li>
+        <li><a href="#botiga" class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.6">Botiga</a></li>
         <li><a href="#proces"   class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.1">Com treballem</a></li>
         <li><a href="#galeria"  class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.5">Galeria</a></li>
         <li><a href="#per-que"  class="text-sm text-riveu-steel transition-colors hover:text-white" data-i18n="footer.nav.2">Per què nosaltres</a></li>
@@ -843,14 +843,14 @@ const i18n = {
       cta: 'Pressupost e-bike per WhatsApp',
       msg: 'Hola Riveu 👋 Tinc una bicicleta elèctrica i voldria demanar pressupost.'
     },
-    products: {
-      index: '// 01.8', kicker: 'Catàleg',
-      title: 'Patinets i recanvis en estoc',
-      lead: 'Disposem de patinetes complets i recanvis originals. Consulta disponibilitat i preu final per WhatsApp.',
-      filter: { all: 'Tots', scooter: 'Patinets', electronic: 'Recanvis elèctrics', cable: 'Cables i connectors' },
+    shop: {
+      index: '// 01.8', kicker: 'Botiga Online',
+      title: 'Patinets i Recanvis en Estoc',
+      lead: 'Catàleg complet de patinetes elèctrics, recanvis i accessoris. Stock actualitzat en temps real. Consulta disponibilitat i compra directament per WhatsApp.',
+      filter: { all: 'Tots els Productes', scooter: 'Patinets', electronic: 'Electrònica', cable: 'Cables' },
       empty: 'Cap producte trobat. Escriu-nos per WhatsApp i t\'ho busquem.',
       stock: 'En estoc', outOfStock: 'Consultar',
-      consult: 'Consultar per WhatsApp',
+      buy: 'Comprar per WhatsApp',
       loading: 'Carregant catàleg...',
       errorMsg: 'No hem pogut carregar el catàleg. Escriu-nos per WhatsApp i t\'atenem.'
     },
@@ -929,7 +929,7 @@ const i18n = {
     footer: {
       tagline: 'Taller especialitzat en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta a Girona.',
       navTitle: 'Seccions',
-      nav: { 0: 'Serveis', 1: 'Com treballem', 2: 'Per què nosaltres', 3: 'FAQ', 4: 'Ubicació', 5: 'Galeria', 6: 'Productes' },
+      nav: { 0: 'Serveis', 1: 'Com treballem', 2: 'Per què nosaltres', 3: 'FAQ', 4: 'Ubicació', 5: 'Galeria', 6: 'Botiga' },
       contactTitle: 'Contacte',
       rights: '© 2025 Riveu · Taller de patinets elèctrics, Girona',
       legal: { 0: 'Avís legal', 1: 'Privacitat' },
@@ -980,14 +980,14 @@ const i18n = {
       cta: 'Presupuesto e-bike por WhatsApp',
       msg: 'Hola Riveu 👋 Tengo una bicicleta eléctrica y quisiera pedir presupuesto.'
     },
-    products: {
-      index: '// 01.8', kicker: 'Catálogo',
-      title: 'Patinetes y recambios en stock',
-      lead: 'Disponemos de patinetes completos y recambios originales. Consulta disponibilidad y precio final por WhatsApp.',
-      filter: { all: 'Todos', scooter: 'Patinetes', electronic: 'Recambios eléctricos', cable: 'Cables y conectores' },
+    shop: {
+      index: '// 01.8', kicker: 'Tienda Online',
+      title: 'Patinetes y Recambios en Stock',
+      lead: 'Catálogo completo de patinetes eléctricos, recambios y accesorios. Stock actualizado en tiempo real. Consulta disponibilidad y compra directamente por WhatsApp.',
+      filter: { all: 'Todos los Productos', scooter: 'Patinetes', electronic: 'Electrónica', cable: 'Cables' },
       empty: 'Ningún producto encontrado. Escríbenos por WhatsApp y te lo buscamos.',
       stock: 'En stock', outOfStock: 'Consultar',
-      consult: 'Consultar por WhatsApp',
+      buy: 'Comprar por WhatsApp',
       loading: 'Cargando catálogo...',
       errorMsg: 'No hemos podido cargar el catálogo. Escríbenos por WhatsApp y te atendemos.'
     },
@@ -1066,7 +1066,7 @@ const i18n = {
     footer: {
       tagline: 'Taller especializado en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta en Girona.',
       navTitle: 'Secciones',
-      nav: { 0: 'Servicios', 1: 'Cómo trabajamos', 2: 'Por qué elegirnos', 3: 'FAQ', 4: 'Ubicación', 5: 'Galería', 6: 'Productos' },
+      nav: { 0: 'Servicios', 1: 'Cómo trabajamos', 2: 'Por qué elegirnos', 3: 'FAQ', 4: 'Ubicación', 5: 'Galería', 6: 'Tienda' },
       contactTitle: 'Contacto',
       rights: '© 2025 Riveu · Taller de patinetes eléctricos, Girona',
       legal: { 0: 'Aviso legal', 1: 'Privacidad' },
@@ -1079,7 +1079,6 @@ const i18n = {
   }
 };
 
-/* ---------- HELPERS ---------- */
 const getByPath = (obj, path) =>
   String(path).split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
 
@@ -1149,11 +1148,9 @@ const applyI18n = (lang) => {
   renderTicker(lang); renderDiagRows(lang); renderServices(lang);
   renderProcess(lang); renderWhy(lang); renderReviews(lang); renderFaq(lang);
   retriggerMaskLines();
-  // Re-renderizar productos si ya están cargados
-  if (window._prodData && window._prodData.length) renderProducts(window._prodData);
+  if (window._shopData && window._shopData.length) renderShop(window._shopData);
 };
 
-/* ---------- ICONOS DE SERVICIOS ---------- */
 const ICONS = {
   wheel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg>',
   battery: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="7.5" width="16" height="9" rx="1.5"/><path d="M21.5 10.5v3" stroke-width="2.5" stroke-linecap="round"/><path d="M11.5 9.2l-2.4 3.3h2.8l-2.4 3.3" stroke-linejoin="round" stroke-linecap="round"/></svg>',
@@ -1162,7 +1159,6 @@ const ICONS = {
 };
 const STAR = '<svg viewBox="0 0 24 24" class="size-3.5" aria-hidden="true"><use href="#i-star"/></svg>';
 
-/* ---------- RENDERS ---------- */
 function renderTicker(lang) {
   const html = i18n[lang].ticker.map(t => `
     <span class="flex items-center font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-white">
@@ -1267,15 +1263,7 @@ function renderFaq(lang) {
   });
 }
 
-/* ══════════ MÓDULO CATÁLOGO DE PRODUCTOS ══════════
-   Carga el CSV desde el mismo repo de GitHub y renderiza tarjetas.
-   Detecta categoría por patrones en el título/SKU:
-   - 'patinet' / 'scooter' / 'deimos' → patinete
-   - 'cable' / 'AWG' / 'pin' / 'm8' → cable
-   - 'controladora' / 'bateria' / 'carregador' / 'motor' / 'display' → recambio eléctrico
-   - resto → cable (fallback razonable para el CSV actual)
-*/
-const PROD_STATE = { data: [], filter: 'all', search: '' };
+const SHOP_STATE = { data: [], filter: 'all', search: '' };
 
 function classifyProduct(p) {
   const t = (p.title || '').toLowerCase();
@@ -1315,7 +1303,8 @@ function normalizeProducts(rows) {
   return rows.map(r => {
     const priceRaw = (r.price || '').replace(',', '.');
     const price = parseFloat(priceRaw);
-    const imgs = (r.image_link || '').split(',').map(u => u.trim()).filter(Boolean);
+    const imgs = (r.image_link || '').split(',').map(u => u.trim()).filter(Boolean)
+      .map(u => { try { return encodeURI(u); } catch (e) { return u; } });
     const qty = parseInt((r.Quantity || r.quantity || '0'), 10);
     return {
       sku: r.SKU,
@@ -1329,16 +1318,16 @@ function normalizeProducts(rows) {
   }).map(p => ({ ...p, category: classifyProduct(p) }));
 }
 
-function renderProducts(products) {
-  const grid = document.getElementById('prodGrid');
-  const empty = document.getElementById('prodEmpty');
+function renderShop(products) {
+  const grid = document.getElementById('shopGrid');
+  const empty = document.getElementById('shopEmpty');
   if (!grid) return;
   const lang = document.documentElement.lang || 'ca';
-  const t = i18n[lang].products;
-  const q = (PROD_STATE.search || '').toLowerCase();
+  const t = i18n[lang].shop;
+  const q = (SHOP_STATE.search || '').toLowerCase();
 
   const filtered = products.filter(p => {
-    if (PROD_STATE.filter !== 'all' && p.category !== PROD_STATE.filter) return false;
+    if (SHOP_STATE.filter !== 'all' && p.category !== SHOP_STATE.filter) return false;
     if (q && !(p.title.toLowerCase().includes(q) || p.sku.toLowerCase().includes(q))) return false;
     return true;
   });
@@ -1358,29 +1347,29 @@ function renderProducts(products) {
     const stockColor = hasStock ? 'bg-wa/15 text-wa border-wa/40' : 'bg-riveu-red/10 text-riveu-red border-riveu-red/40';
     const waMsg = `Hola Riveu 👋 Estic interessat en:\n\n• ${p.title}\n• SKU: ${p.sku}\n• Preu web: ${priceStr}\n\nPodeu confirmar disponibilitat i preu final?`;
     const imgHtml = p.image
-      ? `<img src="${p.image}" alt="${p.title}" loading="lazy" decoding="async" onerror="imgFallback(this)" class="prod-img h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0" width="400" height="400" />`
-      : `<div class="prod-img grid h-full w-full place-items-center bg-carbon-850 font-display text-2xl font-bold text-riveu-steel/40">RIVEU</div>`;
+      ? `<img src="${p.image}" alt="${p.title}" loading="lazy" decoding="async" onerror="imgFallback(this)" class="shop-img h-full w-full object-cover transition-all duration-500" width="400" height="400" />`
+      : `<div class="shop-img grid h-full w-full place-items-center bg-carbon-850 font-display text-2xl font-bold text-riveu-steel/40">RIVEU</div>`;
 
     return `
-      <article class="prod-card corners group relative flex flex-col overflow-hidden border border-white/10 bg-carbon-850">
+      <article class="shop-card corners group relative flex flex-col overflow-hidden border border-white/10 bg-carbon-850">
         <span class="corner-bl"></span><span class="corner-br"></span>
         <div class="relative overflow-hidden">
           ${imgHtml}
-          <div class="absolute left-2 top-2 flex gap-1.5">
-            <span class="border ${stockColor} px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider backdrop-blur">${stockText}</span>
+          <div class="absolute left-3 top-3 flex gap-2">
+            <span class="border ${stockColor} px-3 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur">${stockText}</span>
           </div>
-          <div class="absolute right-2 top-2 border border-white/15 bg-carbon-950/85 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-riveu-steel backdrop-blur">${p.sku}</div>
+          <div class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel backdrop-blur">${p.sku}</div>
         </div>
-        <div class="flex flex-1 flex-col p-4">
-          <h3 class="font-display text-sm font-semibold uppercase leading-snug text-white">${p.title}</h3>
-          ${p.description ? `<p class="mt-1.5 line-clamp-2 text-xs leading-relaxed text-riveu-steel">${p.description}</p>` : ''}
-          <div class="mt-3 flex items-end justify-between">
-            <span class="font-display text-xl font-bold text-riveu-red">${priceStr}</span>
+        <div class="flex flex-1 flex-col p-5">
+          <h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>
+          ${p.description ? `<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-riveu-steel">${p.description}</p>` : ''}
+          <div class="mt-4 flex items-end justify-between">
+            <span class="font-display text-2xl font-bold text-riveu-red">${priceStr}</span>
           </div>
           <a href="${waLink(waMsg)}" target="_blank" rel="noopener noreferrer"
-             class="mt-3 inline-flex items-center justify-center gap-2 border border-wa/50 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-wa transition-colors hover:bg-wa hover:text-[#052e16]">
-            <svg class="size-3.5" aria-hidden="true"><use href="#i-wa"/></svg>
-            ${t.consult}
+             class="mt-4 inline-flex items-center justify-center gap-2 border-2 border-wa px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-all hover:bg-wa hover:text-[#052e16] hover:shadow-[0_10px_30px_-10px_rgba(37,211,102,0.5)]">
+            <svg class="size-4" aria-hidden="true"><use href="#i-cart"/></svg>
+            ${t.buy}
           </a>
         </div>
       </article>
@@ -1388,50 +1377,62 @@ function renderProducts(products) {
   }).join('');
 }
 
-async function loadProducts() {
-  const grid = document.getElementById('prodGrid');
-  const empty = document.getElementById('prodEmpty');
+async function loadShop() {
+  const grid = document.getElementById('shopGrid');
+  const empty = document.getElementById('shopEmpty');
   const lang = document.documentElement.lang || 'ca';
-  const t = i18n[lang].products;
-  if (grid) grid.innerHTML = `<div class="col-span-full py-8 text-center font-mono text-xs uppercase tracking-wider text-riveu-steel">${t.loading}</div>`;
+  const t = i18n[lang].shop;
+  if (grid) grid.innerHTML = `<div class="col-span-full py-12 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel">${t.loading}</div>`;
+
+  let products = null;
+
   try {
-    const res = await fetch('productos.csv?t=' + Date.now(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const text = await res.text();
-    const rows = parseCSV(text);
-    const products = normalizeProducts(rows);
-    window._prodData = products;
-    renderProducts(products);
-  } catch (err) {
-    if (grid) grid.innerHTML = '';
-    if (empty) {
-      empty.classList.remove('hidden');
-      empty.textContent = t.errorMsg;
+    const live = await fetch('/api/products', { cache: 'no-store' });
+    if (live.ok) {
+      const rows = parseCSV(await live.text());
+      if (rows.length) products = normalizeProducts(rows);
     }
+  } catch (e) {}
+
+  if (!products || !products.length) {
+    try {
+      const res = await fetch('productos.csv?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const rows = parseCSV(await res.text());
+        if (rows.length) products = normalizeProducts(rows);
+      }
+    } catch (e) {}
+  }
+
+  if (products && products.length) {
+    window._shopData = products;
+    renderShop(products);
+  } else {
+    if (grid) grid.innerHTML = '';
+    if (empty) { empty.classList.remove('hidden'); empty.textContent = t.errorMsg; }
   }
 }
 
-function initProducts() {
-  const filters = document.querySelectorAll('#prodFilters [data-filter]');
+function initShop() {
+  const filters = document.querySelectorAll('#shopFilters [data-filter]');
   filters.forEach(btn => {
     btn.addEventListener('click', () => {
       filters.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      PROD_STATE.filter = btn.getAttribute('data-filter');
-      if (window._prodData && window._prodData.length) renderProducts(window._prodData);
+      SHOP_STATE.filter = btn.getAttribute('data-filter');
+      if (window._shopData && window._shopData.length) renderShop(window._shopData);
     });
   });
-  const search = document.getElementById('prodSearch');
+  const search = document.getElementById('shopSearch');
   if (search) {
     search.addEventListener('input', () => {
-      PROD_STATE.search = search.value;
-      if (window._prodData && window._prodData.length) renderProducts(window._prodData);
+      SHOP_STATE.search = search.value;
+      if (window._shopData && window._shopData.length) renderShop(window._shopData);
     });
   }
-  loadProducts();
+  loadShop();
 }
 
-/* ---------- GAUGE ---------- */
 function animateGauge(target = 87) {
   const arc = document.getElementById('gaugeArc');
   const needle = document.getElementById('gaugeNeedle');
@@ -1513,7 +1514,6 @@ function setupScrollProgress() {
   onScroll();
 }
 
-/* ---------- INIT ---------- */
 (function init() {
   let lang = 'ca';
   try {
@@ -1527,7 +1527,7 @@ function setupScrollProgress() {
   updateOpenStatus(lang);
   setupReveal();
   setupScrollProgress();
-  initProducts();
+  initShop();
 
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     btn.addEventListener('click', () => {
