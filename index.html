@@ -464,7 +464,7 @@ function renderReviews(l){byId('reviewsGrid').innerHTML=i18n[l].reviews.items.ma
 function renderFaq(l){byId('faqList').innerHTML=i18n[l].faq.items.map((f,i)=>`<div class="border-b border-white/10"><button data-faq-toggle="${i}" aria-expanded="${i===0}" class="group flex w-full items-center justify-between gap-4 py-5 text-left"><span class="font-display text-base font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-riveu-red sm:text-lg">${f.q}</span><span class="grid size-8 shrink-0 place-items-center border border-white/15 font-mono text-lg text-riveu-steel transition-all duration-300 group-hover:border-white/40 ${i===0?'rotate-45 border-riveu-red text-riveu-red':''}">+</span></button><div class="faq-body ${i===0?'open':''}"><div><p class="pb-5 pr-10 text-sm leading-relaxed text-riveu-steel">${f.a}</p></div></div></div>`).join('');
 document.querySelectorAll('[data-faq-toggle]').forEach(b=>{b.addEventListener('click',()=>{const body=b.nextElementSibling;const ic=b.querySelector('span:last-child');const o=body.classList.toggle('open');ic.classList.toggle('rotate-45',o);ic.classList.toggle('border-riveu-red',o);ic.classList.toggle('text-riveu-red',o);b.setAttribute('aria-expanded',o);});});}
 
-/* ===== TIENDA: 2 secciones + lazy load + fotos por SKU (carga DIRECTA en el navegador) ===== */
+/* ===== TIENDA: 2 secciones + lazy load + fotos por SKU (carga directa) ===== */
 const SHOP={all:[],filter:'all',search:'',scootersExpanded:false,partsList:[],partsShown:0,PAGE:16};
 const imgCache={}; const pendingQueue=[]; const inFlight=new Set();
 async function loadImgCache(){
@@ -487,8 +487,8 @@ function normalizeProducts(rows){return rows.map(r=>{const pr=parseFloat((r.pric
  return {sku:r.SKU,title:r.title||r.SKU,description:r.description||'',price:isNaN(pr)?null:pr,image:imgs[0]||'',stock:isNaN(q)?0:q,category:'unknown'};}).map(p=>({...p,category:classifyProduct(p)}));}
 
 function pumpQueue(){while(inFlight.size<4&&pendingQueue.length){const sku=pendingQueue.shift();if(inFlight.has(sku))continue;inFlight.add(sku);
- fetch('/api/product-image?sku='+encodeURIComponent(sku)).then(r=>r.ok?r.json():{image:''}).then(d=>{const url=(d&&d.image)||'';imgCache[sku]=url;saveImgCache();
-  if(url){document.querySelectorAll('img[data-sku]').forEach(im=>{if(im.getAttribute('data-sku')===sku)im.src=url;});}}).catch(()=>{imgCache[sku]=imgCache[sku]||'';}).finally(()=>{inFlight.delete(sku);pumpQueue();});}}
+ fetch('/api/product-image?sku='+encodeURIComponent(sku)).then(r=>r.ok?r.json():{image:''}).then(d=>{const url=(d&&d.image)||'';
+  if(url){imgCache[sku]=url;saveImgCache();document.querySelectorAll('img[data-sku]').forEach(im=>{if(im.getAttribute('data-sku')===sku)im.src=url;});}}).catch(()=>{}).finally(()=>{inFlight.delete(sku);pumpQueue();});}}
 
 function queueImages(){document.querySelectorAll('#scooterGrid img[data-sku], #partsGrid img[data-sku]').forEach(img=>{if(img.dataset.q)return;img.dataset.q='1';const sku=img.getAttribute('data-sku');
  if(imgCache[sku]!==undefined){if(imgCache[sku])img.src=imgCache[sku];return;}pendingQueue.push(sku);});pumpQueue();}
@@ -553,12 +553,16 @@ function setupScrollProgress(){const b=byId('scrollBar');if(!b)return;const f=()
  byId('switchLangBtn').addEventListener('click',()=>{const n=byId('switchLangBtn').getAttribute('data-next')||'es';try{localStorage.setItem('riveu-lang',n);}catch(e){}applyI18n(n);updateOpenStatus(n);});
  setInterval(()=>updateOpenStatus(lang()),60000);
 
+ // Botón oculto para exportar las fotos que REALMENTE se ven (abre ?export=1 en Chrome)
  if(location.search.includes('export=1')){
-   const data=localStorage.getItem('riveu-imgcache')||'{}';
-   const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(data);a.download='fotos-sku.json';
+   const a=document.createElement('a');a.download='fotos-sku.json';
    const b=document.createElement('button');b.textContent='⬇ Descargar fotos-sku.json';
    b.style.cssText='position:fixed;top:90px;left:50%;transform:translateX(-50%);z-index:999;background:#25D366;color:#052e16;font-weight:bold;padding:12px 20px;border:none;border-radius:8px;';
-   b.onclick=()=>a.click();document.body.appendChild(b);
+   b.onclick=()=>{const map={};
+     for(const k in imgCache){if(imgCache[k]&&imgCache[k].startsWith('http'))map[k]=imgCache[k];}
+     document.querySelectorAll('img[data-sku]').forEach(im=>{const s=im.getAttribute('data-sku');const src=im.currentSrc||im.src||'';if(src.startsWith('http'))map[s]=src;});
+     a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(map));a.click();};
+   document.body.appendChild(b);
  }
 })();
 </script>
