@@ -56,7 +56,9 @@ function placeholderUri(){
         "<text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='34' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";
   return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);
 }
-function localImg(sku){return 'img/'+String(sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,'')+'.jpg';}
+/* Mapa SKU → archivo subido a img/. Añade aquí cada foto con nombre libre. */
+const FOTO_MAP={ 'ECOXTREM-DEIMOS-DGT-NEGRO':'img/deimos-single-NEGRO.jpg' };
+function localImg(sku){ if(FOTO_MAP[sku])return FOTO_MAP[sku]; const base=String(sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,''); return 'img/'+base+'.jpg'; }
 function localMiss(el){el.onerror=function(){imgFallback(el);};el.src=placeholderUri();el.dataset.q='';}
 </script>
 
@@ -472,7 +474,7 @@ function renderReviews(l){byId('reviewsGrid').innerHTML=i18n[l].reviews.items.ma
 function renderFaq(l){byId('faqList').innerHTML=i18n[l].faq.items.map((f,i)=>`<div class="border-b border-white/10"><button data-faq-toggle="${i}" aria-expanded="${i===0}" class="group flex w-full items-center justify-between gap-4 py-5 text-left"><span class="font-display text-base font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-riveu-red sm:text-lg">${f.q}</span><span class="grid size-8 shrink-0 place-items-center border border-white/15 font-mono text-lg text-riveu-steel transition-all duration-300 group-hover:border-white/40 ${i===0?'rotate-45 border-riveu-red text-riveu-red':''}">+</span></button><div class="faq-body ${i===0?'open':''}"><div><p class="pb-5 pr-10 text-sm leading-relaxed text-riveu-steel">${f.a}</p></div></div></div>`).join('');
 document.querySelectorAll('[data-faq-toggle]').forEach(b=>{b.addEventListener('click',()=>{const body=b.nextElementSibling;const ic=b.querySelector('span:last-child');const o=body.classList.toggle('open');ic.classList.toggle('rotate-45',o);ic.classList.toggle('border-riveu-red',o);ic.classList.toggle('text-riveu-red',o);b.setAttribute('aria-expanded',o);});});}
 
-/* ===== TIENDA: clasificación inteligente + buscador inteligente + IVA ===== */
+/* ===== TIENDA: clasificación + buscador inteligente + IVA + fotos img/ ===== */
 const SHOP={all:[],filter:'all',search:'',scootersExpanded:false,partsList:[],partsShown:0,PAGE:16};
 const imgCache={}; const pendingQueue=[]; const inFlight=new Set();
 async function loadImgCache(){
@@ -483,29 +485,19 @@ function saveImgCache(){try{localStorage.setItem('riveu-imgcache',JSON.stringify
 
 function norm(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
 
-/* Clasificador: cada producto va a su categoría exacta */
 function classifyProduct(p){
   const t=(p.title||'').toLowerCase(), s=(p.sku||'').toLowerCase(), x=t+' '+s;
-  /* Accesorios evidentes (para no confundirlos con patinetes ni electrónica) */
   if(/puñ|grip|casco|helmet|matr[ií]cul|portamatr|soporte|candado|damper|amortiguador|horquilla|caballete|tapa de|tapon|tap[oó]n|manillar|arandela|tornillo|malla|hinchador|inflador/.test(x)) return 'accessory';
-  /* Patinete completo (vehículo) */
   if(/patinet\w*\s+el[eé]ctric/.test(t)) return 'patinet';
   if(/^(ecoxtrem|rovoron|navee|ada)/.test(s) && !/mando|damper|motor|control|bater|cargador|display|guardabarros|freno|rueda|cable|soporte|puño/.test(t)) return 'patinet';
-  /* Guardabarros */
   if(/guardabarros|guardafangs|fender|mudguard/.test(x)) return 'fender';
-  /* Frenos */
   if(/fren|pastilla|pinza de|maneta|bomba de freno/.test(x)) return 'brake';
-  /* Ruedas y neumáticos */
   if(/rueda|cubierta|neum[aá]tic|c[aá]mara|v[aá]lvula|tubeless|llanta/.test(x)) return 'wheel';
-  /* Electrónica */
   if(/controlador|controladora|bater|cargador|charger|motor|display|pantalla|bms|acelerador|botonera|m[oó]dulo|sensor|hall|faro|luz|luces|led|foco|bocina|horn|mando|deslimit|limitador|potenci[oó]metro|intermitente/.test(x)) return 'electronic';
-  /* Cables y conectores */
   if(/cable|conector|adaptador|xt30|xt60|xlr|gx16|awg|extensor|pines|pin\b|silicona/.test(x)) return 'cable';
-  /* Resto: accesorios */
   return 'accessory';
 }
 
-/* Buscador inteligente: detecta la intención de la búsqueda */
 function searchIntent(q){
   if(/patinet|scooter/.test(q)) return 'patinet';
   if(/guardabarros|guardafangs|fender/.test(q)) return 'fender';
@@ -541,7 +533,6 @@ function cardHTML(p){const t=i18n[lang()].shop;
  const img=p.image?`<img src="${p.image}" alt="${p.title}" loading="lazy" decoding="async" onerror="imgFallback(this)" class="shop-img h-full w-full object-cover" width="400" height="400">`:`<img src="${localImg(p.sku)}" data-sku="${p.sku}" alt="${p.title}" loading="lazy" decoding="async" onload="this.removeAttribute('data-sku')" onerror="localMiss(this)" class="shop-img h-full w-full object-cover" width="400" height="400">`;
  return `<article class="shop-card corners group relative flex flex-col overflow-hidden border border-white/10 bg-carbon-850"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<div class="absolute left-3 top-3"><span class="border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur">${stockText}</span></div><div class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel backdrop-blur">${p.sku}</div></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.vat}</span></div><a href="${waLink(msg)}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center justify-center gap-2 border-2 border-wa px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-all hover:bg-wa hover:text-[#052e16]"><svg class="size-4"><use href="#i-cart"/></svg>${t.buy}</a></div></article>`;}
 
-/* Listas según filtro + búsqueda inteligente */
 function currentLists(){
   const f=SHOP.filter;
   const q=SHOP.search.trim();
