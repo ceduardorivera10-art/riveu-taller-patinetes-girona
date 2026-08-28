@@ -56,10 +56,12 @@ function placeholderUri(){
         "<text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='34' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";
   return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);
 }
-/* Mapa SKU → archivo subido a img/. Añade aquí cada foto con nombre libre. */
+/* Mapa SKU → archivo con nombre libre (opcional). La convención img/<SKU>.jpg funciona sola. */
 const FOTO_MAP={ 'ECOXTREM-DEIMOS-DGT-NEGRO':'img/deimos-single-NEGRO.jpg' };
 function localImg(sku){ if(FOTO_MAP[sku])return FOTO_MAP[sku]; const base=String(sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,''); return 'img/'+base+'.jpg'; }
 function localMiss(el){el.onerror=function(){imgFallback(el);};el.src=placeholderUri();el.dataset.q='';}
+/* Si no hay foto propia, usa la del proveedor; si tampoco, placeholder. */
+function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerror=function(){imgFallback(el);};el.src=csv;}else{localMiss(el);}}
 </script>
 
 <style>
@@ -404,7 +406,7 @@ function localMiss(el){el.onerror=function(){imgFallback(el);};el.src=placeholde
 
 <script>
 const WA_PHONE='34633624345', PHONE_TEL='+34633624345', PHONE_DISPLAY='633 62 43 45';
-const IVA=1.21; /* España: 21% IVA incluido en todos los precios mostrados */
+const IVA=1.21;
 const waLink=(m)=>`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(m)}`;
 const byId=(id)=>document.getElementById(id);
 const lang=()=>document.documentElement.lang||'ca';
@@ -474,7 +476,7 @@ function renderReviews(l){byId('reviewsGrid').innerHTML=i18n[l].reviews.items.ma
 function renderFaq(l){byId('faqList').innerHTML=i18n[l].faq.items.map((f,i)=>`<div class="border-b border-white/10"><button data-faq-toggle="${i}" aria-expanded="${i===0}" class="group flex w-full items-center justify-between gap-4 py-5 text-left"><span class="font-display text-base font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-riveu-red sm:text-lg">${f.q}</span><span class="grid size-8 shrink-0 place-items-center border border-white/15 font-mono text-lg text-riveu-steel transition-all duration-300 group-hover:border-white/40 ${i===0?'rotate-45 border-riveu-red text-riveu-red':''}">+</span></button><div class="faq-body ${i===0?'open':''}"><div><p class="pb-5 pr-10 text-sm leading-relaxed text-riveu-steel">${f.a}</p></div></div></div>`).join('');
 document.querySelectorAll('[data-faq-toggle]').forEach(b=>{b.addEventListener('click',()=>{const body=b.nextElementSibling;const ic=b.querySelector('span:last-child');const o=body.classList.toggle('open');ic.classList.toggle('rotate-45',o);ic.classList.toggle('border-riveu-red',o);ic.classList.toggle('text-riveu-red',o);b.setAttribute('aria-expanded',o);});});}
 
-/* ===== TIENDA: clasificación + buscador inteligente + IVA + fotos img/ ===== */
+/* ===== TIENDA ===== */
 const SHOP={all:[],filter:'all',search:'',scootersExpanded:false,partsList:[],partsShown:0,PAGE:16};
 const imgCache={}; const pendingQueue=[]; const inFlight=new Set();
 async function loadImgCache(){
@@ -522,7 +524,9 @@ function pumpQueue(){while(inFlight.size<4&&pendingQueue.length){const sku=pendi
   if(url){imgCache[sku]=url;saveImgCache();document.querySelectorAll('img[data-sku]').forEach(im=>{if(im.getAttribute('data-sku')===sku)im.src=url;});}}).catch(()=>{}).finally(()=>{inFlight.delete(sku);pumpQueue();});}}
 
 function queueImages(){document.querySelectorAll('#scooterGrid img[data-sku], #partsGrid img[data-sku]').forEach(img=>{if(img.dataset.q)return;img.dataset.q='1';const sku=img.getAttribute('data-sku');
- if(imgCache[sku]!==undefined){if(imgCache[sku])img.src=imgCache[sku];return;}pendingQueue.push(sku);});pumpQueue();}
+ if(img.complete&&img.naturalWidth>0)return;
+ if(imgCache[sku]!==undefined){if(imgCache[sku])img.src=imgCache[sku];return;}
+ const csv=img.getAttribute('data-csv')||''; if(csv)return; pendingQueue.push(sku);});pumpQueue();}
 
 function cardHTML(p){const t=i18n[lang()].shop;
  const withVat=p.price!==null?Math.round(p.price*IVA*100)/100:null;
@@ -530,7 +534,7 @@ function cardHTML(p){const t=i18n[lang()].shop;
  const hs=p.stock>0;
  const stockText=hs?(t.stock+' · '+p.stock):t.outOfStock;const sc=hs?'bg-wa/15 text-wa border-wa/40':'bg-riveu-red/10 text-riveu-red border-riveu-red/40';
  const msg=`Hola Riveu 👋 M'interessa:\n\n• ${p.title}\n• SKU: ${p.sku}\n• Preu web: ${price} ${t.vatLine}\n\nEm confirmeu disponibilitat i preu final?`;
- const img=p.image?`<img src="${p.image}" alt="${p.title}" loading="lazy" decoding="async" onerror="imgFallback(this)" class="shop-img h-full w-full object-cover" width="400" height="400">`:`<img src="${localImg(p.sku)}" data-sku="${p.sku}" alt="${p.title}" loading="lazy" decoding="async" onload="this.removeAttribute('data-sku')" onerror="localMiss(this)" class="shop-img h-full w-full object-cover" width="400" height="400">`;
+ const img=`<img src="${localImg(p.sku)}" data-sku="${p.sku}" data-csv="${p.image||''}" alt="${p.title}" loading="lazy" decoding="async" onerror="imgNext(this)" class="shop-img h-full w-full object-cover" width="400" height="400">`;
  return `<article class="shop-card corners group relative flex flex-col overflow-hidden border border-white/10 bg-carbon-850"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<div class="absolute left-3 top-3"><span class="border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur">${stockText}</span></div><div class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel backdrop-blur">${p.sku}</div></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.vat}</span></div><a href="${waLink(msg)}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center justify-center gap-2 border-2 border-wa px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-all hover:bg-wa hover:text-[#052e16]"><svg class="size-4"><use href="#i-cart"/></svg>${t.buy}</a></div></article>`;}
 
 function currentLists(){
