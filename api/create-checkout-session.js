@@ -1,6 +1,5 @@
 // api/create-checkout-session.js — Crea una sesión de pago segura en Stripe.
-// No especificamos payment_method_types => Stripe muestra TODOS los métodos
-// que tengas activados en el panel (tarjeta, Apple Pay, Google Pay, Klarna, Bizum...).
+// El precio del CSV YA incluye IVA, así que se cobra TAL CUAL (sin sumar nada).
 function parseCSV(text){const rows=[];const lines=text.split(/\r?\n/);if(lines.length<2)return rows;const header=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,''));
  for(let i=1;i<lines.length;i++){const line=lines[i].trim();if(!line)continue;const f=[];let cur='',q=false;
   for(let j=0;j<line.length;j++){const c=line[j];if(c==='"'){q=!q;}else if(c===','&&!q){f.push(cur);cur='';}else{cur+=c;}}f.push(cur);
@@ -16,7 +15,7 @@ export default async function handler(req, res){
   const qty=Math.max(1, parseInt(body.qty||1,10)||1);
   if(!sku) return res.status(400).json({error:'Falta el SKU del producto'});
 
-  // Buscar el producto (título + precio base) en el CSV de Emove o en productos.csv
+  // Buscar el producto (título + precio) en el CSV de Emove o en productos.csv
   let title=sku, price=null;
   try{
     const r=await fetch('https://emovedistribution.com/wp-content/uploads/woo-feed/custom/csv/scootech-2.csv');
@@ -29,8 +28,8 @@ export default async function handler(req, res){
   }
   if(price===null||isNaN(price)) return res.status(404).json({error:'Producto no encontrado'});
 
-  // Importe en céntimos con IVA 21% incluido (coherente con la etiqueta "+ IVA")
-  const unit=Math.round(price*1.21*100);
+  // ✅ CORREGIDO: el precio del CSV YA incluye IVA -> se cobra EXACTAMENTE ese importe.
+  const unit=Math.round(price*100); // céntimos (sin sumar IVA)
   const origin='https://'+(req.headers.host||'riveu-taller-patinetes-girona.vercel.app');
 
   const params=new URLSearchParams();
