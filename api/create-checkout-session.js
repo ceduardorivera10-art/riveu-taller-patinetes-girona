@@ -1,5 +1,4 @@
-// api/create-checkout-session.js — Crea una sesión de pago segura en Stripe.
-// El precio del CSV YA incluye IVA, así que se cobra TAL CUAL (sin sumar nada).
+// api/create-checkout-session.js — Pago Stripe + envío + restricción a España.
 function parseCSV(text){const rows=[];const lines=text.split(/\r?\n/);if(lines.length<2)return rows;const header=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,''));
  for(let i=1;i<lines.length;i++){const line=lines[i].trim();if(!line)continue;const f=[];let cur='',q=false;
   for(let j=0;j<line.length;j++){const c=line[j];if(c==='"'){q=!q;}else if(c===','&&!q){f.push(cur);cur='';}else{cur+=c;}}f.push(cur);
@@ -15,7 +14,6 @@ export default async function handler(req, res){
   const qty=Math.max(1, parseInt(body.qty||1,10)||1);
   if(!sku) return res.status(400).json({error:'Falta el SKU del producto'});
 
-  // Buscar el producto (título + precio) en el CSV de Emove o en productos.csv
   let title=sku, price=null;
   try{
     const r=await fetch('https://emovedistribution.com/wp-content/uploads/woo-feed/custom/csv/scootech-2.csv');
@@ -28,18 +26,27 @@ export default async function handler(req, res){
   }
   if(price===null||isNaN(price)) return res.status(404).json({error:'Producto no encontrado'});
 
-  // ✅ CORREGIDO: el precio del CSV YA incluye IVA -> se cobra EXACTAMENTE ese importe.
-  const unit=Math.round(price*100); // céntimos (sin sumar IVA)
+  const unit=Math.round(price*100);
+  const subtotal=unit*qty;
   const origin='https://'+(req.headers.host||'riveu-taller-patinetes-girona.vercel.app');
 
   const params=new URLSearchParams();
   params.append('mode','payment');
   params.append('success_url', origin+'/?pago=ok');
   params.append('cancel_url', origin+'/?pago=cancelado');
+  // Solo se permiten direcciones de España en Stripe (red de seguridad)
+  params.append('shipping_address_collection[allowed_countries][]','ES');
   params.append('line_items[0][quantity]', String(qty));
   params.append('line_items[0][price_data][currency]','eur');
   params.append('line_items[0][price_data][unit_amount]', String(unit));
   params.append('line_items[0][price_data][product_data][name]', title);
+
+  if(subtotal < 10000){
+    params.append('line_items[1][quantity]','1');
+    params.append('line_items[1][price_data][currency]','eur');
+    params.append('line_items[1][price_data][unit_amount]','500');
+    params.append('line_items[1][price_data][product_data][name]','Envío 24-48h (España peninsular)');
+  }
 
   const sr=await fetch('https://api.stripe.com/v1/checkout/sessions',{
     method:'POST',
