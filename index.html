@@ -15,6 +15,7 @@
 <meta property="og:locale" content="ca_ES" />
 <meta property="og:image" content="logo-riveu.jpg" />
 <link rel="icon" type="image/jpeg" href="logo-riveu.jpg" />
+<link rel="sitemap" type="application/xml" href="https://www.riveu.es/sitemap.xml" />
 <meta name="google-site-verification" content="sat2SMJ4tfjguY6V_v_Qn0GAmEkrrW3iV636F88ocdE" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -136,7 +137,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   </header>
 </div>
 
-<!-- 1. HERO COMPACTO (H1 arriba para SEO potente) -->
+<!-- 1. HERO COMPACTO -->
 <section class="relative overflow-hidden pb-8 pt-28 sm:pt-32">
   <div aria-hidden class="pointer-events-none absolute inset-0 hidden hero-bg-img opacity-25 lg:block"></div>
   <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-8">
@@ -161,7 +162,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   </div>
 </section>
 
-<!-- 2. TIENDA ONLINE (LO PRIMERO QUE VE LA GENTE) -->
+<!-- 2. TIENDA -->
 <section id="botiga" class="scroll-mt-28 border-t border-white/10 bg-gradient-to-b from-carbon-900/80 via-carbon-900/40 to-carbon-950 py-16 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="shop.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="shop.kicker"></span></div>
@@ -177,21 +178,21 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <div class="sticky top-[92px] z-40 mt-10 rounded-md border border-white/10 bg-carbon-950/95 p-2.5 backdrop-blur-md sm:p-3">
       <input id="shopSearch" type="search" class="w-full border-2 border-white/15 bg-carbon-900 px-4 py-2.5 font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none" placeholder="Buscar..." />
       <div class="mt-2 flex gap-2 overflow-x-auto pb-1" id="shopFilters">
-        <button data-filter="all" class="shop-filter active shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.all"></button>
-        <button data-filter="patinet" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.scooter"></button>
-        <button data-filter="electronic" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.electronic"></button>
-        <button data-filter="wheel" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.wheel"></button>
-        <button data-filter="brake" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.brake"></button>
-        <button data-filter="fender" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.fender"></button>
-        <button data-filter="cable" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.cable"></button>
-        <button data-filter="accessory" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.accessory"></button>
+        <button type="button" data-filter="all" class="shop-filter active shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.all"></button>
+        <button type="button" data-filter="patinet" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.scooter"></button>
+        <button type="button" data-filter="electronic" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.electronic"></button>
+        <button type="button" data-filter="wheel" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.wheel"></button>
+        <button type="button" data-filter="brake" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.brake"></button>
+        <button type="button" data-filter="fender" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.fender"></button>
+        <button type="button" data-filter="cable" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.cable"></button>
+        <button type="button" data-filter="accessory" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.accessory"></button>
       </div>
     </div>
 
     <div id="scooterSection" class="mt-10">
       <div class="flex items-center gap-3"><span class="text-2xl">🛴</span><h3 class="font-display text-2xl font-bold uppercase text-white" data-i18n="shop.scootersTitle"></h3><span id="scooterCount" class="font-mono text-xs text-riveu-steel"></span></div>
       <div id="scooterGrid" class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
-      <div class="mt-8 text-center"><button id="scooterMore" hidden class="border-2 border-riveu-red px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-riveu-red"></button></div>
+      <div class="mt-8 text-center"><button type="button" id="scooterMore" hidden class="border-2 border-riveu-red px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-riveu-red"></button></div>
     </div>
 
     <div class="my-16 h-px bg-gradient-to-r from-transparent via-riveu-red/40 to-transparent"></div>
@@ -207,7 +208,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   </div>
 </section>
 
-<!-- 3. SOBRE EL TALLER (Hero extendido con diagnostico y mapa) -->
+<!-- 3. SOBRE EL TALLER -->
 <section class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 02</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="about.kicker"></span></div>
@@ -257,7 +258,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   </div>
 </section>
 
-<!-- 4. SERVICIOS (para SEO del taller) -->
+<!-- 4. SERVICIOS -->
 <section id="serveis" class="scroll-mt-28 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="services.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="services.kicker"></span></div>
@@ -549,12 +550,12 @@ function cardHTML(p){const t=i18n[lang()].shop;
  const ship=hs?shipInfoFor(p.price,1,t):{txt:'—',cls:'text-riveu-steel'};
  const img=`<img src="${localImg(p.sku)}" data-sku="${p.sku}" data-csv="${p.image||''}" alt="${p.title}" loading="lazy" decoding="async" onerror="imgNext(this)" class="shop-img h-full w-full object-cover" width="400" height="400">`;
  const qtyBlock=hs
-  ?`<div class="mt-3 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.qty}</span><div class="flex items-center gap-2"><button data-qminus class="grid size-8 place-items-center border border-white/20 text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">–</button><span data-qty class="w-8 text-center font-mono text-sm text-white">1</span><button data-qplus class="grid size-8 place-items-center border border-white/20 text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">+</button></div></div>
+  ?`<div class="mt-3 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.qty}</span><div class="flex items-center gap-2"><button type="button" data-qminus class="grid size-8 place-items-center border border-white/20 text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">–</button><span data-qty class="w-8 text-center font-mono text-sm text-white">1</span><button type="button" data-qplus class="grid size-8 place-items-center border border-white/20 text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">+</button></div></div>
     <div class="mt-2 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.shipLabel}</span><span data-ship class="font-mono text-[11px] ${ship.cls}">${ship.txt}</span></div>`
   :`<div class="mt-3 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.qty}</span><span class="font-mono text-sm text-riveu-steel/50">—</span></div>`;
  const payBtn=hs
-  ?`<button data-pay="${p.sku}" class="mt-3 inline-flex w-full items-center justify-center gap-2 border-2 border-wa px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-all hover:bg-wa hover:text-[#052e16]">💳 ${t.pay}</button>`
-  :`<button disabled class="mt-3 inline-flex w-full cursor-not-allowed items-center justify-center gap-2 border-2 border-white/10 px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-riveu-steel/50">🚫 ${t.soldout}</button>`;
+  ?`<button type="button" data-pay="${p.sku}" class="mt-3 inline-flex w-full items-center justify-center gap-2 border-2 border-wa px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-all hover:bg-wa hover:text-[#052e16]">💳 ${t.pay}</button>`
+  :`<button type="button" disabled class="mt-3 inline-flex w-full cursor-not-allowed items-center justify-center gap-2 border-2 border-white/10 px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-riveu-steel/50">🚫 ${t.soldout}</button>`;
  return `<article class="shop-card corners group relative flex flex-col overflow-hidden border border-white/10 bg-carbon-850" data-qty="1" data-price="${p.price||0}"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<div class="absolute left-3 top-3"><span class="border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur">${stockText}</span></div><div class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel backdrop-blur">${p.sku}</div></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.vat}</span></div>${qtyBlock}${payBtn}</div></article>`;}
 
 function currentLists(){
@@ -562,15 +563,18 @@ function currentLists(){
   const q=SHOP.search.trim();
   const nq=norm(q);
   const intent=q?searchIntent(nq):null;
-  const tokens=nq.split(/\s+/).filter(t=>t.length>2);
-  const match=p=>{ if(!tokens.length) return true; const hay=norm(p.title+' '+p.sku);
-    return tokens.every(tk=>{const b=tk.replace(/s$/,'');return hay.includes(b.length>2?b:tk);}); };
+  const tokens=nq.split(/\s+/).filter(t=>t.length>1);
+  const match=p=>{ if(!tokens.length) return true; const hay=norm(p.title+' '+p.sku+' '+(p.description||''));
+    return tokens.every(tk=>{ const b=tk.replace(/s$/,''); const esc=b.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); return new RegExp('(^|[^a-z0-9])'+esc).test(hay); }); };
   let list=SHOP.all.slice();
   if(f!=='all') list=list.filter(p=>p.category===f);
   if(intent) list=list.filter(p=>p.category===intent);
   list=list.filter(match);
   return {scooters:list.filter(p=>p.category==='patinet'), parts:list.filter(p=>p.category!=='patinet')};
 }
+
+function scrollToShopIfNeeded(){ const sec=byId('botiga'); if(!sec)return;
+ if(window.scrollY > sec.offsetTop + 150){ window.scrollTo({top: Math.max(0, sec.offsetTop - 80), behavior:'smooth'}); } }
 
 function renderScooters(){const {scooters}=currentLists();const t=i18n[lang()].shop;const sec=byId('scooterSection');
  sec.style.display=scooters.length?'':'none';byId('scooterCount').textContent='('+scooters.length+')';
@@ -596,8 +600,8 @@ async function loadShop(){const grid=byId('partsGrid');grid.innerHTML=`<div clas
  else{grid.innerHTML='';byId('shopEmpty').classList.remove('hidden');byId('shopEmpty').textContent=i18n[lang()].shop.errorMsg;}}
 
 function initShop(){
- document.querySelectorAll('#shopFilters [data-filter]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('#shopFilters [data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');SHOP.filter=b.getAttribute('data-filter');SHOP.scootersExpanded=false;if(SHOP.all.length)renderShop();});});
- const s=byId('shopSearch');if(s)s.addEventListener('input',()=>{SHOP.search=s.value;if(SHOP.all.length)renderShop();});
+ document.querySelectorAll('#shopFilters [data-filter]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('#shopFilters [data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');SHOP.filter=b.getAttribute('data-filter');SHOP.scootersExpanded=false;if(SHOP.all.length){renderShop();scrollToShopIfNeeded();}});});
+ const s=byId('shopSearch');if(s)s.addEventListener('input',()=>{SHOP.search=s.value;if(SHOP.all.length){renderShop();scrollToShopIfNeeded();}});
  byId('scooterMore').addEventListener('click',()=>{SHOP.scootersExpanded=!SHOP.scootersExpanded;renderScooters();queueImages();});
  new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const l=SHOP.partsList||[];if(SHOP.partsShown<l.length)renderPartsPage(false);}});},{rootMargin:'500px 0px'}).observe(byId('partsSentinel'));
  loadImgCache().then(()=>loadShop());
