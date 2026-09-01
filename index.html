@@ -163,6 +163,65 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   </div>
 </section>
 
+<!-- 1.5 CATEGORÍAS SEO (NUEVO) -->
+<section class="scroll-mt-28 border-t border-white/10 bg-carbon-900/40 py-14 sm:py-18">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <div class="reveal flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
+      <span class="size-1.5 animate-pulse bg-riveu-red"></span>
+      <span>// 01.7</span>
+      <span class="h-px w-10 bg-riveu-red/50"></span>
+      <span class="text-riveu-steel">Recambios más buscados</span>
+    </div>
+    <h2 class="mt-4 max-w-4xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl">
+      Tienda especializada en <span class="text-riveu-red">patinetes y e-bikes</span>
+    </h2>
+    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-riveu-steel">
+      Además de nuestro taller, tenemos recambios verificados en stock con envío 24–48 h a toda España y garantía de taller.
+    </p>
+
+    <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+      <a href="/tienda/baterias-patinetes-electricos" class="shop-card group relative flex flex-col overflow-hidden border border-riveu-red/60 bg-gradient-to-br from-riveu-red/15 to-carbon-850 p-5">
+        <div class="flex items-center justify-between">
+          <span class="grid size-11 place-items-center border border-riveu-red bg-[#160a0a] text-riveu-red text-xl">🔋</span>
+          <span class="font-mono text-[10px] uppercase tracking-wider text-riveu-red">★ Top</span>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white">Baterías</h3>
+        <p class="mt-2 text-sm text-riveu-steel">Xiaomi, Ninebot, Dualtron y reconstrucción con celdas 21700.</p>
+        <span class="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-riveu-red group-hover:translate-x-1 transition-transform">Ver baterías →</span>
+      </a>
+
+      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60">
+        <div class="flex items-center justify-between">
+          <span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">🛞</span>
+          <span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">Próximamente</span>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white">Ruedas y neumáticos</h3>
+        <p class="mt-2 text-sm text-riveu-steel">Cámaras, tubeless y macizas antipinchazo.</p>
+      </div>
+
+      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60">
+        <div class="flex items-center justify-between">
+          <span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">🛑</span>
+          <span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">Próximamente</span>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white">Frenos y pastillas</h3>
+        <p class="mt-2 text-sm text-riveu-steel">Discos, pastillas y sistemas hidráulicos.</p>
+      </div>
+
+      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60">
+        <div class="flex items-center justify-between">
+          <span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">⚡</span>
+          <span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">Próximamente</span>
+        </div>
+        <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white">Electrónica</h3>
+        <p class="mt-2 text-sm text-riveu-steel">Controladoras, BMS, displays y cargadores.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- 2. TIENDA -->
 <section id="botiga" class="scroll-mt-28 border-t border-white/10 bg-gradient-to-b from-carbon-900/80 via-carbon-900/40 to-carbon-950 py-16 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
@@ -392,6 +451,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <div class="md:col-span-3"><h3 class="font-mono text-[11px] uppercase tracking-[0.25em] text-riveu-red" data-i18n="footer.navTitle"></h3>
       <ul class="mt-4 space-y-2.5">
         <li><a href="#botiga" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.6"></a></li>
+        <li><a href="/tienda/baterias-patinetes-electricos" class="text-sm text-riveu-steel hover:text-white">🔋 Baterías</a></li>
         <li><a href="#serveis" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.0"></a></li>
         <li><a href="#proces" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.1"></a></li>
         <li><a href="#galeria" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.5"></a></li>
@@ -462,7 +522,7 @@ ebike:{index:'// 01.5',kicker:'Movilidad eléctrica',title:'También bicicletas 
 shop:{index:'// 01.8',kicker:'Tienda Online',title:'Patinetes y Recambios en Stock',lead:'Catálogo completo con stock actualizado en tiempo real. Paga online con tarjeta, Apple Pay, Google Pay o Klarna.',disclaimer:'Las imágenes y regalos mostrados son del catálogo oficial del fabricante. Las promociones dependen del stock del proveedor; confírmalas antes de comprar.',vat:'IVA incl.',vatNote:'Precios con IVA incluido (España 21%)',vatLine:'(IVA 21% incluido)',pay:'Pagar',qty:'Cantidad',soldout:'Agotado',shipFree:'Envío gratis',shipInfo:'🚚 GRATIS ≥100 € · <100 € +5 € · Solo España peninsular',shipTime:'⏱ Entrega 24–48 h',shipLabel:'Envío',zoneTitle:'¿Dónde está la dirección de entrega?',zoneSub:'El precio de envío online solo es válido para España peninsular.',zoneYes:'✅ España peninsular — continuar al pago',zoneNo:'🌍 Canarias / Baleares / Ceuta / Melilla / otro país',zoneClose:'Cancelar',zoneWarn:'No hacemos envíos online a esa zona. Te hacemos un presupuesto por WhatsApp.',zoneWa:'Hola Riveu 👋 Quiero comprar pero mi envío es fuera de la península.',filter:{all:'Todos',scooter:'Patinetes',electronic:'Electrónica',wheel:'Ruedas',brake:'Frenos',fender:'Guardabarros',cable:'Cables',accessory:'Accesorios'},scootersTitle:'Patinetes Eléctricos',partsTitle:'Recambios y Accesorios',seeAll:'Ver todos los patinetes',showLess:'Mostrar menos',end:'Fin del catálogo',empty:'Ningún producto encontrado. Escríbenos por WhatsApp.',stock:'En stock',outOfStock:'Consultar',loading:'Cargando catálogo...',errorMsg:'No hemos podido cargar el catálogo. Escríbenos por WhatsApp.'},
 gallery:{kicker:'En el taller',title:'Cada día, una avería menos',c1:'DIAGNÓSTICO INICIAL',c2:'CAMBIO DE RUEDA',c3:'BANCO DE PRUEBAS',c4:'LISTO PARA ENTREGAR',alt1:'Técnico diagnosticando un patinete',alt2:'Reparación del motor de la rueda',alt3:'Reparación de la electrónica',alt4:'Personas montando patinetes'},
 ticker:['Diagnóstico sin compromiso','Reparaciones en 24–48 h','Bicicletas eléctricas de gama alta','Garantía del taller','Servicio multimarca','Carrer Finestrelles 9 · Girona'],
-services:{index:'// 01',kicker:'Servicios',title:'Todo lo que tu patinete necesita, en un solo banco de trabajo',items:[{title:'Pinchazos y Neumáticos',tag:'Cámaras · Tubeless · Macizas',icon:'wheel',list:['Sustitución de cámaras y cubiertas','Montaje tubeless y líquido sellante','Ruedas macizas antipinchazo']},{title:'Baterías y Electrónica',tag:'Controladoras · Celdas · BMS',icon:'battery',list:['Reconstrucción y cambio de celdas','Controladoras y errores de encendido','Diagnóstico electrónico completo']},{title:'Frenos y Mecánica',tag:'Discos · Pastillas · Holguras',icon:'brake',list:['Ajuste de discos y pastillas','Frenos hidráulicos y eléctricos','Eliminamos holguras y ruidos']},{title:'Especialistas Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…','Conocemos el esquema de cada modelo','Recambios en stock','También bicicletas eléctricas de gama alta']}]},
+services:{index:'// 01',kicker:'Servicios',title:'Todo lo que tu patinete necesita, en un solo banco de trabajo',items:[{title:'Pinchazos y Neumáticos',tag:'Cámaras · Tubeless · Macizas',icon:'wheel',list:['Sustitución de cámaras y cubiertas','Montaje tubeless y líquido sellante','Ruedas macizas antipinchazo']},{title:'Baterías y Electrónica',tag:'Controladoras · Celdas · BMS',icon:'battery',list:['Reconstrucción y cambio de celdas','Controladoras y errores de encendido','Diagnóstico electrónico completo']},{title:'Frenos y Mecánica',tag:'Discos · Pastillas · Holguras',icon:'brake',list:['Ajust de discos y pastillas','Frenos hidráulicos y eléctricos','Eliminamos holguras y ruidos']},{title:'Especialistas Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…','Conocemos el esquema de cada modelo','Recambios en stock','También bicicletas eléctricas de gama alta']}]},
 process:{index:'// 02',kicker:'Cómo trabajamos',title:'De la avería a la calle, sin sorpresas',steps:[{t:'Diagnóstico',d:'Trae el patinete y lo revisamos en el momento.'},{t:'Presupuesto cerrado',d:'Precio claro antes de tocar nada.'},{t:'Reparación',d:'Montamos recambios verificados y probamos a fondo.'},{t:'Entrega y garantía',d:'Recoges el patinete probado, con garantía del taller.'}]},
 why:{index:'// 03',kicker:'Por qué elegirnos',title:'Confianza que se gana tornillo a tornillo',lead:'Somos un taller dedicado en exclusiva al patinete eléctrico.',alt:'Técnico reparando un patinete',items:[{code:'G·01',t:'Presupuesto previo sin compromiso',d:'Diagnóstico claro y precio cerrado antes de desmontar.'},{code:'G·02',t:'Recambios de alta calidad comprobados',d:'Solo piezas verificadas en el banco de pruebas.'},{code:'G·03',t:'Reparaciones rápidas en 24/48 h',d:'La mayoría de averías listas en uno o dos días.'}]},
 reviews:{index:'// 04',kicker:'Opiniones',title:'Lo que dicen los que ya ruedan',items:[{text:'Llegué con el Xiaomi pinchado y salí el mismo día con rueda nueva. Trato de diez.',name:'Marc S.',scooter:'Xiaomi Pro 2'},{text:'La batería había perdido media vida. Cambiaron las celdas y ahora hace los mismos km.',name:'Laura P.',scooter:'Ninebot Max G30'},{text:'Presupuesto claro y el patinete listo en dos días. Así da gusto.',name:'Jordi V.',scooter:'Dualtron Mini'}]},
