@@ -116,7 +116,7 @@
   </div>
 </section>
 
-<!-- PRODUCTOS (buscador MEJORADO: ya no es sticky, no tapa las fotos) -->
+<!-- PRODUCTOS -->
 <section class="border-t border-white/10 py-16 sm:py-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="flex items-center gap-3">
@@ -126,7 +126,7 @@
     </div>
     <p class="mt-3 max-w-2xl text-sm text-riveu-steel" data-i18n="stock_hint">¿No ves tu modelo? Escríbenos por WhatsApp y te lo conseguimos en 24–72 h. Elige cantidad y paga con tarjeta.</p>
 
-    <!-- BUSCADOR MEJORADO: sin sticky, con diseño integrado -->
+    <!-- BUSCADOR: posicionado antes del grid, sin sticky -->
     <div class="search-box mt-8 rounded-md border border-white/10 bg-carbon-900/60 p-2.5 sm:p-3">
       <div class="relative">
         <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-riveu-steel">🔍</span>
@@ -235,7 +235,7 @@
 
 <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20quiero%20comprar%20una%20bater%C3%ADa" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" class="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-wa px-4 py-3 font-display text-sm font-bold text-[#052e16] shadow-lg">💬 <span data-i18n="fab_label">Baterías</span></a>
 
-<!-- BANNER DE COOKIES (obligatorio en cada página independiente) -->
+<!-- BANNER DE COOKIES -->
 <div id="cookieBanner" class="cookie-banner">
   <div class="mx-auto max-w-7xl px-4 py-4 sm:px-8">
     <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -426,13 +426,11 @@ function applyLang(lang){
     if(allowHtml){ el.innerHTML = val; }
     else { el.textContent = val; }
   });
-  // Placeholder del input
   document.querySelectorAll('[data-i18n-attr]').forEach(function(el){
     var key = el.getAttribute('data-i18n');
     var val = dict[key];
     if(val !== undefined) el.setAttribute('placeholder', val);
   });
-  // Botones idioma
   document.querySelectorAll('[data-lang-btn]').forEach(function(b){
     if(b.getAttribute('data-lang-btn') === lang){
       b.classList.add('bg-riveu-red','text-white');
@@ -442,7 +440,6 @@ function applyLang(lang){
       b.classList.add('text-riveu-silver');
     }
   });
-  // Re-render hints y grid con idioma actual
   renderHints();
   if(BATT_ALL && BATT_ALL.length) renderBatteries();
 }
@@ -479,7 +476,7 @@ function applyLang(lang){
 })();
 
 /* ============================================
-   LÓGICA ORIGINAL DE PRODUCTOS
+   LÓGICA DE PRODUCTOS
 ============================================ */
 const WA_PHONE='34633624345';
 const byId=(id)=>document.getElementById(id);
@@ -518,7 +515,6 @@ function cardHTML(p){
  return `<article class="shop-card corners relative flex flex-col border border-white/10 bg-carbon-850" data-qty="1" data-price="${p.price||0}"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<span class="absolute left-3 top-3 border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider">${stockText}</span><span class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${p.sku}</span></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${dict.card_vat}</span></div>${qty}${btn}</div></article>`;
 }
 
-/* ===== BUSCADOR INTELIGENTE + SCHEMA DINÁMICO ===== */
 let BATT_ALL=[];
 let BATT_SEARCH='';
 
@@ -592,7 +588,6 @@ async function load(){
   }catch(e){grid.innerHTML='<p class="col-span-full py-10 text-center font-mono text-sm text-riveu-steel">'+dict.load_error+'</p>';}
 }
 
-/* ===== PAGO STRIPE + CANTIDAD + ZONA ===== */
 function showBanner(msg,ok){let b=document.getElementById('payBanner');if(!b){b=document.createElement('div');b.id='payBanner';b.style.cssText='position:fixed;top:86px;left:50%;transform:translateX(-50%);z-index:130;padding:12px 20px;border-radius:8px;font-family:monospace;font-size:13px;max-width:90%;text-align:center;';document.body.appendChild(b);}b.style.background=ok?'#16a34a':'#dc2626';b.style.color='#fff';b.textContent=msg;b.style.display='block';setTimeout(()=>{b.style.display='none';},6000);}
 function resetPayButtons(){document.querySelectorAll('[data-pay]').forEach(b=>{b.disabled=false;b.innerHTML=(I18N[CURRENT_LANG]||I18N.es).card_pay_btn;});}
 window.addEventListener('pageshow',resetPayButtons);
@@ -622,7 +617,6 @@ function renderGate(){
 }
 function openZoneGate(sku,qty,btn){ensureGate();renderGate();pendingPay={sku,qty,btn};document.getElementById('zoneGate').style.display='flex';}
 
-/* ===== EVENTOS ===== */
 document.addEventListener('click',async (e)=>{
  const hint=e.target.closest('[data-hint]');
  if(hint){const s=byId('battSearch');s.value=hint.getAttribute('data-hint');BATT_SEARCH=s.value;byId('battClear').hidden=!s.value;renderBatteries();s.focus();return;}
@@ -631,7 +625,6 @@ document.addEventListener('click',async (e)=>{
  if(qm||qp){const card=e.target.closest('.shop-card');if(!card)return;let q=parseInt(card.dataset.qty||'1',10)||1;q=qp?q+1:Math.max(1,q-1);card.dataset.qty=String(q);const lab=card.querySelector('[data-qty]');if(lab)lab.textContent=q;const price=parseFloat(card.dataset.price||'0');const si=shipInfoFor(price,q);const sh=card.querySelector('[data-ship]');if(sh){sh.textContent=si.txt;sh.className='font-mono text-[11px] '+si.cls;}return;}
  const btn=e.target.closest('[data-pay]');if(!btn)return;const card=btn.closest('.shop-card');const qty=Math.max(1,parseInt(card&&card.dataset.qty||'1',10)||1);openZoneGate(btn.getAttribute('data-pay'),qty,btn);
 
- // Selector idioma
  const langBtn=e.target.closest('[data-lang-btn]');
  if(langBtn){applyLang(langBtn.getAttribute('data-lang-btn'));return;}
 });
@@ -644,7 +637,6 @@ document.addEventListener('input',(e)=>{
  }
 });
 
-/* INIT */
 renderHints();
 applyLang(CURRENT_LANG);
 load();
