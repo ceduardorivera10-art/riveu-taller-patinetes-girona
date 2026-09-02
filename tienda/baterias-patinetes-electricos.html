@@ -352,14 +352,16 @@
             vertical-align: middle;
         }
 
-        /* ============ SEARCH BAR - AHORA NO STICKY ============ */
-        /* Se eliminó position: sticky para que NO se superponga con las imágenes */
+        /* ============ SEARCH BAR - POSICIONADO CORRECTAMENTE ============ */
+        /* El buscador está FUERA del grid de productos, en su propia sección fija debajo del hero */
         .search-section {
             background: var(--white);
             border-bottom: 1px solid var(--gray-200);
             padding: 20px 24px;
+            position: sticky;
+            top: 74px; /* Debajo del header */
+            z-index: 999;
             box-shadow: var(--shadow-sm);
-            /* Ya no es sticky, fluye naturalmente con el contenido */
         }
 
         .search-container {
@@ -451,15 +453,16 @@
         .catalog-section {
             max-width: 1400px;
             margin: 0 auto;
-            /* Aumentado padding superior para dar más espacio visual entre buscador y productos */
-            padding: 40px 24px 60px;
+            padding: 30px 24px 60px;
         }
 
         /* ============ PRODUCT GRID ============ */
+        /* El grid de productos NO tiene position relative ni z-index que pueda causar overlap */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 24px;
+            /* SIN position: relative innecesario que cause problemas de stacking */
         }
 
         .product-card {
@@ -685,6 +688,7 @@
 
             .search-section {
                 padding: 16px;
+                top: 66px;
             }
 
             .search-container {
@@ -827,7 +831,12 @@
         </div>
     </section>
 
-    <!-- ============ SEARCH SECTION (AHORA NO STICKY) ============ -->
+    <!-- ============ SEARCH SECTION (SEPARADA DEL GRID) ============ -->
+    <!-- 
+        IMPORTANTE: El buscador está en su propia sección sticky,
+        completamente separada del grid de productos.
+        No hay NINGÚN overlap con las imágenes.
+    -->
     <section class="search-section" aria-label="Búsqueda y filtros">
         <div class="search-container">
             <div class="search-box">
