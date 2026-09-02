@@ -58,7 +58,22 @@
 </head>
 <body class="bg-carbon-950 font-sans text-white antialiased">
 
-<div class="hazard h-2" aria-hidden="true"></div>
+<!-- ===== BUSCADOR FLOTANTE: FINO, FIJO Y PEGADO ARRIBA (NO ESTORBA) ===== -->
+<div id="searchBar" class="fixed inset-x-0 top-0 z-[70] border-b border-white/10 bg-carbon-950/90 shadow-[0_4px_20px_rgba(0,0,0,.45)] backdrop-blur-md">
+  <div class="mx-auto flex h-12 max-w-7xl items-center gap-2 px-4 sm:px-8">
+    <span aria-hidden="true" class="pointer-events-none text-sm text-riveu-steel">🔍</span>
+    <div class="relative flex-1">
+      <input id="battSearch" type="search" autocomplete="off"
+             class="h-9 w-full border border-white/15 bg-carbon-900 pl-3 pr-9 font-mono text-xs text-white placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none sm:text-sm"
+             placeholder="Busca por modelo o tipo: Xiaomi, Ninebot, celda, 48V..." data-i18n-attr="placeholder" data-i18n="search.placeholder" />
+      <button id="battClear" type="button" hidden class="absolute right-1.5 top-1/2 grid size-6 -translate-y-1/2 place-items-center rounded-full border border-white/15 text-riveu-steel hover:border-riveu-red hover:text-white">✕</button>
+    </div>
+  </div>
+  <!-- Chips de ayuda: ocultos por defecto, se despliegan al tocar el buscador -->
+  <div id="battHints" class="mx-auto hidden max-w-7xl flex-wrap gap-2 px-4 pb-3 pt-1 sm:px-8"></div>
+</div>
+
+<div class="hazard mt-12 h-2" aria-hidden="true"></div>
 
 <header class="border-b border-white/10 bg-carbon-950/85 backdrop-blur-md">
   <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
@@ -103,7 +118,7 @@
   </div>
 </section>
 
-<!-- PRODUCTOS -->
+<!-- PRODUCTOS (sin caja de búsqueda dentro: el buscador vive arriba flotante) -->
 <section class="border-t border-white/10 py-16 sm:py-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="flex items-center gap-3">
@@ -112,18 +127,6 @@
       <span id="count" class="font-mono text-xs text-riveu-steel"></span>
     </div>
     <p class="mt-3 max-w-2xl text-sm text-riveu-steel" data-i18n="products.subtitle">¿No ves tu modelo? Escríbenos por WhatsApp y te lo conseguimos en 24–72 h. Elige cantidad y paga con tarjeta.</p>
-
-    <!-- BUSCADOR INTELIGENTE — SIN STICKY: se queda quieto en su sitio y NUNCA tapa las fotos -->
-    <div class="mt-8 rounded-md border border-white/10 bg-carbon-900/60 p-2.5 sm:p-3">
-      <div class="relative">
-        <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-riveu-steel">🔍</span>
-        <input id="battSearch" type="search" autocomplete="off"
-               class="w-full border-2 border-white/15 bg-carbon-950 py-3 pl-11 pr-12 font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none"
-               placeholder="Busca por modelo o tipo: Xiaomi, Ninebot, celda, 48V..." data-i18n-attr="placeholder" data-i18n="search.placeholder" />
-        <button id="battClear" type="button" hidden class="absolute right-3 top-1/2 -translate-y-1/2 grid size-8 place-items-center rounded-full border border-white/15 text-riveu-steel hover:border-riveu-red hover:text-white">✕</button>
-      </div>
-      <div id="battHints" class="mt-2 flex flex-wrap gap-2"></div>
-    </div>
 
     <div id="battGrid" class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div class="col-span-full py-12 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel" data-i18n="products.loading">Cargando baterías…</div>
@@ -266,17 +269,14 @@ function applyI18n(l){
 }
 
 /* ===== COOKIES ===== */
+function loadAnalytics(){ if(window.__siLoaded)return;window.__siLoaded=true;
+  window.si=window.si||function(){(window.si.q=window.si.q||[]).push(arguments)};
+  const s=document.createElement('script');s.src='/_vercel/insights/script.js';s.defer=true;document.head.appendChild(s);}
 function initCookies(){
   let c=null;try{c=localStorage.getItem('riveu-cookies');}catch(e){}
-  if(c==='ok'||c==='no'){if(c==='ok')loadAnalytics();return;}
+  if(c==='ok'){loadAnalytics();return;}
+  if(c==='no'){return;}
   const b=byId('cookieBanner');if(b)b.classList.add('show');
-  byId('cookieAccept').addEventListener('click',()=>{try{localStorage.setItem('riveu-cookies','ok');}catch(e){}b.classList.remove('show');loadAnalytics();});
-  byId('cookieReject').addEventListener('click',()=>{try{localStorage.setItem('riveu-cookies','no');}catch(e){}b.classList.remove('show');});
-}
-function loadAnalytics(){
-  if(window.__siLoaded)return;window.__siLoaded=true;
-  window.si=window.si||function(){(window.si.q=window.si.q||[]).push(arguments)};
-  const s=document.createElement('script');s.src='/_vercel/insights/script.js';s.defer=true;document.head.appendChild(s);
 }
 
 /* ===== IMÁGENES ===== */
@@ -309,7 +309,7 @@ function cardHTML(p){
  return `<article class="shop-card corners relative flex flex-col border border-white/10 bg-carbon-850" data-qty="1" data-price="${p.price||0}"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<span class="absolute left-3 top-3 border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider">${stockText}</span><span class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${p.sku}</span></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.vat}</span></div>${qty}${btn}</div></article>`;
 }
 
-/* ===== BUSCADOR INTELIGENTE + SCHEMA ===== */
+/* ===== BUSCADOR INTELIGENTE + SCHEMA DINÁMICO ===== */
 let BATT_ALL=[];let BATT_SEARCH='';
 
 function injectSchema(list){
@@ -349,7 +349,7 @@ async function load(){
 }
 
 /* ===== PAGO + ZONA ===== */
-function showBanner(msg,ok){let b=document.getElementById('payBanner');if(!b){b=document.createElement('div');b.id='payBanner';b.style.cssText='position:fixed;top:86px;left:50%;transform:translateX(-50%);z-index:130;padding:12px 20px;border-radius:8px;font-family:monospace;font-size:13px;max-width:90%;text-align:center;';document.body.appendChild(b);}b.style.background=ok?'#16a34a':'#dc2626';b.style.color='#fff';b.textContent=msg;b.style.display='block';setTimeout(()=>{b.style.display='none';},6000);}
+function showBanner(msg,ok){let b=document.getElementById('payBanner');if(!b){b=document.createElement('div');b.id='payBanner';b.style.cssText='position:fixed;top:60px;left:50%;transform:translateX(-50%);z-index:130;padding:12px 20px;border-radius:8px;font-family:monospace;font-size:13px;max-width:90%;text-align:center;';document.body.appendChild(b);}b.style.background=ok?'#16a34a':'#dc2626';b.style.color='#fff';b.textContent=msg;b.style.display='block';setTimeout(()=>{b.style.display='none';},6000);}
 function resetPayButtons(){document.querySelectorAll('[data-pay]').forEach(b=>{b.disabled=false;b.innerHTML=I18N[lang()].shop.pay;});}
 window.addEventListener('pageshow',resetPayButtons);
 
@@ -359,7 +359,11 @@ function doPayment(sku,qty,btn){const t=I18N[lang()].payment;const old=btn.inner
  .then(r=>r.json()).then(d=>{if(d&&d.url){window.location.href=d.url;}else{showBanner(t.error+(d&&d.error?': '+d.error:''),false);btn.disabled=false;btn.innerHTML=old;}})
  .catch(()=>{showBanner(t.conn,false);btn.disabled=false;btn.innerHTML=old;});}
 function ensureGate(){if(document.getElementById('zoneGate'))return;const g=document.createElement('div');g.id='zoneGate';g.style.cssText='position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.75);';document.body.appendChild(g);
- g.addEventListener('click',e=>{if(e.target.id==='gateYes'){g.style.display='none';if(pendingPay)doPayment(pendingPay.sku,pendingPay.qty,pendingPay.btn);}else if(e.target.id==='gateNo'){g.style.display='none';const t=I18N[lang()];showBanner(t.zone.warn,false);window.open('https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(t.zone.wa),'_blank');}else if(e.target.id==='gateClose'){g.style.display='none';}});}
+ g.addEventListener('click',e=>{
+  if(e.target.id==='gateYes'){g.style.display='none';if(pendingPay)doPayment(pendingPay.sku,pendingPay.qty,pendingPay.btn);}
+  else if(e.target.id==='gateNo'){g.style.display='none';const t=I18N[lang()];showBanner(t.zone.warn,false);window.open('https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(t.zone.wa),'_blank');}
+  else if(e.target.id==='gateClose'){g.style.display='none';}
+ });}
 function openZoneGate(sku,qty,btn){ensureGate();const t=I18N[lang()].zone;const g=document.getElementById('zoneGate');pendingPay={sku,qty,btn};
  g.innerHTML=`<div style="max-width:430px;width:92%;background:#141414;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:20px;">
  <p style="font-family:'Chakra Petch',sans-serif;font-weight:700;color:#fff;margin:0 0 8px;">${t.title}</p>
@@ -372,7 +376,7 @@ function openZoneGate(sku,qty,btn){ensureGate();const t=I18N[lang()].zone;const 
 /* ===== EVENTOS ===== */
 document.addEventListener('click',e=>{
  const hint=e.target.closest('[data-hint]');
- if(hint){const s=byId('battSearch');s.value=hint.getAttribute('data-hint');BATT_SEARCH=s.value;byId('battClear').hidden=!s.value;renderBatteries();s.focus();return;}
+ if(hint){const s=byId('battSearch');s.value=hint.getAttribute('data-hint');BATT_SEARCH=s.value;byId('battClear').hidden=!s.value;renderBatteries();byId('battHints').classList.add('hidden');return;}
  if(e.target.closest('#battClear')){const s=byId('battSearch');s.value='';BATT_SEARCH='';byId('battClear').hidden=true;renderBatteries();s.focus();return;}
  const qm=e.target.closest('[data-qminus]'),qp=e.target.closest('[data-qplus]');
  if(qm||qp){const card=e.target.closest('.shop-card');if(!card)return;let q=parseInt(card.dataset.qty||'1',10)||1;q=qp?q+1:Math.max(1,q-1);card.dataset.qty=String(q);const lab=card.querySelector('[data-qty]');if(lab)lab.textContent=q;const price=parseFloat(card.dataset.price||'0');const si=shipInfoFor(price,q);const sh=card.querySelector('[data-ship]');if(sh){sh.textContent=si.txt;sh.className='font-mono text-[11px] '+si.cls;}return;}
@@ -381,10 +385,16 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('input',e=>{if(e.target.id==='battSearch'){BATT_SEARCH=e.target.value;byId('battClear').hidden=!e.target.value;renderBatteries();}});
 
+/* Buscador flotante: chips visibles al tocar el input, ocultos al clicar fuera */
+byId('battSearch').addEventListener('focus',()=>byId('battHints').classList.remove('hidden'));
+document.addEventListener('click',e=>{if(!e.target.closest('#searchBar'))byId('battHints').classList.add('hidden');});
+
 /* ===== INIT ===== */
 (function(){
  let l='es';try{const s=localStorage.getItem('riveu-lang');if(s==='ca'||s==='es')l=s;else l=(navigator.language||'es').toLowerCase().indexOf('ca')===0?'ca':'es';}catch(e){}
  applyI18n(l);renderHints();load();initCookies();
+ byId('cookieAccept').addEventListener('click',()=>{try{localStorage.setItem('riveu-cookies','ok');}catch(e){}byId('cookieBanner').classList.remove('show');loadAnalytics();});
+ byId('cookieReject').addEventListener('click',()=>{try{localStorage.setItem('riveu-cookies','no');}catch(e){}byId('cookieBanner').classList.remove('show');});
 })();
 </script>
 </body>
