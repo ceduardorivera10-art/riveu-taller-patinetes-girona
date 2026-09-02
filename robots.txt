@@ -1,5 +1,14 @@
+# robots.txt · riveu.es · Taller y tienda de patinetes eléctricos en Girona
+# Alojamiento: GitHub + Vercel
+
 User-agent: *
 Allow: /
-Disallow: /api/
 
+# No indexar las funciones serverless (pagos, productos) ni archivos de datos internos
+Disallow: /api/
+Disallow: /productos.csv
+Disallow: /productos.csv.txt
+Disallow: /fotos-sku.json
+
+# Mapa del sitio (para que Google descubra todas tus páginas)
 Sitemap: https://www.riveu.es/sitemap.xml
