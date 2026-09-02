@@ -54,7 +54,7 @@
   .cookie-banner.show{transform:translateY(0)}
 </style>
 
-<!-- SEO: solo BreadcrumbList válido (sin ItemList que daba error crítico) -->
+<!-- SEO: solo BreadcrumbList válido -->
 <script type="application/ld+json">
 { "@context":"https://schema.org",
   "@type":"BreadcrumbList",
@@ -397,9 +397,17 @@ function applyLang(lang){
 const WA_PHONE='34633624345';
 const byId=(id)=>document.getElementById(id);
 
+/* Tus fotos propias: 'SKU':'img/foto.jpg' (ej: 'BCT-A-007':'img/BCT-A-007.jpg') */
+const FOTO_MAP={};
+
 function placeholderUri(){var s="<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='#141414'/><rect x='10' y='10' width='380' height='380' fill='none' stroke='#2a2a2a' stroke-width='2'/><text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='30' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);}
 function localImg(sku){const base=String(sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,'');return '/img/'+base+'.jpg';}
-function imgMiss(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerror=function(){el.onerror=null;el.src=placeholderUri();};el.src=csv;}else{el.onerror=null;el.src=placeholderUri();}}
+function imgMiss(el){
+  const csv=el.getAttribute('data-csv')||'';
+  const cur=el.getAttribute('src')||'';
+  if(csv && cur!==csv){ el.onerror=function(){el.onerror=null;el.src=placeholderUri();}; el.src=csv; }
+  else { el.onerror=null; el.src=placeholderUri(); }
+}
 function norm(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
 
 function parseCSV(text){const rows=[];const lines=text.split(/\r?\n/);if(lines.length<2)return rows;const header=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,''));
@@ -416,7 +424,6 @@ function shipInfoFor(price,qty){ if(!price||price<=0)return{txt:'—',cls:'text-
  const dict = I18N[CURRENT_LANG] || I18N.es;
  if(sub>=100)return{txt:dict.ship_free,cls:'text-wa'}; return{txt:dict.ship_cost,cls:'text-riveu-silver'};}
 
-/* Marca detectada para el schema (potencia SEO) */
 var BRAND_MAP={xiaomi:'Xiaomi',ninebot:'Ninebot',segway:'Segway',dualtron:'Dualtron',kaabo:'Kaabo',cecotec:'Cecotec',smartgyro:'SmartGyro',ecoxtrem:'Ecoxtrem',rovoron:'Rovoron',navee:'Navee',adasmart:'Adasmart',kukirin:'Kukirin',kugoo:'Kugoo'};
 function brandOf(p){var t=(p.title||'').toLowerCase();for(var k in BRAND_MAP){if(t.indexOf(k)!==-1)return BRAND_MAP[k];}return 'Riveu';}
 
@@ -427,7 +434,8 @@ function cardHTML(p){
  const stockText=hs?(dict.card_in_stock+' · '+p.stock):dict.card_consult;
  const sc=hs?'border-wa/40 bg-wa/15 text-wa':'border-riveu-red/40 bg-riveu-red/10 text-riveu-red';
  const ship=hs?shipInfoFor(p.price,1):{txt:'—',cls:'text-riveu-steel'};
- const img=`<img src="${localImg(p.sku)}" data-sku="${p.sku}" data-csv="${p.image||''}" alt="${p.title}" loading="lazy" onerror="imgMiss(this)" class="aspect-square w-full object-cover">`;
+ const first=FOTO_MAP[p.sku]?FOTO_MAP[p.sku]:(p.image||localImg(p.sku));
+ const img=`<img src="${first}" data-sku="${p.sku}" data-csv="${p.image||''}" alt="${p.title}" loading="lazy" onerror="imgMiss(this)" class="aspect-square w-full object-cover">`;
  const qty=hs?`<div class="mt-3 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${dict.card_qty_label}</span><div class="flex items-center gap-2"><button type="button" data-qminus class="grid size-8 place-items-center border border-white/20 text-riveu-silver hover:border-riveu-red hover:text-white">–</button><span data-qty class="w-8 text-center font-mono text-sm">1</span><button type="button" data-qplus class="grid size-8 place-items-center border border-white/20 text-riveu-silver hover:border-riveu-red hover:text-white">+</button></div></div>
  <div class="mt-2 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${dict.card_ship_label}</span><span data-ship class="font-mono text-[11px] ${ship.cls}">${ship.txt}</span></div>`:'';
  const btn=hs?`<button type="button" data-pay="${p.sku}" class="mt-3 inline-flex w-full items-center justify-center gap-2 border-2 border-wa px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa hover:bg-wa hover:text-[#052e16]">${dict.card_pay_btn}</button>`:`<button type="button" disabled class="mt-3 inline-flex w-full cursor-not-allowed items-center justify-center border-2 border-white/10 px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-riveu-steel/50">${dict.card_sold_out}</button>`;
@@ -437,7 +445,6 @@ function cardHTML(p){
 let BATT_ALL=[];
 let BATT_SEARCH='';
 
-/* SCHEMA DINÁMICO ENRIQUECIDO (corrige avisos de Search Console) */
 function injectSchema(list){
   var old=document.getElementById('dynSchema'); if(old) old.remove();
   var graph=list.slice(0,20).map(function(p,i){
