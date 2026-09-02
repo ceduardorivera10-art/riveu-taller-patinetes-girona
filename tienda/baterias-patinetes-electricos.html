@@ -39,6 +39,8 @@
   .corners::before{top:0;left:0;border-right:0;border-bottom:0}.corners::after{top:0;right:0;border-left:0;border-bottom:0}
   .corners>.corner-bl{bottom:0;left:0;border-right:0;border-top:0}.corners>.corner-br{bottom:0;right:0;border-left:0;border-top:0}
   .shop-card{transition:all .3s ease}.shop-card:hover{transform:translateY(-6px);border-color:rgba(229,57,53,.7);box-shadow:0 20px 60px -20px rgba(229,57,53,.4)}
+  .search-hint{animation:fadeIn .4s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 </style>
 <script type="application/ld+json">
 { "@context":"https://schema.org","@graph":[
@@ -94,7 +96,7 @@
   </div>
 </section>
 
-<!-- PRODUCTOS (cargados del CSV) -->
+<!-- PRODUCTOS (con buscador inteligente) -->
 <section class="border-t border-white/10 py-16 sm:py-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="flex items-center gap-3">
@@ -104,9 +106,23 @@
     </div>
     <p class="mt-3 max-w-2xl text-sm text-riveu-steel">¿No ves tu modelo? Escríbenos por WhatsApp y te lo conseguimos en 24–72 h. Elige cantidad y paga con tarjeta.</p>
 
+    <!-- BUSCADOR INTELIGENTE (sticky al hacer scroll) -->
+    <div class="sticky top-[72px] z-30 mt-8 rounded-md border border-white/10 bg-carbon-950/95 p-2.5 backdrop-blur-md sm:p-3">
+      <div class="relative">
+        <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-riveu-steel">🔍</span>
+        <input id="battSearch" type="search" autocomplete="off"
+               class="w-full border-2 border-white/15 bg-carbon-900 py-3 pl-11 pr-12 font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none"
+               placeholder="Busca por modelo o tipo: Xiaomi, Ninebot, celda, 48V..." />
+        <button id="battClear" type="button" hidden class="absolute right-3 top-1/2 -translate-y-1/2 grid size-8 place-items-center rounded-full border border-white/15 text-riveu-steel hover:border-riveu-red hover:text-white">✕</button>
+      </div>
+      <div id="battHints" class="mt-2 flex flex-wrap gap-2"></div>
+    </div>
+
     <div id="battGrid" class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div class="col-span-full py-12 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel">Cargando baterías…</div>
     </div>
+
+    <p id="battEmpty" hidden class="mt-10 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel">Ninguna batería coincide con tu búsqueda. Escríbenos por WhatsApp y te la buscamos.</p>
   </div>
 </section>
 
@@ -204,7 +220,7 @@ function parseCSV(text){const rows=[];const lines=text.split(/\r?\n/);if(lines.l
 function normalizeProducts(rows){return rows.map(r=>{const pr=parseFloat((r.price||'').replace(',','.'));const imgs=(r.image_link||'').split(',').map(u=>u.trim()).filter(Boolean).map(u=>{try{return encodeURI(u);}catch(e){return u;}});const q=parseInt((r.Quantity||r.quantity||'0'),10);
  return {sku:r.SKU,title:r.title||r.SKU,description:r.description||'',price:isNaN(pr)?null:pr,image:imgs[0]||'',stock:isNaN(q)?0:q};});}
 
-function isBattery(p){return /bater|battery/.test(norm(p.title))||/bater|battery/.test(norm(p.sku));}
+function isBattery(p){return /bater|battery|celda|cell\b|bms|cargador|charger/.test(norm(p.title))||/bater|battery|cell|bms|charger/.test(norm(p.sku));}
 
 function shipInfoFor(price,qty){ if(!price||price<=0)return{txt:'—',cls:'text-riveu-steel'}; const sub=price*qty;
  if(sub>=100)return{txt:'Envío gratis',cls:'text-wa'}; return{txt:'+5 €',cls:'text-riveu-silver'};}
@@ -222,16 +238,78 @@ function cardHTML(p){
  return `<article class="shop-card corners relative flex flex-col border border-white/10 bg-carbon-850" data-qty="1" data-price="${p.price||0}"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<span class="absolute left-3 top-3 border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider">${stockText}</span><span class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${p.sku}</span></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">IVA incl.</span></div>${qty}${btn}</div></article>`;
 }
 
+/* ===== BUSCADOR INTELIGENTE + SCHEMA DINÁMICO ===== */
+let BATT_ALL=[];
+let BATT_SEARCH='';
+
+function injectSchema(list){
+  var old=document.getElementById('dynSchema'); if(old) old.remove();
+  var graph=list.slice(0,20).map(function(p,i){
+    return {
+      "@type":"Product","position":i+1,
+      "name":p.title,
+      "sku":p.sku,
+      "image":p.image||("https://www.riveu.es/img/"+String(p.sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,'')+".jpg"),
+      "offers":{
+        "@type":"Offer",
+        "priceCurrency":"EUR",
+        "price":(p.price!==null)?p.price.toFixed(2):"0.00",
+        "availability":(p.stock>0)?"https://schema.org/InStock":"https://schema.org/OutOfStock",
+        "url":"https://www.riveu.es/tienda/baterias-patinetes-electricos"
+      }
+    };
+  });
+  if(!graph.length) return;
+  var s=document.createElement('script');
+  s.type='application/ld+json'; s.id='dynSchema';
+  s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Baterías para patinetes eléctricos","itemListElement":graph});
+  document.head.appendChild(s);
+}
+
+function matchProduct(p, tokens){
+  if(!tokens.length) return true;
+  const hay=norm(p.title+' '+p.sku+' '+(p.description||''));
+  return tokens.every(tk=>{
+    // Quita una 's' final si existe (baterías → batería)
+    const b=tk.replace(/s$/,'');
+    const esc=b.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    // Busca el token aunque esté incompleto: "ba" encuentra "batería"
+    return new RegExp('(^|[^a-z0-9])'+esc).test(hay);
+  });
+}
+
+function renderHints(){
+  const hints=['Xiaomi','Ninebot','Dualtron','Kaabo','Cecotec','48V','52V','celdas','BMS','cargador'];
+  byId('battHints').innerHTML=hints.map(h=>`<button type="button" data-hint="${h}" class="border border-white/15 bg-carbon-900 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">${h}</button>`).join('');
+}
+
+function renderBatteries(){
+  const grid=byId('battGrid');
+  const empty=byId('battEmpty');
+  const nq=norm(BATT_SEARCH);
+  const tokens=nq.split(/\s+/).filter(t=>t.length>=2);
+  const list=BATT_ALL.filter(p=>matchProduct(p,tokens));
+  byId('count').textContent='('+list.length+' de '+BATT_ALL.length+')';
+  if(!list.length){
+    grid.innerHTML='';
+    empty.hidden=false;
+    injectSchema([]);
+    return;
+  }
+  empty.hidden=true;
+  grid.innerHTML=list.map(cardHTML).join('');
+  injectSchema(list);
+}
+
 async function load(){
- const grid=byId('battGrid');
- try{
-  const r=await fetch('/productos.csv?t='+Date.now(),{cache:'no-store'});
-  const rows=parseCSV(await r.text());
-  const batt=normalizeProducts(rows).filter(isBattery);
-  byId('count').textContent='('+batt.length+')';
-  if(!batt.length){grid.innerHTML='<p class="col-span-full py-10 text-center font-mono text-sm text-riveu-steel">No hay baterías ahora mismo. Escríbenos por WhatsApp.</p>';return;}
-  grid.innerHTML=batt.map(cardHTML).join('');
- }catch(e){grid.innerHTML='<p class="col-span-full py-10 text-center font-mono text-sm text-riveu-steel">No se pudo cargar el catálogo. Escríbenos por WhatsApp.</p>';}
+  const grid=byId('battGrid');
+  try{
+    const r=await fetch('/productos.csv?t='+Date.now(),{cache:'no-store'});
+    const rows=parseCSV(await r.text());
+    BATT_ALL=normalizeProducts(rows).filter(isBattery);
+    if(!BATT_ALL.length){grid.innerHTML='<p class="col-span-full py-10 text-center font-mono text-sm text-riveu-steel">No hay baterías ahora mismo. Escríbenos por WhatsApp.</p>';return;}
+    renderBatteries();
+  }catch(e){grid.innerHTML='<p class="col-span-full py-10 text-center font-mono text-sm text-riveu-steel">No se pudo cargar el catálogo. Escríbenos por WhatsApp.</p>';}
 }
 
 /* ===== PAGO STRIPE + CANTIDAD + ZONA (igual que la principal) ===== */
@@ -258,12 +336,29 @@ function ensureGate(){if(document.getElementById('zoneGate'))return;const g=docu
  g.querySelector('#gateClose').addEventListener('click',()=>{g.style.display='none';});}
 function openZoneGate(sku,qty,btn){ensureGate();pendingPay={sku,qty,btn};document.getElementById('zoneGate').style.display='flex';}
 
+/* ===== EVENTOS ===== */
 document.addEventListener('click',async (e)=>{
+ // Hints rápidos (chips)
+ const hint=e.target.closest('[data-hint]');
+ if(hint){const s=byId('battSearch');s.value=hint.getAttribute('data-hint');BATT_SEARCH=s.value;byId('battClear').hidden=!s.value;renderBatteries();s.focus();return;}
+ // Botón limpiar búsqueda
+ if(e.target.closest('#battClear')){const s=byId('battSearch');s.value='';BATT_SEARCH='';byId('battClear').hidden=true;renderBatteries();s.focus();return;}
+ // Cantidad +/-
  const qm=e.target.closest('[data-qminus]'),qp=e.target.closest('[data-qplus]');
  if(qm||qp){const card=e.target.closest('.shop-card');if(!card)return;let q=parseInt(card.dataset.qty||'1',10)||1;q=qp?q+1:Math.max(1,q-1);card.dataset.qty=String(q);const lab=card.querySelector('[data-qty]');if(lab)lab.textContent=q;const price=parseFloat(card.dataset.price||'0');const si=shipInfoFor(price,q);const sh=card.querySelector('[data-ship]');if(sh){sh.textContent=si.txt;sh.className='font-mono text-[11px] '+si.cls;}return;}
+ // Botón pagar
  const btn=e.target.closest('[data-pay]');if(!btn)return;const card=btn.closest('.shop-card');const qty=Math.max(1,parseInt(card&&card.dataset.qty||'1',10)||1);openZoneGate(btn.getAttribute('data-pay'),qty,btn);
 });
 
+document.addEventListener('input',(e)=>{
+ if(e.target.id==='battSearch'){
+   BATT_SEARCH=e.target.value;
+   byId('battClear').hidden=!e.target.value;
+   renderBatteries();
+ }
+});
+
+renderHints();
 load();
 </script>
 </body>
