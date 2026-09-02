@@ -42,24 +42,41 @@
   .corners>.corner-bl{bottom:0;left:0;border-right:0;border-top:0}.corners>.corner-br{bottom:0;right:0;border-left:0;border-top:0}
   .corners:hover::before,.corners:hover::after,.corners:hover>.corner-bl,.corners:hover>.corner-br{border-color:#e53935}
   .shop-card{transition:all .3s ease}.shop-card:hover{transform:translateY(-6px);border-color:rgba(229,57,53,.7);box-shadow:0 20px 60px -20px rgba(229,57,53,.4)}
-  .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:140;background:rgba(18,18,18,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.1);transform:translateY(100%);transition:transform .4s ease}
-  .cookie-banner.show{transform:translateY(0)}
 </style>
+
+<!-- ===== SCHEMA CORREGIDO: ya sin el error crítico de offers/review/aggregateRating ===== -->
 <script type="application/ld+json">
 { "@context":"https://schema.org","@graph":[
   { "@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.riveu.es/"},
     {"@type":"ListItem","position":2,"name":"Tienda","item":"https://www.riveu.es/#botiga"},
     {"@type":"ListItem","position":3,"name":"Baterías","item":"https://www.riveu.es/tienda/baterias-patinetes-electricos"} ]},
-  { "@type":"ItemList","name":"Baterías para patinetes eléctricos","itemListElement":[
-    {"@type":"Product","position":1,"name":"Baterías para patinetes eléctricos","item":"https://www.riveu.es/tienda/baterias-patinetes-electricos"} ]}
+  { "@type":"WebPage","@id":"https://www.riveu.es/tienda/baterias-patinetes-electricos#webpage",
+    "url":"https://www.riveu.es/tienda/baterias-patinetes-electricos",
+    "name":"Baterías para Patinetes Eléctricos con Garantía | Riveu Girona",
+    "description":"Baterías nuevas y reconstruidas para Xiaomi, Ninebot, Dualtron y más. Celdas 21700, BMS verificado, garantía de taller y envío 24-48 h a toda España.",
+    "inLanguage":["es-ES","ca-ES"],
+    "isPartOf":{"@type":"WebSite","@id":"https://www.riveu.es/#website","url":"https://www.riveu.es/","name":"Riveu"} },
+  { "@type":"MerchantReturnPolicy","@id":"https://www.riveu.es/#returns",
+    "applicableCountry":"ES",
+    "returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays":14,
+    "returnMethod":"https://schema.org/ReturnByMail",
+    "returnFees":"https://schema.org/FreeReturn" },
+  { "@type":"OfferShippingDetails","@id":"https://www.riveu.es/#shipping",
+    "shippingRate":{"@type":"MonetaryAmount","value":5,"currency":"EUR"},
+    "shippingDestination":{"@type":"DefinedRegion","addressCountry":"ES"},
+    "deliveryTime":{"@type":"ShippingDeliveryTime",
+      "handlingTime":{"@type":"QuantitativeValue","minValue":0,"maxValue":1,"unitCode":"DAY"},
+      "transitTime":{"@type":"QuantitativeValue","minValue":1,"maxValue":2,"unitCode":"DAY"}} }
 ]}
 </script>
 </head>
+
 <body class="bg-carbon-950 font-sans text-white antialiased">
 
-<!-- ===== BUSCADOR FLOTANTE: FINO, FIJO Y PEGADO ARRIBA (NO ESTORBA) ===== -->
-<div id="searchBar" class="fixed inset-x-0 top-0 z-[70] border-b border-white/10 bg-carbon-950/90 shadow-[0_4px_20px_rgba(0,0,0,.45)] backdrop-blur-md">
+<!-- ===== BUSCADOR FLOTANTE: fino, fijo arriba y SIN tapar las fotos ===== -->
+<div id="searchBar" class="fixed inset-x-0 top-0 z-[70] border-b border-white/10 bg-carbon-950/90 backdrop-blur-md">
   <div class="mx-auto flex h-12 max-w-7xl items-center gap-2 px-4 sm:px-8">
     <span aria-hidden="true" class="pointer-events-none text-sm text-riveu-steel">🔍</span>
     <div class="relative flex-1">
@@ -69,161 +86,158 @@
       <button id="battClear" type="button" hidden class="absolute right-1.5 top-1/2 grid size-6 -translate-y-1/2 place-items-center rounded-full border border-white/15 text-riveu-steel hover:border-riveu-red hover:text-white">✕</button>
     </div>
   </div>
-  <!-- Chips de ayuda: ocultos por defecto, se despliegan al tocar el buscador -->
   <div id="battHints" class="mx-auto hidden max-w-7xl flex-wrap gap-2 px-4 pb-3 pt-1 sm:px-8"></div>
 </div>
 
-<div class="hazard mt-12 h-2" aria-hidden="true"></div>
+<div class="pt-12">
+  <div class="hazard h-2" aria-hidden="true"></div>
 
-<header class="border-b border-white/10 bg-carbon-950/85 backdrop-blur-md">
-  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
-    <a href="../" class="flex items-center gap-3" aria-label="Riveu · Inicio">
-      <img src="../logo-riveu.jpg" alt="Riveu · Taller de patinetes eléctricos en Girona" width="160" height="120" class="h-10 w-auto mix-blend-lighten sm:h-12" />
-      <span class="hidden font-mono text-[9px] tracking-[0.32em] text-riveu-steel md:block">· GIRONA</span>
-    </a>
-    <div class="flex items-center gap-2 sm:gap-3">
-      <a href="tel:+34633624345" class="hidden items-center gap-2 border border-white/15 px-3 py-1.5 font-mono text-xs tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white lg:flex">📞 <span data-phone-text>633 62 43 45</span></a>
-      <a href="../#botiga" class="hidden items-center gap-2 border border-white/15 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white md:flex" data-i18n="nav.back">← Tienda</a>
-      <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20quiero%20comprar%20una%20bater%C3%ADa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-wa/50 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-wa hover:bg-wa hover:text-carbon-950">WhatsApp</a>
-      <nav aria-label="Idioma" class="flex divide-x divide-white/15 border border-white/15 font-mono text-xs">
-        <button data-lang-btn="ca" class="px-3 py-1.5 uppercase tracking-widest transition-colors hover:text-white">CA</button>
-        <button data-lang-btn="es" class="px-3 py-1.5 uppercase tracking-widest transition-colors hover:text-white">ES</button>
-      </nav>
-    </div>
-  </div>
-</header>
-
-<!-- HERO SEO -->
-<section class="blueprint-grid relative overflow-hidden py-14 sm:py-20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-8">
-    <nav aria-label="Migas de pan" class="font-mono text-[10px] uppercase tracking-widest text-riveu-steel">
-      <a href="../" data-i18n="nav.home">Inicio</a> <span class="text-riveu-red">/</span>
-      <a href="../#botiga" data-i18n="nav.shop">Tienda</a> <span class="text-riveu-red">/</span>
-      <span class="text-riveu-silver" data-i18n="nav.batteries">Baterías</span>
-    </nav>
-    <h1 class="mt-6 max-w-4xl font-display font-bold uppercase leading-[0.98] [font-size:clamp(1.8rem,5.5vw,3.2rem)]">
-      <span data-i18n="hero.title1">Baterías para patinetes eléctricos</span><br /><span class="text-riveu-red" data-i18n="hero.title2">con garantía de taller</span>
-    </h1>
-    <p class="mt-5 max-w-2xl text-base leading-relaxed text-riveu-silver" data-i18n="hero.subtitle" data-i18n-html="1">
-      Baterías nuevas y reconstruidas para <strong>Xiaomi, Ninebot, Dualtron, Kaabo, Cecotec</strong> y bicicletas eléctricas.
-      Celdas verificadas en banco de pruebas, BMS protegido y envío en <strong>24–48 h a toda España</strong>.
-      Compra online con <strong>tarjeta, Apple Pay, Google Pay o Klarna</strong>.
-    </p>
-    <div class="mt-6 flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
-      <span class="border border-wa/40 bg-wa/10 px-3 py-1.5 text-wa" data-i18n="hero.badge1">✔ Garantía de taller</span>
-      <span class="border border-wa/40 bg-wa/10 px-3 py-1.5 text-wa" data-i18n="hero.badge2">🚚 Envío 24–48 h · gratis ≥100 €</span>
-      <span class="border border-wa/40 bg-wa/10 px-3 py-1.5 text-wa" data-i18n="hero.badge3">💳 Pago seguro con tarjeta</span>
-      <span class="border border-riveu-red/40 bg-riveu-red/10 px-3 py-1.5 text-riveu-red" data-i18n="hero.badge4">IVA incluido</span>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTOS (sin caja de búsqueda dentro: el buscador vive arriba flotante) -->
-<section class="border-t border-white/10 py-16 sm:py-20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-8">
-    <div class="flex items-center gap-3">
-      <span class="text-2xl">🔋</span>
-      <h2 class="font-display text-3xl font-bold uppercase text-white sm:text-4xl" data-i18n="products.title">Baterías en stock</h2>
-      <span id="count" class="font-mono text-xs text-riveu-steel"></span>
-    </div>
-    <p class="mt-3 max-w-2xl text-sm text-riveu-steel" data-i18n="products.subtitle">¿No ves tu modelo? Escríbenos por WhatsApp y te lo conseguimos en 24–72 h. Elige cantidad y paga con tarjeta.</p>
-
-    <div id="battGrid" class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="col-span-full py-12 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel" data-i18n="products.loading">Cargando baterías…</div>
-    </div>
-
-    <p id="battEmpty" hidden class="mt-10 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel" data-i18n="products.empty">Ninguna batería coincide con tu búsqueda. Escríbenos por WhatsApp y te la buscamos.</p>
-  </div>
-</section>
-
-<!-- TEXTO SEO -->
-<section class="border-t border-white/10 bg-carbon-900/60 py-16 sm:py-20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-14">
-    <div>
-      <h2 class="font-display text-2xl font-bold uppercase text-white sm:text-3xl" data-i18n="seo.title1">Comprar batería de patinete eléctrico online</h2>
-      <p class="mt-5 text-sm leading-relaxed text-riveu-silver" data-i18n="seo.text1" data-i18n-html="1">La batería es el componente que decide cuántos kilómetros disfrutas de tu patinete. Con el tiempo las celdas pierden capacidad y notas que el patinete se apaga antes, pierde potencia en las cuestas o el indicador de carga baila. En <strong>Riveu</strong> somos taller especializado en movilidad eléctrica en Girona y por eso nuestra tienda de baterías es diferente: <strong>cada batería se verifica en banco de pruebas</strong> antes de enviarse o entregarse.</p>
-      <p class="mt-4 text-sm leading-relaxed text-riveu-steel" data-i18n="seo.text2" data-i18n-html="1">Trabajamos con baterías originales y compatibles para <strong>Xiaomi M365, Pro 2, Mi 3, Ninebot Max G30, ES2, ES4, Dualtron, Kaabo, Cecotec, SmartGyro</strong> y patinetes de gama alta con sistemas de 48V y 52V. Si tu batería ya no existe en el mercado, la <strong>reconstruimos con celdas 21700</strong> de primera calidad (Samsung, LG, Molicel) y un BMS con todas las protecciones.</p>
-      <h3 class="mt-6 font-display text-lg font-semibold uppercase text-white" data-i18n="seo.title2">Celdas, BMS y seguridad</h3>
-      <p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="seo.text3">Una batería barata sin protecciones es un riesgo. Todas nuestras baterías incluyen BMS con protección contra sobrecarga, sobredescarga, cortocircuito y temperatura. Las soldaduras se realizan con níquel puro y las probamos bajo carga real antes de salir del taller.</p>
-    </div>
-    <div>
-      <h3 class="font-display text-lg font-semibold uppercase text-white" data-i18n="seo.title3">Envío a toda España en 24–48 h</h3>
-      <p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="seo.text4" data-i18n-html="1">Compra online y recibe tu batería en 24–48 h en España peninsular. Envío gratis a partir de 100 €. Si estás en <strong>Girona, Salt, Banyoles, Figueres u Olot</strong>, puedes recogerla en el taller (Carrer Finestrelles, 9) y te la dejamos montada y calibrada en el mismo día.</p>
-      <h3 class="mt-6 font-display text-lg font-semibold uppercase text-white" data-i18n="seo.title4">¿Cuándo cambiar la batería?</h3>
-      <ul class="mt-3 space-y-2 text-sm text-riveu-steel">
-        <li class="flex gap-2"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="seo.list1">La autonomía ha caído más de un 30% respecto a cuando era nueva.</span></li>
-        <li class="flex gap-2"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="seo.list2">El patinete se apaga al acelerar o en cuestas.</span></li>
-        <li class="flex gap-2"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="seo.list3">El cargador no corta nunca o la batería se calienta en exceso.</span></li>
-        <li class="flex gap-2"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="seo.list4">Han pasado más de 3–4 años o 500 ciclos de carga.</span></li>
-      </ul>
-      <div class="corners relative mt-8 border border-riveu-red/40 bg-carbon-850 p-6"><span class="corner-bl"></span><span class="corner-br"></span>
-        <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-red" data-i18n="seo.ctaTitle">¿Dudas de compatibilidad?</p>
-        <p class="mt-2 text-sm text-riveu-silver" data-i18n="seo.ctaText">Mándanos una foto de tu batería antigua por WhatsApp y te confirmamos el modelo exacto al momento.</p>
-        <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20os%20env%C3%ADo%20una%20foto%20de%20mi%20bater%C3%ADa%20para%20confirmar%20compatibilidad" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 border border-wa/60 px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa hover:bg-wa hover:text-[#052e16]" data-i18n="seo.ctaBtn">Consultar por WhatsApp</a>
+  <header class="border-b border-white/10 bg-carbon-950/85 backdrop-blur-md">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
+      <a href="../" class="flex items-center gap-3" aria-label="Riveu · Inicio">
+        <img src="../logo-riveu.jpg" alt="Riveu · Taller de patinetes eléctricos en Girona" width="160" height="120" class="h-10 w-auto mix-blend-lighten sm:h-12" />
+        <span class="hidden font-mono text-[9px] tracking-[0.32em] text-riveu-steel md:block">· GIRONA</span>
+      </a>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="tel:+34633624345" class="hidden items-center gap-2 border border-white/15 px-3 py-1.5 font-mono text-xs tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white lg:flex">📞 <span data-phone-text>633 62 43 45</span></a>
+        <a href="../#botiga" class="hidden items-center gap-2 border border-white/15 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white md:flex" data-i18n="nav.back">← Tienda</a>
+        <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20quiero%20comprar%20una%20bater%C3%ADa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-wa/50 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-wa hover:bg-wa hover:text-carbon-950">WhatsApp</a>
+        <nav aria-label="Idioma" class="flex divide-x divide-white/15 border border-white/15 font-mono text-xs">
+          <button data-lang-btn="ca" class="px-3 py-1.5 uppercase tracking-widest transition-colors hover:text-white">CA</button>
+          <button data-lang-btn="es" class="px-3 py-1.5 uppercase tracking-widest transition-colors hover:text-white">ES</button>
+        </nav>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- FAQ -->
-<section class="border-t border-white/10 py-16 sm:py-20">
-  <div class="mx-auto max-w-4xl px-4 sm:px-8">
-    <h2 class="font-display text-2xl font-bold uppercase text-white sm:text-3xl" data-i18n="faq.title">Preguntas frecuentes sobre baterías</h2>
-    <div class="mt-8 space-y-4">
-      <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q1">¿Cuánto dura una batería de patinete eléctrico?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a1">Entre 300 y 500 ciclos de carga, es decir, 2–4 años de uso normal. Si la autonomía ha caído en picado, es hora de cambiarla o reconstruirla.</p></details>
-      <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q2">¿Puedo aumentar la autonomía de mi patinete?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a2">Sí. Reconstruimos tu batería con celdas 21700 de alta capacidad y puedes ganar entre un 20% y un 40% de autonomía respecto a la original.</p></details>
-      <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q3">¿Qué garantía tienen las baterías?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a3">Garantía de taller sobre celdas, soldaduras y BMS. Todas se verifican en banco de pruebas antes del envío o la entrega.</p></details>
-      <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q4">¿Enviáis baterías a toda España?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a4">Sí, 24–48 h a España peninsular, gratis a partir de 100 €. También recogida y montaje en nuestro taller de Girona.</p></details>
-      <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q5">¿Cómo sé qué batería es la mía?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a5">Dinos el modelo de tu patinete o mándanos una foto de la batería antigua por WhatsApp y te confirmamos compatibilidad al momento.</p></details>
+  <!-- HERO -->
+  <section class="blueprint-grid relative overflow-hidden py-14 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-8">
+      <nav aria-label="Migas de pan" class="font-mono text-[10px] uppercase tracking-widest text-riveu-steel">
+        <a href="../" data-i18n="nav.home">Inicio</a> <span class="text-riveu-red">/</span>
+        <a href="../#botiga" data-i18n="nav.shop">Tienda</a> <span class="text-riveu-red">/</span>
+        <span class="text-riveu-silver" data-i18n="nav.batteries">Baterías</span>
+      </nav>
+      <h1 class="mt-6 max-w-4xl font-display font-bold uppercase leading-[0.98] [font-size:clamp(1.8rem,5.5vw,3.2rem)]">
+        <span data-i18n="hero.title1">Baterías para patinetes eléctricos</span><br /><span class="text-riveu-red" data-i18n="hero.title2">con garantía de taller</span>
+      </h1>
+      <p class="mt-5 max-w-2xl text-base leading-relaxed text-riveu-silver" data-i18n="hero.subtitle" data-i18n-html="1">
+        Baterías nuevas y reconstruidas para <strong>Xiaomi, Ninebot, Dualtron, Kaabo, Cecotec</strong> y bicicletas eléctricas.
+        Celdas verificadas en banco de pruebas, BMS protegido y envío en <strong>24–48 h a toda España</strong>.
+        Compra online con <strong>tarjeta, Apple Pay, Google Pay o Klarna</strong>.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2 font-mono text-[10px] uppercase tracking-wider">
+        <span class="border border-wa/40 bg-wa/10 px-3 py-1.5 text-wa" data-i18n="hero.badge1">✔ Garantía de taller</span>
+        <span class="border border-wa/40 bg-wa/10 px-3 py-1.5 text-wa" data-i18n="hero.badge2">🚚 Envío 24–48 h · gratis ≥100 €</span>
+        <span class="border border-wa/40 bg-wa/10 px-3 py-1.5 text-wa" data-i18n="hero.badge3">💳 Pago seguro con tarjeta</span>
+        <span class="border border-riveu-red/40 bg-riveu-red/10 px-3 py-1.5 text-riveu-red" data-i18n="hero.badge4">IVA incluido</span>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA FINAL -->
-<section class="relative overflow-hidden bg-riveu-redDark">
-  <div class="hazard h-2" aria-hidden="true"></div>
-  <div class="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 py-14 sm:px-8 md:flex-row md:items-center md:justify-between">
-    <div>
-      <h2 class="max-w-xl font-display text-2xl font-bold uppercase text-white sm:text-3xl" data-i18n="cta.title">Tu batería nueva, rodando en 24–48 horas.</h2>
-      <p class="mt-3 max-w-lg text-sm text-white/80" data-i18n="cta.subtitle">Escríbenos por WhatsApp con el modelo de tu patinete y te confirmamos precio y disponibilidad al momento.</p>
+  <!-- PRODUCTOS -->
+  <section class="border-t border-white/10 py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-8">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl">🔋</span>
+        <h2 class="font-display text-3xl font-bold uppercase text-white sm:text-4xl" data-i18n="products.title">Baterías en stock</h2>
+        <span id="count" class="font-mono text-xs text-riveu-steel"></span>
+      </div>
+      <p class="mt-3 max-w-2xl text-sm text-riveu-steel" data-i18n="products.subtitle">¿No ves tu modelo? Escríbenos por WhatsApp y te lo conseguimos en 24–72 h. Elige cantidad y paga con tarjeta.</p>
+      <div id="battGrid" class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="col-span-full py-12 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel" data-i18n="products.loading">Cargando baterías…</div>
+      </div>
+      <p id="battEmpty" hidden class="mt-10 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel" data-i18n="products.empty">Ninguna batería coincide con tu búsqueda. Escríbenos por WhatsApp y te la buscamos.</p>
     </div>
-    <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20quiero%20comprar%20una%20bater%C3%ADa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-wa px-8 py-5 font-display text-sm font-bold uppercase tracking-wider text-[#052e16] hover:-translate-y-1" data-i18n="cta.btn">💬 Pedir por WhatsApp</a>
-  </div>
-  <div class="hazard h-2" aria-hidden="true"></div>
-</section>
+  </section>
 
-<footer class="border-t border-white/10 bg-carbon-950 py-10">
-  <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-8 md:flex-row md:items-center md:justify-between">
-    <div>
-      <img src="../logo-riveu.jpg" alt="Riveu" width="200" height="150" class="h-12 w-auto mix-blend-lighten" />
-      <p class="mt-3 text-xs text-riveu-steel">Carrer Finestrelles, 9 · 17006 Girona · <span data-phone-text>633 62 43 45</span></p>
+  <!-- TEXTO SEO -->
+  <section class="border-t border-white/10 bg-carbon-900/60 py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-2 lg:gap-14">
+      <div>
+        <h2 class="font-display text-2xl font-bold uppercase text-white sm:text-3xl" data-i18n="seo.title1">Comprar batería de patinete eléctrico online</h2>
+        <p class="mt-5 text-sm leading-relaxed text-riveu-silver" data-i18n="seo.text1" data-i18n-html="1">La batería es el componente que decide cuántos kilómetros disfrutas de tu patinete. Con el tiempo las celdas pierden capacidad y notas que el patinete se apaga antes, pierde potencia en las cuestas o el indicador de carga baila. En <strong>Riveu</strong> somos taller especializado en movilidad eléctrica en Girona y por eso nuestra tienda de baterías es diferente: <strong>cada batería se verifica en banco de pruebas</strong> antes de enviarse o entregarse.</p>
+        <p class="mt-4 text-sm leading-relaxed text-riveu-steel" data-i18n="seo.text2" data-i18n-html="1">Trabajamos con baterías originales y compatibles para <strong>Xiaomi M365, Pro 2, Mi 3, Ninebot Max G30, ES2, ES4, Dualtron, Kaabo, Cecotec, SmartGyro</strong> y patinetes de gama alta con sistemas de 48V y 52V. Si tu batería ya no existe en el mercado, la <strong>reconstruimos con celdas 21700</strong> de primera calidad (Samsung, LG, Molicel) y un BMS con todas las protecciones.</p>
+        <h3 class="mt-6 font-display text-lg font-semibold uppercase text-white" data-i18n="seo.title2">Celdas, BMS y seguridad</h3>
+        <p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="seo.text3">Una batería barata sin protecciones es un riesgo. Todas nuestras baterías incluyen BMS con protección contra sobrecarga, sobredescarga, cortocircuito y temperatura. Las soldaduras se realizan con níquel puro y las probamos bajo carga real antes de salir del taller.</p>
+      </div>
+      <div>
+        <h3 class="font-display text-lg font-semibold uppercase text-white" data-i18n="seo.title3">Envío a toda España en 24–48 h</h3>
+        <p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="seo.text4" data-i18n-html="1">Compra online y recibe tu batería en 24–48 h en España peninsular. Envío gratis a partir de 100 €. Si estás en <strong>Girona, Salt, Banyoles, Figueres u Olot</strong>, puedes recogerla en el taller (Carrer Finestrelles, 9) y te la dejamos montada y calibrada en el mismo día.</p>
+        <h3 class="mt-6 font-display text-lg font-semibold uppercase text-white" data-i18n="seo.title4">¿Cuándo cambiar la batería?</h3>
+        <ul class="mt-3 space-y-2 text-sm text-riveu-steel">
+          <li class="flex gap-2"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="seo.list1">La autonomía ha caído más de un 30% respecto a cuando era nueva.</span></li>
+          <li class="flex gap-2"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="seo.list2">El patinete se apaga al acelerar o en cuestas.</span></li>
+          <li class="flex gap-2"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="seo.list3">El cargador no corta nunca o la batería se calienta en exceso.</span></li>
+          <li class="flex gap-2"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span><span data-i18n="seo.list4">Han pasado más de 3–4 años o 500 ciclos de carga.</span></li>
+        </ul>
+        <div class="corners relative mt-8 border border-riveu-red/40 bg-carbon-850 p-6"><span class="corner-bl"></span><span class="corner-br"></span>
+          <p class="font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-red" data-i18n="seo.ctaTitle">¿Dudas de compatibilidad?</p>
+          <p class="mt-2 text-sm text-riveu-silver" data-i18n="seo.ctaText">Mándanos una foto de tu batería antigua por WhatsApp y te confirmamos el modelo exacto al momento.</p>
+          <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20os%20env%C3%ADo%20una%20foto%20de%20mi%20bater%C3%ADa%20para%20confirmar%20compatibilidad" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 border border-wa/60 px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa hover:bg-wa hover:text-[#052e16]" data-i18n="seo.ctaBtn">Consultar por WhatsApp</a>
+        </div>
+      </div>
     </div>
-    <ul class="flex flex-wrap gap-4 font-mono text-[11px] uppercase tracking-wider text-riveu-steel">
-      <li><a href="../" data-i18n="nav.home">Inicio</a></li>
-      <li><a href="../#botiga" data-i18n="nav.shop">Tienda</a></li>
-      <li><a href="../#serveis" data-i18n="nav.services">Servicios</a></li>
-      <li><a href="../#faq">FAQ</a></li>
-    </ul>
-  </div>
-</footer>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-t border-white/10 py-16 sm:py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-8">
+      <h2 class="font-display text-2xl font-bold uppercase text-white sm:text-3xl" data-i18n="faq.title">Preguntas frecuentes sobre baterías</h2>
+      <div class="mt-8 space-y-4">
+        <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q1">¿Cuánto dura una batería de patinete eléctrico?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a1">Entre 300 y 500 ciclos de carga, es decir, 2–4 años de uso normal. Si la autonomía ha caído en picado, es hora de cambiarla o reconstruirla.</p></details>
+        <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q2">¿Puedo aumentar la autonomía de mi patinete?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a2">Sí. Reconstruimos tu batería con celdas 21700 de alta capacidad y puedes ganar entre un 20% y un 40% de autonomía respecto a la original.</p></details>
+        <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q3">¿Qué garantía tienen las baterías?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a3">Garantía de taller sobre celdas, soldaduras y BMS. Todas se verifican en banco de pruebas antes del envío o la entrega.</p></details>
+        <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q4">¿Enviáis baterías a toda España?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a4">Sí, 24–48 h a España peninsular, gratis a partir de 100 €. También recogida y montaje en nuestro taller de Girona.</p></details>
+        <details class="group border border-white/10 bg-carbon-850 p-5"><summary class="cursor-pointer font-display text-base font-semibold uppercase text-white" data-i18n="faq.q5">¿Cómo sé qué batería es la mía?</summary><p class="mt-3 text-sm leading-relaxed text-riveu-steel" data-i18n="faq.a5">Dinos el modelo de tu patinete o mándanos una foto de la batería antigua por WhatsApp y te confirmamos compatibilidad al momento.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="relative overflow-hidden bg-riveu-redDark">
+    <div class="hazard h-2" aria-hidden="true"></div>
+    <div class="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 py-14 sm:px-8 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="max-w-xl font-display text-2xl font-bold uppercase text-white sm:text-3xl" data-i18n="cta.title">Tu batería nueva, rodando en 24–48 horas.</h2>
+        <p class="mt-3 max-w-lg text-sm text-white/80" data-i18n="cta.subtitle">Escríbenos por WhatsApp con el modelo de tu patinete y te confirmamos precio y disponibilidad al momento.</p>
+      </div>
+      <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20quiero%20comprar%20una%20bater%C3%ADa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-wa px-8 py-5 font-display text-sm font-bold uppercase tracking-wider text-[#052e16] hover:-translate-y-1" data-i18n="cta.btn">💬 Pedir por WhatsApp</a>
+    </div>
+    <div class="hazard h-2" aria-hidden="true"></div>
+  </section>
+
+  <footer class="border-t border-white/10 bg-carbon-950 py-10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-8 md:flex-row md:items-center md:justify-between">
+      <div>
+        <img src="../logo-riveu.jpg" alt="Riveu" width="200" height="150" class="h-12 w-auto mix-blend-lighten" />
+        <p class="mt-3 text-xs text-riveu-steel">Carrer Finestrelles, 9 · 17006 Girona · <span data-phone-text>633 62 43 45</span></p>
+      </div>
+      <ul class="flex flex-wrap gap-4 font-mono text-[11px] uppercase tracking-wider text-riveu-steel">
+        <li><a href="../" data-i18n="nav.home">Inicio</a></li>
+        <li><a href="../#botiga" data-i18n="nav.shop">Tienda</a></li>
+        <li><a href="../#serveis" data-i18n="nav.services">Servicios</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
 
 <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20quiero%20comprar%20una%20bater%C3%ADa" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" class="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-wa px-4 py-3 font-display text-sm font-bold text-[#052e16] shadow-lg">💬 <span data-i18n="fab.label">Baterías</span></a>
 
-<!-- BANNER DE COOKIES -->
-<div id="cookieBanner" class="cookie-banner">
-  <div class="mx-auto max-w-7xl px-4 py-4 sm:px-8">
-    <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <p class="text-xs leading-relaxed text-riveu-silver sm:text-sm" data-i18n="cookies.text">🍪 Usamos cookies propias y de terceros para mejorar tu experiencia y realizar analíticas anónimas. Al continuar navegando aceptas su uso.</p>
-      <div class="flex shrink-0 flex-wrap gap-2">
-        <button type="button" id="cookieReject" class="border border-white/20 px-4 py-2 font-mono text-xs uppercase tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white" data-i18n="cookies.reject">Rechazar</button>
-        <button type="button" id="cookieAccept" class="border-2 border-wa bg-wa px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider text-carbon-950 hover:brightness-110" data-i18n="cookies.accept">Aceptar</button>
-      </div>
+<!-- COOKIES -->
+<div id="cookieBanner" class="fixed inset-x-0 bottom-0 z-[80] hidden border-t border-white/10 bg-carbon-950/95 p-4 backdrop-blur-md sm:p-5">
+  <div class="mx-auto flex max-w-7xl flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+    <p class="text-xs leading-relaxed text-riveu-steel sm:text-sm" data-i18n="cookies.text">🍪 Usamos cookies propias y de terceros para mejorar tu experiencia y realizar analíticas anónimas. Al continuar navegando aceptas su uso.</p>
+    <div class="flex shrink-0 flex-wrap gap-2">
+      <button type="button" id="cookieReject" class="border border-white/20 px-4 py-2 font-mono text-xs uppercase tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white" data-i18n="cookies.reject">Rechazar</button>
+      <button type="button" id="cookieAccept" class="border-2 border-wa bg-wa px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider text-carbon-950 hover:brightness-110" data-i18n="cookies.accept">Aceptar</button>
     </div>
   </div>
 </div>
 
 <script>
-const WA_PHONE='34633624345', PHONE_TEL='+34633624345', PHONE_DISPLAY='633 62 43 45';
+const WA_PHONE='34633624345';
 const byId=(id)=>document.getElementById(id);
 const lang=()=>document.documentElement.lang||'es';
 
@@ -264,23 +278,23 @@ function applyI18n(l){
   document.querySelectorAll('[data-i18n]').forEach(el=>{const v=getByPath(I18N[l],el.getAttribute('data-i18n'));if(v===undefined)return;if(el.hasAttribute('data-i18n-html'))el.innerHTML=v;else el.textContent=v;});
   document.querySelectorAll('[data-i18n-attr]').forEach(el=>{const v=getByPath(I18N[l],el.getAttribute('data-i18n'));if(v!==undefined)el.setAttribute('placeholder',v);});
   document.querySelectorAll('[data-lang-btn]').forEach(b=>{const a=b.getAttribute('data-lang-btn')===l;b.classList.toggle('bg-riveu-red',a);b.classList.toggle('text-white',a);b.classList.toggle('text-riveu-steel',!a);});
-  document.querySelectorAll('[data-phone-text]').forEach(el=>el.textContent=PHONE_DISPLAY);
+  document.querySelectorAll('[data-phone-text]').forEach(el=>el.textContent='633 62 43 45');
   if(BATT_ALL.length)renderBatteries();
 }
 
 /* ===== COOKIES ===== */
-function loadAnalytics(){ if(window.__siLoaded)return;window.__siLoaded=true;
+function loadAnalytics(){ if(window.__siLoaded)return; window.__siLoaded=true;
   window.si=window.si||function(){(window.si.q=window.si.q||[]).push(arguments)};
-  const s=document.createElement('script');s.src='/_vercel/insights/script.js';s.defer=true;document.head.appendChild(s);}
+  var s=document.createElement('script'); s.src='/_vercel/insights/script.js'; s.defer=true; document.head.appendChild(s); }
 function initCookies(){
   let c=null;try{c=localStorage.getItem('riveu-cookies');}catch(e){}
   if(c==='ok'){loadAnalytics();return;}
   if(c==='no'){return;}
-  const b=byId('cookieBanner');if(b)b.classList.add('show');
+  const b=byId('cookieBanner');if(b)b.classList.remove('hidden');
 }
 
 /* ===== IMÁGENES ===== */
-function placeholderUri(){const s="<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='#141414'/><rect x='10' y='10' width='380' height='380' fill='none' stroke='#2a2a2a' stroke-width='2'/><text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='30' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);}
+function placeholderUri(){var s="<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='#141414'/><rect x='10' y='10' width='380' height='380' fill='none' stroke='#2a2a2a' stroke-width='2'/><text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='30' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);}
 function localImg(sku){const base=String(sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,'');return '/img/'+base+'.jpg';}
 function imgMiss(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerror=function(){el.onerror=null;el.src=placeholderUri();};el.src=csv;}else{el.onerror=null;el.src=placeholderUri();}}
 
@@ -309,17 +323,26 @@ function cardHTML(p){
  return `<article class="shop-card corners relative flex flex-col border border-white/10 bg-carbon-850" data-qty="1" data-price="${p.price||0}"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<span class="absolute left-3 top-3 border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider">${stockText}</span><span class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${p.sku}</span></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.vat}</span></div>${qty}${btn}</div></article>`;
 }
 
-/* ===== BUSCADOR INTELIGENTE + SCHEMA DINÁMICO ===== */
-let BATT_ALL=[];let BATT_SEARCH='';
-
+/* ===== SCHEMA DINÁMICO CORREGIDO (con description, brand, mpn, shipping y returns) ===== */
 function injectSchema(list){
   const old=document.getElementById('dynSchema');if(old)old.remove();
-  const graph=list.slice(0,20).map((p,i)=>({"@type":"Product","position":i+1,"name":p.title,"sku":p.sku,"image":p.image||("https://www.riveu.es/img/"+String(p.sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,'')+".jpg"),"offers":{"@type":"Offer","priceCurrency":"EUR","price":(p.price!==null)?p.price.toFixed(2):"0.00","availability":(p.stock>0)?"https://schema.org/InStock":"https://schema.org/OutOfStock","url":"https://www.riveu.es/tienda/baterias-patinetes-electricos"}}));
+  const graph=list.slice(0,20).map((p,i)=>{
+    const m=p.title.match(/Xiaomi|Ninebot|Segway|Dualtron|Kaabo|Cecotec|Smartgyro|Navee|Niu|Kugoo|Ecoxtrem|Rovoron|Adasmart|Bogist|Youin|Zwheel|Urbanglide|Ice/i);
+    return {"@type":"Product","position":i+1,
+      "name":p.title,"sku":p.sku,"mpn":p.sku,
+      "description":(p.description||p.title).slice(0,500),
+      "brand":{"@type":"Brand","name":m?m[0]:'Riveu'},
+      "image":p.image||("https://www.riveu.es/img/"+String(p.sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,'')+".jpg"),
+      "offers":{"@type":"Offer","priceCurrency":"EUR","price":(p.price!==null)?p.price.toFixed(2):"0.00","availability":(p.stock>0)?"https://schema.org/InStock":"https://schema.org/OutOfStock","url":"https://www.riveu.es/tienda/baterias-patinetes-electricos",
+        "shippingDetails":{"@id":"https://www.riveu.es/#shipping"},
+        "hasMerchantReturnPolicy":{"@id":"https://www.riveu.es/#returns"}}};
+  });
   if(!graph.length)return;
   const s=document.createElement('script');s.type='application/ld+json';s.id='dynSchema';
   s.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Baterías para patinetes eléctricos","itemListElement":graph});
   document.head.appendChild(s);
 }
+
 function matchProduct(p,tokens){
   if(!tokens.length)return true;
   const hay=norm(p.title+' '+p.sku+' '+(p.description||''));
@@ -384,17 +407,15 @@ document.addEventListener('click',e=>{
  const lb=e.target.closest('[data-lang-btn]');if(lb){const x=lb.getAttribute('data-lang-btn');try{localStorage.setItem('riveu-lang',x);}catch(e){}applyI18n(x);}
 });
 document.addEventListener('input',e=>{if(e.target.id==='battSearch'){BATT_SEARCH=e.target.value;byId('battClear').hidden=!e.target.value;renderBatteries();}});
-
-/* Buscador flotante: chips visibles al tocar el input, ocultos al clicar fuera */
 byId('battSearch').addEventListener('focus',()=>byId('battHints').classList.remove('hidden'));
 document.addEventListener('click',e=>{if(!e.target.closest('#searchBar'))byId('battHints').classList.add('hidden');});
 
 /* ===== INIT ===== */
 (function(){
  let l='es';try{const s=localStorage.getItem('riveu-lang');if(s==='ca'||s==='es')l=s;else l=(navigator.language||'es').toLowerCase().indexOf('ca')===0?'ca':'es';}catch(e){}
- applyI18n(l);renderHints();load();initCookies();
- byId('cookieAccept').addEventListener('click',()=>{try{localStorage.setItem('riveu-cookies','ok');}catch(e){}byId('cookieBanner').classList.remove('show');loadAnalytics();});
- byId('cookieReject').addEventListener('click',()=>{try{localStorage.setItem('riveu-cookies','no');}catch(e){}byId('cookieBanner').classList.remove('show');});
+ applyI18n(l);load();initCookies();
+ byId('cookieAccept').addEventListener('click',()=>{try{localStorage.setItem('riveu-cookies','ok');}catch(e){}byId('cookieBanner').classList.add('hidden');loadAnalytics();});
+ byId('cookieReject').addEventListener('click',()=>{try{localStorage.setItem('riveu-cookies','no');}catch(e){}byId('cookieBanner').classList.add('hidden');});
 })();
 </script>
 </body>
