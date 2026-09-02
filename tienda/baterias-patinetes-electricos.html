@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="index,follow" />
-<title>Baterías para Patinetes Eléctricos con Garantía | Riveu Girona</title>
-<meta name="description" content="Baterías nuevas y reconstruidas para Xiaomi, Ninebot, Dualtron y más. Celdas 21700, BMS verificado en banco de pruebas, garantía de taller y envío 24–48 h a toda España. Compra online con tarjeta, Apple Pay, Google Pay o Klarna." />
+<title>Baterías para Patinetes Eléctricos en Girona y toda España | Riveu</title>
+<meta name="description" content="Baterías para patinetes eléctricos en Girona y envíos a toda España en 24–48 h. Xiaomi, Ninebot, Dualtron, celdas 21700, BMS verificado en banco de pruebas y garantía de taller. Compra online con tarjeta, Apple Pay, Google Pay o Klarna." />
 <link rel="canonical" href="https://www.riveu.es/tienda/baterias-patinetes-electricos" />
 
 <!-- SEO MULTILINGÜE -->
@@ -13,7 +13,13 @@
 <link rel="alternate" hreflang="ca" href="https://www.riveu.es/ca/tienda/baterias-patinetes-electricos" />
 <link rel="alternate" hreflang="x-default" href="https://www.riveu.es/tienda/baterias-patinetes-electricos" />
 
-<meta property="og:title" content="Baterías para Patinetes Eléctricos con Garantía | Riveu Girona" />
+<!-- SEO LOCAL GIRONA -->
+<meta name="geo.region" content="ES-CT" />
+<meta name="geo.placename" content="Girona" />
+<meta name="geo.position" content="41.9741;2.8199" />
+<meta name="ICBM" content="41.9741, 2.8199" />
+
+<meta property="og:title" content="Baterías para Patinetes Eléctricos en Girona y toda España | Riveu" />
 <meta property="og:description" content="Celdas de alta calidad, garantía de taller y envío 24–48 h a toda España. Pago seguro con tarjeta." />
 <meta property="og:type" content="product.group" />
 <meta property="og:url" content="https://www.riveu.es/tienda/baterias-patinetes-electricos" />
@@ -46,15 +52,16 @@
   .corners::before{top:0;left:0;border-right:0;border-bottom:0}.corners::after{top:0;right:0;border-left:0;border-bottom:0}
   .corners>.corner-bl{bottom:0;left:0;border-right:0;border-top:0}.corners>.corner-br{bottom:0;right:0;border-left:0;border-top:0}
   .shop-card{transition:all .3s ease}.shop-card:hover{transform:translateY(-6px);border-color:rgba(229,57,53,.7);box-shadow:0 20px 60px -20px rgba(229,57,53,.4)}
-  .search-hint{animation:fadeIn .4s ease}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
   .search-box{transition:box-shadow .3s ease,border-color .3s ease}
   .search-box:focus-within{border-color:rgba(229,57,53,.6);box-shadow:0 0 0 4px rgba(229,57,53,.15)}
   .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:140;background:rgba(18,18,18,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.1);transform:translateY(100%);transition:transform .4s ease}
   .cookie-banner.show{transform:translateY(0)}
+  /* Buscador flotante: fino, arriba, no tapa fotos */
+  #floatSearch{position:fixed;top:0;left:0;right:0;z-index:60;transform:translateY(-110%);transition:transform .3s ease;pointer-events:none}
+  #floatSearch.show{transform:translateY(0);pointer-events:auto}
 </style>
 
-<!-- SEO: solo BreadcrumbList válido -->
+<!-- SEO: BreadcrumbList -->
 <script type="application/ld+json">
 { "@context":"https://schema.org",
   "@type":"BreadcrumbList",
@@ -64,6 +71,19 @@
     {"@type":"ListItem","position":3,"name":"Baterías","item":"https://www.riveu.es/tienda/baterias-patinetes-electricos"}
   ]
 }
+</script>
+
+<!-- SEO LOCAL: taller en Girona con servicio en toda España -->
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"LocalBusiness","name":"Riveu — Taller de Patinetes y Bicicletas Eléctricas",
+  "description":"Taller especializado en movilidad eléctrica en Girona. Baterías, recambios y reparaciones con envío a toda España.","url":"https://www.riveu.es","telephone":"+34633624345","priceRange":"€€","image":"https://www.riveu.es/logo-riveu.jpg",
+  "hasMap":"https://maps.app.goo.gl/WzGEK7ouw7YASTPo9",
+  "address":{"@type":"PostalAddress","streetAddress":"Carrer Finestrelles, 9","postalCode":"17006","addressLocality":"Girona","addressRegion":"Catalunya","addressCountry":"ES"},
+  "geo":{"@type":"GeoCoordinates","latitude":41.9741,"longitude":2.8199},
+  "areaServed":[{"@type":"City","name":"Girona"},{"@type":"City","name":"Salt"},{"@type":"City","name":"Banyoles"},{"@type":"City","name":"Figueres"},{"@type":"City","name":"Olot"},{"@type":"City","name":"Blanes"},{"@type":"City","name":"Lloret de Mar"},{"@type":"City","name":"Sant Feliu de Guíxols"},{"@type":"City","name":"Palafrugell"},{"@type":"City","name":"Roses"},{"@type":"City","name":"Barcelona"},{"@type":"City","name":"Madrid"},{"@type":"City","name":"Valencia"},{"@type":"City","name":"Sevilla"},{"@type":"City","name":"Zaragoza"},{"@type":"City","name":"Bilbao"},{"@type":"City","name":"Málaga"},{"@type":"City","name":"Alicante"},{"@type":"City","name":"Tarragona"},{"@type":"City","name":"Lleida"}],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"14:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"16:00","closes":"20:00"}] }
 </script>
 </head>
 <body class="bg-carbon-950 font-sans text-white antialiased" data-lang="es">
@@ -88,6 +108,17 @@
   </div>
 </header>
 
+<!-- BUSCADOR FLOTANTE (aparece al hacer scroll, fino, no tapa fotos) -->
+<div id="floatSearch" aria-hidden="true">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <div class="flex items-center gap-2 rounded-full border border-white/15 bg-carbon-950/95 px-4 py-2 shadow-lg backdrop-blur-md">
+      <span class="text-riveu-steel">🔍</span>
+      <input id="floatSearchInput" type="search" autocomplete="off" class="w-full bg-transparent font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:outline-none" data-i18n-attr="placeholder" data-i18n="float_placeholder" placeholder="Buscar batería…" />
+      <button id="floatClear" type="button" hidden class="grid size-6 place-items-center rounded-full border border-white/15 text-riveu-steel">✕</button>
+    </div>
+  </div>
+</div>
+
 <!-- HERO SEO -->
 <section class="blueprint-grid relative overflow-hidden py-14 sm:py-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
@@ -97,7 +128,7 @@
       <span class="text-riveu-silver" data-i18n="crumb_batteries">Baterías</span>
     </nav>
     <h1 class="mt-6 max-w-4xl font-display font-bold uppercase leading-[0.98] [font-size:clamp(1.8rem,5.5vw,3.2rem)]">
-      <span data-i18n="h1_line1">Baterías para patinetes eléctricos</span><br /><span class="text-riveu-red" data-i18n="h1_line2">con garantía de taller</span>
+      <span data-i18n="h1_line1">Baterías para patinetes eléctricos</span><br /><span class="text-riveu-red" data-i18n="h1_line2">en Girona y toda España</span>
     </h1>
     <p class="mt-5 max-w-2xl text-base leading-relaxed text-riveu-silver" data-i18n="hero_desc" data-i18n-html="1">
       Baterías nuevas y reconstruidas para <strong>Xiaomi, Ninebot, Dualtron, Kaabo, Cecotec</strong> y bicicletas eléctricas.
@@ -169,6 +200,36 @@
         <a href="https://wa.me/34633624345?text=Hola%20Riveu%2C%20os%20env%C3%ADo%20una%20foto%20de%20mi%20bater%C3%ADa%20para%20confirmar%20compatibilidad" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 border border-wa/60 px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa hover:bg-wa hover:text-[#052e16]" data-i18n="doubt_btn">Consultar por WhatsApp</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SEO ZONAS: España + Girona y alrededores -->
+<section class="border-t border-white/10 py-12 sm:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <h2 class="font-display text-xl font-bold uppercase text-white sm:text-2xl" data-i18n="areas_h2">Envíos a toda España · Reparaciones en Girona y alrededores</h2>
+    <p class="mt-3 max-w-3xl text-sm leading-relaxed text-riveu-steel" data-i18n="areas_p">Desde nuestro taller en Girona enviamos baterías y recambios a toda España peninsular en 24–48 h. Si estás en Girona y alrededores, puedes recoger tu pedido en el taller o traer tu patinete para instalación y diagnóstico el mismo día.</p>
+    <ul class="mt-5 flex flex-wrap gap-2">
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Girona</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Salt</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Banyoles</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Figueres</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Olot</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Blanes</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Lloret de Mar</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Sant Feliu de Guíxols</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Palafrugell</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Roses</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Barcelona</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Madrid</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Valencia</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Sevilla</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Zaragoza</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Bilbao</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Málaga</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Alicante</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Tarragona</li>
+      <li class="border border-white/15 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide text-riveu-silver">Lleida</li>
+    </ul>
   </div>
 </section>
 
@@ -250,12 +311,13 @@
 const I18N = {
   es: {
     nav_shop: '← Tienda', crumb_home: 'Inicio', crumb_shop: 'Tienda', crumb_batteries: 'Baterías',
-    h1_line1: 'Baterías para patinetes eléctricos', h1_line2: 'con garantía de taller',
+    h1_line1: 'Baterías para patinetes eléctricos', h1_line2: 'en Girona y toda España',
     hero_desc: 'Baterías nuevas y reconstruidas para <strong>Xiaomi, Ninebot, Dualtron, Kaabo, Cecotec</strong> y bicicletas eléctricas. Celdas verificadas en banco de pruebas, BMS protegido y envío en <strong>24–48 h a toda España</strong>. Compra online con <strong>tarjeta, Apple Pay, Google Pay o Klarna</strong>.',
     badge_warranty: '✔ Garantía de taller', badge_ship: '🚚 Envío 24–48 h · gratis ≥100 €', badge_pay: '💳 Pago seguro con tarjeta', badge_vat: 'IVA incluido',
     h2_stock: 'Baterías en stock',
     stock_hint: '¿No ves tu modelo? Escríbenos por WhatsApp y te lo conseguimos en 24–72 h. Elige cantidad y paga con tarjeta.',
     search_placeholder: 'Busca por modelo o tipo: Xiaomi, Ninebot, celda, 48V...',
+    float_placeholder: 'Buscar batería…',
     loading: 'Cargando baterías…',
     empty_results: 'Ninguna batería coincide con tu búsqueda. Escríbenos por WhatsApp y te la buscamos.',
     seo_h2_buy: 'Comprar batería de patinete eléctrico online',
@@ -270,6 +332,8 @@ const I18N = {
     seo_li2: 'El patinete se apaga al acelerar o en cuestas.',
     seo_li3: 'El cargador no corta nunca o la batería se calienta en exceso.',
     seo_li4: 'Han pasado más de 3–4 años o 500 ciclos de carga.',
+    areas_h2: 'Envíos a toda España · Reparaciones en Girona y alrededores',
+    areas_p: 'Desde nuestro taller en Girona enviamos baterías y recambios a toda España peninsular en 24–48 h. Si estás en Girona y alrededores, puedes recoger tu pedido en el taller o traer tu patinete para instalación y diagnóstico el mismo día.',
     doubt_label: '¿Dudas de compatibilidad?', doubt_text: 'Mándanos una foto de tu batería antigua por WhatsApp y te confirmamos el modelo exacto al momento.', doubt_btn: 'Consultar por WhatsApp',
     faq_h2: 'Preguntas frecuentes sobre baterías',
     faq1_q: '¿Cuánto dura una batería de patinete eléctrico?', faq1_a: 'Entre 300 y 500 ciclos de carga, es decir, 2–4 años de uso normal. Si la autonomía ha caído en picado, es hora de cambiarla o reconstruirla.',
@@ -292,12 +356,13 @@ const I18N = {
   },
   ca: {
     nav_shop: '← Botiga', crumb_home: 'Inici', crumb_shop: 'Botiga', crumb_batteries: 'Bateries',
-    h1_line1: 'Bateries per a patinets elèctrics', h1_line2: 'amb garantia de taller',
+    h1_line1: 'Bateries per a patinets elèctrics', h1_line2: 'a Girona i tota Espanya',
     hero_desc: 'Bateries noves i reconstruïdes per a <strong>Xiaomi, Ninebot, Dualtron, Kaabo, Cecotec</strong> i bicicletes elèctriques. Cel·les verificades en banc de proves, BMS protegit i enviament en <strong>24–48 h a tot Espanya</strong>. Compra online amb <strong>targeta, Apple Pay, Google Pay o Klarna</strong>.',
     badge_warranty: '✔ Garantia de taller', badge_ship: '🚚 Enviament 24–48 h · gratuït ≥100 €', badge_pay: '💳 Pagament segur amb targeta', badge_vat: 'IVA inclòs',
     h2_stock: 'Bateries en estoc',
     stock_hint: 'No veus el teu model? Escriu-nos per WhatsApp i t\'ho aconseguim en 24–72 h. Tria la quantitat i paga amb targeta.',
     search_placeholder: 'Cerca per model o tipus: Xiaomi, Ninebot, cel·la, 48V...',
+    float_placeholder: 'Cercar bateria…',
     loading: 'Carregant bateries…',
     empty_results: 'Cap bateria coincideix amb la teva cerca. Escriu-nos per WhatsApp i te la busquem.',
     seo_h2_buy: 'Comprar bateria de patinet elèctric online',
@@ -312,6 +377,8 @@ const I18N = {
     seo_li2: 'El patinet s\'apaga en accelerar o a les pujades.',
     seo_li3: 'El carregador no talla mai o la bateria s\'escalfa massa.',
     seo_li4: 'Han passat més de 3–4 anys o 500 cicles de càrrega.',
+    areas_h2: 'Enviaments a tota Espanya · Reparacions a Girona i voltants',
+    areas_p: 'Des del nostre taller a Girona enviem bateries i recanvis a tota Espanya peninsular en 24–48 h. Si ets a Girona i voltants, pots recollir la comanda al taller o portar el teu patinet per a instal·lació i diagnòstic el mateix dia.',
     doubt_label: 'Dubtes de compatibilitat?', doubt_text: 'Envia\'ns una foto de la teva bateria antiga per WhatsApp i et confirmem el model exacte al moment.', doubt_btn: 'Consultar per WhatsApp',
     faq_h2: 'Preguntes freqüents sobre bateries',
     faq1_q: 'Quant dura una bateria de patinet elèctric?', faq1_a: 'Entre 300 i 500 cicles de càrrega, és a dir, 2–4 anys d\'ús normal. Si l\'autonomia ha caigut en picat, és hora de canviar-la o reconstruir-la.',
@@ -397,8 +464,7 @@ function applyLang(lang){
 const WA_PHONE='34633624345';
 const byId=(id)=>document.getElementById(id);
 
-/* Tus fotos propias: 'SKU':'img/foto.jpg' (ej: 'BCT-A-007':'img/BCT-A-007.jpg') */
-const FOTO_MAP={};
+const FOTO_MAP={}; // Tus fotos propias: 'SKU':'img/foto.jpg'
 
 function placeholderUri(){var s="<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='#141414'/><rect x='10' y='10' width='380' height='380' fill='none' stroke='#2a2a2a' stroke-width='2'/><text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='30' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);}
 function localImg(sku){const base=String(sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,'');return '/img/'+base+'.jpg';}
@@ -552,27 +618,44 @@ function renderGate(){
 }
 function openZoneGate(sku,qty,btn){ensureGate();renderGate();pendingPay={sku,qty,btn};document.getElementById('zoneGate').style.display='flex';}
 
+/* Búsqueda sincronizada (principal + flotante) */
+function setQuery(v){
+  BATT_SEARCH=v;
+  const m=byId('battSearch'), f=byId('floatSearchInput');
+  if(m)m.value=v; if(f)f.value=v;
+  byId('battClear').hidden=!v; byId('floatClear').hidden=!v;
+  renderBatteries();
+}
+
+/* Buscador flotante: aparece al pasar el buscador de la página */
+function updateFloatSearch(){
+  const bar=byId('floatSearch'), anchor=byId('battSearch');
+  if(!bar||!anchor)return;
+  const show = anchor.getBoundingClientRect().bottom < 0;
+  bar.classList.toggle('show', show);
+  bar.setAttribute('aria-hidden', show?'false':'true');
+}
+window.addEventListener('scroll', updateFloatSearch, {passive:true});
+
 document.addEventListener('click',async (e)=>{
+ /* Idioma PRIMERO (arreglado) */
+ const langBtn=e.target.closest('[data-lang-btn]');
+ if(langBtn){applyLang(langBtn.getAttribute('data-lang-btn'));return;}
  const hint=e.target.closest('[data-hint]');
- if(hint){const s=byId('battSearch');s.value=hint.getAttribute('data-hint');BATT_SEARCH=s.value;byId('battClear').hidden=!s.value;renderBatteries();s.focus();return;}
- if(e.target.closest('#battClear')){const s=byId('battSearch');s.value='';BATT_SEARCH='';byId('battClear').hidden=true;renderBatteries();s.focus();return;}
+ if(hint){setQuery(hint.getAttribute('data-hint'));byId('battSearch').focus();return;}
+ if(e.target.closest('#battClear')||e.target.closest('#floatClear')){setQuery('');return;}
  const qm=e.target.closest('[data-qminus]'),qp=e.target.closest('[data-qplus]');
  if(qm||qp){const card=e.target.closest('.shop-card');if(!card)return;let q=parseInt(card.dataset.qty||'1',10)||1;q=qp?q+1:Math.max(1,q-1);card.dataset.qty=String(q);const lab=card.querySelector('[data-qty]');if(lab)lab.textContent=q;const price=parseFloat(card.dataset.price||'0');const si=shipInfoFor(price,q);const sh=card.querySelector('[data-ship]');if(sh){sh.textContent=si.txt;sh.className='font-mono text-[11px] '+si.cls;}return;}
  const btn=e.target.closest('[data-pay]');if(!btn)return;const card=btn.closest('.shop-card');const qty=Math.max(1,parseInt(card&&card.dataset.qty||'1',10)||1);openZoneGate(btn.getAttribute('data-pay'),qty,btn);
- const langBtn=e.target.closest('[data-lang-btn]');
- if(langBtn){applyLang(langBtn.getAttribute('data-lang-btn'));return;}
 });
 
 document.addEventListener('input',(e)=>{
- if(e.target.id==='battSearch'){
-   BATT_SEARCH=e.target.value;
-   byId('battClear').hidden=!e.target.value;
-   renderBatteries();
- }
+ if(e.target.id==='battSearch'||e.target.id==='floatSearchInput'){ setQuery(e.target.value); }
 });
 
 renderHints();
 applyLang(CURRENT_LANG);
+updateFloatSearch();
 load();
 </script>
 </body>
