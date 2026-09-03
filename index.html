@@ -21,52 +21,26 @@
 <meta name="geo.position" content="41.9741;2.8199" />
 <meta name="ICBM" content="41.9741, 2.8199" />
 <meta name="google-site-verification" content="sat2SMJ4tfjguY6V_v_Qn0GAmEkrrW3iV636F88ocdE" />
-
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-  tailwind.config = {
-    theme: { extend: {
-      colors: {
-        carbon: { 950:'#0a0a0a', 900:'#121212', 850:'#141414', 800:'#181818', 700:'#212121' },
-        riveu: { red:'#E53935', redDark:'#D32F2F', silver:'#C0C0C0', steel:'#9E9E9E' },
-        wa: '#25D366'
-      },
+  tailwind.config = { theme: { extend: {
+      colors: { carbon: { 950:'#0a0a0a', 900:'#121212', 850:'#141414', 800:'#181818', 700:'#212121' }, riveu: { red:'#E53935', redDark:'#D32F2F', silver:'#C0C0C0', steel:'#9E9E9E' }, wa: '#25D366' },
       fontFamily: { display:['"Chakra Petch"','sans-serif'], sans:['"IBM Plex Sans"','sans-serif'], mono:['"IBM Plex Mono"','monospace'] },
-      keyframes: {
-        ticker: { from:{transform:'translateX(0)'}, to:{transform:'translateX(-50%)'} },
-        waPing: { '0%':{transform:'scale(1)',opacity:'0.45'}, '70%,100%':{transform:'scale(1.6)',opacity:'0'} }
-      },
+      keyframes: { ticker: { from:{transform:'translateX(0)'}, to:{transform:'translateX(-50%)'} }, waPing: { '0%':{transform:'scale(1)',opacity:'0.45'}, '70%,100%':{transform:'scale(1.6)',opacity:'0'} } },
       animation: { ticker:'ticker 28s linear infinite', 'ticker-s':'ticker 40s linear infinite', 'wa-ping':'waPing 2.2s cubic-bezier(0,0,0.2,1) infinite' }
-    } }
-  };
+  } } };
 </script>
-
 <script>
-function imgFallback(el){
-  var w=400,h=400;
-  var s="<svg xmlns='http://www.w3.org/2000/svg' width='"+w+"' height='"+h+"'>"+
-        "<rect width='100%' height='100%' fill='#141414'/>"+
-        "<rect x='10' y='10' width='"+(w-20)+"' height='"+(h-20)+"' fill='none' stroke='#2a2a2a' stroke-width='2'/>"+
-        "<text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='34' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";
-  el.onerror=null; el.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);
-}
-function placeholderUri(){
-  var s="<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>"+
-        "<rect width='100%' height='100%' fill='#141414'/>"+
-        "<rect x='10' y='10' width='380' height='380' fill='none' stroke='#2a2a2a' stroke-width='2'/>"+
-        "<text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='34' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";
-  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);
-}
+function imgFallback(el){var w=400,h=400;var s="<svg xmlns='http://www.w3.org/2000/svg' width='"+w+"' height='"+h+"'><rect width='100%' height='100%' fill='#141414'/><rect x='10' y='10' width='"+(w-20)+"' height='"+(h-20)+"' fill='none' stroke='#2a2a2a' stroke-width='2'/><text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='34' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";el.onerror=null;el.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);}
+function placeholderUri(){var s="<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='#141414'/><rect x='10' y='10' width='380' height='380' fill='none' stroke='#2a2a2a' stroke-width='2'/><text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='34' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);}
 const FOTO_MAP={ 'ECOXTREM-DEIMOS-DGT-NEGRO':'img/deimos-single-NEGRO.jpg' };
 function localImg(sku){ if(FOTO_MAP[sku])return FOTO_MAP[sku]; const base=String(sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,''); return 'img/'+base+'.jpg'; }
 function localMiss(el){el.onerror=function(){imgFallback(el);};el.src=placeholderUri();el.dataset.qimg='';}
 function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerror=function(){imgFallback(el);};el.src=csv;}else{localMiss(el);}}
 </script>
-
 <style>
   :root{color-scheme:dark} html{scroll-behavior:smooth} body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
   ::selection{background:#e53935;color:#fff} :focus-visible{outline:2px solid #e53935;outline-offset:2px}
@@ -96,8 +70,6 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   .cookie-banner.show{transform:translateY(0)}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
 </style>
-
-<!-- SEO: LocalBusiness con área en toda España + Girona -->
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"LocalBusiness","name":"Riveu — Taller de Patinetes y Bicicletas Eléctricas",
   "description":"Taller especializado multimarca en movilidad eléctrica en Girona.","url":"https://www.riveu.es","telephone":"+34633624345","priceRange":"€€","image":"logo-riveu.jpg",
@@ -110,10 +82,8 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"16:00","closes":"20:00"}] }
 </script>
 </head>
-
 <body class="bg-carbon-950 font-sans text-white antialiased">
 <noscript><div style="background:#D32F2F;color:#fff;text-align:center;padding:10px;font-family:monospace;font-size:12px">Aquesta web necessita JavaScript · Esta web necesita JavaScript · 633 62 43 45</div></noscript>
-
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.03c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></symbol>
@@ -122,9 +92,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.9 6.26 6.6.7-4.9 4.5 1.35 6.54L12 16.9 6.05 20l1.35-6.54-4.9-4.5 6.6-.7L12 2z"/></symbol>
   <symbol id="i-cart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
-
 <div aria-hidden class="noise pointer-events-none fixed inset-0 z-[60] opacity-[0.05]"></div>
-
 <div class="fixed inset-x-0 top-0 z-50">
   <div class="hazard flex h-7 items-center overflow-hidden"><div class="flex w-max animate-ticker hover:[animation-play-state:paused]"><div id="ticker1" class="flex shrink-0 items-center"></div><div id="ticker2" class="flex shrink-0 items-center" aria-hidden="true"></div></div></div>
   <header class="border-b border-white/10 bg-carbon-950/85 backdrop-blur-md">
@@ -145,8 +113,6 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <span id="scrollBar" class="block h-[2px] bg-riveu-red transition-[width] duration-150 ease-out" style="width:0%"></span>
   </header>
 </div>
-
-<!-- BUSCADOR FLOTANTE -->
 <div id="floatSearch" aria-hidden="true">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="flex items-center gap-2 rounded-full border border-white/15 bg-carbon-950/95 px-4 py-2 shadow-lg backdrop-blur-md">
@@ -156,8 +122,6 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     </div>
   </div>
 </div>
-
-<!-- 1. HERO COMPACTO -->
 <section class="relative overflow-hidden pb-8 pt-28 sm:pt-32">
   <div aria-hidden class="pointer-events-none absolute inset-0 hidden hero-bg-img opacity-25 lg:block"></div>
   <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-8">
@@ -181,77 +145,31 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     </div>
   </div>
 </section>
-
-<!-- 1.5 CATEGORÍAS SEO (con tarjeta destacada de PATINETES enlazada) -->
-<section class="scroll-mt-28 border-t border-white/10 bg-carbon-900/40 py-14 sm:py-18">
+<section class="scroll-mt-28 border-t border-white/10 bg-carbon-900/40 py-14">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
-    <div class="reveal flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs">
-      <span class="size-1.5 animate-pulse bg-riveu-red"></span>
-      <span>// 01.7</span>
-      <span class="h-px w-10 bg-riveu-red/50"></span>
-      <span class="text-riveu-steel" data-i18n="categories.kicker"></span>
-    </div>
-    <h2 class="mt-4 max-w-4xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl">
-      <span data-i18n="categories.title1"></span> <span class="text-riveu-red" data-i18n="categories.title2"></span>
-    </h2>
+    <div class="reveal flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 01.7</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="categories.kicker"></span></div>
+    <h2 class="mt-4 max-w-4xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl"><span data-i18n="categories.title1"></span> <span class="text-riveu-red" data-i18n="categories.title2"></span></h2>
     <p class="mt-4 max-w-2xl text-sm leading-relaxed text-riveu-steel" data-i18n="categories.subtitle"></p>
-
-    <!-- Tarjeta destacada PATINETES (enlaza a la página nueva) -->
     <a href="/tienda/patinetes-electricos" class="shop-card group relative mt-8 flex flex-col overflow-hidden border border-riveu-red/60 bg-gradient-to-br from-riveu-red/15 to-carbon-850 p-5 sm:flex-row sm:items-center sm:justify-between">
       <div class="flex items-center gap-4">
         <span class="grid size-11 place-items-center border border-riveu-red bg-[#160a0a] text-riveu-red text-xl">🛴</span>
-        <div>
-          <h3 class="font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.scoot.title"></h3>
-          <p class="mt-1 text-sm text-riveu-steel" data-i18n="categories.scoot.desc"></p>
-        </div>
+        <div><h3 class="font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.scoot.title"></h3><p class="mt-1 text-sm text-riveu-steel" data-i18n="categories.scoot.desc"></p></div>
       </div>
       <span class="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-riveu-red transition-transform group-hover:translate-x-1 sm:mt-0" data-i18n="categories.scoot.link"></span>
     </a>
-
     <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
       <a href="/tienda/baterias-patinetes-electricos" class="shop-card group relative flex flex-col overflow-hidden border border-riveu-red/60 bg-gradient-to-br from-riveu-red/15 to-carbon-850 p-5">
-        <div class="flex items-center justify-between">
-          <span class="grid size-11 place-items-center border border-riveu-red bg-[#160a0a] text-riveu-red text-xl">🔋</span>
-          <span class="font-mono text-[10px] uppercase tracking-wider text-riveu-red">★ Top</span>
-        </div>
+        <div class="flex items-center justify-between"><span class="grid size-11 place-items-center border border-riveu-red bg-[#160a0a] text-riveu-red text-xl">🔋</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-red">★ Top</span></div>
         <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat1.title"></h3>
         <p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat1.desc"></p>
         <span class="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-riveu-red group-hover:translate-x-1 transition-transform" data-i18n="categories.cat1.link"></span>
       </a>
-
-      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60">
-        <div class="flex items-center justify-between">
-          <span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">🛞</span>
-          <span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span>
-        </div>
-        <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat2.title"></h3>
-        <p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat2.desc"></p>
-      </div>
-
-      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60">
-        <div class="flex items-center justify-between">
-          <span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">🛑</span>
-          <span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span>
-        </div>
-        <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat3.title"></h3>
-        <p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat3.desc"></p>
-      </div>
-
-      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60">
-        <div class="flex items-center justify-between">
-          <span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">⚡</span>
-          <span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span>
-        </div>
-        <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat4.title"></h3>
-        <p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat4.desc"></p>
-      </div>
-
+      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60"><div class="flex items-center justify-between"><span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">🛞</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span></div><h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat2.title"></h3><p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat2.desc"></p></div>
+      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60"><div class="flex items-center justify-between"><span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">🛑</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span></div><h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat3.title"></h3><p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat3.desc"></p></div>
+      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60"><div class="flex items-center justify-between"><span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">⚡</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span></div><h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat4.title"></h3><p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat4.desc"></p></div>
     </div>
   </div>
 </section>
-
-<!-- 2. TIENDA -->
 <section id="botiga" class="scroll-mt-28 border-t border-white/10 bg-gradient-to-b from-carbon-900/80 via-carbon-900/40 to-carbon-950 py-16 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="shop.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="shop.kicker"></span></div>
@@ -263,7 +181,6 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
       <p class="inline-block border border-wa/40 bg-wa/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-wa" data-i18n="shop.shipInfo"></p>
       <p class="inline-block border border-riveu-red/40 bg-riveu-red/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-riveu-red" data-i18n="shop.shipTime"></p>
     </div></div>
-
     <div class="sticky top-[92px] z-40 mt-10 rounded-md border border-white/10 bg-carbon-950/95 p-2.5 backdrop-blur-md sm:p-3">
       <input id="shopSearch" type="search" class="w-full border-2 border-white/15 bg-carbon-900 px-4 py-2.5 font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none" placeholder="Buscar..." />
       <div class="mt-2 flex gap-2 overflow-x-auto pb-1" id="shopFilters">
@@ -277,32 +194,26 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
         <button type="button" data-filter="accessory" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.accessory"></button>
       </div>
     </div>
-
     <div id="scooterSection" class="mt-10">
       <div class="flex items-center gap-3"><span class="text-2xl">🛴</span><h3 class="font-display text-2xl font-bold uppercase text-white" data-i18n="shop.scootersTitle"></h3><span id="scooterCount" class="font-mono text-xs text-riveu-steel"></span></div>
       <div id="scooterGrid" class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
       <div class="mt-8 text-center"><button type="button" id="scooterMore" hidden class="border-2 border-riveu-red px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-riveu-red"></button></div>
     </div>
-
     <div class="my-16 h-px bg-gradient-to-r from-transparent via-riveu-red/40 to-transparent"></div>
-
     <div id="partsSection">
       <div class="flex items-center gap-3"><span class="text-2xl">🔧</span><h3 class="font-display text-2xl font-bold uppercase text-white" data-i18n="shop.partsTitle"></h3><span id="partsCount" class="font-mono text-xs text-riveu-steel"></span></div>
       <div id="partsGrid" class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
       <div id="partsSentinel" class="h-12"></div>
       <p id="partsEnd" hidden class="mt-4 text-center font-mono text-[10px] uppercase tracking-widest text-riveu-steel/60" data-i18n="shop.end"></p>
     </div>
-
     <p id="shopEmpty" class="mt-12 hidden text-center font-mono text-sm uppercase tracking-wider text-riveu-steel" data-i18n="shop.empty"></p>
   </div>
 </section>
-
-<!-- 3. SOBRE EL TALLER -->
+<!-- === FIN DE LA PARTE 1 === --><!-- 3. SOBRE EL TALLER -->
 <section class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 02</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="about.kicker"></span></div>
     <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="about.title"></h2></div>
-
     <div class="mt-10 border border-white/10 bg-carbon-900/70 p-4 backdrop-blur-sm sm:p-5">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div class="flex items-center gap-3"><svg class="size-5 shrink-0 text-riveu-red"><use href="#i-pin"/></svg><div><p class="font-mono text-[9px] uppercase tracking-[0.28em] text-riveu-red" data-i18n="hero.mapKicker"></p><p class="mt-0.5 text-sm text-riveu-silver" data-i18n="location.address"></p></div></div>
@@ -313,7 +224,6 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
         </div>
       </div>
     </div>
-
     <div class="mt-10 grid gap-12 lg:grid-cols-2">
       <div class="corners reveal relative overflow-hidden border border-white/10"><span class="corner-bl"></span><span class="corner-br"></span>
         <img src="foto-del-local.jpg" alt="Taller Riveu en Girona" width="900" height="500" onerror="imgFallback(this)" class="h-56 w-full object-cover grayscale transition-all duration-500 hover:grayscale-0 sm:h-72" />
@@ -339,7 +249,6 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
         <div class="flex items-center justify-between border-t border-white/10 bg-carbon-850 px-5 py-2.5 font-mono text-[10px] tracking-widest text-riveu-steel"><span data-i18n="hero.diag.model"></span><span class="animate-pulse text-riveu-red">▮</span></div>
       </div>
     </div>
-
     <div class="mt-12 border-y border-white/10 py-4">
       <p class="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-steel" data-i18n="hero.brandsNote"></p>
       <div class="overflow-hidden"><div class="flex w-max animate-ticker-s" id="brandsMarquee"></div></div>
@@ -509,13 +418,10 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   <span data-i18n="floating"></span>
 </a>
 
-<!-- BANNER DE COOKIES -->
 <div id="cookieBanner" class="cookie-banner">
   <div class="mx-auto max-w-7xl px-4 py-4 sm:px-8">
     <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <div class="flex-1 text-sm text-riveu-silver" data-i18n="cookies.text">
-        🍪 Usamos cookies propias y de terceros para mejorar tu experiencia y realizar analíticas anónimas. Al continuar navegando aceptas su uso.
-      </div>
+      <div class="flex-1 text-sm text-riveu-silver" data-i18n="cookies.text"></div>
       <div class="flex flex-wrap gap-2">
         <button type="button" id="cookieReject" class="border border-white/20 px-4 py-2 font-mono text-xs uppercase tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white" data-i18n="cookies.deny">Rechazar</button>
         <button type="button" id="cookieAccept" class="bg-riveu-red px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider text-white hover:bg-riveu-redDark" data-i18n="cookies.accept">Aceptar</button>
@@ -532,7 +438,7 @@ const lang=()=>document.documentElement.lang||'ca';
 
 const i18n={
 ca:{meta:{title:'Riveu · Taller de Patinets i Bicicletes Elèctriques a Girona'},logo:{sub:'· GIRONA'},nav:{whatsapp:'WhatsApp'},
-hero:{status:'RIVEU // TALLER GIRONA — DIAGNÒSTIC EN CURS',title0:'Taller i Reparació de',title1:'Patinets Elèctrics',title2:'a Girona',subtitle:'Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia professional.',cta:'Demanar Pressupost per WhatsApp',shopBtn:'Veure botiga online',secondary:'Veure serveis',brandsNote:'Treballem totes les marques',mapKicker:'Com arribar-hi',mapCta:'Ruta en Maps',mapLink:'Veure el mapa',stats:{0:{value:'400+',label:'reparacions completades'},1:{value:'24–48h',label:'lliurament estàndard'},2:{value:'98%',label:'clients satisfets'}},diag:{title:'Quadre de diagnòstic',badge:'En curs',voltage:'BUS BATERIA',model:'UNITAT · XIAOMI MI PRO 2',note:'A punt per lliurar · avui 18:30',unit:'UNITAT EN REVISIÓ',rows:[{k:'BATERIA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORS HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'PNEUMÀTICS',v:'42 PSI',s:'OK'}]}},
+hero:{status:'RIVEU // TALLER GIRONA — DIAGNÒSTIC EN CURS',title0:'Taller i Reparació de',title1:'Patinets Elèctrics',title2:'a Girona',subtitle:'Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia professional.',cta:'Demanar Pressupost per WhatsApp',shopBtn:'Veure botiga online',brandsNote:'Treballem totes les marques',mapKicker:'Com arribar-hi',mapCta:'Ruta en Maps',mapLink:'Veure el mapa',stats:{0:{value:'400+',label:'reparacions completades'},1:{value:'24–48h',label:'lliurament estàndard'},2:{value:'98%',label:'clients satisfets'}},diag:{title:'Quadre de diagnòstic',badge:'En curs',voltage:'BUS BATERIA',model:'UNITAT · XIAOMI MI PRO 2',note:'A punt per lliurar · avui 18:30',unit:'UNITAT EN REVISIÓ',rows:[{k:'BATERIA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORS HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'PNEUMÀTICS',v:'42 PSI',s:'OK'}]}},
 about:{kicker:'Sobre el taller',title:'El teu taller de confiança a Girona'},
 categories:{kicker:'Recanvis més buscats',title1:'Botiga especialitzada en',title2:'patinets i e-bikes',subtitle:'A més del nostre taller, tenim recanvis verificats en estoc amb enviament 24–48 h a tota Espanya i garantia de taller.',scoot:{title:'Patinets elèctrics homologats',desc:'Ecoxtrem, Rovoron, Adasmart i Dualtron amb garantia de taller.',link:'Veure patinets →'},soon:'Properament',cat1:{title:'Bateries',desc:'Xiaomi, Ninebot, Dualtron i reconstrucció amb cel·les 21700.',link:'Veure bateries →'},cat2:{title:'Rodes i pneumàtics',desc:'Càmeres, tubeless i massisses antipunxada.'},cat3:{title:'Frens i pastilles',desc:'Discos, pastilles i sistemes hidràulics.'},cat4:{title:'Electrònica',desc:'Controladores, BMS, displays i carregadors.'}},
 cookies:{text:'Utilitzem cookies pròpies i de tercers (Google Maps i analítica) per millorar la teva experiència. Pots acceptar-les o denegar-les.',accept:'Acceptar',deny:'Denegar',mapBlocked:'Has denegat les cookies de Google Maps.'},
@@ -550,7 +456,7 @@ ctaFinal:{title:'El teu patinet, rodant en 24–48 hores.',sub:'Escriu-nos per W
 footer:{tagline:'Taller especialitzat en mobilitat elèctrica a Girona.',navTitle:'Seccions',nav:{0:'Serveis',1:'Com treballem',2:'Per què nosaltres',3:'FAQ',4:'Ubicació',5:'Galeria',6:'Botiga',scooters:'Patinets',batteries:'Bateries'},contactTitle:'Contacte',rights:'© 2025 Riveu · Girona',legal:{0:'Avís legal',1:'Privacitat'},made:'Fet a Girona'},
 floating:'Contactar el Taller',openNow:'Obert ara',closedNow:'Tancat ara',whatsappMsg:'Hola Riveu 👋 Vull demanar pressupost per al meu patinet.',switchLabel:'Versió en español'},
 es:{meta:{title:'Riveu · Taller de Patinetes y Bicicletas Eléctricas en Girona'},logo:{sub:'· GIRONA'},nav:{whatsapp:'WhatsApp'},
-hero:{status:'RIVEU // TALLER GIRONA — DIAGNÓSTICO EN CURSO',title0:'Taller y Reparación de',title1:'Patinetes Eléctricos',title2:'en Girona',subtitle:'Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta. Diagnóstico, ruedas, baterías y electrónica con garantía profesional.',cta:'Pedir Presupuesto por WhatsApp',shopBtn:'Ver tienda online',secondary:'Ver servicios',brandsNote:'Trabajamos todas las marcas',mapKicker:'Cómo llegar',mapCta:'Ruta en Maps',mapLink:'Ver el mapa',stats:{0:{value:'400+',label:'reparaciones completadas'},1:{value:'24–48 h',label:'entrega estándar'},2:{value:'98%',label:'clientes satisfechos'}},diag:{title:'Panel de diagnóstico',badge:'En curso',voltage:'BUS BATERÍA',model:'UNIDAD · XIAOMI MI PRO 2',note:'Listo para entrega · hoy 18:30',unit:'UNIDAD EN REVISIÓN',rows:[{k:'BATERÍA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORES HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'NEUMÁTICOS',v:'42 PSI',s:'OK'}]}},
+hero:{status:'RIVEU // TALLER GIRONA — DIAGNÓSTICO EN CURSO',title0:'Taller y Reparación de',title1:'Patinetes Eléctricos',title2:'en Girona',subtitle:'Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta. Diagnóstico, ruedas, baterías y electrónica con garantía profesional.',cta:'Pedir Presupuesto por WhatsApp',shopBtn:'Ver tienda online',brandsNote:'Trabajamos todas las marcas',mapKicker:'Cómo llegar',mapCta:'Ruta en Maps',mapLink:'Ver el mapa',stats:{0:{value:'400+',label:'reparaciones completadas'},1:{value:'24–48 h',label:'entrega estándar'},2:{value:'98%',label:'clientes satisfechos'}},diag:{title:'Panel de diagnóstico',badge:'En curso',voltage:'BUS BATERÍA',model:'UNIDAD · XIAOMI MI PRO 2',note:'Listo para entrega · hoy 18:30',unit:'UNIDAD EN REVISIÓN',rows:[{k:'BATERÍA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORES HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'NEUMÁTICOS',v:'42 PSI',s:'OK'}]}},
 about:{kicker:'Sobre el taller',title:'Tu taller de confianza en Girona'},
 categories:{kicker:'Recambios más buscados',title1:'Tienda especializada en',title2:'patinetes y e-bikes',subtitle:'Además de nuestro taller, tenemos recambios verificados en stock con envío 24–48 h a toda España y garantía de taller.',scoot:{title:'Patinetes eléctricos homologados',desc:'Ecoxtrem, Rovoron, Adasmart y Dualtron con garantía de taller.',link:'Ver patinetes →'},soon:'Próximamente',cat1:{title:'Baterías',desc:'Xiaomi, Ninebot, Dualtron y reconstrucción con celdas 21700.',link:'Ver baterías →'},cat2:{title:'Ruedas y neumáticos',desc:'Cámaras, tubeless y macizas antipinchazo.'},cat3:{title:'Frenos y pastillas',desc:'Discos, pastillas y sistemas hidráulicos.'},cat4:{title:'Electrónica',desc:'Controladoras, BMS, displays y cargadores.'}},
 cookies:{text:'Usamos cookies propias y de terceros (Google Maps y analítica) para mejorar tu experiencia. Puedes aceptarlas o denegarlas.',accept:'Aceptar',deny:'Rechazar',mapBlocked:'Has denegado las cookies de Google Maps.'},
@@ -563,4 +469,244 @@ process:{index:'// 02',kicker:'Cómo trabajamos',title:'De la avería a la calle
 why:{index:'// 03',kicker:'Por qué elegirnos',title:'Confianza que se gana tornillo a tornillo',lead:'Somos un taller dedicado en exclusiva al patinete eléctrico.',alt:'Técnico reparando un patinete',items:[{code:'G·01',t:'Presupuesto previo sin compromiso',d:'Diagnóstico claro y precio cerrado antes de desmontar.'},{code:'G·02',t:'Recambios de alta calidad comprobados',d:'Solo piezas verificadas en el banco de pruebas.'},{code:'G·03',t:'Reparaciones rápidas en 24/48 h',d:'La mayoría de averías listas en uno o dos días.'}]},
 reviews:{index:'// 04',kicker:'Opiniones',title:'Lo que dicen los que ya ruedan',items:[{text:'Llegué con el Xiaomi pinchado y salí el mismo día con rueda nueva. Trato de diez.',name:'Marc S.',scooter:'Xiaomi Pro 2'},{text:'La batería había perdido media vida. Cambiaron las celdas y ahora hace los mismos km.',name:'Laura P.',scooter:'Ninebot Max G30'},{text:'Presupuesto claro y el patinete listo en dos días. Así da gusto.',name:'Jordi V.',scooter:'Dualtron Mini'}]},
 faq:{index:'// 05',kicker:'FAQ',title:'Dudas frecuentes antes de venir',items:[{q:'¿Cuánto tarda una reparación?',a:'La mayoría de averías listas en 24–48 horas.'},{q:'¿El diagnóstico tiene coste?',a:'Diagnóstico y presupuesto gratuitos y sin compromiso.'},{q:'¿Qué marcas reparáis?',a:'Multimarca: Xiaomi, SmartGyro, Cecotec, Ninebot, Segway, Dualtron, Kaabo…'},{q:'¿Las reparaciones tienen garantía?',a:'Sí, garantía del taller sobre piezas y mano de obra.'},{q:'¿Puedo venir sin cita?',a:'Sí, pero recomendamos escribir antes por WhatsApp.'},{q:'¿Reparáis bicicletas eléctricas?',a:'Sí, bicis eléctricas de gama alta (Bosch/Shimano/Brose).'}]},
-location:{index:'// 06',kicker:'Taller físico en Girona',title:'Nos encuentras en el Carrer Finestrelles',addressLabel:'Dirección',address:'Carrer Finestrelles, 9 · 17006 Girona',directions:'Abrir en Google Maps',hoursLabel:'Horario',days:'Lunes – Viernes',weekend:'Sábado y domingo — cerrado',seo:'Servicio técnico especializado en Girona y toda la provincia.',areasLabel:'Zonas de servicio',mapNote:'41.9741
+location:{index:'// 06',kicker:'Taller físico en Girona',title:'Nos encuentras en el Carrer Finestrelles',addressLabel:'Dirección',address:'Carrer Finestrelles, 9 · 17006 Girona',directions:'Abrir en Google Maps',hoursLabel:'Horario',days:'Lunes – Viernes',weekend:'Sábado y domingo — cerrado',seo:'Servicio técnico especializado en Girona y toda la provincia.',areasLabel:'Zonas de servicio',mapNote:'41.9741° N · 2.8199° E — GIRONA'},
+ctaFinal:{title:'Tu patinete, rodando en 24–48 horas.',sub:'Escríbenos por WhatsApp con la avería y tu modelo.',note:'L–V · 10:00–14:00 / 16:00–20:00',btn:'Pedir Presupuesto por WhatsApp'},
+footer:{tagline:'Taller especializado en movilidad eléctrica en Girona.',navTitle:'Secciones',nav:{0:'Servicios',1:'Cómo trabajamos',2:'Por qué elegirnos',3:'FAQ',4:'Ubicación',5:'Galería',6:'Tienda',scooters:'Patinetes',batteries:'Baterías'},contactTitle:'Contacto',rights:'© 2025 Riveu · Girona',legal:{0:'Aviso legal',1:'Privacidad'},made:'Hecho en Girona'},
+floating:'Contactar Taller',openNow:'Abierto ahora',closedNow:'Cerrado ahora',whatsappMsg:'Hola Riveu 👋 Quiero pedir presupuesto para mi patinete.',switchLabel:'Versió en català'}};
+
+const getByPath=(o,p)=>String(p).split('.').reduce((a,k)=>(a&&a[k]!==undefined?a[k]:undefined),o);
+
+function retriggerMaskLines(){document.querySelectorAll('.mask-line').forEach(l=>{l.classList.remove('active');const c=l.querySelector('span');if(c){const d=c.style.animationDelay;c.style.animation='none';void c.offsetHeight;c.style.animation='';if(d)c.style.animationDelay=d;}requestAnimationFrame(()=>l.classList.add('active'));});}
+
+const ICONS={wheel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21M5.6 5.6l3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/></svg>',battery:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="7.5" width="16" height="9" rx="1.5"/><path d="M21.5 10.5v3" stroke-width="2.5" stroke-linecap="round"/><path d="M11.5 9.2l-2.4 3.3h2.8l-2.4 3.3" stroke-linejoin="round" stroke-linecap="round"/></svg>',brake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="5.8" r=".9"/><circle cx="18.2" cy="12" r=".9"/><circle cx="12" cy="18.2" r=".9"/><circle cx="5.8" cy="12" r=".9"/></svg>',brands:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.5l8 4.2v7.6l-8 4.2-8-4.2V6.7l8-4.2z" stroke-linejoin="round"/><path d="M8.2 12.2l2.5 2.5 5-5.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'};
+const STAR='<svg viewBox="0 0 24 24" class="size-3.5"><use href="#i-star"/></svg>';
+
+function applyI18n(l){
+  document.documentElement.lang=l; document.title=i18n[l].meta.title;
+  const d=document.querySelector('meta[name="description"]'); if(d)d.setAttribute('content',i18n[l].hero.subtitle);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=getByPath(i18n[l],el.getAttribute('data-i18n'));if(v!==undefined)el.textContent=v;});
+  document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const v=getByPath(i18n[l],el.getAttribute('data-i18n-alt'));if(v!==undefined)el.setAttribute('alt',v);});
+  document.querySelectorAll('[data-lang-btn]').forEach(b=>{const a=b.getAttribute('data-lang-btn')===l;b.classList.toggle('bg-riveu-red',a);b.classList.toggle('text-white',a);b.classList.toggle('text-riveu-steel',!a);});
+  const href=waLink(i18n[l].whatsappMsg);['headerCta','heroCta','whyCta','ctaFinalBtn','footerWa','floatingWa'].forEach(id=>{const a=byId(id);if(a)a.href=href;});
+  const eb=byId('ebikeCta'); if(eb)eb.href=waLink(i18n[l].ebike.msg);
+  document.querySelectorAll('[data-phone-link]').forEach(a=>a.setAttribute('href','tel:'+PHONE_TEL));
+  document.querySelectorAll('[data-phone-text]').forEach(el=>el.textContent=PHONE_DISPLAY);
+  const o=l==='ca'?'es':'ca'; const sw=byId('switchLangBtn'); if(sw){sw.textContent=i18n[o].switchLabel;sw.setAttribute('data-next',o);}
+  renderTicker(l);renderDiagRows(l);renderServices(l);renderProcess(l);renderWhy(l);renderReviews(l);renderBrands();
+  retriggerMaskLines();
+  if(SHOP.all.length)renderShop();
+}
+
+function renderTicker(l){const h=i18n[l].ticker.map(t=>`<span class="flex items-center font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-white"><span class="rounded-sm bg-carbon-950/80 px-3 py-0.5">${t}</span><span class="mx-4 size-1.5 rotate-45 bg-carbon-950/70"></span></span>`).join('');byId('ticker1').innerHTML=h;byId('ticker2').innerHTML=h;}
+function renderBrands(){const b=['Xiaomi','SmartGyro','Cecotec','Ninebot','Segway','Dualtron','Kaabo','Vsett'];const h=b.map(x=>`<span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">${x}<span class="mx-8 text-sm text-riveu-red/40">//</span></span>`).join('');byId('brandsMarquee').innerHTML=h+h;}
+function renderDiagRows(l){byId('diagRows').innerHTML=i18n[l].hero.diag.rows.map(r=>`<div class="flex items-center justify-between gap-3 border-b border-white/5 py-2.5 last:border-0"><span class="text-riveu-steel">${r.k}</span><span class="hidden flex-1 border-b border-dotted border-white/15 sm:block"></span><span class="text-riveu-silver">${r.v}</span><span class="rounded-sm border border-riveu-red/40 px-1.5 text-[9px] text-riveu-red">${r.s}</span></div>`).join('');}
+function renderServices(l){byId('servicesGrid').innerHTML=i18n[l].services.items.map((s,i)=>`<article class="corners group relative h-full border border-white/10 bg-carbon-850 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-riveu-red/70 sm:p-6 reveal"><span class="corner-bl"></span><span class="corner-br"></span><div class="flex items-start justify-between"><span class="font-mono text-[11px] tracking-[0.25em] text-riveu-steel/70">0${i+1}</span><div class="size-6 text-riveu-red transition-transform duration-300 group-hover:scale-110 sm:size-7">${ICONS[s.icon]}</div></div><h3 class="mt-5 font-display text-base font-semibold uppercase leading-tight text-white sm:text-lg">${s.title}</h3><p class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-red sm:text-[11px]">${s.tag}</p><ul class="mt-4 space-y-2">${s.list.map(it=>`<li class="flex gap-2 text-xs leading-snug text-riveu-steel sm:text-sm"><span class="mt-[6px] size-1.5 shrink-0 bg-riveu-red/80"></span>${it}</li>`).join('')}</ul></article>`).join('');setupReveal();}
+function renderProcess(l){byId('processList').innerHTML=i18n[l].process.steps.map((s,i)=>`<li><div class="reveal flex gap-4 lg:block"><div class="flex flex-col items-center lg:mb-5 lg:flex-row lg:gap-3"><span class="grid size-11 shrink-0 place-items-center border border-riveu-red/60 bg-[#160a0a] font-mono text-sm text-riveu-red">0${i+1}</span><span class="mt-2 hidden h-px flex-1 bg-gradient-to-r from-riveu-red/50 to-transparent lg:block"></span></div><div><h3 class="font-display text-lg font-semibold uppercase text-white">${s.t}</h3><p class="mt-2 text-sm leading-relaxed text-riveu-steel">${s.d}</p></div></div></li>`).join('');setupReveal();}
+function renderWhy(l){byId('whyList').innerHTML=i18n[l].why.items.map(g=>`<div class="reveal group flex gap-5 border border-white/10 border-l-2 border-l-riveu-red bg-carbon-850 p-5 transition-colors hover:border-riveu-red/60 sm:p-6"><span class="w-12 shrink-0 font-mono text-sm tracking-widest text-riveu-red">${g.code}</span><div><h3 class="font-display text-lg font-semibold uppercase leading-tight text-white">${g.t}</h3><p class="mt-2 text-sm leading-relaxed text-riveu-steel">${g.d}</p></div></div>`).join('');setupReveal();}
+function renderReviews(l){byId('reviewsGrid').innerHTML=i18n[l].reviews.items.map(r=>`<figure class="reveal relative flex h-full flex-col border border-white/10 bg-carbon-850 p-6 transition-colors hover:border-riveu-red/50"><div class="flex gap-1 text-riveu-red">${Array.from({length:5}).map(()=>STAR).join('')}</div><blockquote class="mt-4 flex-1 text-sm leading-relaxed text-riveu-silver">«${r.text}»</blockquote><figcaption class="mt-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-wider"><span class="text-riveu-steel">${r.name}</span><span class="text-riveu-red">${r.scooter}</span></figcaption></figure>`).join('');setupReveal();}
+function renderFaq(l){byId('faqList').innerHTML=i18n[l].faq.items.map((f,i)=>`<div class="border-b border-white/10"><button data-faq-toggle="${i}" aria-expanded="${i===0}" class="group flex w-full items-center justify-between gap-4 py-5 text-left"><span class="font-display text-base font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-riveu-red sm:text-lg">${f.q}</span><span class="grid size-8 shrink-0 place-items-center border border-white/15 font-mono text-lg text-riveu-steel transition-all duration-300 group-hover:border-white/40 ${i===0?'rotate-45 border-riveu-red text-riveu-red':''}">+</span></button><div class="faq-body ${i===0?'open':''}"><div><p class="pb-5 pr-10 text-sm leading-relaxed text-riveu-steel">${f.a}</p></div></div></div>`).join('');
+document.querySelectorAll('[data-faq-toggle]').forEach(b=>{b.addEventListener('click',()=>{const body=b.nextElementSibling;const ic=b.querySelector('span:last-child');const o=body.classList.toggle('open');ic.classList.toggle('rotate-45',o);ic.classList.toggle('border-riveu-red',o);ic.classList.toggle('text-riveu-red',o);b.setAttribute('aria-expanded',o);});});}
+
+const SHOP={all:[],filter:'all',search:'',scootersExpanded:false,partsList:[],partsShown:0,PAGE:16};
+const imgCache={}; const pendingQueue=[]; const inFlight=new Set();
+async function loadImgCache(){
+  try{const r=await fetch('fotos-sku.json',{cache:'no-store'});if(r.ok)Object.assign(imgCache,await r.json());}catch(e){}
+  try{Object.assign(imgCache,JSON.parse(localStorage.getItem('riveu-imgcache')||'{}'));}catch(e){}
+}
+function saveImgCache(){try{localStorage.setItem('riveu-imgcache',JSON.stringify(imgCache));}catch(e){}}
+function norm(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+function classifyProduct(p){
+  const t=(p.title||'').toLowerCase(), s=(p.sku||'').toLowerCase(), x=t+' '+s;
+  if(/puñ|grip|casco|helmet|matr[ií]cul|portamatr|soporte|candado|damper|amortiguador|horquilla|caballete|tapa de|tapon|tap[oó]n|manillar|arandela|tornillo|malla|hinchador|inflador/.test(x)) return 'accessory';
+  if(/patinet\w*\s+el[eé]ctric/.test(t)) return 'patinet';
+  if(/^(ecoxtrem|rovoron|navee|ada)/.test(s) && !/mando|damper|motor|control|bater|cargador|display|guardabarros|freno|rueda|cable|soporte|puño/.test(t)) return 'patinet';
+  if(/guardabarros|guardafangs|fender|mudguard/.test(x)) return 'fender';
+  if(/fren|pastilla|pinza de|maneta|bomba de freno/.test(x)) return 'brake';
+  if(/rueda|cubierta|neum[aá]tic|c[aá]mara|v[aá]lvula|tubeless|llanta/.test(x)) return 'wheel';
+  if(/controlador|controladora|bater|cargador|charger|motor|display|pantalla|bms|acelerador|botonera|m[oó]dulo|sensor|hall|faro|luz|luces|led|foco|bocina|horn|mando|deslimit|limitador|potenci[oó]metro|intermitente/.test(x)) return 'electronic';
+  if(/cable|conector|adaptador|xt30|xt60|xlr|gx16|awg|extensor|pines|pin\b|silicona/.test(x)) return 'cable';
+  return 'accessory';
+}
+function searchIntent(q){
+  if(/patinet|scooter/.test(q)) return 'patinet';
+  if(/guardabarros|guardafangs|fender/.test(q)) return 'fender';
+  if(/fren|brake|pastilla|disco de/.test(q)) return 'brake';
+  if(/rueda|cubierta|neumatic|wheel|llanta/.test(q)) return 'wheel';
+  if(/cable|conector|adaptador/.test(q)) return 'cable';
+  if(/controlador|controladora|bater|cargador|motor|display|electr/.test(q)) return 'electronic';
+  if(/casco|candado|soporte|accesorio|accessori/.test(q)) return 'accessory';
+  return null;
+}
+function parseCSV(text){const rows=[];const lines=text.split(/\r?\n/);if(lines.length<2)return rows;const header=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,''));
+ for(let i=1;i<lines.length;i++){const line=lines[i].trim();if(!line)continue;const f=[];let cur='',q=false;
+  for(let j=0;j<line.length;j++){const c=line[j];if(c==='"'){q=!q;}else if(c===','&&!q){f.push(cur);cur='';}else{cur+=c;}}f.push(cur);
+  const o={};header.forEach((h,idx)=>{o[h]=(f[idx]||'').trim().replace(/^"|"$/g,'');});if(o.SKU)rows.push(o);}return rows;}
+function normalizeProducts(rows){return rows.map(r=>{const pr=parseFloat((r.price||'').replace(',','.'));const imgs=(r.image_link||'').split(',').map(u=>u.trim()).filter(Boolean).map(u=>{try{return encodeURI(u);}catch(e){return u;}});const q=parseInt((r.Quantity||r.quantity||'0'),10);
+ return {sku:r.SKU,title:r.title||r.SKU,description:r.description||'',price:isNaN(pr)?null:pr,image:imgs[0]||'',stock:isNaN(q)?0:q,category:'unknown'};}).map(p=>({...p,category:classifyProduct(p)}));}
+function pumpQueue(){while(inFlight.size<4&&pendingQueue.length){const sku=pendingQueue.shift();if(inFlight.has(sku))continue;inFlight.add(sku);
+ fetch('/api/product-image?sku='+encodeURIComponent(sku)).then(r=>r.ok?r.json():{image:''}).then(d=>{const url=(d&&d.image)||'';
+  if(url){imgCache[sku]=url;saveImgCache();document.querySelectorAll('img[data-sku]').forEach(im=>{if(im.getAttribute('data-sku')===sku)im.src=url;});}}).catch(()=>{}).finally(()=>{inFlight.delete(sku);pumpQueue();});}}
+function queueImages(){document.querySelectorAll('#scooterGrid img[data-sku], #partsGrid img[data-sku]').forEach(img=>{if(img.dataset.qimg)return;img.dataset.qimg='1';const sku=img.getAttribute('data-sku');
+ if(img.complete&&img.naturalWidth>0)return;
+ if(imgCache[sku]!==undefined){if(imgCache[sku])img.src=imgCache[sku];return;}
+ const csv=img.getAttribute('data-csv')||''; if(csv)return; pendingQueue.push(sku);});pumpQueue();}
+function shipInfoFor(price, qty, t){
+  if(!price || price<=0) return {txt:'—', cls:'text-riveu-steel'};
+  const sub=price*qty;
+  if(sub>=100) return {txt:t.shipFree, cls:'text-wa'};
+  return {txt:'+5 €', cls:'text-riveu-silver'};
+}
+function cardHTML(p){const t=i18n[lang()].shop;
+ const price=p.price!==null?p.price.toFixed(2).replace('.',',')+' €':'—';
+ const hs=p.stock>0;
+ const stockText=hs?(t.stock+' · '+p.stock):t.outOfStock;const sc=hs?'bg-wa/15 text-wa border-wa/40':'bg-riveu-red/10 text-riveu-red border-riveu-red/40';
+ const ship=hs?shipInfoFor(p.price,1,t):{txt:'—',cls:'text-riveu-steel'};
+ const img=`<img src="${localImg(p.sku)}" data-sku="${p.sku}" data-csv="${p.image||''}" alt="${p.title}" loading="lazy" decoding="async" onerror="imgNext(this)" class="shop-img h-full w-full object-cover" width="400" height="400">`;
+ const qtyBlock=hs
+  ?`<div class="mt-3 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.qty}</span><div class="flex items-center gap-2"><button type="button" data-qminus class="grid size-8 place-items-center border border-white/20 text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">–</button><span data-qty class="w-8 text-center font-mono text-sm text-white">1</span><button type="button" data-qplus class="grid size-8 place-items-center border border-white/20 text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">+</button></div></div>
+    <div class="mt-2 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.shipLabel}</span><span data-ship class="font-mono text-[11px] ${ship.cls}">${ship.txt}</span></div>`
+  :`<div class="mt-3 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.qty}</span><span class="font-mono text-sm text-riveu-steel/50">—</span></div>`;
+ const payBtn=hs
+  ?`<button type="button" data-pay="${p.sku}" class="mt-3 inline-flex w-full items-center justify-center gap-2 border-2 border-wa px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-all hover:bg-wa hover:text-[#052e16]">💳 ${t.pay}</button>`
+  :`<button type="button" disabled class="mt-3 inline-flex w-full cursor-not-allowed items-center justify-center gap-2 border-2 border-white/10 px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-riveu-steel/50">🚫 ${t.soldout}</button>`;
+ return `<article class="shop-card corners group relative flex flex-col overflow-hidden border border-white/10 bg-carbon-850" data-qty="1" data-price="${p.price||0}"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<div class="absolute left-3 top-3"><span class="border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur">${stockText}</span></div><div class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel backdrop-blur">${p.sku}</div></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.vat}</span></div>${qtyBlock}${payBtn}</div></article>`;}
+function currentLists(){
+  const f=SHOP.filter; const q=SHOP.search.trim(); const nq=norm(q);
+  const intent=q?searchIntent(nq):null;
+  const tokens=nq.split(/\s+/).filter(t=>t.length>1);
+  const match=p=>{ if(!tokens.length) return true; const hay=norm(p.title+' '+p.sku+' '+(p.description||''));
+    return tokens.every(tk=>{ const b=tk.replace(/s$/,''); const esc=b.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); return new RegExp('(^|[^a-z0-9])'+esc).test(hay); }); };
+  let list=SHOP.all.slice();
+  if(f!=='all') list=list.filter(p=>p.category===f);
+  if(intent) list=list.filter(p=>p.category===intent);
+  list=list.filter(match);
+  return {scooters:list.filter(p=>p.category==='patinet'), parts:list.filter(p=>p.category!=='patinet')};
+}
+function renderScooters(){const {scooters}=currentLists();const t=i18n[lang()].shop;const sec=byId('scooterSection');
+ sec.style.display=scooters.length?'':'none';byId('scooterCount').textContent='('+scooters.length+')';
+ const list=SHOP.scootersExpanded?scooters:scooters.slice(0,12);
+ byId('scooterGrid').innerHTML=list.map(cardHTML).join('');
+ const mb=byId('scooterMore');if(scooters.length>12){mb.hidden=false;mb.textContent=SHOP.scootersExpanded?t.showLess:(t.seeAll+' ('+scooters.length+')');}else mb.hidden=true;}
+function renderPartsPage(reset){const grid=byId('partsGrid');const list=SHOP.partsList||[];if(reset){grid.innerHTML='';SHOP.partsShown=0;}
+ const next=list.slice(SHOP.partsShown,SHOP.partsShown+SHOP.PAGE);grid.insertAdjacentHTML('beforeend',next.map(cardHTML).join(''));SHOP.partsShown+=next.length;
+ byId('partsEnd').hidden=!(SHOP.partsShown>=list.length&&list.length>0);queueImages();}
+function renderShop(){const {scooters,parts}=currentLists();const t=byId('shopEmpty');
+ renderScooters();
+ const psec=byId('partsSection');psec.style.display=parts.length?'':'none';byId('partsCount').textContent='('+parts.length+')';
+ SHOP.partsList=parts;renderPartsPage(true);
+ t.classList.toggle('hidden',(scooters.length+parts.length)>0);queueImages();}
+async function loadShop(){const grid=byId('partsGrid');grid.innerHTML=`<div class="col-span-full py-12 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel">${i18n[lang()].shop.loading}</div>`;
+ let products=null;
+ try{const live=await fetch('/api/products',{cache:'no-store'});if(live.ok){const r=parseCSV(await live.text());if(r.length)products=normalizeProducts(r);}}catch(e){}
+ if(!products||!products.length){try{const r=await fetch('productos.csv?t='+Date.now(),{cache:'no-store'});if(r.ok){const rows=parseCSV(await r.text());if(rows.length)products=normalizeProducts(rows);}}catch(e){}}
+ if(products&&products.length){SHOP.all=products;window._shopData=products;renderShop();}
+ else{grid.innerHTML='';byId('shopEmpty').classList.remove('hidden');byId('shopEmpty').textContent=i18n[lang()].shop.errorMsg;}}
+function initShop(){
+ document.querySelectorAll('#shopFilters [data-filter]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('#shopFilters [data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');SHOP.filter=b.getAttribute('data-filter');SHOP.scootersExpanded=false;if(SHOP.all.length){renderShop();scrollToShopIfNeeded();}});});
+ const s=byId('shopSearch');if(s)s.addEventListener('input',()=>{setShopQuery(s.value,false);});
+ byId('scooterMore').addEventListener('click',()=>{SHOP.scootersExpanded=!SHOP.scootersExpanded;renderScooters();queueImages();});
+ new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const l=SHOP.partsList||[];if(SHOP.partsShown<l.length)renderPartsPage(false);}});},{rootMargin:'500px 0px'}).observe(byId('partsSentinel'));
+ loadImgCache().then(()=>loadShop());
+}
+/* Buscador sincronizado + flotante */
+function setShopQuery(v,syncMain){
+  SHOP.search=v;
+  const f=byId('floatSearchInput'); if(f && syncMain!==false) f.value=v;
+  if(syncMain!==false){ const m=byId('shopSearch'); if(m) m.value=v; }
+  byId('floatClear').hidden=!v;
+  if(SHOP.all.length){renderShop();scrollToShopIfNeeded();}
+}
+function scrollToShopIfNeeded(){ const sec=byId('botiga'); if(!sec)return;
+ if(window.scrollY > sec.offsetTop + 150){ window.scrollTo({top: Math.max(0, sec.offsetTop - 80), behavior:'smooth'}); } }
+function updateFloatSearch(){
+  const bar=byId('floatSearch'), anchor=byId('shopSearch');
+  if(!bar||!anchor)return;
+  const show = anchor.getBoundingClientRect().bottom < 0;
+  bar.classList.toggle('show', show);
+  bar.setAttribute('aria-hidden', show?'false':'true');
+}
+window.addEventListener('scroll', updateFloatSearch, {passive:true});
+
+/* Cookies + mapa + analítica */
+function loadAnalytics(){ if(window.__siLoaded)return; window.__siLoaded=true;
+  window.si = window.si || function () { (window.si.q = window.si.q || []).push(arguments); };
+  var s=document.createElement('script'); s.src='/_vercel/insights/script.js'; s.defer=true; document.head.appendChild(s); }
+function applyConsentMaps(ok){ var f=byId('mapFrame'), d=byId('mapDenied'); if(!f||!d)return;
+  if(ok){ d.hidden=true; if(!f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-src')); }
+  else { d.hidden=false; f.removeAttribute('src'); } }
+function setCookieChoice(v){ try{localStorage.setItem('riveu-cookies',v);}catch(e){} }
+function initCookies(){ var c=null; try{c=localStorage.getItem('riveu-cookies');}catch(e){}
+  if(c==='ok'){ loadAnalytics(); applyConsentMaps(true); return; }
+  if(c==='no'){ applyConsentMaps(false); return; }
+  var b=byId('cookieBanner'); if(b) b.hidden=false; }
+
+function showBanner(msg, ok){
+  let b=document.getElementById('payBanner');
+  if(!b){b=document.createElement('div');b.id='payBanner';b.style.cssText='position:fixed;top:86px;left:50%;transform:translateX(-50%);z-index:130;padding:12px 20px;border-radius:8px;font-family:monospace;font-size:13px;max-width:90%;text-align:center;';document.body.appendChild(b);}
+  b.style.background= ok? '#16a34a':'#dc2626'; b.style.color='#fff'; b.textContent=msg; b.style.display='block';
+  setTimeout(()=>{b.style.display='none';},6000);
+}
+function resetPayButtons(){const t=i18n[lang()].shop;document.querySelectorAll('[data-pay]').forEach(b=>{b.disabled=false;b.innerHTML='💳 '+t.pay;});}
+window.addEventListener('pageshow',resetPayButtons);
+window.addEventListener('load',resetPayButtons);
+
+let pendingPay=null;
+function doPayment(sku,qty,btn){const old=btn.innerHTML;btn.disabled=true;btn.innerHTML=(i18n[lang()].shop.loading||'Creando pago seguro…');
+ fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sku:sku,qty:qty})})
+ .then(r=>r.json()).then(d=>{if(d&&d.url){window.location.href=d.url;}else{showBanner('❌ '+(d&&d.error?d.error:'Error al crear el pago'),false);btn.disabled=false;btn.innerHTML=old;}})
+ .catch(()=>{showBanner('❌ Error de conexión',false);btn.disabled=false;btn.innerHTML=old;});}
+function ensureGate(){if(document.getElementById('zoneGate'))return;const g=document.createElement('div');g.id='zoneGate';g.style.cssText='position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.75);';document.body.appendChild(g);renderGate();}
+function renderGate(){
+  const g=document.getElementById('zoneGate'); const dict=I18N[lang()].shop;
+  g.innerHTML=`<div style="max-width:430px;width:92%;background:#141414;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:20px;">
+  <p style="font-family:'Chakra Petch',sans-serif;font-weight:700;color:#fff;margin:0 0 8px;">${dict.zoneTitle}</p>
+  <p style="font-size:13px;color:#9E9E9E;margin:0 0 16px;">${dict.zoneSub}</p>
+  <button id="gateYes" style="width:100%;margin-bottom:8px;padding:12px;border:2px solid #25D366;color:#25D366;font-weight:700;border-radius:6px;background:transparent;">${dict.zoneYes}</button>
+  <button id="gateNo" style="width:100%;padding:12px;border:2px solid rgba(255,255,255,.25);color:#9E9E9E;font-weight:700;border-radius:6px;background:transparent;">${dict.zoneNo}</button>
+  <button id="gateClose" style="margin-top:10px;width:100%;font-size:12px;color:#6f6f6f;background:none;border:none;cursor:pointer;">${dict.zoneClose}</button></div>`;
+  g.querySelector('#gateYes').addEventListener('click',()=>{g.style.display='none';if(pendingPay)doPayment(pendingPay.sku,pendingPay.qty,pendingPay.btn);});
+  g.querySelector('#gateNo').addEventListener('click',()=>{g.style.display='none';const dict=I18N[lang()].shop;showBanner(dict.zoneWarn,false);window.open('https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(dict.zoneWa),'_blank');});
+  g.querySelector('#gateClose').addEventListener('click',()=>{g.style.display='none';});}
+function openZoneGate(sku,qty,btn){ensureGate();renderGate();pendingPay={sku,qty,btn};document.getElementById('zoneGate').style.display='flex';}
+
+document.addEventListener('click',async (e)=>{
+ const langBtn=e.target.closest('[data-lang-btn]');
+ if(langBtn){applyLang(langBtn.getAttribute('data-lang-btn'));return;}
+ if(e.target.closest('#floatClear')){setShopQuery('');byId('floatSearchInput').focus();return;}
+ const qm=e.target.closest('[data-qminus]'),qp=e.target.closest('[data-qplus]');
+ if(qm||qp){const card=e.target.closest('.shop-card');if(!card)return;let q=parseInt(card.dataset.qty||'1',10)||1;q=qp?q+1:Math.max(1,q-1);card.dataset.qty=String(q);const lab=card.querySelector('[data-qty]');if(lab)lab.textContent=q;const price=parseFloat(card.dataset.price||'0');const si=shipInfoFor(price,q,i18n[lang()].shop);const sh=card.querySelector('[data-ship]');if(sh){sh.textContent=si.txt;sh.className='font-mono text-[11px] '+si.cls;}return;}
+ const btn=e.target.closest('[data-pay]');if(!btn)return;const card=btn.closest('.shop-card');const qty=Math.max(1,parseInt(card&&card.dataset.qty||'1',10)||1);openZoneGate(btn.getAttribute('data-pay'),qty,btn);
+});
+document.addEventListener('input',(e)=>{
+ if(e.target.id==='floatSearchInput'){ setShopQuery(e.target.value,false); }
+});
+
+function animateGauge(t=87){const arc=byId('gaugeArc'),nd=byId('gaugeNeedle'),v=byId('gaugeValue');if(!arc||!nd||!v)return;const tk=byId('gaugeTicks');if(tk&&!tk.hasChildNodes()){let s='';for(let i=0;i<=12;i++){const a=-120+i*20,mj=i%3===0;s+=`<g transform="rotate(${a} 90 90)"><line x1="90" y1="26" x2="90" y2="${mj?33:29}" stroke="${i>=11?'#E53935':'#4a4a4a'}" stroke-width="${mj?2:1}"/></g>`;}tk.innerHTML=s;}
+ const red=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(red){arc.setAttribute('stroke-dasharray',`${(t/100)*66.667} 100`);nd.setAttribute('transform',`rotate(${-120+(t/100)*240} 90 90)`);v.textContent=(38+t*0.166).toFixed(1);return;}
+ const t0=performance.now();const st=(x)=>{const p=Math.min(1,(x-t0)/1800);const val=(1-Math.pow(1-p,3))*t;arc.setAttribute('stroke-dasharray',`${(val/100)*66.667} 100`);nd.setAttribute('transform',`rotate(${-120+(val/100)*240} 90 90)`);v.textContent=(38+val*0.166).toFixed(1);if(p<1)requestAnimationFrame(st);};requestAnimationFrame(st);}
+function updateOpenStatus(l){const dots=document.querySelectorAll('[data-open-dot]'),txts=document.querySelectorAll('[data-open-text]');if(!dots.length)return;try{let d=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Madrid'}));if(isNaN(d.getTime()))d=new Date();const tot=d.getHours()*60+d.getMinutes();const open=d.getDay()>=1&&d.getDay()<=5&&((tot>=600&&tot<840)||(tot>=960&&tot<1200));dots.forEach(x=>x.className=`size-2 rounded-full ${open?'animate-pulse bg-wa':'bg-riveu-red'}`);txts.forEach(x=>{x.className=open?'text-wa':'text-riveu-red';x.textContent=open?i18n[l].openNow:i18n[l].closedNow;});}catch(e){txts.forEach(x=>x.textContent='…');}}
+let revealObserver=null;function setupReveal(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}if(!revealObserver){revealObserver=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});}document.querySelectorAll('.reveal:not(.visible)').forEach(el=>revealObserver.observe(el));}
+function setupScrollProgress(){const b=byId('scrollBar');if(!b)return;const f=()=>{const h=document.documentElement;b.style.width=(h.scrollTop/Math.max(1,h.scrollHeight-window.innerHeight)*100)+'%';};window.addEventListener('scroll',f,{passive:true});f();}
+
+(function init(){let l='ca';try{const s=localStorage.getItem('riveu-lang');if(s==='ca'||s==='es')l=s;else l=(navigator.language||'ca').toLowerCase().startsWith('ca')?'ca':'es';}catch(e){}
+ applyI18n(l);animateGauge(87);updateOpenStatus(l);setupReveal();setupScrollProgress();initShop();initCookies();updateFloatSearch();
+ document.querySelectorAll('[data-lang-btn]').forEach(b=>{b.addEventListener('click',()=>{const x=b.getAttribute('data-lang-btn');try{localStorage.setItem('riveu-lang',x);}catch(e){}applyI18n(x);updateOpenStatus(x);});});
+ byId('switchLangBtn').addEventListener('click',()=>{const n=byId('switchLangBtn').getAttribute('data-next')||'es';try{localStorage.setItem('riveu-lang',n);}catch(e){}applyI18n(n);updateOpenStatus(n);});
+ const ca=byId('cookieAccept'), cn=byId('cookieReject');
+ if(ca)ca.addEventListener('click',()=>{setCookieChoice('ok');const b=byId('cookieBanner');if(b)b.hidden=true;loadAnalytics();applyConsentMaps(true);});
+ if(cn)cn.addEventListener('click',()=>{setCookieChoice('no');const b=byId('cookieBanner');if(b)b.hidden=true;applyConsentMaps(false);});
+ setInterval(()=>updateOpenStatus(lang()),60000);
+ if(location.search.includes('export=1')){
+   const a=document.createElement('a');a.download='fotos-sku.json';
+   const b=document.createElement('button');b.textContent='⬇ Descargar fotos-sku.json';
+   b.style.cssText='position:fixed;top:90px;left:50%;transform:translateX(-50%);z-index:999;background:#25D366;color:#052e16;font-weight:bold;padding:12px 20px;border:none;border-radius:8px;';
+   b.onclick=()=>{const map={};
+     for(const k in imgCache){if(imgCache[k]&&imgCache[k].startsWith('http'))map[k]=imgCache[k];}
+     document.querySelectorAll('img[data-sku]').forEach(im=>{const s=im.getAttribute('data-sku');const src=im.currentSrc||im.src||'';if(src.startsWith('http'))map[s]=src;});
+     a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(map));a.click();};
+   document.body.appendChild(b);
+ }
+})();
+</script>
+</body>
+</html>
