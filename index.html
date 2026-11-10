@@ -6,10 +6,10 @@
 <meta name="theme-color" content="#0a0a0a" />
 <meta name="robots" content="index,follow" />
 <title>Riveu · Taller de Patinets i Bicicletes Elèctriques a Girona</title>
-<meta name="description" content="Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia del taller. Girona, Figueres i tota la província." />
+<meta name="description" content="Taller especializado en reparación de patinetes y bicicletas eléctricas en Girona. Diagnóstico gratis, baterías, pinchazos, frenos y electrónica con garantía. Servicio en toda la provincia y envíos 24–48 h a España." />
 <link rel="canonical" href="https://www.riveu.es/" />
 <meta property="og:title" content="Riveu · Taller de Patinets i Bicicletes Elèctriques a Girona" />
-<meta property="og:description" content="Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta." />
+<meta property="og:description" content="Reparación multimarca de patinetes y e-bikes en Girona. Diagnóstico gratis, garantía de taller y entrega 24–48 h." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.riveu.es/" />
 <meta property="og:locale" content="ca_ES" />
@@ -29,17 +29,12 @@
   tailwind.config = { theme: { extend: {
       colors: { carbon: { 950:'#0a0a0a', 900:'#121212', 850:'#141414', 800:'#181818', 700:'#212121' }, riveu: { red:'#E53935', redDark:'#D32F2F', silver:'#C0C0C0', steel:'#9E9E9E' }, wa: '#25D366' },
       fontFamily: { display:['"Chakra Petch"','sans-serif'], sans:['"IBM Plex Sans"','sans-serif'], mono:['"IBM Plex Mono"','monospace'] },
-      keyframes: { ticker: { from:{transform:'translateX(0)'}, to:{transform:'translateX(-50%)'} }, waPing: { '0%':{transform:'scale(1)',opacity:'0.45'}, '70%,100%':{transform:'scale(1.6)',opacity:'0'} } },
-      animation: { ticker:'ticker 28s linear infinite', 'ticker-s':'ticker 40s linear infinite', 'wa-ping':'waPing 2.2s cubic-bezier(0,0,0.2,1) infinite' }
+      keyframes: { ticker: { from:{transform:'translateX(0)'}, to:{transform:'translateX(-50%)'} }, waPing: { '0%':{transform:'scale(1)',opacity:'0.45'}, '70%,100%':{transform:'scale(1.6)',opacity:'0'} }, float3d: { '0%,100%':{transform:'translateY(0)'}, '50%':{transform:'translateY(-12px)'} } },
+      animation: { ticker:'ticker 28s linear infinite', 'ticker-s':'ticker 40s linear infinite', 'wa-ping':'waPing 2.2s cubic-bezier(0,0,0.2,1) infinite', 'float-3d':'float3d 6s ease-in-out infinite' }
   } } };
 </script>
 <script>
 function imgFallback(el){var w=400,h=400;var s="<svg xmlns='http://www.w3.org/2000/svg' width='"+w+"' height='"+h+"'><rect width='100%' height='100%' fill='#141414'/><rect x='10' y='10' width='"+(w-20)+"' height='"+(h-20)+"' fill='none' stroke='#2a2a2a' stroke-width='2'/><text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='34' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";el.onerror=null;el.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);}
-function placeholderUri(){var s="<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='#141414'/><rect x='10' y='10' width='380' height='380' fill='none' stroke='#2a2a2a' stroke-width='2'/><text x='50%' y='50%' fill='#5a5a5a' font-family='monospace' font-size='34' text-anchor='middle' dominant-baseline='middle'>RIVEU</text></svg>";return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s);}
-const FOTO_MAP={ 'ECOXTREM-DEIMOS-DGT-NEGRO':'img/deimos-single-NEGRO.jpg' };
-function localImg(sku){ if(FOTO_MAP[sku])return FOTO_MAP[sku]; const base=String(sku).replace(/\//g,'-').replace(/[^a-zA-Z0-9._-]/g,''); return 'img/'+base+'.jpg'; }
-function localMiss(el){el.onerror=function(){imgFallback(el);};el.src=placeholderUri();el.dataset.qimg='';}
-function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerror=function(){imgFallback(el);};el.src=csv;}else{localMiss(el);}}
 </script>
 <style>
   :root{color-scheme:dark} html{scroll-behavior:smooth} body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
@@ -60,16 +55,13 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   .corners:hover::before,.corners:hover::after,.corners:hover>.corner-bl,.corners:hover>.corner-br{border-color:#e53935}
   .faq-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}.faq-body.open{grid-template-rows:1fr}.faq-body>div{overflow:hidden}
   .hero-bg-img{background-image:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.9) 100%),url('https://image.qwenlm.ai/public_source/8b2c98c3-8b7e-4df2-8fa1-0ad2a70e1528/86828bb7e-3a19-4d82-87d4-b1ab589d4ec83224.png');background-size:cover;background-position:center}
-  .shop-card{transition:all .3s ease}.shop-card:hover{transform:translateY(-6px);border-color:rgba(229,57,53,.7);box-shadow:0 20px 60px -20px rgba(229,57,53,.4)}
-  .shop-img{aspect-ratio:1/1}
-  .shop-filter.active{background:#E53935;color:#fff;border-color:#E53935}
-  #shopFilters::-webkit-scrollbar{height:4px}
-  #floatSearch{position:fixed;top:0;left:0;right:0;z-index:60;transform:translateY(-110%);transition:transform .3s ease;pointer-events:none}
-  #floatSearch.show{transform:translateY(0);pointer-events:auto}
   .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:140;background:rgba(18,18,18,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.1);transform:translateY(100%);transition:transform .4s ease}
   .cookie-banner.show{transform:translateY(0)}
+  #stage3dInner{transform-style:preserve-3d;transition:transform .25s ease-out}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
 </style>
+
+<!-- SEO: LocalBusiness -->
 <script type="application/ld+json">
 { "@context":"https://schema.org","@type":"LocalBusiness","name":"Riveu — Taller de Patinetes y Bicicletas Eléctricas",
   "description":"Taller especializado multimarca en movilidad eléctrica en Girona.","url":"https://www.riveu.es","telephone":"+34633624345","priceRange":"€€","image":"logo-riveu.jpg",
@@ -81,6 +73,31 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"14:00"},
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"16:00","closes":"20:00"}] }
 </script>
+<!-- SEO: WebSite -->
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"WebSite","name":"Riveu","url":"https://www.riveu.es","inLanguage":["es","ca"] }
+</script>
+<!-- SEO: Service + OfferCatalog -->
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"Service","serviceType":"Reparación de patinetes y bicicletas eléctricas",
+  "provider":{"@type":"LocalBusiness","name":"Riveu","url":"https://www.riveu.es","telephone":"+34633624345"},
+  "areaServed":[{"@type":"City","name":"Girona"},{"@type":"City","name":"Salt"},{"@type":"City","name":"Banyoles"},{"@type":"City","name":"Figueres"},{"@type":"City","name":"Olot"},{"@type":"AdministrativeArea","name":"España"}],
+  "hasOfferCatalog":{"@type":"OfferCatalog","name":"Servicios de taller","itemListElement":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Reparación de pinchazos y neumáticos"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cambio y reconstrucción de baterías"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Reparación de frenos y mecánica"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Diagnóstico electrónico y controladoras"}}]}}
+</script>
+<!-- SEO: FAQPage -->
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"¿Cuánto tarda una reparación?","acceptedAnswer":{"@type":"Answer","text":"La mayoría de averías quedan listas en 24–48 horas."}},
+  {"@type":"Question","name":"¿El diagnóstico tiene coste?","acceptedAnswer":{"@type":"Answer","text":"El diagnóstico y el presupuesto son gratuitos y sin compromiso."}},
+  {"@type":"Question","name":"¿Qué marcas reparáis?","acceptedAnswer":{"@type":"Answer","text":"Multimarca: Xiaomi, SmartGyro, Cecotec, Ninebot, Segway, Dualtron, Kaabo…"}},
+  {"@type":"Question","name":"¿Las reparaciones tienen garantía?","acceptedAnswer":{"@type":"Answer","text":"Sí, garantía del taller sobre piezas y mano de obra."}},
+  {"@type":"Question","name":"¿Puedo venir sin cita?","acceptedAnswer":{"@type":"Answer","text":"Sí, pero recomendamos escribirnos antes por WhatsApp."}},
+  {"@type":"Question","name":"¿Reparáis bicicletas eléctricas?","acceptedAnswer":{"@type":"Answer","text":"Sí, bicis eléctricas de gama alta (Bosch/Shimano/Brose)."}}]}
+</script>
 </head>
 <body class="bg-carbon-950 font-sans text-white antialiased">
 <noscript><div style="background:#D32F2F;color:#fff;text-align:center;padding:10px;font-family:monospace;font-size:12px">Aquesta web necessita JavaScript · Esta web necesita JavaScript · 633 62 43 45</div></noscript>
@@ -90,7 +107,8 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 21.5S5.5 15.9 5.5 11a6.5 6.5 0 1 1 13 0c0 4.9-6.5 10.5-6.5 10.5z"/><circle fill="none" stroke="currentColor" stroke-width="1.5" cx="12" cy="11" r="2.5"/></symbol>
   <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="5.5" cy="17.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="5" r="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 17.5V14l-3-3 4-3 2 3h2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.9 6.26 6.6.7-4.9 4.5 1.35 6.54L12 16.9 6.05 20l1.35-6.54-4.9-4.5 6.6-.7L12 2z"/></symbol>
-  <symbol id="i-cart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 2l8 3v6c0 5-3.5 9.3-8 11-4.5-1.7-8-6-8-11V5l8-3z" stroke-linejoin="round"/><path fill="none" stroke="currentColor" stroke-width="1.5" d="M8.5 12l2.5 2.5 4.5-5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke-linejoin="round"/></symbol>
 </svg>
 <div aria-hidden class="noise pointer-events-none fixed inset-0 z-[60] opacity-[0.05]"></div>
 <div class="fixed inset-x-0 top-0 z-50">
@@ -113,21 +131,15 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <span id="scrollBar" class="block h-[2px] bg-riveu-red transition-[width] duration-150 ease-out" style="width:0%"></span>
   </header>
 </div>
-<div id="floatSearch" aria-hidden="true">
-  <div class="mx-auto max-w-7xl px-4 sm:px-8">
-    <div class="flex items-center gap-2 rounded-full border border-white/15 bg-carbon-950/95 px-4 py-2 shadow-lg backdrop-blur-md">
-      <span class="text-riveu-steel">🔍</span>
-      <input id="floatSearchInput" type="search" autocomplete="off" class="w-full bg-transparent font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:outline-none" placeholder="Buscar…" />
-      <button id="floatClear" type="button" hidden class="grid size-6 place-items-center rounded-full border border-white/15 text-riveu-steel">✕</button>
-    </div>
-  </div>
-</div>
-<section class="relative overflow-hidden pb-8 pt-28 sm:pt-32">
+
+<!-- 1. HERO con patinete 3D -->
+<section class="relative overflow-hidden pb-10 pt-28 sm:pt-32">
   <div aria-hidden class="pointer-events-none absolute inset-0 hidden hero-bg-img opacity-25 lg:block"></div>
-  <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-8">
+  <div aria-hidden class="pointer-events-none absolute -right-32 top-16 size-[560px] rounded-full bg-riveu-red/15 blur-[140px]"></div>
+  <div class="blueprint-grid relative mx-auto grid w-full max-w-7xl gap-12 px-4 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
     <div class="flex flex-col items-start gap-4">
       <p class="font-mono text-[11px] tracking-[0.28em] text-riveu-red sm:text-xs" data-i18n="hero.status"></p>
-      <h1 class="font-display font-bold uppercase leading-[0.98] text-white [font-size:clamp(1.8rem,5.5vw,3.2rem)]">
+      <h1 class="font-display font-bold uppercase leading-[0.98] text-white [font-size:clamp(1.9rem,6vw,3.6rem)]">
         <span class="mask-line active"><span data-i18n="hero.title0" style="animation-delay:.1s"></span></span>
         <span class="mask-line active"><span data-i18n="hero.title1" style="animation-delay:.25s"></span></span>
         <span class="mask-line active"><span data-i18n="hero.title2" style="animation-delay:.4s" class="text-riveu-red"></span></span>
@@ -135,7 +147,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
       <p class="max-w-2xl text-sm leading-relaxed text-riveu-silver sm:text-base" data-i18n="hero.subtitle"></p>
       <div class="flex flex-col gap-2.5 sm:flex-row sm:items-center">
         <a id="heroCta" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 bg-wa px-6 py-3 font-display text-sm font-bold uppercase tracking-wider text-[#052e16] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-10px_rgba(37,211,102,0.55)]"><svg class="size-5"><use href="#i-wa"/></svg><span data-i18n="hero.cta"></span></a>
-        <a href="#botiga" class="inline-flex items-center justify-center gap-2 border border-white/20 px-6 py-3 font-display text-sm font-semibold uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white"><span data-i18n="hero.shopBtn"></span> <span aria-hidden>↓</span></a>
+        <a href="#serveis" class="inline-flex items-center justify-center gap-2 border border-white/20 px-6 py-3 font-display text-sm font-semibold uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white"><span data-i18n="hero.servicesBtn"></span> <span aria-hidden>↓</span></a>
       </div>
       <div class="mt-4 grid w-full grid-cols-3 divide-x divide-white/10 border-y border-white/10">
         <div class="px-3 py-3"><div class="font-display text-lg font-bold text-white sm:text-xl" data-i18n="hero.stats.0.value"></div><div class="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-riveu-steel" data-i18n="hero.stats.0.label"></div></div>
@@ -143,73 +155,33 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
         <div class="px-3 py-3"><div class="font-display text-lg font-bold text-white sm:text-xl" data-i18n="hero.stats.2.value"></div><div class="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-riveu-steel" data-i18n="hero.stats.2.label"></div></div>
       </div>
     </div>
-  </div>
-</section>
-<section class="scroll-mt-28 border-t border-white/10 bg-carbon-900/40 py-14">
-  <div class="mx-auto max-w-7xl px-4 sm:px-8">
-    <div class="reveal flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 01.7</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="categories.kicker"></span></div>
-    <h2 class="mt-4 max-w-4xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl"><span data-i18n="categories.title1"></span> <span class="text-riveu-red" data-i18n="categories.title2"></span></h2>
-    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-riveu-steel" data-i18n="categories.subtitle"></p>
-    <a href="/tienda/patinetes-electricos" class="shop-card group relative mt-8 flex flex-col overflow-hidden border border-riveu-red/60 bg-gradient-to-br from-riveu-red/15 to-carbon-850 p-5 sm:flex-row sm:items-center sm:justify-between">
-      <div class="flex items-center gap-4">
-        <span class="grid size-11 place-items-center border border-riveu-red bg-[#160a0a] text-riveu-red text-xl">🛴</span>
-        <div><h3 class="font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.scoot.title"></h3><p class="mt-1 text-sm text-riveu-steel" data-i18n="categories.scoot.desc"></p></div>
+    <div id="stage3dWrap" class="relative mx-auto w-full max-w-md cursor-grab select-none [perspective:1200px]">
+      <div id="stage3dInner" class="relative">
+        <div class="absolute inset-x-8 bottom-4 h-12 rounded-[100%] bg-riveu-red/25 blur-2xl"></div>
+        <div class="absolute inset-x-10 bottom-7 h-7 rounded-[100%] border border-riveu-red/40"></div>
+        <div class="absolute inset-x-16 bottom-9 h-5 rounded-[100%] border border-riveu-red/25"></div>
+        <img src="img/deimos-single-NEGRO.jpg" onerror="imgFallback(this)" alt="Patinete eléctrico Ecoxtrem Deimos en 3D" class="animate-float-3d relative z-10 w-full drop-shadow-[0_30px_40px_rgba(229,57,53,0.35)]" />
+        <div class="absolute -left-4 top-8 z-20 border border-wa/40 bg-carbon-950/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-wa backdrop-blur [transform:translateZ(70px)]">45 km/h</div>
+        <div class="absolute -right-2 top-1/3 z-20 border border-wa/40 bg-carbon-950/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-wa backdrop-blur [transform:translateZ(90px)]">48V 15Ah</div>
+        <div class="absolute left-1/2 top-2 z-20 -translate-x-1/2 border border-riveu-red/40 bg-carbon-950/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-riveu-red backdrop-blur [transform:translateZ(50px)]">DGT 2026</div>
       </div>
-      <span class="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-riveu-red transition-transform group-hover:translate-x-1 sm:mt-0" data-i18n="categories.scoot.link"></span>
-    </a>
-    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="/tienda/baterias-patinetes-electricos" class="shop-card group relative flex flex-col overflow-hidden border border-riveu-red/60 bg-gradient-to-br from-riveu-red/15 to-carbon-850 p-5">
-        <div class="flex items-center justify-between"><span class="grid size-11 place-items-center border border-riveu-red bg-[#160a0a] text-riveu-red text-xl">🔋</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-red">★ Top</span></div>
-        <h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat1.title"></h3>
-        <p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat1.desc"></p>
-        <span class="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-riveu-red group-hover:translate-x-1 transition-transform" data-i18n="categories.cat1.link"></span>
-      </a>
-      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60"><div class="flex items-center justify-between"><span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">🛞</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span></div><h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat2.title"></h3><p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat2.desc"></p></div>
-      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60"><div class="flex items-center justify-between"><span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">🛑</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span></div><h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat3.title"></h3><p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat3.desc"></p></div>
-      <div class="group relative flex flex-col border border-white/10 bg-carbon-850 p-5 opacity-60"><div class="flex items-center justify-between"><span class="grid size-11 place-items-center border border-white/20 bg-carbon-900 text-riveu-steel text-xl">⚡</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="categories.soon"></span></div><h3 class="mt-5 font-display text-lg font-bold uppercase leading-tight text-white" data-i18n="categories.cat4.title"></h3><p class="mt-2 text-sm text-riveu-steel" data-i18n="categories.cat4.desc"></p></div>
+      <p class="mt-8 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-riveu-steel" data-i18n="hero.stage3dHint"></p>
     </div>
   </div>
 </section>
-<section id="botiga" class="scroll-mt-28 border-t border-white/10 bg-gradient-to-b from-carbon-900/80 via-carbon-900/40 to-carbon-950 py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-8">
-    <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="shop.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="shop.kicker"></span></div>
-    <h2 class="mt-4 max-w-4xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="shop.title"></h2>
-    <p class="mt-5 max-w-2xl text-base leading-relaxed text-riveu-steel" data-i18n="shop.lead"></p>
-    <p class="mt-3 max-w-2xl text-xs leading-relaxed text-riveu-steel/70" data-i18n="shop.disclaimer"></p>
-    <div class="mt-3 flex flex-wrap gap-2">
-      <p class="inline-block border border-wa/40 bg-wa/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-wa" data-i18n="shop.vatNote"></p>
-      <p class="inline-block border border-wa/40 bg-wa/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-wa" data-i18n="shop.shipInfo"></p>
-      <p class="inline-block border border-riveu-red/40 bg-riveu-red/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-riveu-red" data-i18n="shop.shipTime"></p>
-    </div></div>
-    <div class="sticky top-[92px] z-40 mt-10 rounded-md border border-white/10 bg-carbon-950/95 p-2.5 backdrop-blur-md sm:p-3">
-      <input id="shopSearch" type="search" class="w-full border-2 border-white/15 bg-carbon-900 px-4 py-2.5 font-mono text-sm text-white placeholder:text-riveu-steel/50 focus:border-riveu-red focus:outline-none" placeholder="Buscar..." />
-      <div class="mt-2 flex gap-2 overflow-x-auto pb-1" id="shopFilters">
-        <button type="button" data-filter="all" class="shop-filter active shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.all"></button>
-        <button type="button" data-filter="patinet" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.scooter"></button>
-        <button type="button" data-filter="electronic" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.electronic"></button>
-        <button type="button" data-filter="wheel" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.wheel"></button>
-        <button type="button" data-filter="brake" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.brake"></button>
-        <button type="button" data-filter="fender" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.fender"></button>
-        <button type="button" data-filter="cable" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.cable"></button>
-        <button type="button" data-filter="accessory" class="shop-filter shrink-0 whitespace-nowrap border-2 border-white/20 px-3 py-2 font-mono text-[11px] uppercase tracking-wider text-riveu-silver transition-all hover:border-riveu-red hover:text-white" data-i18n="shop.filter.accessory"></button>
-      </div>
-    </div>
-    <div id="scooterSection" class="mt-10">
-      <div class="flex items-center gap-3"><span class="text-2xl">🛴</span><h3 class="font-display text-2xl font-bold uppercase text-white" data-i18n="shop.scootersTitle"></h3><span id="scooterCount" class="font-mono text-xs text-riveu-steel"></span></div>
-      <div id="scooterGrid" class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
-      <div class="mt-8 text-center"><button type="button" id="scooterMore" hidden class="border-2 border-riveu-red px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-riveu-red"></button></div>
-    </div>
-    <div class="my-16 h-px bg-gradient-to-r from-transparent via-riveu-red/40 to-transparent"></div>
-    <div id="partsSection">
-      <div class="flex items-center gap-3"><span class="text-2xl">🔧</span><h3 class="font-display text-2xl font-bold uppercase text-white" data-i18n="shop.partsTitle"></h3><span id="partsCount" class="font-mono text-xs text-riveu-steel"></span></div>
-      <div id="partsGrid" class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
-      <div id="partsSentinel" class="h-12"></div>
-      <p id="partsEnd" hidden class="mt-4 text-center font-mono text-[10px] uppercase tracking-widest text-riveu-steel/60" data-i18n="shop.end"></p>
-    </div>
-    <p id="shopEmpty" class="mt-12 hidden text-center font-mono text-sm uppercase tracking-wider text-riveu-steel" data-i18n="shop.empty"></p>
+
+<!-- BARRA DE CONFIANZA -->
+<section class="border-y border-white/10 bg-carbon-900/60">
+  <div class="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-white/10 lg:grid-cols-4">
+    <div class="flex items-center gap-3 px-4 py-5 sm:px-6"><svg class="size-7 shrink-0 text-riveu-red"><use href="#i-shield"/></svg><div><p class="font-display text-sm font-bold uppercase text-white" data-i18n="trust.t1"></p><p class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="trust.s1"></p></div></div>
+    <div class="flex items-center gap-3 px-4 py-5 sm:px-6"><svg class="size-7 shrink-0 text-riveu-red"><use href="#i-bolt"/></svg><div><p class="font-display text-sm font-bold uppercase text-white" data-i18n="trust.t2"></p><p class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="trust.s2"></p></div></div>
+    <div class="flex items-center gap-3 px-4 py-5 sm:px-6"><svg class="size-7 shrink-0 text-riveu-red"><use href="#i-bike"/></svg><div><p class="font-display text-sm font-bold uppercase text-white" data-i18n="trust.t3"></p><p class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="trust.s3"></p></div></div>
+    <div class="flex items-center gap-3 px-4 py-5 sm:px-6"><svg class="size-7 shrink-0 text-riveu-red"><use href="#i-pin"/></svg><div><p class="font-display text-sm font-bold uppercase text-white" data-i18n="trust.t4"></p><p class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="trust.s4"></p></div></div>
   </div>
 </section>
-<section class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
+
+<!-- 2. SOBRE EL TALLER -->
+<section class="scroll-mt-28 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 02</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="about.kicker"></span></div>
     <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="about.title"></h2></div>
@@ -254,7 +226,9 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     </div>
   </div>
 </section>
-<section id="serveis" class="scroll-mt-28 py-20 sm:py-24">
+
+<!-- 3. SERVICIOS -->
+<section id="serveis" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="services.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="services.kicker"></span></div>
     <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="services.title"></h2></div>
@@ -276,6 +250,8 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     </div>
   </div>
 </section>
+
+<!-- 4. PROCESO -->
 <section id="proces" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="process.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="process.kicker"></span></div>
@@ -283,6 +259,8 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <ol class="mt-12 grid gap-8 lg:grid-cols-4 lg:gap-6" id="processList"></ol>
   </div>
 </section>
+
+<!-- 5. GALERIA -->
 <section id="galeria" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 02.5</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="gallery.kicker"></span></div>
@@ -295,6 +273,8 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     </div>
   </div>
 </section>
+
+<!-- 6. POR QUE ELEGIRNOS -->
 <section id="per-que" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-12 lg:gap-14">
     <div class="lg:col-span-5"><div class="lg:sticky lg:top-32"><div class="reveal">
@@ -307,6 +287,8 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <div class="mt-12 space-y-4 lg:col-span-7 lg:mt-0" id="whyList"></div>
   </div>
 </section>
+
+<!-- 7. OPINIONES -->
 <section id="opinions" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="reviews.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="reviews.kicker"></span></div>
@@ -314,6 +296,8 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <div class="mt-12 grid gap-4 sm:grid-cols-3" id="reviewsGrid"></div>
   </div>
 </section>
+
+<!-- 8. FAQ -->
 <section id="faq" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-12 lg:gap-14">
     <div class="lg:col-span-4"><div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="faq.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="faq.kicker"></span></div>
@@ -321,6 +305,18 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <div class="mt-10 lg:col-span-8 lg:mt-0"><div class="border-t border-white/10" id="faqList"></div></div>
   </div>
 </section>
+
+<!-- 9. BLOQUE SEO LOCAL -->
+<section class="border-t border-white/10 bg-carbon-900/40 py-16 sm:py-20">
+  <div class="mx-auto max-w-4xl px-4 sm:px-8">
+    <h2 class="font-display text-2xl font-bold uppercase leading-tight text-white sm:text-3xl" data-i18n="seoBlock.title"></h2>
+    <p class="mt-5 text-sm leading-relaxed text-riveu-steel" data-i18n="seoBlock.p1"></p>
+    <p class="mt-4 text-sm leading-relaxed text-riveu-steel" data-i18n="seoBlock.p2"></p>
+    <p class="mt-4 text-sm"><a href="/tienda/baterias-patinetes-electricos" class="font-mono text-[11px] uppercase tracking-wider text-riveu-red underline decoration-riveu-red/50 underline-offset-4 hover:text-white" data-i18n="seoBlock.link"></a></p>
+  </div>
+</section>
+
+<!-- 10. UBICACION -->
 <section id="ubicacio" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-8">
     <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="location.index"></span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="location.kicker"></span></div>
@@ -356,6 +352,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     </div>
   </div>
 </section>
+
 <section class="relative overflow-hidden bg-riveu-redDark">
   <div class="hazard h-2" aria-hidden></div>
   <div aria-hidden class="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_15%_20%,rgba(255,255,255,0.16),transparent_60%)]"></div>
@@ -366,20 +363,19 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
   </div>
   <div class="hazard h-2" aria-hidden></div>
 </section>
+
 <footer class="border-t border-white/10 bg-carbon-950 pb-28 pt-14 sm:pb-14">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-8 md:grid-cols-12">
     <div class="md:col-span-5"><img src="logo-riveu.jpg" alt="Riveu" width="200" height="150" class="h-16 w-auto select-none mix-blend-lighten sm:h-20"/><p class="mt-4 max-w-sm text-sm leading-relaxed text-riveu-steel" data-i18n="footer.tagline"></p><p class="mt-4 font-mono text-[10px] tracking-[0.25em] text-riveu-steel/60">41.9741° N · 2.8199° E — GIRONA</p></div>
     <div class="md:col-span-3"><h3 class="font-mono text-[11px] uppercase tracking-[0.25em] text-riveu-red" data-i18n="footer.navTitle"></h3>
       <ul class="mt-4 space-y-2.5">
-        <li><a href="#botiga" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.6"></a></li>
-        <li><a href="/tienda/patinetes-electricos" class="text-sm text-riveu-steel hover:text-white"> <span data-i18n="footer.nav.scooters"></span></a></li>
-        <li><a href="/tienda/baterias-patinetes-electricos" class="text-sm text-riveu-steel hover:text-white">🔋 <span data-i18n="footer.nav.batteries"></span></a></li>
         <li><a href="#serveis" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.0"></a></li>
         <li><a href="#proces" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.1"></a></li>
         <li><a href="#galeria" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.5"></a></li>
         <li><a href="#per-que" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.2"></a></li>
         <li><a href="#faq" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.3"></a></li>
         <li><a href="#ubicacio" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.4"></a></li>
+        <li><a href="/tienda/baterias-patinetes-electricos" class="text-sm text-riveu-steel hover:text-white">🔋 <span data-i18n="footer.nav.batteries"></span></a></li>
       </ul></div>
     <div class="md:col-span-4"><h3 class="font-mono text-[11px] uppercase tracking-[0.25em] text-riveu-red" data-i18n="footer.contactTitle"></h3>
       <ul class="mt-4 space-y-2.5 text-sm text-riveu-steel">
@@ -395,10 +391,12 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     <span class="flex gap-4"><a href="#" data-i18n="footer.legal.0"></a><a href="#" data-i18n="footer.legal.1"></a><span class="text-riveu-red/70" data-i18n="footer.made"></span></span>
   </div>
 </footer>
+
 <a id="floatingWa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Contactar" class="fixed bottom-4 right-4 z-[70] flex items-center gap-2.5 rounded-full bg-wa px-4 py-3 font-display text-sm font-bold text-[#052e16] shadow-[0_10px_35px_-8px_rgba(37,211,102,0.6)] transition-transform duration-300 hover:scale-105 sm:bottom-6 sm:right-6 sm:px-5">
   <span class="relative grid size-7 place-items-center"><span aria-hidden class="absolute inset-0 rounded-full bg-wa opacity-50 animate-wa-ping"></span><svg class="relative size-6"><use href="#i-wa"/></svg></span>
   <span data-i18n="floating"></span>
 </a>
+
 <div id="cookieBanner" class="cookie-banner">
   <div class="mx-auto max-w-7xl px-4 py-4 sm:px-8">
     <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -410,6 +408,7 @@ function imgNext(el){const csv=el.getAttribute('data-csv')||'';if(csv){el.onerro
     </div>
   </div>
 </div>
+
 <script>
 const WA_PHONE='34633624345', PHONE_TEL='+34633624345', PHONE_DISPLAY='633 62 43 45';
 const waLink=(m)=>`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(m)}`;
@@ -417,12 +416,12 @@ const byId=(id)=>document.getElementById(id);
 const lang=()=>document.documentElement.lang||'ca';
 const i18n={
 ca:{meta:{title:'Riveu · Taller de Patinets i Bicicletes Elèctriques a Girona'},logo:{sub:'· GIRONA'},nav:{whatsapp:'WhatsApp'},
-hero:{status:'RIVEU // TALLER GIRONA — DIAGNÒSTIC EN CURS',title0:'Taller i Reparació de',title1:'Patinets Elèctrics',title2:'a Girona',subtitle:'Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia professional.',cta:'Demanar Pressupost per WhatsApp',shopBtn:'Veure botiga online',brandsNote:'Treballem totes les marques',mapKicker:'Com arribar-hi',mapCta:'Ruta en Maps',mapLink:'Veure el mapa',stats:{0:{value:'400+',label:'reparacions completades'},1:{value:'24–48h',label:'lliurament estàndard'},2:{value:'98%',label:'clients satisfets'}},diag:{title:'Quadre de diagnòstic',badge:'En curs',voltage:'BUS BATERIA',model:'UNITAT · XIAOMI MI PRO 2',note:'A punt per lliurar · avui 18:30',unit:'UNITAT EN REVISIÓ',rows:[{k:'BATERIA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORS HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'PNEUMÀTICS',v:'42 PSI',s:'OK'}]}},
+hero:{status:'RIVEU // TALLER GIRONA — DIAGNÒSTIC EN CURS',title0:'Taller i Reparació de',title1:'Patinets Elèctrics',title2:'a Girona',subtitle:'Servei tècnic especialitzat multimarca en mobilitat elèctrica: patinets i bicicletes elèctriques de gamma alta. Diagnòstic, rodes, bateries i electrònica amb garantia professional.',cta:'Demanar Pressupost per WhatsApp',servicesBtn:'Veure serveis del taller',stage3dHint:'Mou el cursor o el dit per girar-lo · vista 3D',brandsNote:'Treballem totes les marques',mapKicker:'Com arribar-hi',mapCta:'Ruta en Maps',mapLink:'Veure el mapa',stats:{0:{value:'400+',label:'reparacions completades'},1:{value:'24–48h',label:'lliurament estàndard'},2:{value:'98%',label:'clients satisfets'}},diag:{title:'Quadre de diagnòstic',badge:'En curs',voltage:'BUS BATERIA',model:'UNITAT · XIAOMI MI PRO 2',note:'A punt per lliurar · avui 18:30',unit:'UNITAT EN REVISIÓ',rows:[{k:'BATERIA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORS HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'PNEUMÀTICS',v:'42 PSI',s:'OK'}]}},
+trust:{t1:'Garantia de taller',s1:'Peces i mà d\'obra',t2:'Lliurament 24–48 h',s2:'Urgències el mateix dia',t3:'Multimarca',s3:'Xiaomi, Ninebot, Dualtron…',t4:'Banc de proves',s4:'Cada unitat verificada'},
 about:{kicker:'Sobre el taller',title:'El teu taller de confiança a Girona'},
-categories:{kicker:'Recanvis més buscats',title1:'Botiga especialitzada en',title2:'patinets i e-bikes',subtitle:'A més del nostre taller, tenim recanvis verificats en estoc amb enviament 24–48 h a tota Espanya i garantia de taller.',scoot:{title:'Patinets elèctrics homologats',desc:'Ecoxtrem, Rovoron, Adasmart i Dualtron amb garantia de taller.',link:'Veure patinets →'},soon:'Properament',cat1:{title:'Bateries',desc:'Xiaomi, Ninebot, Dualtron i reconstrucció amb cel·les 21700.',link:'Veure bateries →'},cat2:{title:'Rodes i pneumàtics',desc:'Càmeres, tubeless i massisses antipunxada.'},cat3:{title:'Frens i pastilles',desc:'Discos, pastilles i sistemes hidràulics.'},cat4:{title:'Electrònica',desc:'Controladores, BMS, displays i carregadors.'}},
 cookies:{text:'Utilitzem cookies pròpies i de tercers (Google Maps i analítica) per millorar la teva experiència. Pots acceptar-les o denegar-les.',accept:'Acceptar',deny:'Denegar',mapBlocked:'Has denegat les cookies de Google Maps.'},
 ebike:{index:'// 01.5',kicker:'Mobilitat elèctrica',title:'També bicicletes elèctriques de gamma alta',lead:'Del patinet a l\'e-bike: el teu taller de referència per a tota la mobilitat elèctrica a Girona.',items:['Motors Bosch, Shimano Steps, Brose i Fazua','Bateries, cel·les i BMS de qualsevol marca','Diagnòstic electrònic i actualitzacions de firmware','Manteniment complet de transmissió i frens'],cta:'Pressupost e-bike per WhatsApp',msg:'Hola Riveu 👋 Tinc una bicicleta elèctrica i voldria demanar pressupost.'},
-shop:{index:'// 01.8',kicker:'Botiga Online',title:'Patinets i Recanvis en Estoc',lead:'Catàleg complet amb stock actualitzat en temps real. Paga online amb targeta, Apple Pay, Google Pay o Klarna.',disclaimer:'Les imatges i regals mostrats són del catàleg oficial del fabricant. Les promocions depenen del stock del proveïdor; confirma-les abans de comprar.',vat:'IVA incl.',vatNote:'Preus amb IVA inclòs (Espanya 21%)',vatLine:'(IVA 21% inclòs)',pay:'Pagar',qty:'Quantitat',soldout:'Agotat',shipFree:'Enviament gratuït',shipInfo:'🚚 GRATIS ≥100 € · <100 € +5 € · Només Espanya peninsular',shipTime:'⏱ Lliurament 24–48 h',shipLabel:'Enviament',zoneTitle:'On és l\'adreça d\'entrega?',zoneSub:'El preu d\'enviament online només és vàlid per a Espanya peninsular.',zoneYes:'✅ Espanya peninsular — continuar al pagament',zoneNo:'🌍 Canàries / Balears / Ceuta / Melilla / altre país',zoneClose:'Cancel·lar',zoneWarn:'No fem enviaments online a aquesta zona. Et fem un pressupost per WhatsApp.',zoneWa:'Hola Riveu 👋 Vull comprar però el meu enviament és fora de la península.',filter:{all:'Tots',scooter:'Patinets',electronic:'Electrònica',wheel:'Rodes',brake:'Frens',fender:'Guardafangs',cable:'Cables',accessory:'Accessoris'},scootersTitle:'Patinets Elèctrics',partsTitle:'Recanvis i Accessoris',seeAll:'Veure tots els patinets',showLess:'Mostrar menys',end:'Fi del catàleg',empty:'Cap producte trobat. Escriu-nos per WhatsApp i t\'ho busquem.',stock:'En estoc',outOfStock:'Consultar',loading:'Carregant catàleg...',errorMsg:'No hem pogut carregar el catàleg. Escriu-nos per WhatsApp.'},
+seoBlock:{title:'Reparació de patinets elèctrics a Girona i tota Espanya',p1:'Riveu és un taller especialitzat en la reparació de patinets elèctrics i bicicletes elèctriques a Girona. Fem diagnòstic gratuït, canvi de bateries, reparació de punxades, frens, controladores i motors de totes les marques: Xiaomi, Ninebot, Segway, SmartGyro, Cecotec, Dualtron, Kaabo i més.',p2:'Donem servei a tota la província de Girona (Salt, Banyoles, Figueres, Olot, Blanes, Lloret de Mar, Palafrugell, Roses) i enviem recanvis i bateries a tota Espanya peninsular en 24–48 hores. Demana pressupost sense compromís per WhatsApp o visita el nostre taller al Carrer Finestrelles, 9.',link:'Veure botiga de bateries'},
 gallery:{kicker:'Al taller',title:'Cada dia, una avaria menys',c1:'DIAGNÒSTIC INICIAL',c2:'CANVI DE RODA',c3:'BANC DE PROVES',c4:'A PUNT PER LLIURAR',alt1:'Tècnic diagnosticant un patinet',alt2:'Reparació del motor de la roda',alt3:'Reparació de l\'electrònica',alt4:'Persones muntant patinets'},
 ticker:['Diagnòstic sense compromís','Reparacions en 24–48 h','Bicicletes elèctriques de gamma alta','Garantia del taller','Servei multimarca','Carrer Finestrelles 9 · Girona'],
 services:{index:'// 01',kicker:'Serveis',title:'Tot el que el teu patinet necessita, en un sol banc de treball',items:[{title:'Pinxades i Pneumàtics',tag:'Càmeres · Tubeless · Massisses',icon:'wheel',list:['Substitució de càmeres i cobertes','Muntatge tubeless i líquid segellant','Rodes massisses antipinxada']},{title:'Bateries i Electrònica',tag:'Controladores · Cel·les · BMS',icon:'battery',list:['Reconstrucció i canvi de cel·les','Controladores i errors d\'encesa','Diagnòstic electrònic complet']},{title:'Frens i Mecànica',tag:'Discos · Pastilles · Folgançes',icon:'brake',list:['Ajust de discos i pastilles','Frens hidràulics i elèctrics','Eliminem folgançes i sorolls']},{title:'Especialistes Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…','Coneixem l\'esquema de cada model','Recanvis en estoc','També bicicletes elèctriques de gamma alta']}]},
@@ -432,15 +431,15 @@ reviews:{index:'// 04',kicker:'Opinions',title:'El que diuen els que ja roden',i
 faq:{index:'// 05',kicker:'FAQ',title:'Dubtes freqüents abans de venir',items:[{q:'Quant triga una reparació?',a:'La majoria d\'avaries queden llestes en 24–48 hores.'},{q:'El diagnòstic té cost?',a:'El diagnòstic i el pressupost són gratuïts i sense compromís.'},{q:'Quines marques repareu?',a:'Multimarca: Xiaomi, SmartGyro, Cecotec, Ninebot, Segway, Dualtron, Kaabo…'},{q:'Les reparacions tenen garantia?',a:'Sí, garantia del taller sobre peces i mà d\'obra.'},{q:'Puc venir sense cita?',a:'Sí, però recomanem escriure\'ns abans per WhatsApp.'},{q:'Repareu bicicletes elèctriques?',a:'Sí, bicis elèctriques de gamma alta (Bosch/Shimano/Brose).'}]},
 location:{index:'// 06',kicker:'Taller físic a Girona',title:'Ens trobes al Carrer Finestrelles',addressLabel:'Adreça',address:'Carrer Finestrelles, 9 · 17006 Girona',directions:'Obrir a Google Maps',hoursLabel:'Horari',days:'Dilluns – Divendres',weekend:'Dissabte i diumenge — tancat',seo:'Oferim servei tècnic especialitzat a Girona i tota la província.',areasLabel:'Zones de servei',mapNote:'41.9741° N · 2.8199° E — GIRONA'},
 ctaFinal:{title:'El teu patinet, rodant en 24–48 hores.',sub:'Escriu-nos per WhatsApp amb l\'avaria i el teu model.',note:'Dl–Dv · 10:00–14:00 / 16:00–20:00',btn:'Demanar Pressupost per WhatsApp'},
-footer:{tagline:'Taller especialitzat en mobilitat elèctrica a Girona.',navTitle:'Seccions',nav:{0:'Serveis',1:'Com treballem',2:'Per què nosaltres',3:'FAQ',4:'Ubicació',5:'Galeria',6:'Botiga',scooters:'Patinets',batteries:'Bateries'},contactTitle:'Contacte',rights:'© 2025 Riveu · Girona',legal:{0:'Avís legal',1:'Privacitat'},made:'Fet a Girona'},
+footer:{tagline:'Taller especialitzat en mobilitat elèctrica a Girona.',navTitle:'Seccions',nav:{0:'Serveis',1:'Com treballem',2:'Per què nosaltres',3:'FAQ',4:'Ubicació',5:'Galeria',batteries:'Bateries'},contactTitle:'Contacte',rights:'© 2025 Riveu · Girona',legal:{0:'Avís legal',1:'Privacitat'},made:'Fet a Girona'},
 floating:'Contactar el Taller',openNow:'Obert ara',closedNow:'Tancat ara',whatsappMsg:'Hola Riveu 👋 Vull demanar pressupost per al meu patinet.',switchLabel:'Versió en español'},
 es:{meta:{title:'Riveu · Taller de Patinetes y Bicicletas Eléctricas en Girona'},logo:{sub:'· GIRONA'},nav:{whatsapp:'WhatsApp'},
-hero:{status:'RIVEU // TALLER GIRONA — DIAGNÓSTICO EN CURSO',title0:'Taller y Reparación de',title1:'Patinetes Eléctricos',title2:'en Girona',subtitle:'Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta. Diagnóstico, ruedas, baterías y electrónica con garantía profesional.',cta:'Pedir Presupuesto por WhatsApp',shopBtn:'Ver tienda online',brandsNote:'Trabajamos todas las marcas',mapKicker:'Cómo llegar',mapCta:'Ruta en Maps',mapLink:'Ver el mapa',stats:{0:{value:'400+',label:'reparaciones completadas'},1:{value:'24–48 h',label:'entrega estándar'},2:{value:'98%',label:'clientes satisfechos'}},diag:{title:'Panel de diagnóstico',badge:'En curso',voltage:'BUS BATERÍA',model:'UNIDAD · XIAOMI MI PRO 2',note:'Listo para entrega · hoy 18:30',unit:'UNIDAD EN REVISIÓN',rows:[{k:'BATERÍA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORES HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'NEUMÁTICOS',v:'42 PSI',s:'OK'}]}},
+hero:{status:'RIVEU // TALLER GIRONA — DIAGNÓSTICO EN CURSO',title0:'Taller y Reparación de',title1:'Patinetes Eléctricos',title2:'en Girona',subtitle:'Servicio técnico especializado multimarca en movilidad eléctrica: patinetes y bicicletas eléctricas de gama alta. Diagnóstico, ruedas, baterías y electrónica con garantía profesional.',cta:'Pedir Presupuesto por WhatsApp',servicesBtn:'Ver servicios del taller',stage3dHint:'Mueve el cursor o el dedo para girarlo · vista 3D',brandsNote:'Trabajamos todas las marcas',mapKicker:'Cómo llegar',mapCta:'Ruta en Maps',mapLink:'Ver el mapa',stats:{0:{value:'400+',label:'reparaciones completadas'},1:{value:'24–48 h',label:'entrega estándar'},2:{value:'98%',label:'clientes satisfechos'}},diag:{title:'Panel de diagnóstico',badge:'En curso',voltage:'BUS BATERÍA',model:'UNIDAD · XIAOMI MI PRO 2',note:'Listo para entrega · hoy 18:30',unit:'UNIDAD EN REVISIÓN',rows:[{k:'BATERÍA',v:'52.4V',s:'OK'},{k:'MOTOR',v:'SENSORES HALL',s:'OK'},{k:'CONTROLADORA',v:'FW 2.1.8',s:'OK'},{k:'NEUMÁTICOS',v:'42 PSI',s:'OK'}]}},
+trust:{t1:'Garantía de taller',s1:'Piezas y mano de obra',t2:'Entrega 24–48 h',s2:'Urgencias en el día',t3:'Multimarca',s3:'Xiaomi, Ninebot, Dualtron…',t4:'Banco de pruebas',s4:'Cada unidad verificada'},
 about:{kicker:'Sobre el taller',title:'Tu taller de confianza en Girona'},
-categories:{kicker:'Recambios más buscados',title1:'Tienda especializada en',title2:'patinetes y e-bikes',subtitle:'Además de nuestro taller, tenemos recambios verificados en stock con envío 24–48 h a toda España y garantía de taller.',scoot:{title:'Patinetes eléctricos homologados',desc:'Ecoxtrem, Rovoron, Adasmart y Dualtron con garantía de taller.',link:'Ver patinetes →'},soon:'Próximamente',cat1:{title:'Baterías',desc:'Xiaomi, Ninebot, Dualtron y reconstrucción con celdas 21700.',link:'Ver baterías →'},cat2:{title:'Ruedas y neumáticos',desc:'Cámaras, tubeless y macizas antipinchazo.'},cat3:{title:'Frenos y pastillas',desc:'Discos, pastillas y sistemas hidráulicos.'},cat4:{title:'Electrónica',desc:'Controladoras, BMS, displays y cargadores.'}},
 cookies:{text:'Usamos cookies propias y de terceros (Google Maps y analítica) para mejorar tu experiencia. Puedes aceptarlas o denegarlas.',accept:'Aceptar',deny:'Rechazar',mapBlocked:'Has denegado las cookies de Google Maps.'},
 ebike:{index:'// 01.5',kicker:'Movilidad eléctrica',title:'También bicicletas eléctricas de gama alta',lead:'Del patinete a la e-bike: somos tu taller de referencia en Girona.',items:['Motores Bosch, Shimano Steps, Brose y Fazua','Baterías, celdas y BMS de cualquier marca','Diagnóstico electrónico y firmware','Mantenimiento de transmisión y frenos'],cta:'Presupuesto e-bike por WhatsApp',msg:'Hola Riveu 👋 Tengo una bicicleta eléctrica y quisiera pedir presupuesto.'},
-shop:{index:'// 01.8',kicker:'Tienda Online',title:'Patinetes y Recambios en Stock',lead:'Catálogo completo con stock actualizado en tiempo real. Paga online con tarjeta, Apple Pay, Google Pay o Klarna.',disclaimer:'Las imágenes y regalos mostrados son del catálogo oficial del fabricante. Las promociones dependen del stock del proveedor; confírmalas antes de comprar.',vat:'IVA incl.',vatNote:'Precios con IVA incluido (España 21%)',vatLine:'(IVA 21% incluido)',pay:'Pagar',qty:'Cantidad',soldout:'Agotado',shipFree:'Envío gratis',shipInfo:'🚚 GRATIS ≥100 € · <100 € +5 € · Solo España peninsular',shipTime:'⏱ Entrega 24–48 h',shipLabel:'Envío',zoneTitle:'¿Dónde está la dirección de entrega?',zoneSub:'El precio de envío online solo es válido para España peninsular.',zoneYes:'✅ España peninsular — continuar al pago',zoneNo:'🌍 Canarias / Baleares / Ceuta / Melilla / otro país',zoneClose:'Cancelar',zoneWarn:'No hacemos envíos online a esa zona. Te hacemos un presupuesto por WhatsApp.',zoneWa:'Hola Riveu 👋 Quiero comprar pero mi envío es fuera de la península.',filter:{all:'Todos',scooter:'Patinetes',electronic:'Electrónica',wheel:'Ruedas',brake:'Frenos',fender:'Guardabarros',cable:'Cables',accessory:'Accesorios'},scootersTitle:'Patinetes Eléctricos',partsTitle:'Recambios y Accesorios',seeAll:'Ver todos los patinetes',showLess:'Mostrar menos',end:'Fin del catálogo',empty:'Ningún producto encontrado. Escríbenos por WhatsApp.',stock:'En stock',outOfStock:'Consultar',loading:'Cargando catálogo...',errorMsg:'No hemos podido cargar el catálogo. Escríbenos por WhatsApp.'},
+seoBlock:{title:'Reparación de patinetes eléctricos en Girona y toda España',p1:'Riveu es un taller especializado en la reparación de patinetes eléctricos y bicicletas eléctricas en Girona. Realizamos diagnóstico gratuito, cambio de baterías, reparación de pinchazos, frenos, controladoras y motores de todas las marcas: Xiaomi, Ninebot, Segway, SmartGyro, Cecotec, Dualtron, Kaabo y más.',p2:'Damos servicio a toda la provincia de Girona (Salt, Banyoles, Figueres, Olot, Blanes, Lloret de Mar, Palafrugell, Roses) y enviamos recambios y baterías a toda España peninsular en 24–48 horas. Pide presupuesto sin compromiso por WhatsApp o visita nuestro taller en Carrer Finestrelles, 9.',link:'Ver tienda de baterías'},
 gallery:{kicker:'En el taller',title:'Cada día, una avería menos',c1:'DIAGNÓSTICO INICIAL',c2:'CAMBIO DE RUEDA',c3:'BANCO DE PRUEBAS',c4:'LISTO PARA ENTREGAR',alt1:'Técnico diagnosticando un patinete',alt2:'Reparación del motor de la rueda',alt3:'Reparación de la electrónica',alt4:'Personas montando patinetes'},
 ticker:['Diagnóstico sin compromiso','Reparaciones en 24–48 h','Bicicletas eléctricas de gama alta','Garantía del taller','Servicio multimarca','Carrer Finestrelles 9 · Girona'],
 services:{index:'// 01',kicker:'Servicios',title:'Todo lo que tu patinete necesita, en un solo banco de trabajo',items:[{title:'Pinchazos y Neumáticos',tag:'Cámaras · Tubeless · Macizas',icon:'wheel',list:['Sustitución de cámaras y cubiertas','Montaje tubeless y líquido sellante','Ruedas macizas antipinchazo']},{title:'Baterías y Electrónica',tag:'Controladoras · Celdas · BMS',icon:'battery',list:['Reconstrucción y cambio de celdas','Controladoras y errores de encendido','Diagnóstico electrónico completo']},{title:'Frenos y Mecánica',tag:'Discos · Pastillas · Holguras',icon:'brake',list:['Ajuste de discos y pastillas','Frenos hidráulicos y eléctricos','Eliminamos holguras y ruidos']},{title:'Especialistas Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…','Conocemos el esquema de cada modelo','Recambios en stock','También bicicletas eléctricas de gama alta']}]},
@@ -450,7 +449,7 @@ reviews:{index:'// 04',kicker:'Opiniones',title:'Lo que dicen los que ya ruedan'
 faq:{index:'// 05',kicker:'FAQ',title:'Dudas frecuentes antes de venir',items:[{q:'¿Cuánto tarda una reparación?',a:'La mayoría de averías listas en 24–48 horas.'},{q:'¿El diagnóstico tiene coste?',a:'Diagnóstico y presupuesto gratuitos y sin compromiso.'},{q:'¿Qué marcas reparáis?',a:'Multimarca: Xiaomi, SmartGyro, Cecotec, Ninebot, Segway, Dualtron, Kaabo…'},{q:'¿Las reparaciones tienen garantía?',a:'Sí, garantía del taller sobre piezas y mano de obra.'},{q:'¿Puedo venir sin cita?',a:'Sí, pero recomendamos escribir antes por WhatsApp.'},{q:'¿Reparáis bicicletas eléctricas?',a:'Sí, bicis eléctricas de gama alta (Bosch/Shimano/Brose).'}]},
 location:{index:'// 06',kicker:'Taller físico en Girona',title:'Nos encuentras en el Carrer Finestrelles',addressLabel:'Dirección',address:'Carrer Finestrelles, 9 · 17006 Girona',directions:'Abrir en Google Maps',hoursLabel:'Horario',days:'Lunes – Viernes',weekend:'Sábado y domingo — cerrado',seo:'Servicio técnico especializado en Girona y toda la provincia.',areasLabel:'Zonas de servicio',mapNote:'41.9741° N · 2.8199° E — GIRONA'},
 ctaFinal:{title:'Tu patinete, rodando en 24–48 horas.',sub:'Escríbenos por WhatsApp con la avería y tu modelo.',note:'L–V · 10:00–14:00 / 16:00–20:00',btn:'Pedir Presupuesto por WhatsApp'},
-footer:{tagline:'Taller especializado en movilidad eléctrica en Girona.',navTitle:'Secciones',nav:{0:'Servicios',1:'Cómo trabajamos',2:'Por qué elegirnos',3:'FAQ',4:'Ubicación',5:'Galería',6:'Tienda',scooters:'Patinetes',batteries:'Baterías'},contactTitle:'Contacto',rights:'© 2025 Riveu · Girona',legal:{0:'Aviso legal',1:'Privacidad'},made:'Hecho en Girona'},
+footer:{tagline:'Taller especializado en movilidad eléctrica en Girona.',navTitle:'Secciones',nav:{0:'Servicios',1:'Cómo trabajamos',2:'Por qué elegirnos',3:'FAQ',4:'Ubicación',5:'Galería',batteries:'Baterías'},contactTitle:'Contacto',rights:'© 2025 Riveu · Girona',legal:{0:'Aviso legal',1:'Privacidad'},made:'Hecho en Girona'},
 floating:'Contactar Taller',openNow:'Abierto ahora',closedNow:'Cerrado ahora',whatsappMsg:'Hola Riveu 👋 Quiero pedir presupuesto para mi patinete.',switchLabel:'Versió en català'}};
 const getByPath=(o,p)=>String(p).split('.').reduce((a,k)=>(a&&a[k]!==undefined?a[k]:undefined),o);
 function retriggerMaskLines(){document.querySelectorAll('.mask-line').forEach(l=>{l.classList.remove('active');const c=l.querySelector('span');if(c){const d=c.style.animationDelay;c.style.animation='none';void c.offsetHeight;c.style.animation='';if(d)c.style.animationDelay=d;}requestAnimationFrame(()=>l.classList.add('active'));});}
@@ -469,7 +468,6 @@ function applyI18n(l){
   const o=l==='ca'?'es':'ca'; const sw=byId('switchLangBtn'); if(sw){sw.textContent=i18n[o].switchLabel;sw.setAttribute('data-next',o);}
   renderTicker(l);renderDiagRows(l);renderServices(l);renderProcess(l);renderWhy(l);renderReviews(l);renderBrands();
   retriggerMaskLines();
-  if(SHOP.all.length)renderShop();
 }
 function renderTicker(l){const h=i18n[l].ticker.map(t=>`<span class="flex items-center font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-white"><span class="rounded-sm bg-carbon-950/80 px-3 py-0.5">${t}</span><span class="mx-4 size-1.5 rotate-45 bg-carbon-950/70"></span></span>`).join('');byId('ticker1').innerHTML=h;byId('ticker2').innerHTML=h;}
 function renderBrands(){const b=['Xiaomi','SmartGyro','Cecotec','Ninebot','Segway','Dualtron','Kaabo','Vsett'];const h=b.map(x=>`<span class="font-display text-xl font-semibold uppercase tracking-[0.2em] text-white/25 sm:text-2xl">${x}<span class="mx-8 text-sm text-riveu-red/40">//</span></span>`).join('');byId('brandsMarquee').innerHTML=h+h;}
@@ -480,124 +478,6 @@ function renderWhy(l){byId('whyList').innerHTML=i18n[l].why.items.map(g=>`<div c
 function renderReviews(l){byId('reviewsGrid').innerHTML=i18n[l].reviews.items.map(r=>`<figure class="reveal relative flex h-full flex-col border border-white/10 bg-carbon-850 p-6 transition-colors hover:border-riveu-red/50"><div class="flex gap-1 text-riveu-red">${Array.from({length:5}).map(()=>STAR).join('')}</div><blockquote class="mt-4 flex-1 text-sm leading-relaxed text-riveu-silver">«${r.text}»</blockquote><figcaption class="mt-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-wider"><span class="text-riveu-steel">${r.name}</span><span class="text-riveu-red">${r.scooter}</span></figcaption></figure>`).join('');setupReveal();}
 function renderFaq(l){byId('faqList').innerHTML=i18n[l].faq.items.map((f,i)=>`<div class="border-b border-white/10"><button data-faq-toggle="${i}" aria-expanded="${i===0}" class="group flex w-full items-center justify-between gap-4 py-5 text-left"><span class="font-display text-base font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-riveu-red sm:text-lg">${f.q}</span><span class="grid size-8 shrink-0 place-items-center border border-white/15 font-mono text-lg text-riveu-steel transition-all duration-300 group-hover:border-white/40 ${i===0?'rotate-45 border-riveu-red text-riveu-red':''}">+</span></button><div class="faq-body ${i===0?'open':''}"><div><p class="pb-5 pr-10 text-sm leading-relaxed text-riveu-steel">${f.a}</p></div></div></div>`).join('');
 document.querySelectorAll('[data-faq-toggle]').forEach(b=>{b.addEventListener('click',()=>{const body=b.nextElementSibling;const ic=b.querySelector('span:last-child');const o=body.classList.toggle('open');ic.classList.toggle('rotate-45',o);ic.classList.toggle('border-riveu-red',o);ic.classList.toggle('text-riveu-red',o);b.setAttribute('aria-expanded',o);});});}
-const SHOP={all:[],filter:'all',search:'',scootersExpanded:false,partsList:[],partsShown:0,PAGE:16};
-const imgCache={}; const pendingQueue=[]; const inFlight=new Set();
-async function loadImgCache(){
-  try{const r=await fetch('fotos-sku.json',{cache:'no-store'});if(r.ok)Object.assign(imgCache,await r.json());}catch(e){}
-  try{Object.assign(imgCache,JSON.parse(localStorage.getItem('riveu-imgcache')||'{}'));}catch(e){}
-}
-function saveImgCache(){try{localStorage.setItem('riveu-imgcache',JSON.stringify(imgCache));}catch(e){}}
-function norm(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
-function classifyProduct(p){
-  const t=(p.title||'').toLowerCase(), s=(p.sku||'').toLowerCase(), x=t+' '+s;
-  if(/puñ|grip|casco|helmet|matr[ií]cul|portamatr|soporte|candado|damper|amortiguador|horquilla|caballete|tapa de|tapon|tap[oó]n|manillar|arandela|tornillo|malla|hinchador|inflador/.test(x)) return 'accessory';
-  if(/patinet\w*\s+el[eé]ctric/.test(t)) return 'patinet';
-  if(/^(ecoxtrem|rovoron|navee|ada)/.test(s) && !/mando|damper|motor|control|bater|cargador|display|guardabarros|freno|rueda|cable|soporte|puño/.test(t)) return 'patinet';
-  if(/guardabarros|guardafangs|fender|mudguard/.test(x)) return 'fender';
-  if(/fren|pastilla|pinza de|maneta|bomba de freno/.test(x)) return 'brake';
-  if(/rueda|cubierta|neum[aá]tic|c[aá]mara|v[aá]lvula|tubeless|llanta/.test(x)) return 'wheel';
-  if(/controlador|controladora|bater|cargador|charger|motor|display|pantalla|bms|acelerador|botonera|m[oó]dulo|sensor|hall|faro|luz|luces|led|foco|bocina|horn|mando|deslimit|limitador|potenci[oó]metro|intermitente/.test(x)) return 'electronic';
-  if(/cable|conector|adaptador|xt30|xt60|xlr|gx16|awg|extensor|pines|pin\b|silicona/.test(x)) return 'cable';
-  return 'accessory';
-}
-function searchIntent(q){
-  if(/patinet|scooter/.test(q)) return 'patinet';
-  if(/guardabarros|guardafangs|fender/.test(q)) return 'fender';
-  if(/fren|brake|pastilla|disco de/.test(q)) return 'brake';
-  if(/rueda|cubierta|neumatic|wheel|llanta/.test(q)) return 'wheel';
-  if(/cable|conector|adaptador/.test(q)) return 'cable';
-  if(/controlador|controladora|bater|cargador|motor|display|electr/.test(q)) return 'electronic';
-  if(/casco|candado|soporte|accesorio|accessori/.test(q)) return 'accessory';
-  return null;
-}
-function parseCSV(text){const rows=[];const lines=text.split(/\r?\n/);if(lines.length<2)return rows;const header=lines[0].split(',').map(h=>h.trim().replace(/^"|"$/g,''));
- for(let i=1;i<lines.length;i++){const line=lines[i].trim();if(!line)continue;const f=[];let cur='',q=false;
-  for(let j=0;j<line.length;j++){const c=line[j];if(c==='"'){q=!q;}else if(c===','&&!q){f.push(cur);cur='';}else{cur+=c;}}f.push(cur);
-  const o={};header.forEach((h,idx)=>{o[h]=(f[idx]||'').trim().replace(/^"|"$/g,'');});if(o.SKU)rows.push(o);}return rows;}
-function normalizeProducts(rows){return rows.map(r=>{const pr=parseFloat((r.price||'').replace(',','.'));const imgs=(r.image_link||'').split(',').map(u=>u.trim()).filter(Boolean).map(u=>{try{return encodeURI(u);}catch(e){return u;}});const q=parseInt((r.Quantity||r.quantity||'0'),10);
- return {sku:r.SKU,title:r.title||r.SKU,description:r.description||'',price:isNaN(pr)?null:pr,image:imgs[0]||'',stock:isNaN(q)?0:q,category:'unknown'};}).map(p=>({...p,category:classifyProduct(p)}));}
-function pumpQueue(){while(inFlight.size<4&&pendingQueue.length){const sku=pendingQueue.shift();if(inFlight.has(sku))continue;inFlight.add(sku);
- fetch('/api/product-image?sku='+encodeURIComponent(sku)).then(r=>r.ok?r.json():{image:''}).then(d=>{const url=(d&&d.image)||'';
-  if(url){imgCache[sku]=url;saveImgCache();document.querySelectorAll('img[data-sku]').forEach(im=>{if(im.getAttribute('data-sku')===sku)im.src=url;});}}).catch(()=>{}).finally(()=>{inFlight.delete(sku);pumpQueue();});}}
-function queueImages(){document.querySelectorAll('#scooterGrid img[data-sku], #partsGrid img[data-sku]').forEach(img=>{if(img.dataset.qimg)return;img.dataset.qimg='1';const sku=img.getAttribute('data-sku');
- if(img.complete&&img.naturalWidth>0)return;
- if(imgCache[sku]!==undefined){if(imgCache[sku])img.src=imgCache[sku];return;}
- const csv=img.getAttribute('data-csv')||''; if(csv)return; pendingQueue.push(sku);});pumpQueue();}
-function shipInfoFor(price, qty, t){
-  if(!price || price<=0) return {txt:'—', cls:'text-riveu-steel'};
-  const sub=price*qty;
-  if(sub>=100) return {txt:t.shipFree, cls:'text-wa'};
-  return {txt:'+5 €', cls:'text-riveu-silver'};
-}
-function cardHTML(p){const t=i18n[lang()].shop;
- const price=p.price!==null?p.price.toFixed(2).replace('.',',')+' €':'—';
- const hs=p.stock>0;
- const stockText=hs?(t.stock+' · '+p.stock):t.outOfStock;const sc=hs?'bg-wa/15 text-wa border-wa/40':'bg-riveu-red/10 text-riveu-red border-riveu-red/40';
- const ship=hs?shipInfoFor(p.price,1,t):{txt:'—',cls:'text-riveu-steel'};
- const img=`<img src="${localImg(p.sku)}" data-sku="${p.sku}" data-csv="${p.image||''}" alt="${p.title}" loading="lazy" decoding="async" onerror="imgNext(this)" class="shop-img h-full w-full object-cover" width="400" height="400">`;
- const qtyBlock=hs
-  ?`<div class="mt-3 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.qty}</span><div class="flex items-center gap-2"><button type="button" data-qminus class="grid size-8 place-items-center border border-white/20 text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">–</button><span data-qty class="w-8 text-center font-mono text-sm text-white">1</span><button type="button" data-qplus class="grid size-8 place-items-center border border-white/20 text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">+</button></div></div>
-    <div class="mt-2 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.shipLabel}</span><span data-ship class="font-mono text-[11px] ${ship.cls}">${ship.txt}</span></div>`
-  :`<div class="mt-3 flex items-center justify-between"><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.qty}</span><span class="font-mono text-sm text-riveu-steel/50">—</span></div>`;
- const payBtn=hs
-  ?`<button type="button" data-pay="${p.sku}" class="mt-3 inline-flex w-full items-center justify-center gap-2 border-2 border-wa px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-all hover:bg-wa hover:text-[#052e16]">💳 ${t.pay}</button>`
-  :`<button type="button" disabled class="mt-3 inline-flex w-full cursor-not-allowed items-center justify-center gap-2 border-2 border-white/10 px-4 py-3 font-display text-xs font-bold uppercase tracking-wider text-riveu-steel/50">🚫 ${t.soldout}</button>`;
- return `<article class="shop-card corners group relative flex flex-col overflow-hidden border border-white/10 bg-carbon-850" data-qty="1" data-price="${p.price||0}"><span class="corner-bl"></span><span class="corner-br"></span><div class="relative overflow-hidden">${img}<div class="absolute left-3 top-3"><span class="border ${sc} px-3 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur">${stockText}</span></div><div class="absolute right-3 top-3 border border-white/15 bg-carbon-950/90 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-riveu-steel backdrop-blur">${p.sku}</div></div><div class="flex flex-1 flex-col p-5"><h3 class="font-display text-base font-semibold uppercase leading-snug text-white">${p.title}</h3>${p.description?`<p class="mt-2 line-clamp-3 text-sm leading-relaxed text-riveu-steel">${p.description}</p>`:''}<div class="mt-4 flex items-baseline gap-2"><span class="font-display text-2xl font-bold text-riveu-red">${price}</span><span class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel">${t.vat}</span></div>${qtyBlock}${payBtn}</div></article>`;}
-function currentLists(){
-  const f=SHOP.filter; const q=SHOP.search.trim(); const nq=norm(q);
-  const intent=q?searchIntent(nq):null;
-  const tokens=nq.split(/\s+/).filter(t=>t.length>1);
-  const match=p=>{ if(!tokens.length) return true; const hay=norm(p.title+' '+p.sku+' '+(p.description||''));
-    return tokens.every(tk=>{ const b=tk.replace(/s$/,''); const esc=b.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); return new RegExp('(^|[^a-z0-9])'+esc).test(hay); }); };
-  let list=SHOP.all.slice();
-  if(f!=='all') list=list.filter(p=>p.category===f);
-  if(intent) list=list.filter(p=>p.category===intent);
-  list=list.filter(match);
-  return {scooters:list.filter(p=>p.category==='patinet'), parts:list.filter(p=>p.category!=='patinet')};
-}
-function renderScooters(){const {scooters}=currentLists();const t=i18n[lang()].shop;const sec=byId('scooterSection');
- sec.style.display=scooters.length?'':'none';byId('scooterCount').textContent='('+scooters.length+')';
- const list=SHOP.scootersExpanded?scooters:scooters.slice(0,12);
- byId('scooterGrid').innerHTML=list.map(cardHTML).join('');
- const mb=byId('scooterMore');if(scooters.length>12){mb.hidden=false;mb.textContent=SHOP.scootersExpanded?t.showLess:(t.seeAll+' ('+scooters.length+')');}else mb.hidden=true;}
-function renderPartsPage(reset){const grid=byId('partsGrid');const list=SHOP.partsList||[];if(reset){grid.innerHTML='';SHOP.partsShown=0;}
- const next=list.slice(SHOP.partsShown,SHOP.partsShown+SHOP.PAGE);grid.insertAdjacentHTML('beforeend',next.map(cardHTML).join(''));SHOP.partsShown+=next.length;
- byId('partsEnd').hidden=!(SHOP.partsShown>=list.length&&list.length>0);queueImages();}
-function renderShop(){const {scooters,parts}=currentLists();const t=byId('shopEmpty');
- renderScooters();
- const psec=byId('partsSection');psec.style.display=parts.length?'':'none';byId('partsCount').textContent='('+parts.length+')';
- SHOP.partsList=parts;renderPartsPage(true);
- t.classList.toggle('hidden',(scooters.length+parts.length)>0);queueImages();}
-async function loadShop(){const grid=byId('partsGrid');grid.innerHTML=`<div class="col-span-full py-12 text-center font-mono text-sm uppercase tracking-wider text-riveu-steel">${i18n[lang()].shop.loading}</div>`;
- let products=null;
- try{const live=await fetch('/api/products',{cache:'no-store'});if(live.ok){const r=parseCSV(await live.text());if(r.length)products=normalizeProducts(r);}}catch(e){}
- if(!products||!products.length){try{const r=await fetch('productos.csv?t='+Date.now(),{cache:'no-store'});if(r.ok){const rows=parseCSV(await r.text());if(rows.length)products=normalizeProducts(rows);}}catch(e){}}
- if(products&&products.length){SHOP.all=products;window._shopData=products;renderShop();}
- else{grid.innerHTML='';byId('shopEmpty').classList.remove('hidden');byId('shopEmpty').textContent=i18n[lang()].shop.errorMsg;}}
-function initShop(){
- document.querySelectorAll('#shopFilters [data-filter]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('#shopFilters [data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');SHOP.filter=b.getAttribute('data-filter');SHOP.scootersExpanded=false;if(SHOP.all.length){renderShop();scrollToShopIfNeeded();}});});
- const s=byId('shopSearch');if(s)s.addEventListener('input',()=>{setShopQuery(s.value,false);});
- byId('scooterMore').addEventListener('click',()=>{SHOP.scootersExpanded=!SHOP.scootersExpanded;renderScooters();queueImages();});
- new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const l=SHOP.partsList||[];if(SHOP.partsShown<l.length)renderPartsPage(false);}});},{rootMargin:'500px 0px'}).observe(byId('partsSentinel'));
- loadImgCache().then(()=>loadShop());
-}
-function setShopQuery(v,syncMain){
-  SHOP.search=v;
-  const f=byId('floatSearchInput'); if(f && syncMain!==false) f.value=v;
-  if(syncMain!==false){ const m=byId('shopSearch'); if(m) m.value=v; }
-  byId('floatClear').hidden=!v;
-  if(SHOP.all.length){renderShop();scrollToShopIfNeeded();}
-}
-function scrollToShopIfNeeded(){ const sec=byId('botiga'); if(!sec)return;
- if(window.scrollY > sec.offsetTop + 150){ window.scrollTo({top: Math.max(0, sec.offsetTop - 80), behavior:'smooth'}); } }
-function updateFloatSearch(){
-  const bar=byId('floatSearch'), anchor=byId('shopSearch');
-  if(!bar||!anchor)return;
-  const show = anchor.getBoundingClientRect().bottom < 0;
-  bar.classList.toggle('show', show);
-  bar.setAttribute('aria-hidden', show?'false':'true');
-}
-window.addEventListener('scroll', updateFloatSearch, {passive:true});
 function loadAnalytics(){ if(window.__siLoaded)return; window.__siLoaded=true;
   window.si = window.si || function () { (window.si.q = window.si.q || []).push(arguments); };
   var s=document.createElement('script'); s.src='/_vercel/insights/script.js'; s.defer=true; document.head.appendChild(s); }
@@ -608,45 +488,21 @@ function setCookieChoice(v){ try{localStorage.setItem('riveu-cookies',v);}catch(
 function initCookies(){ var c=null; try{c=localStorage.getItem('riveu-cookies');}catch(e){}
   if(c==='ok'){ loadAnalytics(); applyConsentMaps(true); return; }
   if(c==='no'){ applyConsentMaps(false); return; }
-  var b=byId('cookieBanner'); if(b) b.hidden=false; }
-function showBanner(msg, ok){
-  let b=document.getElementById('payBanner');
-  if(!b){b=document.createElement('div');b.id='payBanner';b.style.cssText='position:fixed;top:86px;left:50%;transform:translateX(-50%);z-index:130;padding:12px 20px;border-radius:8px;font-family:monospace;font-size:13px;max-width:90%;text-align:center;';document.body.appendChild(b);}
-  b.style.background= ok? '#16a34a':'#dc2626'; b.style.color='#fff'; b.textContent=msg; b.style.display='block';
-  setTimeout(()=>{b.style.display='none';},6000);
+  var b=byId('cookieBanner'); if(b) b.classList.add('show'); }
+function init3D(){
+  const wrap=byId('stage3dWrap'), inner=byId('stage3dInner');
+  if(!wrap||!inner)return;
+  let raf=null;
+  const tilt=(x,y)=>{ inner.style.transform=`rotateY(${x*14}deg) rotateX(${-y*10}deg)`; };
+  wrap.addEventListener('pointermove',e=>{
+    const r=wrap.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width)*2-1;
+    const y=((e.clientY-r.top)/r.height)*2-1;
+    if(raf)cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>tilt(x,y));
+  });
+  wrap.addEventListener('pointerleave',()=>{ if(raf)cancelAnimationFrame(raf); raf=requestAnimationFrame(()=>tilt(0,0)); });
 }
-function resetPayButtons(){const t=i18n[lang()].shop;document.querySelectorAll('[data-pay]').forEach(b=>{b.disabled=false;b.innerHTML='💳 '+t.pay;});}
-window.addEventListener('pageshow',resetPayButtons);
-window.addEventListener('load',resetPayButtons);
-let pendingPay=null;
-function doPayment(sku,qty,btn){const old=btn.innerHTML;btn.disabled=true;btn.innerHTML=(i18n[lang()].shop.loading||'Creando pago seguro…');
- fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sku:sku,qty:qty})})
- .then(r=>r.json()).then(d=>{if(d&&d.url){window.location.href=d.url;}else{showBanner('❌ '+(d&&d.error?d.error:'Error al crear el pago'),false);btn.disabled=false;btn.innerHTML=old;}})
- .catch(()=>{showBanner('❌ Error de conexión',false);btn.disabled=false;btn.innerHTML=old;});}
-function ensureGate(){if(document.getElementById('zoneGate'))return;const g=document.createElement('div');g.id='zoneGate';g.style.cssText='position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.75);';document.body.appendChild(g);renderGate();}
-function renderGate(){
-  const g=document.getElementById('zoneGate'); const dict=i18n[lang()].shop;
-  g.innerHTML=`<div style="max-width:430px;width:92%;background:#141414;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:20px;">
-  <p style="font-family:'Chakra Petch',sans-serif;font-weight:700;color:#fff;margin:0 0 8px;">${dict.zoneTitle}</p>
-  <p style="font-size:13px;color:#9E9E9E;margin:0 0 16px;">${dict.zoneSub}</p>
-  <button id="gateYes" style="width:100%;margin-bottom:8px;padding:12px;border:2px solid #25D366;color:#25D366;font-weight:700;border-radius:6px;background:transparent;">${dict.zoneYes}</button>
-  <button id="gateNo" style="width:100%;padding:12px;border:2px solid rgba(255,255,255,.25);color:#9E9E9E;font-weight:700;border-radius:6px;background:transparent;">${dict.zoneNo}</button>
-  <button id="gateClose" style="margin-top:10px;width:100%;font-size:12px;color:#6f6f6f;background:none;border:none;cursor:pointer;">${dict.zoneClose}</button></div>`;
-  g.querySelector('#gateYes').addEventListener('click',()=>{g.style.display='none';if(pendingPay)doPayment(pendingPay.sku,pendingPay.qty,pendingPay.btn);});
-  g.querySelector('#gateNo').addEventListener('click',()=>{g.style.display='none';const dict=i18n[lang()].shop;showBanner(dict.zoneWarn,false);window.open('https://wa.me/'+WA_PHONE+'?text='+encodeURIComponent(dict.zoneWa),'_blank');});
-  g.querySelector('#gateClose').addEventListener('click',()=>{g.style.display='none';});}
-function openZoneGate(sku,qty,btn){ensureGate();renderGate();pendingPay={sku,qty,btn};document.getElementById('zoneGate').style.display='flex';}
-document.addEventListener('click',async (e)=>{
- const langBtn=e.target.closest('[data-lang-btn]');
- if(langBtn){applyLang(langBtn.getAttribute('data-lang-btn'));return;}
- if(e.target.closest('#floatClear')){setShopQuery('');byId('floatSearchInput').focus();return;}
- const qm=e.target.closest('[data-qminus]'),qp=e.target.closest('[data-qplus]');
- if(qm||qp){const card=e.target.closest('.shop-card');if(!card)return;let q=parseInt(card.dataset.qty||'1',10)||1;q=qp?q+1:Math.max(1,q-1);card.dataset.qty=String(q);const lab=card.querySelector('[data-qty]');if(lab)lab.textContent=q;const price=parseFloat(card.dataset.price||'0');const si=shipInfoFor(price,q,i18n[lang()].shop);const sh=card.querySelector('[data-ship]');if(sh){sh.textContent=si.txt;sh.className='font-mono text-[11px] '+si.cls;}return;}
- const btn=e.target.closest('[data-pay]');if(!btn)return;const card=btn.closest('.shop-card');const qty=Math.max(1,parseInt(card&&card.dataset.qty||'1',10)||1);openZoneGate(btn.getAttribute('data-pay'),qty,btn);
-});
-document.addEventListener('input',(e)=>{
- if(e.target.id==='floatSearchInput'){ setShopQuery(e.target.value,false); }
-});
 function animateGauge(t=87){const arc=byId('gaugeArc'),nd=byId('gaugeNeedle'),v=byId('gaugeValue');if(!arc||!nd||!v)return;const tk=byId('gaugeTicks');if(tk&&!tk.hasChildNodes()){let s='';for(let i=0;i<=12;i++){const a=-120+i*20,mj=i%3===0;s+=`<g transform="rotate(${a} 90 90)"><line x1="90" y1="26" x2="90" y2="${mj?33:29}" stroke="${i>=11?'#E53935':'#4a4a4a'}" stroke-width="${mj?2:1}"/></g>`;}tk.innerHTML=s;}
  const red=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(red){arc.setAttribute('stroke-dasharray',`${(t/100)*66.667} 100`);nd.setAttribute('transform',`rotate(${-120+(t/100)*240} 90 90)`);v.textContent=(38+t*0.166).toFixed(1);return;}
  const t0=performance.now();const st=(x)=>{const p=Math.min(1,(x-t0)/1800);const val=(1-Math.pow(1-p,3))*t;arc.setAttribute('stroke-dasharray',`${(val/100)*66.667} 100`);nd.setAttribute('transform',`rotate(${-120+(val/100)*240} 90 90)`);v.textContent=(38+val*0.166).toFixed(1);if(p<1)requestAnimationFrame(st);};requestAnimationFrame(st);}
@@ -654,23 +510,13 @@ function updateOpenStatus(l){const dots=document.querySelectorAll('[data-open-do
 let revealObserver=null;function setupReveal(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));return;}if(!revealObserver){revealObserver=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});}document.querySelectorAll('.reveal:not(.visible)').forEach(el=>revealObserver.observe(el));}
 function setupScrollProgress(){const b=byId('scrollBar');if(!b)return;const f=()=>{const h=document.documentElement;b.style.width=(h.scrollTop/Math.max(1,h.scrollHeight-window.innerHeight)*100)+'%';};window.addEventListener('scroll',f,{passive:true});f();}
 (function init(){let l='ca';try{const s=localStorage.getItem('riveu-lang');if(s==='ca'||s==='es')l=s;else l=(navigator.language||'ca').toLowerCase().startsWith('ca')?'ca':'es';}catch(e){}
- applyI18n(l);animateGauge(87);updateOpenStatus(l);setupReveal();setupScrollProgress();initShop();initCookies();updateFloatSearch();
+ applyI18n(l);animateGauge(87);updateOpenStatus(l);setupReveal();setupScrollProgress();init3D();initCookies();
  document.querySelectorAll('[data-lang-btn]').forEach(b=>{b.addEventListener('click',()=>{const x=b.getAttribute('data-lang-btn');try{localStorage.setItem('riveu-lang',x);}catch(e){}applyI18n(x);updateOpenStatus(x);});});
  byId('switchLangBtn').addEventListener('click',()=>{const n=byId('switchLangBtn').getAttribute('data-next')||'es';try{localStorage.setItem('riveu-lang',n);}catch(e){}applyI18n(n);updateOpenStatus(n);});
  const ca=byId('cookieAccept'), cn=byId('cookieReject');
- if(ca)ca.addEventListener('click',()=>{setCookieChoice('ok');const b=byId('cookieBanner');if(b)b.hidden=true;loadAnalytics();applyConsentMaps(true);});
- if(cn)cn.addEventListener('click',()=>{setCookieChoice('no');const b=byId('cookieBanner');if(b)b.hidden=true;applyConsentMaps(false);});
+ if(ca)ca.addEventListener('click',()=>{setCookieChoice('ok');const b=byId('cookieBanner');if(b)b.classList.remove('show');loadAnalytics();applyConsentMaps(true);});
+ if(cn)cn.addEventListener('click',()=>{setCookieChoice('no');const b=byId('cookieBanner');if(b)b.classList.remove('show');applyConsentMaps(false);});
  setInterval(()=>updateOpenStatus(lang()),60000);
- if(location.search.includes('export=1')){
-   const a=document.createElement('a');a.download='fotos-sku.json';
-   const b=document.createElement('button');b.textContent='⬇ Descargar fotos-sku.json';
-   b.style.cssText='position:fixed;top:90px;left:50%;transform:translateX(-50%);z-index:999;background:#25D366;color:#052e16;font-weight:bold;padding:12px 20px;border:none;border-radius:8px;';
-   b.onclick=()=>{const map={};
-     for(const k in imgCache){if(imgCache[k]&&imgCache[k].startsWith('http'))map[k]=imgCache[k];}
-     document.querySelectorAll('img[data-sku]').forEach(im=>{const s=im.getAttribute('data-sku');const src=im.currentSrc||im.src||'';if(src.startsWith('http'))map[s]=src;});
-     a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(map));a.click();};
-   document.body.appendChild(b);
- }
 })();
 </script>
 </body>
