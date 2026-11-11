@@ -1,1 +1,18 @@
-{ "cleanUrls": true }
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/tienda/:path*", "destination": "/", "permanent": false },
+    { "source": "/productos.csv", "destination": "/", "permanent": false },
+    { "source": "/productos.csv.txt", "destination": "/", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/llms.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/api/:path*",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    }
+  ]
+}
