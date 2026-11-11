@@ -1,8 +1,10 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /productos.csv
+Disallow: /productos.csv.txt
+Disallow: /tienda/
 
-# Rastreadores de IA permitidos (GEO)
 User-agent: GPTBot
 Allow: /
 User-agent: ChatGPT-User
