@@ -39,10 +39,10 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config={theme:{extend:{
- colors:{carbon:{950:'#0a0a0a',900:'#121212',850:'#141414',800:'#181818',700:'#212121'},riveu:{red:'#E53935',redDark:'#D32F2F',silver:'#C0C0C0',steel:'#9E9E9E',amber:'#FFB300',info:'#42A5F5'},wa:'#25D366'},
- fontFamily:{display:['"Chakra Petch"','sans-serif'],sans:['"IBM Plex Sans"','sans-serif'],mono:['"IBM Plex Mono"','monospace']},
- keyframes:{ticker:{from:{transform:'translateX(0)'},to:{transform:'translateX(-50%)'}},waPing:{'0%':{transform:'scale(1)',opacity:'0.45'},'70%,100%':{transform:'scale(1.6)',opacity:'0'}},float3d:{'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-12px)'}},spinSlow:{from:{transform:'rotate(0deg)'},to:{transform:'rotate(360deg)'}},drift:{'0%,100%':{transform:'translate(0,0)'},'50%':{transform:'translate(18px,-22px)'}}},
- animation:{ticker:'ticker 28s linear infinite','ticker-s':'ticker 40s linear infinite','wa-ping':'waPing 2.2s cubic-bezier(0,0,0.2,1) infinite','float-3d':'float3d 6s ease-in-out infinite','spin-slow':'spinSlow 26s linear infinite',drift:'drift 12s ease-in-out infinite'}
+colors:{carbon:{950:'#0a0a0a',900:'#121212',850:'#141414',800:'#181818',700:'#212121'},riveu:{red:'#E53935',redDark:'#D32F2F',silver:'#C0C0C0',steel:'#9E9E9E',amber:'#FFB300',info:'#42A5F5'},wa:'#25D366'},
+fontFamily:{display:['"Chakra Petch"','sans-serif'],sans:['"IBM Plex Sans"','sans-serif'],mono:['"IBM Plex Mono"','monospace']},
+keyframes:{ticker:{from:{transform:'translateX(0)'},to:{transform:'translateX(-50%)'}},waPing:{'0%':{transform:'scale(1)',opacity:'0.45'},'70%,100%':{transform:'scale(1.6)',opacity:'0'}},float3d:{'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-12px)'}},spinSlow:{from:{transform:'rotate(0deg)'},to:{transform:'rotate(360deg)'}},drift:{'0%,100%':{transform:'translate(0,0)'},'50%':{transform:'translate(18px,-22px)'}}},
+animation:{ticker:'ticker 28s linear infinite','ticker-s':'ticker 40s linear infinite','wa-ping':'waPing 2.2s cubic-bezier(0,0,0.2,1) infinite','float-3d':'float3d 6s ease-in-out infinite','spin-slow':'spinSlow 26s linear infinite',drift:'drift 12s ease-in-out infinite'}
 }}};
 </script>
 <script>
@@ -50,7 +50,8 @@ function imgFallback(el){var s="<svg xmlns='http://www.w3.org/2000/svg' width='4
 </script>
 <style>
 :root{color-scheme:dark;--red:#E53935;--wa:#25D366}
-html{scroll-behavior:smooth;scroll-padding-top:118px}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:128px}
 body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 ::selection{background:#e53935;color:#fff}
 :focus-visible{outline:2px solid #e53935;outline-offset:2px}
@@ -92,9 +93,11 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 #a-prop details[open] .near-plus{transform:rotate(45deg);border-color:#e53935;color:#e53935}
 #a-prop .near-zone{transition:transform .25s ease,border-color .25s ease,background-color .25s ease}
 #a-prop .near-zone:hover{transform:translateY(-4px);border-color:rgba(229,57,53,.7);background-color:#181818}
+#video-tiktok .v-shell{aspect-ratio:9/16}
+#video-tiktok .v-play:focus-visible{outline:2px solid #25D366;outline-offset:-4px}
+#video-tiktok iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}#a-prop .near-zone:hover{transform:none}}
 </style>
-
 <script type="application/ld+json" id="graphSchema">
 {"@context":"https://schema.org","@graph":[
 {"@type":"LocalBusiness","@id":"https://www.riveu.es/#business","name":"Riveu — Taller de Patinetes y Bicicletas Eléctricas","alternateName":"Riveu Taller Girona","description":"Taller especializado multimarca en reparación de patinetes eléctricos y bicicletas eléctricas en Girona: baterías 18650 y 21700, pinchazos, frenos, controladoras y motores.","url":"https://www.riveu.es/","telephone":"+34633624345","priceRange":"€€","image":"https://www.riveu.es/logo-riveu.jpg","logo":"https://www.riveu.es/logo-riveu.jpg","slogan":"Tu patinete, rodando en 24–48 horas","hasMap":"https://maps.app.goo.gl/WzGEK7ouw7YASTPo9","sameAs":["https://maps.app.goo.gl/WzGEK7ouw7YASTPo9","https://wa.me/34633624345"],"knowsAbout":["Reparación de patinetes eléctricos","Baterías 18650 para patinetes eléctricos","Celdas 18650 y 21700","Reconstrucción de packs de batería de litio","Baterías externas para patinetes eléctricos","Baterías para monopatín eléctrico","BMS y controladoras","Motores y sensores Hall","Frenos de disco e hidráulicos","Neumáticos tubeless y macizos","Bicicletas eléctricas Bosch y Shimano Steps","Diagnóstico electrónico multimarca"],"contactPoint":{"@type":"ContactPoint","telephone":"+34633624345","contactType":"customer service","availableLanguage":["Catalan","Spanish"],"areaServed":"ES"},"address":{"@type":"PostalAddress","streetAddress":"Carrer Finestrelles, 9","postalCode":"17006","addressLocality":"Girona","addressRegion":"Catalunya","addressCountry":"ES"},"geo":{"@type":"GeoCoordinates","latitude":41.9741,"longitude":2.8199},"areaServed":[{"@type":"City","name":"Girona"},{"@type":"City","name":"Salt"},{"@type":"City","name":"Banyoles"},{"@type":"City","name":"Figueres"},{"@type":"City","name":"Olot"},{"@type":"City","name":"Blanes"},{"@type":"City","name":"Lloret de Mar"},{"@type":"City","name":"Sant Feliu de Guíxols"},{"@type":"City","name":"Palafrugell"},{"@type":"City","name":"Roses"},{"@type":"City","name":"Barcelona"},{"@type":"City","name":"Tarragona"},{"@type":"City","name":"Lleida"},{"@type":"AdministrativeArea","name":"Catalunya"},{"@type":"Country","name":"España"}],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"14:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"16:00","closes":"20:00"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Servicios de taller Riveu","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Reparación de pinchazos y neumáticos"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Cambio y reconstrucción de baterías 18650 y 21700"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Reparación de frenos y mecánica"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Diagnóstico electrónico y controladoras"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Mantenimiento de bicicletas eléctricas"}}]}},
@@ -116,12 +119,11 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 ]}
 </script>
 <script type="application/ld+json" id="videoSchema">
-{"@context":"https://schema.org","@type":"VideoObject","@id":"https://www.riveu.es/#video","name":"Reconstrucció de bateria de patinet elèctric al taller Riveu (Girona)","description":"Vídeo del taller Riveu a Girona treballant sobre una bateria de patinet elèctric: muntatge de cel·les 18650 i 21700, verificació de BMS i prova de càrrega real al banc de proves.","thumbnailUrl":"https://www.riveu.es/img/bateria-18650.jpg","embedUrl":"https://www.tiktok.com/player/v1/7692953326744276246","contentUrl":"https://www.tiktok.com/player/v1/7692953326744276246","inLanguage":"ca","publisher":{"@id":"https://www.riveu.es/#business"},"about":{"@id":"https://www.riveu.es/#business"},"isPartOf":{"@id":"https://www.riveu.es/#webpage"}}
+{"@context":"https://schema.org","@type":"VideoObject","@id":"https://www.riveu.es/#video","name":"Reconstrucció de bateria de patinet elèctric al taller Riveu (Girona)","description":"Vídeo del taller Riveu a Girona treballant sobre una bateria de patinet elèctric: muntatge de cel·les 18650 i 21700, verificació de BMS i prova de càrrega real al banc de proves.","thumbnailUrl":"https://www.riveu.es/img/bateria-18650.jpg","embedUrl":"https://www.tiktok.com/player/v1/7692953326744276246","inLanguage":"ca","publisher":{"@id":"https://www.riveu.es/#business"},"about":{"@id":"https://www.riveu.es/#business"},"isPartOf":{"@id":"https://www.riveu.es/#webpage"}}
 </script>
 </head>
 <body class="bg-carbon-950 font-sans text-white antialiased">
 <noscript><div style="background:#D32F2F;color:#fff;text-align:center;padding:10px;font-family:monospace;font-size:12px">Aquesta web necessita JavaScript · Esta web necesita JavaScript · 633 62 43 45</div></noscript>
-
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
 <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.03c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></symbol>
@@ -132,9 +134,7 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke-linejoin="round"/></symbol>
 <symbol id="i-wrench" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-2.4 2.6-2.6z" stroke-linejoin="round"/></symbol>
 </svg>
-
 <div aria-hidden class="noise pointer-events-none fixed inset-0 z-[60] opacity-[0.05]"></div>
-
 <div class="fixed inset-x-0 top-0 z-50">
 <div class="hazard flex h-7 items-center overflow-hidden"><div class="flex w-max animate-ticker hover:[animation-play-state:paused]"><div id="ticker1" class="flex shrink-0 items-center"><span class="flex items-center font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-white"><span class="rounded-sm bg-carbon-950/80 px-3 py-0.5">Diagnòstic sense compromís</span><span class="mx-4 size-1.5 rotate-45 bg-carbon-950/70"></span></span><span class="flex items-center font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-white"><span class="rounded-sm bg-carbon-950/80 px-3 py-0.5">Bateries 18650 · 21700</span><span class="mx-4 size-1.5 rotate-45 bg-carbon-950/70"></span></span><span class="flex items-center font-mono text-[10px] font-medium uppercase tracking-[0.22em] text-white"><span class="rounded-sm bg-carbon-950/80 px-3 py-0.5">Reparacions en 24–48 h</span><span class="mx-4 size-1.5 rotate-45 bg-carbon-950/70"></span></span></div><div id="ticker2" class="flex shrink-0 items-center" aria-hidden="true"></div></div></div>
 <header class="border-b border-white/10 bg-carbon-950/90 backdrop-blur-md">
@@ -173,7 +173,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <span id="scrollBar" class="block h-[2px] bg-riveu-red transition-[width] duration-150 ease-out" style="width:0%"></span>
 </header>
 </div>
-
 <main id="top">
 <section class="relative overflow-hidden pb-12 pt-36 sm:pt-40">
 <div aria-hidden class="pointer-events-none absolute inset-0 hidden hero-bg-img opacity-25 lg:block"></div>
@@ -212,7 +211,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 </div>
 </div>
 </section>
-
 <section class="section-glow border-y border-white/10 bg-carbon-900/60">
 <div class="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-white/10 lg:grid-cols-4">
 <div class="flex items-center gap-3 px-4 py-5 sm:px-6"><svg class="size-7 shrink-0 text-riveu-red"><use href="#i-shield"/></svg><div><p class="font-display text-sm font-bold uppercase text-white" data-i18n="trust.t1">Garantia de taller</p><p class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="trust.s1">Peces i mà d'obra</p></div></div>
@@ -221,7 +219,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <div class="flex items-center gap-3 px-4 py-5 sm:px-6"><svg class="size-7 shrink-0 text-wa"><use href="#i-wrench"/></svg><div><p class="font-display text-sm font-bold uppercase text-white" data-i18n="trust.t4">Banc de proves</p><p class="font-mono text-[10px] uppercase tracking-wider text-riveu-steel" data-i18n="trust.s4">Cada unitat verificada</p></div></div>
 </div>
 </section>
-
 <section class="border-b border-white/10 bg-carbon-950 py-14">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// GEO</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="qf.kicker">Fitxa ràpida del taller</span></div>
@@ -239,7 +236,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 </dl>
 </div>
 </section>
-
 <section class="scroll-mt-28 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 02</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="about.kicker">Sobre el taller</span></div>
@@ -290,7 +286,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 </div>
 </div>
 </section>
-
 <section id="serveis" class="section-glow scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="services.index">// 01</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="services.kicker">Serveis</span></div>
@@ -318,7 +313,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 </div>
 </div>
 </section>
-
 <section id="proces" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="process.index">// 02</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="process.kicker">Com treballem</span></div>
@@ -331,7 +325,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 </ol>
 </div>
 </section>
-
 <section id="galeria" class="section-glow scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 02.5</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="gallery.kicker">Al taller</span></div>
@@ -344,13 +337,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 </div>
 </div>
 </section>
-
-<!-- ===== VÍDEO DEL TALLER (facade: no carga TikTok hasta el clic) ===== -->
-<style>
-#video-tiktok .v-shell{aspect-ratio:9/16}
-#video-tiktok .v-play:focus-visible{outline:2px solid #25D366;outline-offset:-4px}
-#video-tiktok iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-</style>
 <section id="video-tiktok" class="section-glow scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal">
@@ -358,12 +344,10 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-v="title">El taller en acció</h2>
 <p class="mt-5 max-w-2xl text-sm leading-relaxed text-riveu-silver sm:text-base" data-v="lead">Feina real al banc de proves: muntatge de cel·les, verificació de tensions i control de qualitat abans de lliurar cada patinet.</p>
 </div>
-
 <div class="mt-12 flex justify-center">
 <div class="w-full" style="max-width:400px">
 <div id="vShell" class="v-shell corners relative overflow-hidden rounded-2xl border border-white/10 bg-black">
 <span class="corner-bl"></span><span class="corner-br"></span>
-
 <button type="button" id="vPlay" class="v-play group absolute inset-0 z-10 block h-full w-full cursor-pointer" aria-label="Reproducir el vídeo del taller">
 <img src="img/bateria-18650.jpg" alt="" aria-hidden="true" width="700" height="933" loading="lazy" decoding="async" onerror="imgFallback(this)" style="object-position:center 55%" class="absolute inset-0 h-full w-full object-cover opacity-55 grayscale transition-all duration-500 group-hover:scale-105 group-hover:opacity-75 group-hover:grayscale-0" />
 <span aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-carbon-950 via-carbon-950/25 to-carbon-950/70"></span>
@@ -379,22 +363,19 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <span class="border border-wa/40 bg-wa/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-wa backdrop-blur">TIKTOK</span>
 </span>
 </button>
-
-<div id="vDenied" hidden class="absolute inset-0 z-20 flex flex-col items-center justify-center gap-5 bg-carbon-900 p-6 text-center">
+<div id="vDenied" hidden aria-live="polite" class="absolute inset-0 z-20 flex flex-col items-center justify-center gap-5 bg-carbon-900 p-6 text-center">
 <svg class="size-9 text-riveu-amber" aria-hidden="true"><use href="#i-shield"/></svg>
 <p class="font-display text-base font-bold uppercase leading-tight text-white" data-v="deniedTitle">Cookies de tercers denegades</p>
 <p class="text-sm leading-relaxed text-riveu-steel" data-v="deniedText">No carreguem TikTok sense permís. Pots veure el vídeo directament a TikTok.</p>
 <a id="vExternal" href="https://www.tiktok.com/player/v1/7692953326744276246" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border-2 border-wa px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-colors hover:bg-wa hover:text-[#052e16]" data-v="deniedBtn">Veure a TikTok ↗</a>
 <button type="button" id="vBack" class="font-mono text-[10px] uppercase tracking-widest text-riveu-steel underline decoration-riveu-red/50 underline-offset-4 hover:text-white" data-v="back">Tornar</button>
 </div>
-
 </div>
 <p class="mt-4 text-center font-mono text-[10px] leading-relaxed uppercase tracking-wider text-riveu-steel/70" data-v="note">El reproductor de TikTok només es carrega quan tu ho demanes.</p>
 </div>
 </div>
 </div>
 </section>
-
 <script>
 (function(){
 const VID='7692953326744276246';
@@ -436,7 +417,6 @@ new MutationObserver(paint).observe(document.documentElement,{attributes:true,at
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
-
 <section id="per-que" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-12 lg:gap-14">
 <div class="lg:col-span-5"><div class="lg:sticky lg:top-32"><div class="reveal">
@@ -453,7 +433,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div>
 </section>
-
 <section id="opinions" class="scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="reviews.index">// 04</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="reviews.kicker">Opinions</span></div>
@@ -465,7 +444,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div>
 </section>
-
 <section id="faq" class="section-glow scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-12 lg:gap-14">
 <div class="lg:col-span-4"><div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="faq.index">// 05</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="faq.kicker">FAQ</span></div>
@@ -481,7 +459,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div></div>
 </div>
 </section>
-
 <section class="border-t border-white/10 bg-carbon-900/40 py-16 sm:py-20">
 <div class="mx-auto max-w-5xl px-4 sm:px-8">
 <h2 class="font-display text-2xl font-bold uppercase leading-tight text-white sm:text-3xl" data-i18n="seoBlock.title">Reparació de patinets elèctrics a Girona i tota Espanya</h2>
@@ -496,7 +473,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div>
 </section>
-
 <section id="a-prop" class="section-glow scroll-mt-28 border-t border-white/10 bg-carbon-900/40 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal">
@@ -532,7 +508,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div>
 </section>
-
 <section id="ubicacio" class="section-glow scroll-mt-28 border-t border-white/10 bg-carbon-900/60 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
 <div class="reveal"><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span data-i18n="location.index">// 06</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="location.kicker">Taller físic a Girona</span></div>
@@ -568,7 +543,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div>
 </section>
-
 <section class="relative overflow-hidden bg-riveu-redDark">
 <div class="hazard h-2" aria-hidden></div>
 <div aria-hidden class="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_15%_20%,rgba(255,255,255,0.16),transparent_60%)]"></div>
@@ -580,7 +554,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <div class="hazard h-2" aria-hidden></div>
 </section>
 </main>
-
 <footer class="border-t border-white/10 bg-carbon-950 pb-28 pt-14 sm:pb-14">
 <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-8 md:grid-cols-12">
 <div class="md:col-span-5"><img src="logo-riveu.jpg" alt="Riveu" width="200" height="150" loading="lazy" class="h-16 w-auto select-none mix-blend-lighten sm:h-20"/><p class="mt-4 max-w-sm text-sm leading-relaxed text-riveu-steel" data-i18n="footer.tagline">Taller especialitzat en mobilitat elèctrica a Girona.</p><p class="mt-4 font-mono text-[10px] tracking-[0.25em] text-riveu-steel/60">41.9741° N · 2.8199° E — GIRONA</p></div>
@@ -608,12 +581,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <span class="flex gap-4"><a href="#" data-i18n="footer.legal.0">Avís legal</a><a href="#" data-i18n="footer.legal.1">Privacitat</a><span class="text-riveu-red/70" data-i18n="footer.made">Fet a Girona</span></span>
 </div>
 </footer>
-
 <a id="floatingWa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Contactar" class="fixed bottom-4 right-4 z-[70] flex items-center gap-2.5 rounded-full bg-wa px-4 py-3 font-display text-sm font-bold text-[#052e16] shadow-[0_10px_35px_-8px_rgba(37,211,102,0.6)] transition-transform duration-300 hover:scale-105 sm:bottom-6 sm:right-6 sm:px-5">
 <span class="relative grid size-7 place-items-center"><span aria-hidden class="absolute inset-0 rounded-full bg-wa opacity-50 animate-wa-ping"></span><svg class="relative size-6"><use href="#i-wa"/></svg></span>
 <span data-i18n="floating">Contactar el Taller</span>
 </a>
-
 <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookies">
 <div class="mx-auto max-w-7xl px-4 py-4 sm:px-8">
 <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -625,7 +596,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 </div>
 </div>
-
 <script>
 const WA_PHONE='34633624345',PHONE_TEL='+34633624345',PHONE_DISPLAY='633 62 43 45',MAPS_URL='https://maps.app.goo.gl/WzGEK7ouw7YASTPo9';
 const waLink=m=>`https://wa.me/${WA_PHONE}?text=${encodeURIComponent(m)}`;
@@ -656,7 +626,7 @@ p3:"Fem canvi i reconstrucció de bateries de liti per a patinets i monopatins e
 p4:"Si busques un taller de patinets a prop teu, som al Carrer Finestrelles, 9 (17006 Girona) i atenem Salt, Sarrià de Ter, Cassà de la Selva, Banyoles, Figueres, Olot, Blanes, Lloret de Mar, Sant Feliu de Guíxols, Palafrugell i Roses. Demana cita per WhatsApp o vine directament de dilluns a divendres."},
 keywords:{specTitle:'Especialitats del taller',brandTitle:'Marques que reparem',zoneTitle:'Zones de servei',specs:['Reparació de patinets elèctrics','Bateries 18650 per a patinet','Cel·les 18650 i 21700','Reconstrucció de bateries 18650','Bateria externa per a patinet','Bateries per a monopatí elèctric','Reparació de punxades','Neumàtics tubeless i massissos','Frens de disc i hidràulics','Controladores i BMS','Motors i sensors Hall','Diagnòstic electrònic gratuït','Manteniment de bicicletes elèctriques'],specsHot:4,brands:['Xiaomi','Ninebot','Segway','SmartGyro','Cecotec','Dualtron','Kaabo','Vsett','Ecoxtrem','Rovoron','Adasmart','Kukirin'],zones:['Girona','Salt','Sarrià de Ter','Cassà de la Selva','Banyoles','Figueres','Olot','Blanes','Lloret de Mar','Sant Feliu de Guíxols','Palafrugell','Roses',"Castelló d'Empúries","La Bisbal d'Empordà","Platja d'Aro",'Calonge','Llagostera','Vidreres','Tossa de Mar','Ripoll']},
 near:{kicker:'A prop teu',title:'Taller de patinets elèctrics a prop teu, a Girona',lead:"Si estàs buscant «un taller de patinets a prop meu», som al centre de Girona i atenem tota la província. Diagnòstic gratuït, pressupost tancat i la majoria d'avaries resoltes en 24–48 hores.",zonesTitle:'Hi arribes en pocs minuts des de…',zonesNote:'Toca la teva zona i demana cita per WhatsApp.',cta:'Demanar cita',arriveTitle:"Tres maneres d'arribar-hi o contactar-nos",arrive:[{t:'Obrir la ruta',d:'Google Maps et porta fins a la porta del taller.',b:'Ruta en Maps',h:MAPS_URL,icon:'i-pin'},{t:'Trucar ara',d:"T'expliquem si podem atendre't avui mateix.",b:'633 62 43 45',h:'tel:'+PHONE_TEL,icon:'i-phone'},{t:'Escriure per WhatsApp',d:"Envia'ns el model i l'avaria amb una foto.",b:'Obrir WhatsApp',h:'',icon:'i-wa'}],faqTitle:'Dubtes ràpids si busques un taller a prop',faqNote:'Respostes clares abans de desplaçar-te.',addrLabel:'On som',hours:'Dl–Dv · 10:00–14:00 / 16:00–20:00',faq:[{q:'Busco un taller de patinets a prop meu: on és Riveu?',a:"Som al Carrer Finestrelles, 9 (17006 Girona), a la zona de l'Eixample. Atenem Girona ciutat i tota la província."},{q:'Cal cita prèvia?',a:"No és obligatòria, però recomanem escriure'ns per WhatsApp abans per assegurar-te que et podem atendre al moment."},{q:'Puc portar el patinet avariat el mateix dia?',a:"Sí. Porta'l de dilluns a divendres de 10:00 a 14:00 o de 16:00 a 20:00 i el diagnostiquem gratuïtament."}],ctaTitle:'El teu patinet, reparat sense voltar mitja província.',ctaSub:"Digues-nos on ets i què li passa. Et confirmem cita i pressupost.",ctaBtn:'Demanar cita per WhatsApp',waZone:'Hola Riveu 👋 Sóc a {n} i busco un taller per reparar el meu patinet. Em podeu donar cita?',waMain:'Hola Riveu 👋 Busco un taller de patinets a prop meu. Em podeu donar cita?'},
-gallery:{kicker:'Al taller',title:'Cada dia, una avaria menys',c1:'DIAGNÒSTIC INICIAL',c2:'CANVI DE RODA',c3:'BANC DE PROVES',c4:'A PUNT PER LLIURAR',alt1:'Tècnic diagnosticant un patinet',alt2:'Reparació del motor de la roda',alt3:'Reconstrucció de bateria amb cel·les 18650 al banc de proves',alt4:'Persones muntant patinets'},video:{kicker:'Al taller en acció',title:'Veure\'ns al treball'},
+gallery:{kicker:'Al taller',title:'Cada dia, una avaria menys',c1:'DIAGNÒSTIC INICIAL',c2:'CANVI DE RODA',c3:'BANC DE PROVES',c4:'A PUNT PER LLIURAR',alt1:'Tècnic diagnosticant un patinet',alt2:'Reparació del motor de la roda',alt3:'Reconstrucció de bateria amb cel·les 18650 al banc de proves',alt4:'Persones muntant patinets'},
 ticker:['Diagnòstic sense compromís','Bateries 18650 · 21700','Reparacions en 24–48 h','Garantia del taller','Servei multimarca','Carrer Finestrelles 9 · Girona'],
 services:{index:'// 01',kicker:'Serveis',title:'Tot el que el teu patinet necessita, en un sol banc de treball',items:[{title:'Pinxades i Pneumàtics',tag:'Càmeres · Tubeless · Massisses',icon:'wheel',list:['Substitució de càmeres i cobertes','Muntatge tubeless i líquid segellant','Rodes massisses antipinxada']},{title:'Bateries 18650 i 21700',tag:'Cel·les · BMS · Controladores',icon:'battery',list:['Reconstrucció amb cel·les 18650 i 21700','Bateries externes per guanyar autonomia',"Controladores, BMS i errors d'encesa"]},{title:'Frens i Mecànica',tag:'Discos · Pastilles · Folgançes',icon:'brake',list:['Ajust de discos i pastilles','Frens hidràulics i elèctrics','Eliminem folgançes i sorolls']},{title:'Especialistes Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…',"Coneixem l'esquema de cada model",'Recanvis en estoc','També bicicletes elèctriques de gamma alta']}]},
 process:{index:'// 02',kicker:'Com treballem',title:"De l'avaria al carrer, sense sorpreses",steps:[{t:'Diagnòstic',d:'Porta el patinet al taller i el revisem al moment.'},{t:'Pressupost tancat',d:"Preu clar abans de tocar res. L'aproves per WhatsApp o en persona."},{t:'Reparació',d:'Muntem recanvis verificats i provem el patinet a fons.'},{t:'Lliurament i garantia',d:'Reculls el patinet provat, amb garantia del taller.'}]},
@@ -681,7 +651,7 @@ p3:'Hacemos cambio y reconstrucción de baterías de litio para patinetes y mono
 p4:'Si buscas un taller de patinetes cerca de ti, estamos en Carrer Finestrelles, 9 (17006 Girona) y atendemos Salt, Sarrià de Ter, Cassà de la Selva, Banyoles, Figueres, Olot, Blanes, Lloret de Mar, Sant Feliu de Guíxols, Palafrugell y Roses. Pide cita por WhatsApp o ven directamente de lunes a viernes.'},
 keywords:{specTitle:'Especialidades del taller',brandTitle:'Marcas que reparamos',zoneTitle:'Zonas de servicio',specs:['Reparación de patinetes eléctricos','Baterías 18650 para patinete','Celdas 18650 y 21700','Reconstrucción de baterías 18650','Batería externa para patinete','Baterías para monopatín eléctrico','Reparación de pinchazos','Neumáticos tubeless y macizos','Frenos de disco y hidráulicos','Controladoras y BMS','Motores y sensores Hall','Diagnóstico electrónico gratuito','Mantenimiento de bicicletas eléctricas'],specsHot:4,brands:['Xiaomi','Ninebot','Segway','SmartGyro','Cecotec','Dualtron','Kaabo','Vsett','Ecoxtrem','Rovoron','Adasmart','Kukirin'],zones:['Girona','Salt','Sarrià de Ter','Cassà de la Selva','Banyoles','Figueres','Olot','Blanes','Lloret de Mar','Sant Feliu de Guíxols','Palafrugell','Roses',"Castelló d'Empúries","La Bisbal d'Empordà","Platja d'Aro",'Calonge','Llagostera','Vidreres','Tossa de Mar','Ripoll']},
 near:{kicker:'Cerca de ti',title:'Taller de patinetes eléctricos cerca de ti, en Girona',lead:'Si estás buscando «un taller de patinetes cerca de mí», estamos en el centro de Girona y atendemos toda la provincia. Diagnóstico gratuito, presupuesto cerrado y la mayoría de averías resueltas en 24–48 horas.',zonesTitle:'Llegas en pocos minutos desde…',zonesNote:'Toca tu zona y pide cita por WhatsApp.',cta:'Pedir cita',arriveTitle:'Tres formas de llegar o contactar con nosotros',arrive:[{t:'Abrir la ruta',d:'Google Maps te lleva hasta la puerta del taller.',b:'Ruta en Maps',h:MAPS_URL,icon:'i-pin'},{t:'Llamar ahora',d:'Te decimos si podemos atenderte hoy mismo.',b:'633 62 43 45',h:'tel:'+PHONE_TEL,icon:'i-phone'},{t:'Escribir por WhatsApp',d:'Envíanos el modelo y la avería con una foto.',b:'Abrir WhatsApp',h:'',icon:'i-wa'}],faqTitle:'Dudas rápidas si buscas un taller cerca',faqNote:'Respuestas claras antes de desplazarte.',addrLabel:'Dónde estamos',hours:'L–V · 10:00–14:00 / 16:00–20:00',faq:[{q:'Busco un taller de patinetes cerca de mí: ¿dónde está Riveu?',a:'Estamos en Carrer Finestrelles, 9 (17006 Girona), en la zona del Eixample. Atendemos Girona ciudad y toda la provincia.'},{q:'¿Hace falta cita previa?',a:'No es obligatoria, pero recomendamos escribirnos por WhatsApp antes para asegurarte de que podemos atenderte al momento.'},{q:'¿Puedo traer el patinete averiado el mismo día?',a:'Sí. Tráelo de lunes a viernes de 10:00 a 14:00 o de 16:00 a 20:00 y lo diagnosticamos gratuitamente.'}],ctaTitle:'Tu patinete, reparado sin recorrer media provincia.',ctaSub:'Dinos dónde estás y qué le pasa. Te confirmamos cita y presupuesto.',ctaBtn:'Pedir cita por WhatsApp',waZone:'Hola Riveu 👋 Estoy en {n} y busco un taller para reparar mi patinete. ¿Me podéis dar cita?',waMain:'Hola Riveu 👋 Busco un taller de patinetes cerca de mí. ¿Me podéis dar cita?'},
-gallery:{kicker:'En el taller',title:'Cada día, una avería menos',c1:'DIAGNÓSTICO INICIAL',c2:'CAMBIO DE RUEDA',c3:'BANCO DE PRUEBAS',c4:'LISTO PARA ENTREGAR',alt1:'Técnico diagnosticando un patinete',alt2:'Reparación del motor de la rueda',alt3:'Reconstrucción de batería con celdas 18650 en el banco de pruebas',alt4:'Personas montando patinetes'},video:{kicker:'En el taller en acción',title:'Véernos al trabajo'},
+gallery:{kicker:'En el taller',title:'Cada día, una avería menos',c1:'DIAGNÓSTICO INICIAL',c2:'CAMBIO DE RUEDA',c3:'BANCO DE PRUEBAS',c4:'LISTO PARA ENTREGAR',alt1:'Técnico diagnosticando un patinete',alt2:'Reparación del motor de la rueda',alt3:'Reconstrucción de batería con celdas 18650 en el banco de pruebas',alt4:'Personas montando patinetes'},
 ticker:['Diagnóstico sin compromiso','Baterías 18650 · 21700','Reparaciones en 24–48 h','Garantía del taller','Servicio multimarca','Carrer Finestrelles 9 · Girona'],
 services:{index:'// 01',kicker:'Servicios',title:'Todo lo que tu patinete necesita, en un solo banco de trabajo',items:[{title:'Pinchazos y Neumáticos',tag:'Cámaras · Tubeless · Macizas',icon:'wheel',list:['Sustitución de cámaras y cubiertas','Montaje tubeless y líquido sellante','Ruedas macizas antipinchazo']},{title:'Baterías 18650 y 21700',tag:'Celdas · BMS · Controladoras',icon:'battery',list:['Reconstrucción con celdas 18650 y 21700','Baterías externas para ganar autonomía','Controladoras, BMS y errores de encendido']},{title:'Frenos y Mecánica',tag:'Discos · Pastillas · Holguras',icon:'brake',list:['Ajuste de discos y pastillas','Frenos hidráulicos y eléctricos','Eliminamos holguras y ruidos']},{title:'Especialistas Multimarca',tag:'Xiaomi · Ninebot · Dualtron…',icon:'brands',list:['SmartGyro, Cecotec, Segway, Kaabo…','Conocemos el esquema de cada modelo','Recambios en stock','También bicicletas eléctricas de gama alta']}]},
 process:{index:'// 02',kicker:'Cómo trabajamos',title:'De la avería a la calle, sin sorpresas',steps:[{t:'Diagnóstico',d:'Trae el patinete y lo revisamos en el momento.'},{t:'Presupuesto cerrado',d:'Precio claro antes de tocar nada.'},{t:'Reparación',d:'Montamos recambios verificados y probamos a fondo.'},{t:'Entrega y garantía',d:'Recoges el patinete probado, con garantía del taller.'}]},
@@ -699,6 +669,10 @@ const STAR='<svg viewBox="0 0 24 24" class="size-3.5"><use href="#i-star"/></svg
 function updateSchemaLang(l){
 const f=byId('faqSchema');if(f){const all=i18n[l].faq.items.concat(i18n[l].near.faq);f.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":all.map(x=>({"@type":"Question","name":x.q,"acceptedAnswer":{"@type":"Answer","text":x.a}}))});}
 const g=byId('graphSchema');if(g){try{const d=JSON.parse(g.textContent);const wp=d['@graph'].find(x=>x['@id']==='https://www.riveu.es/#webpage');if(wp){wp.inLanguage=l;wp.name=i18n[l].meta.title;}g.textContent=JSON.stringify(d);}catch(e){}}
+const v=byId('videoSchema');if(v){try{const d=JSON.parse(v.textContent);
+d.name=l==='ca'?'Reconstrucció de bateria de patinet elèctric al taller Riveu (Girona)':'Reconstrucción de batería de patinete eléctrico en el taller Riveu (Girona)';
+d.description=l==='ca'?'Vídeo del taller Riveu a Girona treballant sobre una bateria de patinet elèctric: muntatge de cel·les 18650 i 21700, verificació de BMS i prova de càrrega real al banc de proves.':'Vídeo del taller Riveu en Girona trabajando sobre una batería de patinete eléctrico: montaje de celdas 18650 y 21700, verificación de BMS y prueba de carga real en el banco de pruebas.';
+d.inLanguage=l;v.textContent=JSON.stringify(d);}catch(e){}}
 }
 function applyI18n(l){
 document.documentElement.lang=l;document.title=i18n[l].meta.title;
