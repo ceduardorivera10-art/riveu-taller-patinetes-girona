@@ -115,6 +115,9 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 {"@type":"Question","name":"Reconstruïu bateries amb cel·les 18650?","acceptedAnswer":{"@type":"Answer","text":"Sí. Reconstruïm packs de bateria de patinet amb cel·les 18650 i 21700 de Samsung, LG i Molicel, amb BMS verificat i prova de càrrega real abans del lliurament."}}
 ]}
 </script>
+<script type="application/ld+json" id="videoSchema">
+{"@context":"https://schema.org","@type":"VideoObject","@id":"https://www.riveu.es/#video","name":"Reconstrucció de bateria de patinet elèctric al taller Riveu (Girona)","description":"Vídeo del taller Riveu a Girona treballant sobre una bateria de patinet elèctric: muntatge de cel·les 18650 i 21700, verificació de BMS i prova de càrrega real al banc de proves.","thumbnailUrl":"https://www.riveu.es/img/bateria-18650.jpg","embedUrl":"https://www.tiktok.com/player/v1/7692953326744276246","contentUrl":"https://www.tiktok.com/player/v1/7692953326744276246","inLanguage":"ca","publisher":{"@id":"https://www.riveu.es/#business"},"about":{"@id":"https://www.riveu.es/#business"},"isPartOf":{"@id":"https://www.riveu.es/#webpage"}}
+</script>
 </head>
 <body class="bg-carbon-950 font-sans text-white antialiased">
 <noscript><div style="background:#D32F2F;color:#fff;text-align:center;padding:10px;font-family:monospace;font-size:12px">Aquesta web necessita JavaScript · Esta web necesita JavaScript · 633 62 43 45</div></noscript>
@@ -144,6 +147,7 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <a class="nav-link hover:text-white" href="#serveis" data-i18n="nav.serveis" data-nav="serveis">Serveis</a>
 <a class="nav-link hover:text-white" href="#proces" data-i18n="nav.proces" data-nav="proces">Com treballem</a>
 <a class="nav-link hover:text-white" href="#galeria" data-i18n="nav.galeria" data-nav="galeria">Galeria</a>
+<a class="nav-link hover:text-white" href="#video-tiktok" data-nav="video-tiktok">Vídeo</a>
 <a class="nav-link hover:text-white" href="#a-prop" data-i18n="nav.aprop" data-nav="a-prop">A prop teu</a>
 <a class="nav-link hover:text-white" href="#faq" data-i18n="nav.faq" data-nav="faq">FAQ</a>
 <a class="nav-link hover:text-white" href="#ubicacio" data-i18n="nav.ubicacio" data-nav="ubicacio">Ubicació</a>
@@ -161,6 +165,7 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <a class="nav-link shrink-0" href="#serveis" data-i18n="nav.serveis" data-nav="serveis">Serveis</a>
 <a class="nav-link shrink-0" href="#proces" data-i18n="nav.proces" data-nav="proces">Com treballem</a>
 <a class="nav-link shrink-0" href="#galeria" data-i18n="nav.galeria" data-nav="galeria">Galeria</a>
+<a class="nav-link shrink-0" href="#video-tiktok" data-nav="video-tiktok">Vídeo</a>
 <a class="nav-link shrink-0" href="#a-prop" data-i18n="nav.aprop" data-nav="a-prop">A prop teu</a>
 <a class="nav-link shrink-0" href="#faq" data-i18n="nav.faq" data-nav="faq">FAQ</a>
 <a class="nav-link shrink-0" href="#ubicacio" data-i18n="nav.ubicacio" data-nav="ubicacio">Ubicació</a>
@@ -340,16 +345,97 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 </div>
 </section>
 
-<!-- TikTok video embed -->
-<section id="video-tiktok" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
+<!-- ===== VÍDEO DEL TALLER (facade: no carga TikTok hasta el clic) ===== -->
+<style>
+#video-tiktok .v-shell{aspect-ratio:9/16}
+#video-tiktok .v-play:focus-visible{outline:2px solid #25D366;outline-offset:-4px}
+#video-tiktok iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+</style>
+<section id="video-tiktok" class="section-glow scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8">
-<div><div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 02.6</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-i18n="video.kicker">Al taller en acció</span></div>
-<h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-i18n="video.title">Veure'ns al treball</h2></div>
+<div class="reveal">
+<div class="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-riveu-red sm:text-xs"><span class="size-1.5 animate-pulse bg-riveu-red"></span><span>// 02.6</span><span class="h-px w-10 bg-riveu-red/50"></span><span class="text-riveu-steel" data-v="kicker">Al taller en acció</span></div>
+<h2 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl lg:text-5xl" data-v="title">El taller en acció</h2>
+<p class="mt-5 max-w-2xl text-sm leading-relaxed text-riveu-silver sm:text-base" data-v="lead">Feina real al banc de proves: muntatge de cel·les, verificació de tensions i control de qualitat abans de lliurar cada patinet.</p>
+</div>
+
 <div class="mt-12 flex justify-center">
-<div style="position:relative;width:100%;max-width:400px;height:711px;margin:0 auto;border-radius:1rem;overflow:hidden;border:1px solid rgba(255,255,255,0.1);background:#000;"><iframe src="https://www.tiktok.com/player/v1/7692953326744276246?embed_from=oembed&music_info=1&description=1&autoplay=1&muted=1" width="400" height="711" style="position:absolute;top:0;left:0;border:0;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="w-full" style="max-width:400px">
+<div id="vShell" class="v-shell corners relative overflow-hidden rounded-2xl border border-white/10 bg-black">
+<span class="corner-bl"></span><span class="corner-br"></span>
+
+<button type="button" id="vPlay" class="v-play group absolute inset-0 z-10 block h-full w-full cursor-pointer" aria-label="Reproducir el vídeo del taller">
+<img src="img/bateria-18650.jpg" alt="" aria-hidden="true" width="700" height="933" loading="lazy" decoding="async" onerror="imgFallback(this)" style="object-position:center 55%" class="absolute inset-0 h-full w-full object-cover opacity-55 grayscale transition-all duration-500 group-hover:scale-105 group-hover:opacity-75 group-hover:grayscale-0" />
+<span aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-carbon-950 via-carbon-950/25 to-carbon-950/70"></span>
+<span class="absolute inset-0 flex flex-col items-center justify-center gap-5">
+<span class="relative grid size-20 place-items-center rounded-full border-2 border-wa bg-carbon-950/70 backdrop-blur transition-transform duration-300 group-hover:scale-110">
+<span aria-hidden="true" class="absolute inset-0 rounded-full bg-wa opacity-40 animate-wa-ping"></span>
+<svg viewBox="0 0 24 24" aria-hidden="true" class="relative ml-1 size-8 fill-wa"><path d="M8 5v14l11-7z"/></svg>
+</span>
+<span class="border border-white/20 bg-carbon-950/85 px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-white backdrop-blur" data-v="play">Reproducir vídeo</span>
+</span>
+<span class="absolute inset-x-3 bottom-3 flex items-center justify-between gap-2">
+<span class="border border-white/15 bg-carbon-950/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-riveu-steel backdrop-blur">RIVEU · GIRONA</span>
+<span class="border border-wa/40 bg-wa/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-wa backdrop-blur">TIKTOK</span>
+</span>
+</button>
+
+<div id="vDenied" hidden class="absolute inset-0 z-20 flex flex-col items-center justify-center gap-5 bg-carbon-900 p-6 text-center">
+<svg class="size-9 text-riveu-amber" aria-hidden="true"><use href="#i-shield"/></svg>
+<p class="font-display text-base font-bold uppercase leading-tight text-white" data-v="deniedTitle">Cookies de tercers denegades</p>
+<p class="text-sm leading-relaxed text-riveu-steel" data-v="deniedText">No carreguem TikTok sense permís. Pots veure el vídeo directament a TikTok.</p>
+<a id="vExternal" href="https://www.tiktok.com/player/v1/7692953326744276246" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border-2 border-wa px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-wa transition-colors hover:bg-wa hover:text-[#052e16]" data-v="deniedBtn">Veure a TikTok ↗</a>
+<button type="button" id="vBack" class="font-mono text-[10px] uppercase tracking-widest text-riveu-steel underline decoration-riveu-red/50 underline-offset-4 hover:text-white" data-v="back">Tornar</button>
+</div>
+
+</div>
+<p class="mt-4 text-center font-mono text-[10px] leading-relaxed uppercase tracking-wider text-riveu-steel/70" data-v="note">El reproductor de TikTok només es carrega quan tu ho demanes.</p>
+</div>
 </div>
 </div>
 </section>
+
+<script>
+(function(){
+const VID='7692953326744276246';
+const SRC='https://www.tiktok.com/player/v1/'+VID+'?embed_from=oembed&music_info=1&description=1&autoplay=1&muted=1';
+const T={
+ca:{kicker:'Al taller en acció',title:'El taller en acció',lead:'Feina real al banc de proves: muntatge de cel·les, verificació de tensions i control de qualitat abans de lliurar cada patinet.',play:'Reproducir vídeo',playAria:'Reproducir el vídeo del taller',iframeTitle:'Vídeo del taller Riveu reparant una bateria de patinet',deniedTitle:'Cookies de tercers denegades',deniedText:'No carreguem TikTok sense permís. Pots veure el vídeo directament a TikTok.',deniedBtn:'Veure a TikTok ↗',back:'Tornar',note:'El reproductor de TikTok només es carrega quan tu ho demanes.'},
+es:{kicker:'En el taller en acción',title:'El taller en acción',lead:'Trabajo real en el banco de pruebas: montaje de celdas, verificación de tensiones y control de calidad antes de entregar cada patinete.',play:'Reproducir vídeo',playAria:'Reproducir el vídeo del taller',iframeTitle:'Vídeo del taller Riveu reparando una batería de patinete',deniedTitle:'Cookies de terceros denegadas',deniedText:'No cargamos TikTok sin permiso. Puedes ver el vídeo directamente en TikTok.',deniedBtn:'Ver en TikTok ↗',back:'Volver',note:'El reproductor de TikTok solo se carga cuando tú lo pides.'}};
+const $=id=>document.getElementById(id);
+const L=()=>((document.documentElement.lang||'ca').toLowerCase().startsWith('es')?'es':'ca');
+function paint(){
+const t=T[L()];
+document.querySelectorAll('#video-tiktok [data-v]').forEach(el=>{const v=t[el.getAttribute('data-v')];if(v!==undefined)el.textContent=v;});
+const p=$('vPlay');if(p)p.setAttribute('aria-label',t.playAria);
+const f=$('vFrame');if(f)f.setAttribute('title',t.iframeTitle);
+}
+function mount(){
+const shell=$('vShell'),play=$('vPlay');if(!shell)return;
+const f=document.createElement('iframe');
+f.id='vFrame';f.src=SRC;f.title=T[L()].iframeTitle;
+f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share');
+f.setAttribute('allowfullscreen','');
+f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+f.loading='lazy';
+shell.appendChild(f);
+if(play)play.remove();
+}
+function init(){
+const play=$('vPlay'),denied=$('vDenied'),back=$('vBack');
+if(!play||!denied)return;
+play.addEventListener('click',()=>{
+let c=null;try{c=localStorage.getItem('riveu-cookies');}catch(e){}
+if(c==='no'){denied.hidden=false;return;}
+mount();
+});
+if(back)back.addEventListener('click',()=>{denied.hidden=true;});
+paint();
+new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 
 <section id="per-que" class="scroll-mt-28 border-t border-white/10 py-20 sm:py-24">
 <div class="mx-auto max-w-7xl px-4 sm:px-8 lg:grid lg:grid-cols-12 lg:gap-14">
@@ -503,6 +589,7 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <li><a href="#serveis" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.0">Serveis</a></li>
 <li><a href="#proces" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.1">Com treballem</a></li>
 <li><a href="#galeria" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.5">Galeria</a></li>
+<li><a href="#video-tiktok" class="text-sm text-riveu-steel hover:text-white">Vídeo</a></li>
 <li><a href="#a-prop" class="text-sm text-riveu-steel hover:text-white" data-i18n="nav.aprop">A prop teu</a></li>
 <li><a href="#faq" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.3">FAQ</a></li>
 <li><a href="#ubicacio" class="text-sm text-riveu-steel hover:text-white" data-i18n="footer.nav.4">Ubicació</a></li>
