@@ -949,7 +949,7 @@ var waUrl=function(m){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(m);
 function setLang(l){
 LANG=(l==='ca')?'ca':'es';
 D.documentElement.lang=LANG;
-$$('[data-ca]').forEach(function(el){
+$$('[data-ca]:not(meta):not(title)').forEach(function(el){
 if(el.dataset.es===undefined)el.dataset.es=el.textContent;
 el.textContent=(LANG==='ca')?el.getAttribute('data-ca'):el.dataset.es;
 });
