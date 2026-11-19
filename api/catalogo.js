@@ -1,7 +1,64 @@
 import { emove, fail, ok, int } from './_emove.js';
 
-// GET /catalogo · permiso "catalogo" · límite 1–100 (default 50 según OpenAPI).
-// Una página por llamada, cacheada en el CDN: 12 peticiones/min por clave.
+// El OpenAPI de Emove no documenta el campo de imagen de /catalogo.
+// En lugar de adivinar nombres, reconocemos cualquier URL con aspecto de
+// imagen en cualquier nivel del producto: extensión gráfica o ruta de
+// uploads de WordPress (la API vive bajo /wp-json/).
+const IMG_RE = /\.(jpe?g|png|webp|gif|avif)(\?|#|$)/i;
+const WP_RE = /\/wp-content\/uploads\//i;
+const isImgUrl = v =>
+  typeof v === 'string' && /^https?:\/\//i.test(v) && (IMG_RE.test(v) || WP_RE.test(v));
+
+function scan(node, depth) {
+  if (depth > 2 || node == null) return null;
+  if (isImgUrl(node)) return node;
+  if (Array.isArray(node)) {
+    for (let i = 0; i < node.length; i++) {
+      const hit = scan(node[i], depth + 1);
+      if (hit) return hit;
+    }
+    return null;
+  }
+  if (typeof node === 'object') {
+    const prio = ['src', 'url', 'foto', 'imagen', 'image', 'link', 'href', 'thumbnail', 'full', 'large'];
+    for (let i = 0; i < prio.length; i++) {
+      if (node[prio[i]] !== undefined) {
+        const hit = scan(node[prio[i]], depth + 1);
+        if (hit) return hit;
+      }
+    }
+    const keys = Object.keys(node);
+    for (let i = 0; i < keys.length; i++) {
+      const hit = scan(node[keys[i]], depth + 1);
+      if (hit) return hit;
+    }
+  }
+  return null;
+}
+
+function pickFoto(x) {
+  if (!x || typeof x !== 'object') return null;
+  const known = [
+    'foto', 'fotos', 'imagen', 'imagenes', 'image', 'images',
+    'thumbnail', 'featured_image', 'foto_principal', 'url_imagen',
+    'portada', 'img', 'image_url', 'imagen_url', 'miniatura', 'media'
+  ];
+  for (let i = 0; i < known.length; i++) {
+    if (x[known[i]] !== undefined) {
+      const hit = scan(x[known[i]], 0);
+      if (hit) return hit;
+    }
+  }
+  const keys = Object.keys(x);
+  for (let i = 0; i < keys.length; i++) {
+    const hit = scan(x[keys[i]], 0);
+    if (hit) return hit;
+  }
+  return null;
+}
+
+// GET /catalogo · permiso "catalogo" · limite 1–100 (default 50).
+// Una página por llamada, cacheada 6 h en el CDN: 12 peticiones/min por clave.
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
@@ -29,16 +86,25 @@ export default async function handler(req, res) {
       categoria: x.categoria ?? (Array.isArray(x.categorias) ? x.categorias[0] : null) ?? 'Recambios',
       marca: x.marca ?? null,
       estado: x.estado ?? 'activo',
-      foto: x.foto ?? x.imagen ?? (Array.isArray(x.fotos) ? x.fotos[0] : null) ?? null,
+      foto: pickFoto(x),
       variantes: Array.isArray(x.variantes)
         ? x.variantes.map(v => ({ sku: v.sku ?? null, nombre: v.nombre ?? null }))
         : []
     })).filter(x => x.sku && x.estado !== 'retirado');
 
-    return ok(res, {
+    const out = {
       productos,
       siguiente_cursor: p?.siguiente_cursor ?? null,
       entorno: p?.entorno ?? null
-    }, 21600);
+    };
+
+    // Si ninguna tarjeta trae foto, publicamos los nombres reales de los
+    // campos del primer producto para poder ajustar el extractor.
+    // Solo nombres de campo, nunca valores: se ve en /api/catalogo?limite=1
+    if (productos.length && productos.every(x => !x.foto) && raw[0] && typeof raw[0] === 'object') {
+      out.aviso_foto = Object.keys(raw[0]);
+    }
+
+    return ok(res, out, 21600);
   } catch (e) { return fail(res, e); }
 }
