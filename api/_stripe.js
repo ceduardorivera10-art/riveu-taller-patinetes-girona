@@ -1,3 +1,4 @@
+// Cliente Stripe REST sin dependencias externas. Firma verificada con node:crypto.
 import crypto from 'node:crypto';
 
 const API = 'https://api.stripe.com/v1';
@@ -43,15 +44,17 @@ async function call(path, { method = 'POST', body, idempotency } = {}) {
   if (!res.ok) {
     const e = (j && j.error) || {};
     throw new StripeError(e.message || ('Stripe devolvió ' + res.status), res.status, e.code || 'STRIPE_' + res.status,
-      res.status === 401 ? 'La clave secreta no es válida.' : null);
+      res.status === 401 ? 'La clave secreta no es válida para este entorno.' : null);
   }
   return j;
 }
 
 export const createSession = (body, idempotency) => call('/checkout/sessions', { body, idempotency });
 export const updatePaymentIntent = (id, body) => call('/payment_intents/' + encodeURIComponent(id), { body });
-export const refund = (paymentIntent, idempotency) => call('/refunds', { body: { payment_intent: paymentIntent }, idempotency });
-export const getSession = id => call('/checkout/sessions/' + encodeURIComponent(id) + '?expand[]=payment_intent&expand[]=line_items', { method: 'GET' });
+export const refund = (paymentIntent, reason, idempotency) =>
+  call('/refunds', { body: { payment_intent: paymentIntent, reason: reason || 'requested_by_customer' }, idempotency });
+export const getSession = id =>
+  call('/checkout/sessions/' + encodeURIComponent(id) + '?expand[]=payment_intent', { method: 'GET' });
 
 export async function readRaw(req) {
   const chunks = [];
@@ -70,24 +73,25 @@ export function verifySignature(raw, header, toleranceSec = 300) {
   if (!t || !sigs.length) throw new StripeError('Firma mal formada.', 400, 'BAD_SIG', null);
   const expected = crypto.createHmac('sha256', wh).update(t + '.' + raw, 'utf8').digest('hex');
   const a = Buffer.from(expected, 'hex');
-  const okSig = sigs.some(s => {
+  const valid = sigs.some(s => {
     let b; try { b = Buffer.from(s, 'hex'); } catch (_) { return false; }
     return b.length === a.length && crypto.timingSafeEqual(b, a);
   });
-  if (!okSig) throw new StripeError('Firma no válida.', 400, 'BAD_SIG', 'Revisa que STRIPE_WEBHOOK_SECRET sea del endpoint de este dominio.');
+  if (!valid) throw new StripeError('Firma no válida.', 400, 'BAD_SIG', 'Comprueba que STRIPE_WEBHOOK_SECRET corresponde al endpoint de este dominio.');
   if (Math.abs(Date.now() / 1000 - Number(t)) > toleranceSec) throw new StripeError('Marca de tiempo fuera de tolerancia.', 400, 'OLD_SIG', null);
   return true;
 }
 
+// Metadata de Stripe: máx. 50 claves y 500 caracteres por valor. Troceamos.
 export function chunkMeta(prefix, text, size = 480) {
   const s = String(text || '');
   const out = {};
-  for (let i = 0, n = 0; i < s.length && n < 8; i += size, n++) out[prefix + '_' + n] = s.slice(i, i + size);
+  for (let i = 0, n = 0; i < s.length && n < 6; i += size, n++) out[prefix + '_' + n] = s.slice(i, i + size);
   if (!Object.keys(out).length) out[prefix + '_0'] = '';
   return out;
 }
 export function unchunkMeta(md, prefix) {
   let s = '';
-  for (let n = 0; n < 8; n++) { const v = md[prefix + '_' + n]; if (v === undefined) break; s += v; }
+  for (let n = 0; n < 6; n++) { const v = md[prefix + '_' + n]; if (v === undefined) break; s += v; }
   return s;
 }
