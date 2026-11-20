@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0a0a0a" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <title>Recambios de patinete eléctrico con stock verificado | Riveu Girona</title>
-<meta name="description" content="Catálogo de recambios de patinete eléctrico con disponibilidad verificada: controladoras, baterías 18650 y 21700, neumáticos y frenos. Pago con tarjeta y envío en España." />
+<meta name="description" content="Recambios de patinete eléctrico con disponibilidad verificada: controladoras, baterías 18650 y 21700, neumáticos y frenos. Pago con tarjeta y envío en España." />
 <link rel="canonical" href="https://www.riveu.es/tienda.html" />
 <link rel="icon" type="image/jpeg" href="logo-riveu.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -130,7 +130,7 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
   <section class="mx-auto max-w-7xl px-4 py-8 sm:px-8">
     <div id="cancelled" hidden class="corners relative mb-4 border border-riveu-amber/45 bg-[#1a1408] p-4"><span class="cbl"></span><span class="cbr"></span>
       <p class="font-display text-sm font-bold uppercase text-riveu-amber">Pago cancelado</p>
-      <p class="mt-1 text-sm text-riveu-steel">No se ha cobrado nada. Tu carrito sigue guardado: puedes retomarlo cuando quieras.</p>
+      <p class="mt-1 text-sm text-riveu-steel">No se ha cobrado nada. Tu carrito sigue guardado.</p>
     </div>
 
     <div id="setup" hidden class="corners relative border border-riveu-amber/45 bg-gradient-to-br from-[#1a1408] to-carbon-900 p-6 sm:p-8"><span class="cbl"></span><span class="cbr"></span>
@@ -393,7 +393,7 @@ function stepPay(){
     +(addr.email?'<br>'+esc(addr.email):'')+'</p></div>';
 
   h+='<div class="mt-3 flex items-start gap-3 border border-wa/30 bg-wa/5 p-3"><svg class="mt-0.5 size-5 shrink-0 text-wa"><use href="#i-lock"/></svg>'
-    +'<p class="text-[11px] leading-relaxed text-riveu-steel">El cobro lo procesa <b class="text-wa">Stripe</b> en su propia pasarela. Riveu no ve ni guarda los datos de tu tarjeta. Al confirmar el pago, el pedido se registra automáticamente en el distribuidor y sale de su almacén hacia tu dirección en España.</p></div>';
+    +'<p class="text-[11px] leading-relaxed text-riveu-steel">El cobro lo procesa <b class="text-wa">Stripe</b> en su propia pasarela. Riveu no ve ni guarda los datos de tu tarjeta. Si el distribuidor no puede servir el pedido o su coste sube, <b class="text-wa">se te devuelve el importe automáticamente</b>.</p></div>';
 
   h+='<p id="expiry" class="mt-3 font-mono text-[10px] uppercase tracking-wider text-riveu-amber"></p>';
   $('dBody').innerHTML=h;
