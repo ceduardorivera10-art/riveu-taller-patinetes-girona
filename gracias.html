@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Pedido confirmado · Riveu Girona</title>
+<link rel="icon" type="image/jpeg" href="logo-riveu.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#0a0a0a;--card:#161616;--line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.20);
+--red:#E53935;--orange:#FF7043;--amber:#FFB300;--green:#25D366;--blue:#42A5F5;--silver:#C0C0C0;--steel:#9E9E9E;
+--disp:"Chakra Petch",system-ui,sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#fff;font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:calc(2.5rem + env(safe-area-inset-bottom))}
+[hidden]{display:none!important}
+h1,h2,p{margin:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+*{scrollbar-width:thin;scrollbar-color:#4a2020 #0d0d0d}
+::-webkit-scrollbar{width:11px;height:9px}::-webkit-scrollbar-track{background:#0d0d0d}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#5a2422,#2a2a2a);border:2px solid #0d0d0d;border-radius:7px}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--red),#7a2422)}
+.wrap{width:100%;max-width:760px;margin-inline:auto;padding-inline:1rem}
+@media(min-width:640px){.wrap{padding-inline:2rem}}
+.hazard{height:6px;background:repeating-linear-gradient(-45deg,var(--red) 0 12px,#0a0a0a 12px 24px)}
+.bar{border-bottom:1px solid var(--line);background:rgba(10,10,10,.94);backdrop-filter:blur(12px)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:58px}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand img{height:32px;width:auto;mix-blend-mode:lighten}
+.brand b{font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.26em;color:var(--steel)}
+.back{border:1px solid var(--line2);padding:.45rem .8rem;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--steel);transition:.2s}
+.back:hover{border-color:var(--red);color:#fff}
+main{padding-top:2rem}
+.hero{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(155deg,#101a13,#0d0d0d 62%);padding:1.6rem}
+.hero::after{content:"";position:absolute;right:-6rem;top:-6rem;width:18rem;height:18rem;border-radius:50%;background:radial-gradient(circle,rgba(37,211,102,.22),transparent 70%);filter:blur(70px);pointer-events:none}
+.hero.warn{background:linear-gradient(155deg,#1a1408,#0d0d0d 62%)}
+.hero.warn::after{background:radial-gradient(circle,rgba(255,179,0,.22),transparent 70%)}
+.hero.bad{background:linear-gradient(155deg,#1a0d0d,#0d0d0d 62%)}
+.hero.bad::after{background:radial-gradient(circle,rgba(229,57,53,.22),transparent 70%)}
+.disc{position:relative;display:grid;place-items:center;width:4.2rem;height:4.2rem;border-radius:50%;border:2px solid var(--green);background:rgba(37,211,102,.1);color:var(--green)}
+.disc svg{width:2rem;height:2rem}
+.disc.spin{border-color:var(--blue);color:var(--blue);background:rgba(66,165,245,.1)}
+.disc.spin svg{animation:rot 1.1s linear infinite}
+.disc.warn{border-color:var(--amber);color:var(--amber);background:rgba(255,179,0,.1)}
+.disc.bad{border-color:var(--red);color:var(--red);background:rgba(229,57,53,.1)}
+@keyframes rot{to{transform:rotate(360deg)}}
+h1{margin-top:1rem;font-family:var(--disp);font-weight:700;text-transform:uppercase;line-height:1.05;font-size:clamp(1.4rem,6vw,2rem)}
+.sub{margin-top:.6rem;font-size:.86rem;line-height:1.7;color:var(--silver);max-width:56ch}
+.amount{margin-top:1.1rem;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.amount b{font-family:var(--disp);font-size:2rem;font-weight:700}
+.amount span{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--steel)}
+.panel{position:relative;margin-top:1.1rem;border:1px solid var(--line);background:var(--card);padding:1.15rem}
+.corners::before,.corners::after,.panel>.cbl,.panel>.cbr{content:"";position:absolute;width:11px;height:11px;border:2px solid rgba(229,57,53,.5);pointer-events:none}
+.corners::before{top:0;left:0;border-right:0;border-bottom:0}.corners::after{top:0;right:0;border-left:0;border-bottom:0}
+.panel>.cbl{bottom:0;left:0;border-right:0;border-top:0}.panel>.cbr{bottom:0;right:0;border-left:0;border-top:0}
+.panel h2{display:flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:var(--red)}
+.panel h2 .rule{height:1px;flex:1;background:linear-gradient(90deg,rgba(229,57,53,.55),transparent)}
+.steps{margin-top:.9rem;display:grid;gap:.1rem}
+.step{display:flex;gap:.8rem;align-items:flex-start;padding:.55rem 0}
+.dot{width:1.55rem;height:1.55rem;flex:none;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line2);font-family:var(--mono);font-size:9px;color:var(--steel);margin-top:.1rem}
+.step[data-s="done"] .dot{border-color:var(--green);background:rgba(37,211,102,.14);color:var(--green)}
+.step[data-s="live"] .dot{border-color:var(--blue);background:rgba(66,165,245,.14);color:var(--blue);animation:pulse 1.4s infinite}
+.step[data-s="warn"] .dot{border-color:var(--amber);background:rgba(255,179,0,.14);color:var(--amber)}
+.step[data-s="bad"] .dot{border-color:var(--red);background:rgba(229,57,53,.14);color:var(--red)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.step .txt{min-width:0}
+.step .t{font-family:var(--disp);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em}
+.step[data-s="todo"] .t{color:var(--steel)}
+.step .d{margin-top:.15rem;font-size:.78rem;line-height:1.6;color:var(--steel);word-break:break-word}
+.kv{margin-top:.8rem;display:grid;gap:.45rem}
+.kv div{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dotted rgba(255,255,255,.1);padding-bottom:.4rem;font-family:var(--mono);font-size:11px}
+.kv div:last-child{border-bottom:0}
+.kv .k{color:var(--steel);text-transform:uppercase;letter-spacing:.1em;font-size:9.5px}
+.kv .v{color:var(--silver);text-align:right;word-break:break-word}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.chips span{border:1px solid var(--line2);padding:.25rem .6rem;font-family:var(--mono);font-size:10px;color:var(--silver)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:1px solid transparent;padding:.85rem 1.2rem;font-family:var(--disp);font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;transition:.2s}
+.btn svg{width:1rem;height:1rem}
+.btn.g{background:var(--green);color:#052e16}
+.btn.g:hover{filter:brightness(1.1)}
+.btn.s{border-color:var(--line2);color:var(--silver)}
+.btn.s:hover{border-color:var(--red);color:#fff}
+.acts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+.acts .btn{flex:1 1 auto;min-width:9rem}
+.note{margin-top:1rem;border-left:2px solid var(--amber);background:rgba(255,179,0,.06);padding:.7rem .85rem;font-size:.79rem;line-height:1.7;color:var(--silver)}
+.note b{color:var(--amber)}
+.note.bad{border-left-color:var(--red);background:rgba(229,57,53,.06)}
+.note.bad b{color:var(--red)}
+.foot{margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem;font-family:var(--mono);font-size:9.5px;line-height:1.9;text-transform:uppercase;letter-spacing:.08em;color:rgba(158,158,158,.62)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5l5 5L20 6.5"/></symbol>
+<symbol id="i-spin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M12 3a9 9 0 1 0 9 9"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 3l9.5 17H2.5L12 3z" stroke-linejoin="round"/><path d="M12 9v5M12 17.2v.1"/></g></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></g></symbol>
+</svg>
+
+<div class="hazard"></div>
+<header class="bar">
+  <div class="wrap bar-in">
+    <div class="brand"><img src="logo-riveu.jpg" alt="Riveu" width="140" height="105" onerror="this.style.display='none'" /><b>· PEDIDO</b></div>
+    <a class="back" href="/tienda.html">Volver a la tienda</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero corners" id="hero"><span class="cbl"></span><span class="cbr"></span>
+    <span class="disc spin" id="disc"><svg id="discIcon"><use href="#i-spin"/></svg></span>
+    <h1 id="title">Confirmando tu pago</h1>
+    <p class="sub" id="sub">Estamos verificando el cobro con la pasarela. No cierres esta página: el estado se actualiza solo.</p>
+    <div class="amount" id="amount" hidden><b id="amountVal">—</b><span id="amountLbl">pagado con tarjeta</span></div>
+  </section>
+
+  <section class="panel corners"><span class="cbl"></span><span class="cbr"></span>
+    <h2>Estado del pedido<span class="rule"></span></h2>
+    <div class="steps" id="steps"></div>
+    <div class="note" id="note" hidden></div>
+  </section>
+
+  <section class="panel corners" id="detail" hidden><span class="cbl"></span><span class="cbr"></span>
+    <h2>Detalle<span class="rule"></span></h2>
+    <div class="kv" id="kv"></div>
+    <div class="chips" id="items"></div>
+  </section>
+
+  <div class="acts">
+    <button class="btn s" id="refresh"><svg><use href="#i-spin"/></svg>Actualizar ahora</button>
+    <a class="btn g" href="/tienda.html"><svg><use href="#i-truck"/></svg>Seguir comprando</a>
+  </div>
+
+  <p class="foot">Riveu · Carrer Finestrelles 9 · 17006 Girona · 633 62 43 45<br />El cobro lo procesa Stripe. Riveu no almacena los datos de tu tarjeta.</p>
+</main>
+
+<script>
+(function(){
+'use strict';
+var D=document,$=function(i){return D.getElementById(i);};
+var sid=null,tries=0,timer=null;
+try{sid=new URLSearchParams(location.search).get('session_id');}catch(e){}
+
+var eur=function(n){return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n||0);};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
+
+function step(state,title,desc){
+  var ic=state==='done'?'<svg style="width:.8rem;height:.8rem"><use href="#i-check"/></svg>':state==='live'?'<svg style="width:.8rem;height:.8rem"><use href="#i-spin"/></svg>':'•';
+  return '<div class="step" data-s="'+state+'"><span class="dot">'+ic+'</span><div class="txt"><div class="t">'+esc(title)+'</div>'+(desc?'<div class="d">'+esc(desc)+'</div>':'')+'</div></div>';
+}
+
+function paint(d){
+  var hero=$('hero'),disc=$('disc'),icon=$('discIcon');
+  var pagado=d.pagado,creado=!!d.pedido_id,pag=d.pago_distribuidor;
+  var enviado=/enviado|shipped|completed|entregado/i.test(String(d.estado||''));
+  var prep=/processing|prepar|pending|pagado/i.test(String(d.estado||''));
+  var accion=pag==='requiere_accion';
+
+  hero.className='hero corners';disc.className='disc';
+
+  if(d.reembolsado){
+    hero.classList.add('bad');disc.classList.add('bad');icon.setAttribute('href','#i-alert');
+    $('title').textContent='Pedido reembolsado';
+    $('sub').textContent='No hemos podido servir este pedido en las condiciones en que lo pagaste. Hemos devuelto el importe íntegro a tu tarjeta. El reembolso tarda entre 5 y 10 días en aparecer según tu banco.';
+    $('amountLbl').textContent='reembolsado';
+  }else if(d.reembolso_fallido){
+    hero.classList.add('bad');disc.classList.add('bad');icon.setAttribute('href','#i-alert');
+    $('title').textContent='Reembolso pendiente';
+    $('sub').textContent='No hemos podido servir el pedido y el reembolso automático no se completó. El taller lo está gestionando manualmente. Escribe o llama al 633 62 43 45 con esta referencia.';
+  }else if(!pagado){
+    disc.classList.add('spin');icon.setAttribute('href','#i-spin');
+    $('title').textContent='Confirmando tu pago';
+    $('sub').textContent='Estamos verificando el cobro con la pasarela. No cierres esta página: el estado se actualiza solo.';
+  }else if(pag==='verificacion'||d.verificacion_url||accion){
+    hero.classList.add('warn');disc.classList.add('warn');icon.setAttribute('href','#i-alert');
+    $('title').textContent='Pago recibido';
+    $('sub').textContent='Tu cobro está confirmado y el pedido registrado en el distribuidor. El taller está completando la autorización del envío. Te avisaremos en cuanto salga.';
+  }else{
+    icon.setAttribute('href','#i-check');
+    $('title').textContent=enviado?'Tu pedido va de camino':'Pedido confirmado';
+    $('sub').textContent=enviado
+      ?'El distribuidor ya ha expedido el paquete hacia la dirección que indicaste.'
+      :'Hemos cobrado tu pedido y lo hemos registrado en el distribuidor. Sale directamente de su almacén hacia tu dirección, sin pasar por el taller.';
+  }
+
+  if(pagado){$('amount').hidden=false;$('amountVal').textContent=eur(d.importe);}
+
+  var s='';
+  s+=step(pagado?'done':'live','Pago con tarjeta',pagado?'Cobrado y verificado por Stripe.':'Verificando con la pasarela…');
+  if(d.reembolsado||d.reembolso_fallido){
+    s+=step(d.reembolsado?'bad':'warn','Devolución del importe',d.reembolsado?'Reembolso emitido a tu tarjeta.':'Reembolso en gestión manual.');
+  }else{
+    s+=step(creado?'done':(pagado?'live':'todo'),'Pedido en el distribuidor',creado?('Referencia '+d.pedido_id+(d.pruebas?' · entorno de pruebas':'')):(pagado?'Registrando el pedido…':'Pendiente del cobro.'));
+    s+=step(pag==='pagado'?'done':((pag==='verificacion'||accion)?'warn':(creado?'live':'todo')),'Preparación del envío',
+      pag==='pagado'?'Confirmado con el distribuidor.':((pag==='verificacion'||accion)?'Autorización bancaria en curso.':(creado?'En curso.':'Pendiente.')));
+    s+=step(enviado?'done':(prep&&pag==='pagado'?'live':'todo'),'En camino',enviado?'Paquete expedido.':'Recibirás el seguimiento cuando se expida.');
+  }
+  $('steps').innerHTML=s;
+
+  var note=$('note');
+  if(d.reembolso_fallido){
+    note.hidden=false;note.className='note bad';
+    note.innerHTML='<b>Reembolso en gestión manual.</b> '+esc(d.motivo||'')+' Contacta con el taller indicando la referencia de esta página.';
+  }else if(d.reembolsado){
+    note.hidden=false;note.className='note';
+    note.innerHTML='<b>Motivo:</b> '+esc(d.motivo||'El distribuidor no pudo servir el pedido en las condiciones pagadas.');
+  }else if(d.verificacion_url||pag==='verificacion'||accion){
+    note.hidden=false;note.className='note';
+    note.innerHTML='<b>Autorización pendiente.</b> Tu pedido está registrado y pagado por tu parte. Solo falta que el taller complete la autorización de su banco para que el distribuidor lo expida.';
+  }else{note.hidden=true;}
+
+  if(d.pedido_id||(d.envio&&d.envio.nombre)){
+    $('detail').hidden=false;
+    var kv='';
+    if(d.pedido_id)kv+='<div><span class="k">Referencia</span><span class="v">'+esc(d.pedido_id)+'</span></div>';
+    if(d.estado)kv+='<div><span class="k">Estado</span><span class="v">'+esc(d.estado)+'</span></div>';
+    if(d.importe)kv+='<div><span class="k">Importe</span><span class="v">'+eur(d.importe)+'</span></div>';
+    if(d.email)kv+='<div><span class="k">Email</span><span class="v">'+esc(d.email)+'</span></div>';
+    if(d.envio&&d.envio.nombre)kv+='<div><span class="k">Enviar a</span><span class="v">'+esc(d.envio.nombre)+'<br>'+esc(d.envio.linea)+'<br>'+esc(d.envio.ciudad)+' · '+esc(d.envio.pais)+'</span></div>';
+    if(d.seguimiento)kv+='<div><span class="k">Seguimiento</span><span class="v">'+esc(typeof d.seguimiento==='string'?d.seguimiento:JSON.stringify(d.seguimiento))+'</span></div>';
+    $('kv').innerHTML=kv;
+    $('items').innerHTML=(d.articulos||[]).map(function(a){return '<span>'+esc(a.replace(':',' ×'))+'</span>';}).join('');
+  }
+}
+
+function poll(){
+  if(!sid)return;
+  fetch('/api/estado-pedido?session_id='+encodeURIComponent(sid),{cache:'no-store'})
+    .then(function(r){return r.json();})
+    .then(function(j){
+      if(!j||j.ok!==true){
+        $('hero').className='hero bad corners';
+        $('disc').className='disc bad';$('discIcon').setAttribute('href','#i-alert');
+        $('title').textContent='No encontramos el pedido';
+        $('sub').textContent=(j&&j.mensaje)||'El enlace no es válido o ha caducado. Si has pagado, contacta con el taller con el justificante.';
+        return;
+      }
+      paint(j);
+      tries++;
+      var fin=j.reembolsado||j.reembolso_fallido||(j.pagado&&j.pedido_id&&(j.pago_distribuidor==='pagado'||j.pago_distribuidor==='verificacion'||j.pago_distribuidor==='requiere_accion'||j.verificacion_url));
+      if(!fin&&tries<30)timer=setTimeout(poll,4000);
+    })
+    .catch(function(){tries++;if(tries<30)timer=setTimeout(poll,5000);});
+}
+
+$('refresh').addEventListener('click',function(){if(timer)clearTimeout(timer);tries=0;poll();});
+
+if(!sid){
+  $('hero').className='hero bad corners';
+  $('disc').className='disc bad';$('discIcon').setAttribute('href','#i-alert');
+  $('title').textContent='Falta la referencia del pago';
+  $('sub').textContent='Has llegado aquí sin identificador de sesión. Si acabas de pagar, vuelve a la tienda o contacta con el taller.';
+}else{poll();}
+})();
+</script>
+</body>
+</html>
