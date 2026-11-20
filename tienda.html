@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0a0a0a" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <title>Recambios de patinete eléctrico con stock verificado | Riveu Girona</title>
-<meta name="description" content="Catálogo de recambios de patinete eléctrico con disponibilidad verificada: controladoras, baterías 18650 y 21700, neumáticos y frenos. Taller Riveu, Girona." />
+<meta name="description" content="Catálogo de recambios de patinete eléctrico con disponibilidad verificada: controladoras, baterías 18650 y 21700, neumáticos y frenos. Pago con tarjeta y envío en España." />
 <link rel="canonical" href="https://www.riveu.es/tienda.html" />
 <link rel="icon" type="image/jpeg" href="logo-riveu.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +19,7 @@ tailwind.config={theme:{extend:{colors:{carbon:{950:'#0a0a0a',900:'#121212',850:
 <style>
 :root{color-scheme:dark}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;scroll-padding-top:112px}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
 body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 ::selection{background:#e53935;color:#fff}
 :focus-visible{outline:2px solid #FFB300;outline-offset:3px}
@@ -52,6 +52,7 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 .dbody{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:1rem}
 .fld{display:block;width:100%;border:1px solid rgba(255,255,255,.16);background:#0d0d0d;color:#C0C0C0;padding:.6rem .7rem;font-family:"IBM Plex Mono",monospace;font-size:12px}
 .fld:focus{outline:none;border-color:#FFB300;background:#101010}
+.fld:disabled{opacity:.75;cursor:not-allowed;color:#9E9E9E}
 .lbl{display:block;margin-bottom:.25rem;font-family:"IBM Plex Mono",monospace;font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#9E9E9E}
 .lbl b{color:#E53935;font-weight:500}
 .toast{position:fixed;left:50%;bottom:calc(1.2rem + env(safe-area-inset-bottom));z-index:150;transform:translate(-50%,14px);opacity:0;pointer-events:none;border:1px solid rgba(37,211,102,.5);background:rgba(12,26,17,.97);backdrop-filter:blur(8px);padding:.6rem 1rem;font-family:"IBM Plex Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#25D366;transition:.3s;max-width:92vw;text-align:center}
@@ -66,20 +67,19 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 <body class="bg-carbon-950 font-sans text-white antialiased">
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
-<symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm4.52 13.87c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></symbol>
 <symbol id="i-cart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></g></symbol>
 <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></g></symbol>
 <symbol id="i-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></g></symbol>
 <symbol id="i-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l9.5 17H2.5L12 3z" stroke-linejoin="round"/><path d="M12 9v5M12 17.2v.1"/></g></symbol>
 <symbol id="i-back" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5l5 5L20 6.5"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></g></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></g></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M12 21.5S5.5 15.9 5.5 11a6.5 6.5 0 1 1 13 0c0 4.9-6.5 10.5-6.5 10.5z"/><circle fill="none" stroke="currentColor" stroke-width="1.6" cx="12" cy="11" r="2.5"/></symbol>
 </svg>
 
 <div class="fixed inset-x-0 top-0 z-50">
   <div class="hazard h-1.5"></div>
-  <div id="envBar" hidden class="flex items-center justify-center gap-2 bg-riveu-amber px-3 py-1.5 text-center font-mono text-[10px] font-medium uppercase tracking-widest text-[#1a1206]">
-    <svg class="size-3.5 shrink-0"><use href="#i-alert"/></svg><span id="envTxt">Entorno de pruebas</span>
-  </div>
   <header class="border-b border-white/10 bg-carbon-950/94 backdrop-blur-md">
     <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-8">
       <a href="/" class="flex shrink-0 items-center gap-3">
@@ -88,7 +88,6 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
       </a>
       <div class="flex items-center gap-2">
         <a href="/" class="hidden items-center gap-1.5 border border-white/15 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-riveu-steel transition-colors hover:border-riveu-red hover:text-white sm:inline-flex"><svg class="size-3.5"><use href="#i-back"/></svg>Taller</a>
-        <a href="tel:+34633624345" class="hidden border border-white/15 px-3 py-2 font-mono text-[11px] text-riveu-silver transition-colors hover:border-riveu-red hover:text-white lg:block">633 62 43 45</a>
         <button type="button" id="cartBtn" class="relative inline-flex items-center gap-2 border border-wa/50 px-3.5 py-2 font-mono text-[10px] uppercase tracking-wider text-wa transition-colors hover:bg-wa hover:text-carbon-950">
           <svg class="size-4"><use href="#i-cart"/></svg><span class="hidden sm:inline">Pedido</span>
           <span id="cartCount" class="grid min-w-5 place-items-center rounded-full bg-wa px-1 text-[10px] font-bold text-carbon-950">0</span>
@@ -98,18 +97,18 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
   </header>
 </div>
 
-<main class="pt-28">
+<main class="pt-24">
   <section class="relative overflow-hidden border-b border-white/10">
     <div class="grid-bg absolute inset-0 opacity-60" aria-hidden="true"></div>
     <div class="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full bg-riveu-red/15 blur-[110px]" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-8 sm:py-16">
       <p class="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.28em] text-riveu-red"><span class="size-1.5 animate-pulse bg-riveu-red"></span>RIVEU // RECAMBIOS VERIFICADOS</p>
       <h1 class="mt-4 max-w-3xl font-display text-3xl font-bold uppercase leading-[1.03] sm:text-4xl lg:text-5xl">Recambios de patinete<br /><span class="text-riveu-red">con stock comprobado</span></h1>
-      <p class="mt-5 max-w-2xl text-sm leading-relaxed text-riveu-silver sm:text-base">Disponibilidad contrastada con el distribuidor antes de confirmar. Si no hay stock, no se vende. Recoge y monta en el taller de Girona o recíbelo en casa.</p>
+      <p class="mt-5 max-w-2xl text-sm leading-relaxed text-riveu-silver sm:text-base">Disponibilidad contrastada con el distribuidor antes de pagar. Pagas con tarjeta en la pasarela segura y el pedido sale directo del almacén a tu dirección en España.</p>
       <div class="mt-6 flex flex-wrap gap-2.5 font-mono text-[10px] uppercase tracking-widest">
         <span class="border border-wa/40 bg-wa/10 px-3 py-1.5 text-wa">Stock verificado</span>
-        <span class="border border-riveu-amber/40 bg-riveu-amber/10 px-3 py-1.5 text-riveu-amber">Montaje en taller</span>
-        <span class="border border-riveu-info/40 bg-riveu-info/10 px-3 py-1.5 text-riveu-info">Envío a domicilio</span>
+        <span class="border border-riveu-info/40 bg-riveu-info/10 px-3 py-1.5 text-riveu-info">Pago con tarjeta</span>
+        <span class="border border-riveu-amber/40 bg-riveu-amber/10 px-3 py-1.5 text-riveu-amber"><svg class="mr-1 inline size-3"><use href="#i-pin"/></svg>Envío solo en España</span>
       </div>
     </div>
   </section>
@@ -129,26 +128,23 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
   </section>
 
   <section class="mx-auto max-w-7xl px-4 py-8 sm:px-8">
-    <div id="setup" hidden class="corners relative border border-riveu-amber/45 bg-gradient-to-br from-[#1a1408] to-carbon-900 p-6 sm:p-8">
-      <span class="cbl"></span><span class="cbr"></span>
+    <div id="cancelled" hidden class="corners relative mb-4 border border-riveu-amber/45 bg-[#1a1408] p-4"><span class="cbl"></span><span class="cbr"></span>
+      <p class="font-display text-sm font-bold uppercase text-riveu-amber">Pago cancelado</p>
+      <p class="mt-1 text-sm text-riveu-steel">No se ha cobrado nada. Tu carrito sigue guardado: puedes retomarlo cuando quieras.</p>
+    </div>
+
+    <div id="setup" hidden class="corners relative border border-riveu-amber/45 bg-gradient-to-br from-[#1a1408] to-carbon-900 p-6 sm:p-8"><span class="cbl"></span><span class="cbr"></span>
       <div class="flex items-start gap-4">
         <span class="grid size-11 shrink-0 place-items-center border border-riveu-amber/50 bg-[#1a1408] text-riveu-amber"><svg class="size-5"><use href="#i-alert"/></svg></span>
         <div class="min-w-0">
           <h2 class="font-display text-lg font-bold uppercase text-white">Falta conectar el distribuidor</h2>
           <p id="setupMsg" class="mt-2 text-sm leading-relaxed text-riveu-silver"></p>
           <p id="setupHint" class="mt-3 border-l-2 border-riveu-amber bg-riveu-amber/5 py-2 pl-3 text-xs leading-relaxed text-riveu-steel"></p>
-          <ol class="mt-4 grid gap-2 font-mono text-[11px] text-riveu-steel">
-            <li><span class="text-riveu-red">01</span> · Vercel → Settings → Environment Variables → <b class="text-riveu-silver">EMOVE_API_KEY</b></li>
-            <li><span class="text-riveu-red">02</span> · <b class="text-riveu-silver">RIVEU_MARKUP</b> (ej. 1.45)</li>
-            <li><span class="text-riveu-red">03</span> · <b class="text-riveu-silver">RIVEU_IVA</b> = 0.21</li>
-            <li><span class="text-riveu-red">04</span> · Redeploy</li>
-          </ol>
         </div>
       </div>
     </div>
 
-    <div id="errorBox" hidden class="corners relative border border-riveu-red/45 bg-[#1a0d0d] p-5">
-      <span class="cbl"></span><span class="cbr"></span>
+    <div id="errorBox" hidden class="corners relative border border-riveu-red/45 bg-[#1a0d0d] p-5"><span class="cbl"></span><span class="cbr"></span>
       <p class="font-display text-sm font-bold uppercase text-riveu-red">No se pudo cargar el catálogo</p>
       <p id="errorMsg" class="mt-2 text-sm leading-relaxed text-riveu-silver"></p>
       <button type="button" id="retry" class="mt-4 border border-white/25 px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-riveu-silver hover:border-riveu-amber hover:text-white">Reintentar</button>
@@ -158,7 +154,7 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
     <div id="grid" class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"></div>
     <div id="empty" hidden class="border border-dashed border-white/15 p-10 text-center font-mono text-[11px] uppercase tracking-widest leading-loose text-riveu-steel">Ningún recambio coincide con el filtro</div>
     <div class="mt-8 flex justify-center"><button type="button" id="more" hidden class="border border-white/20 px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-riveu-silver transition-colors hover:border-riveu-red hover:text-white">Cargar más recambios</button></div>
-    <p class="mt-10 border-t border-white/10 pt-5 font-mono text-[10px] uppercase leading-relaxed tracking-wider text-riveu-steel/70">Precios con IVA incluido · Portes e impuestos se calculan en la cotización, antes de confirmar</p>
+    <p class="mt-10 border-t border-white/10 pt-5 font-mono text-[10px] uppercase leading-relaxed tracking-wider text-riveu-steel/70">Precios con IVA incluido · Portes e impuestos calculados antes de pagar · Compras y envíos solo dentro de España · Cobro procesado por Stripe</p>
   </section>
 </main>
 
@@ -173,8 +169,7 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
       <div class="mt-3 flex items-center gap-1.5" id="steps">
         <span class="step-dot on" data-s="1">1</span><span class="h-px flex-1 bg-white/10"></span>
         <span class="step-dot" data-s="2">2</span><span class="h-px flex-1 bg-white/10"></span>
-        <span class="step-dot" data-s="3">3</span><span class="h-px flex-1 bg-white/10"></span>
-        <span class="step-dot" data-s="4">4</span>
+        <span class="step-dot" data-s="3">3</span>
       </div>
     </div>
     <div class="dbody" id="dBody"></div>
@@ -188,38 +183,30 @@ body{background:#0a0a0a;-webkit-font-smoothing:antialiased}
 (function(){
 'use strict';
 var D=document,W=window,$=function(i){return D.getElementById(i);};
-var WA='34633624345';
 var S={items:[],cursor:null,cats:[],cat:'',q:'',onlyStock:false,info:{},loading:false,done:false};
-var cart={},quote=null,order=null,step=1,addr={country:'ES'},lastPayload=null;
+var cart={},addr={country:'ES'},quote=null,busy=false,tt=null;
 try{cart=JSON.parse(localStorage.getItem('riveu-cart')||'{}')||{};}catch(e){cart={};}
-try{addr=Object.assign({country:'ES'},JSON.parse(localStorage.getItem('riveu-addr')||'{}'));}catch(e){}
+try{addr=Object.assign({country:'ES'},JSON.parse(localStorage.getItem('riveu-addr')||'{}'));addr.country='ES';}catch(e){addr={country:'ES'};}
+try{if(new URLSearchParams(location.search).get('cancelado'))$('cancelled').hidden=false;}catch(e){}
 
 var eur=function(n){return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n||0);};
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
-var tt=null;
-function toast(m,err){var t=$('toast');t.textContent=m;t.className='toast show'+(err?' err':'');if(tt)clearTimeout(tt);tt=setTimeout(function(){t.className='toast';},3200);}
+function toast(m,e){var t=$('toast');t.textContent=m;t.className='toast show'+(e?' err':'');if(tt)clearTimeout(tt);tt=setTimeout(function(){t.className='toast';},3400);}
 function saveCart(){try{localStorage.setItem('riveu-cart',JSON.stringify(cart));}catch(e){}}
 function keys(){return Object.keys(cart);}
-function count(){return keys().reduce(function(a,k){return a+cart[k].n;},0);}
-function paintCount(){$('cartCount').textContent=String(count());}
+function paintCount(){$('cartCount').textContent=String(keys().reduce(function(a,k){return a+cart[k].n;},0));}
 
-function env(pruebas,entorno){
-  if(!pruebas)return;
-  $('envBar').hidden=false;
-  $('envTxt').textContent='Entorno de pruebas · los pedidos se simulan, no se envían';
-}
-
-function api(path,opts){
-  return fetch(path,opts).then(function(r){
-    return r.json().catch(function(){return{ok:false,mensaje:'Respuesta no válida del servidor.'};}).then(function(j){
-      if(!r.ok||j.ok===false){var e=new Error(j.mensaje||('Error '+r.status));e.code=j.error;e.hint=j.pista;e.datos=j.datos;e.status=r.status;throw e;}
+function api(path,o){
+  return fetch(path,o).then(function(r){
+    return r.json().catch(function(){return{ok:false,mensaje:'Respuesta no válida.'};}).then(function(j){
+      if(!r.ok||j.ok===false){var e=new Error(j.mensaje||('Error '+r.status));e.code=j.error;e.hint=j.pista;e.status=r.status;throw e;}
       return j;
     });
   });
 }
 var POST=function(o){return{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)};};
 
-function skeleton(){var h='';for(var i=0;i<8;i++){h+='<div class="border border-white/10 bg-carbon-850"><div class="skel aspect-square w-full"></div><div class="p-3"><div class="skel h-3 w-3/4"></div><div class="skel mt-2 h-3 w-1/2"></div><div class="skel mt-4 h-8 w-full"></div></div></div>';}$('skeleton').innerHTML=h;}
+function skeleton(){var h='';for(var i=0;i<8;i++)h+='<div class="border border-white/10 bg-carbon-850"><div class="skel aspect-square w-full"></div><div class="p-3"><div class="skel h-3 w-3/4"></div><div class="skel mt-2 h-3 w-1/2"></div><div class="skel mt-4 h-8 w-full"></div></div></div>';$('skeleton').innerHTML=h;}
 
 function loadPage(){
   if(S.loading||S.done)return;
@@ -272,7 +259,7 @@ function render(){
     else if(i.disponible){badge='En stock';color='border-wa/45 bg-wa/10 text-wa';}
     else{badge='Sin stock';color='border-riveu-red/45 bg-riveu-red/10 text-riveu-red';}
     var price=i&&i.pvp!=null?eur(i.pvp):'Consultar';
-    var can=i&&i.disponible;
+    var can=i&&i.disponible&&i.pvp!=null;
     h+='<article class="card corners"><span class="cbl"></span><span class="cbr"></span>'
       +'<div class="relative aspect-square overflow-hidden bg-carbon-900">'
       +(p.foto?'<img src="'+esc(p.foto)+'" alt="'+esc(p.nombre)+'" loading="lazy" decoding="async" class="h-full w-full object-contain p-3 grayscale transition-all duration-500 hover:grayscale-0" onerror="this.style.visibility=\'hidden\'">':'<div class="grid h-full place-items-center text-riveu-steel/30"><svg class="size-10"><use href="#i-box"/></svg></div>')
@@ -290,20 +277,19 @@ function render(){
     b.addEventListener('click',function(){
       var sku=b.getAttribute('data-add'),p=S.items.filter(function(x){return x.sku===sku;})[0];
       if(!p)return;
-      if(!cart[sku])cart[sku]={sku:sku,nombre:p.nombre,foto:p.foto,pvp:(S.info[sku]&&S.info[sku].pvp)||null,n:0};
+      if(!cart[sku])cart[sku]={sku:sku,nombre:p.nombre,foto:p.foto,pvp:S.info[sku].pvp,n:0};
       cart[sku].n++;saveCart();quote=null;paintCount();toast('Añadido al pedido');
     });
   });
 }
 
 function setStep(n){
-  step=n;
   Array.prototype.forEach.call($('steps').querySelectorAll('[data-s]'),function(d){
     var v=parseInt(d.getAttribute('data-s'),10);
     d.className='step-dot'+(v<n?' done':v===n?' on':'');
     d.innerHTML=v<n?'<svg class="size-3"><use href="#i-check"/></svg>':String(v);
   });
-  $('dTitle').textContent=['Tu pedido','Datos de envío','Confirmar pedido','Pedido'][n-1]||'Tu pedido';
+  $('dTitle').textContent=['Tu pedido','Datos de envío','Pagar'][n-1]||'Tu pedido';
 }
 
 function stepCart(){
@@ -313,9 +299,9 @@ function stepCart(){
     $('dBody').innerHTML='<div class="grid h-full place-items-center py-16 text-center"><div><svg class="mx-auto size-10 text-riveu-steel/30"><use href="#i-cart"/></svg><p class="mt-3 font-mono text-[10px] uppercase tracking-widest leading-loose text-riveu-steel">Todavía no has añadido<br>ningún recambio</p></div></div>';
     $('dFoot').innerHTML='';return;
   }
-  var total=0,known=true,h='';
+  var total=0,h='';
   ks.forEach(function(k){
-    var it=cart[k];if(it.pvp==null)known=false;else total+=it.pvp*it.n;
+    var it=cart[k];total+=it.pvp*it.n;
     h+='<div class="mb-2 flex gap-3 border border-white/10 bg-carbon-850 p-2.5">'
       +'<div class="size-14 shrink-0 overflow-hidden bg-carbon-900">'+(it.foto?'<img src="'+esc(it.foto)+'" alt="" class="h-full w-full object-contain p-1">':'')+'</div>'
       +'<div class="min-w-0 flex-1"><p class="line-clamp-2 font-display text-[11px] font-semibold uppercase leading-tight text-white">'+esc(it.nombre)+'</p>'
@@ -324,185 +310,126 @@ function stepCart(){
       +'<button type="button" data-dec="'+esc(k)+'" class="px-2 py-0.5 font-mono text-xs text-riveu-silver hover:text-white">−</button>'
       +'<span class="min-w-6 text-center font-mono text-[11px] text-white">'+it.n+'</span>'
       +'<button type="button" data-inc="'+esc(k)+'" class="px-2 py-0.5 font-mono text-xs text-riveu-silver hover:text-white">+</button></div>'
-      +'<span class="font-mono text-[11px] '+(it.pvp==null?'text-riveu-amber':'text-riveu-silver')+'">'+(it.pvp==null?'Consultar':eur(it.pvp*it.n))+'</span></div></div></div>';
+      +'<span class="font-mono text-[11px] text-riveu-silver">'+eur(it.pvp*it.n)+'</span></div></div></div>';
   });
   $('dBody').innerHTML=h;
-  $('dFoot').innerHTML='<div class="flex items-baseline justify-between"><span class="font-mono text-[10px] uppercase tracking-widest text-riveu-steel">Subtotal</span><span class="font-display text-xl font-bold text-white">'+(known?eur(total):eur(total)+' +')+'</span></div>'
-    +'<p class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-steel/70">Portes e impuestos se calculan al cotizar</p>'
+  $('dFoot').innerHTML='<div class="flex items-baseline justify-between"><span class="font-mono text-[10px] uppercase tracking-widest text-riveu-steel">Subtotal</span><span class="font-display text-xl font-bold text-white">'+eur(total)+'</span></div>'
+    +'<p class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-steel/70">Portes e impuestos se calculan en el paso siguiente</p>'
     +'<button type="button" id="toAddr" class="mt-3 w-full bg-wa px-5 py-3.5 font-display text-xs font-bold uppercase tracking-wider text-[#052e16] transition-all hover:brightness-110">Continuar</button>';
   Array.prototype.forEach.call($('dBody').querySelectorAll('[data-inc]'),function(b){b.addEventListener('click',function(){cart[b.getAttribute('data-inc')].n++;saveCart();quote=null;paintCount();stepCart();});});
   Array.prototype.forEach.call($('dBody').querySelectorAll('[data-dec]'),function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-dec');cart[k].n--;if(cart[k].n<=0)delete cart[k];saveCart();quote=null;paintCount();stepCart();});});
   $('toAddr').addEventListener('click',stepAddr);
 }
 
-// Obligatorios y opcionales exactamente como el OpenAPI de Emove.
 var REQ=[['first_name','Nombre'],['address_1','Dirección'],['city','Ciudad'],['postcode','Código postal'],['phone','Teléfono']];
 var OPT=[['last_name','Apellidos'],['company','Empresa'],['address_2','Dirección 2'],['state','Provincia'],['email','Email']];
 
 function stepAddr(){
   setStep(2);
-  var h='<p class="mb-3 border-l-2 border-riveu-info bg-riveu-info/5 py-2 pl-3 text-[11px] leading-relaxed text-riveu-steel">Datos del destinatario del envío. Se envían al distribuidor solo para entregar el pedido. La factura va a nombre de Riveu.</p>';
+  var h='<p class="mb-3 flex items-start gap-2 border-l-2 border-riveu-amber bg-riveu-amber/5 py-2 pl-3 text-[11px] leading-relaxed text-riveu-silver"><svg class="mt-0.5 size-4 shrink-0 text-riveu-amber"><use href="#i-pin"/></svg><span>Compras y envíos disponibles <b class="text-riveu-amber">solo dentro de España</b>. Estos datos son del destinatario y se envían al distribuidor únicamente para entregar el pedido.</span></p>';
   REQ.forEach(function(f){h+='<label class="mb-2 block"><span class="lbl">'+f[1]+' <b>*</b></span><input class="fld" data-f="'+f[0]+'" maxlength="254" value="'+esc(addr[f[0]]||'')+'" autocomplete="off"></label>';});
-  h+='<label class="mb-2 block"><span class="lbl">País <b>*</b></span><input class="fld" data-f="country" maxlength="2" value="'+esc(addr.country||'ES')+'"></label>';
+  h+='<label class="mb-2 block"><span class="lbl">País</span><input class="fld" value="España (ES)" disabled aria-label="País: España"></label>';
   h+='<p class="lbl mt-4 mb-2" style="color:#6f6f6f">Opcionales</p>';
   OPT.forEach(function(f){h+='<label class="mb-2 block"><span class="lbl">'+f[1]+'</span><input class="fld" data-f="'+f[0]+'" maxlength="254" value="'+esc(addr[f[0]]||'')+'" autocomplete="off"></label>';});
-  h+='<label class="mt-3 block"><span class="lbl">Método de pago <b>*</b></span><select class="fld" id="mp"><option value="">Cargando…</option></select></label>';
-  h+='<label class="mt-3 block"><span class="lbl">Referencia (máx. 80)</span><input class="fld" id="ref" maxlength="80" placeholder="Nº de OT o nombre del cliente"></label>';
   $('dBody').innerHTML=h;
   $('dFoot').innerHTML='<div class="flex gap-2"><button type="button" id="backCart" class="border border-white/20 px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white">Volver</button>'
     +'<button type="button" id="doQuote" class="flex-1 bg-riveu-amber px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-[#1a1206] transition-all hover:brightness-110">Calcular total</button></div>';
   $('backCart').addEventListener('click',stepCart);
-  $('doQuote').addEventListener('click',function(){doQuote(false);});
-
-  api('/api/pedido?op=metodos').then(function(j){
-    var sel=$('mp'),ms=j.metodos||[];
-    if(!ms.length){sel.innerHTML='<option value="">Sin métodos autorizados</option>';return;}
-    sel.innerHTML=ms.map(function(m){return '<option value="'+esc(m.id)+'">'+esc(m.nombre)+'</option>';}).join('');
-  }).catch(function(e){$('mp').innerHTML='<option value="">No se pudieron cargar</option>';toast(e.message,true);});
+  $('doQuote').addEventListener('click',doQuote);
 }
 
 function collectAddr(){
-  var a={};
+  var a={country:'ES'};
   Array.prototype.forEach.call($('dBody').querySelectorAll('[data-f]'),function(i){a[i.getAttribute('data-f')]=i.value.trim();});
-  a.country=(a.country||'ES').toUpperCase();
   var miss=REQ.filter(function(f){return !a[f[0]];});
-  if(!a.country)miss.push(['country','País']);
   if(miss.length){toast('Falta: '+miss.map(function(f){return f[1];}).join(', '),true);return null;}
-  if(!/^[A-Z]{2}$/.test(a.country)){toast('El país debe ser un código de 2 letras (ES)',true);return null;}
   if(a.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(a.email)){toast('El email no es válido. Corrígelo o déjalo vacío.',true);return null;}
   addr=a;try{localStorage.setItem('riveu-addr',JSON.stringify(a));}catch(e){}
   return a;
 }
 
-function doQuote(sinNumero){
+function doQuote(){
   var a=collectAddr();if(!a)return;
-  var mp=$('mp').value;
-  if(!mp){toast('Elige un método de pago',true);return;}
-  var btn=$('doQuote');if(btn){btn.disabled=true;btn.textContent='Calculando…';}
-  var body={articulos:keys().map(function(k){return{sku:k,cantidad:cart[k].n};}),metodo_pago:mp,direccion_envio:a};
-  var ref=$('ref')?$('ref').value.trim().slice(0,80):'';
-  if(ref)body.referencia_cliente=ref;
-  if(sinNumero)body.confirmar_direccion_sin_numero=true;
-  lastPayload=body;
-
-  api('/api/pedido?op=cotizar',POST(body)).then(function(j){
-    quote=j;env(j.pruebas,j.entorno);stepConfirm();
-  }).catch(function(e){
-    if(btn){btn.disabled=false;btn.textContent='Calcular total';}
-    // 409: el checkout puede exigir confirmar que la dirección no tiene número.
-    if(e.status===409&&!sinNumero){askSinNumero(e);return;}
+  var b=$('doQuote');b.disabled=true;b.textContent='Calculando…';
+  api('/api/pedido?op=cotizar',POST({articulos:keys().map(function(k){return{sku:k,cantidad:cart[k].n};}),metodo_pago:'redsys',direccion_envio:a}))
+  .then(function(j){quote=j;stepPay();})
+  .catch(function(e){
+    b.disabled=false;b.textContent='Calcular total';
     toast(e.message,true);
-    if(e.hint)setTimeout(function(){toast(e.hint,true);},1200);
+    if(e.hint)setTimeout(function(){toast(e.hint,true);},1500);
   });
 }
 
-function askSinNumero(e){
-  var box=D.createElement('div');
-  box.className='mt-3 border border-riveu-amber/50 bg-riveu-amber/5 p-3';
-  box.innerHTML='<p class="font-display text-[11px] font-bold uppercase text-riveu-amber">Dirección sin número</p>'
-    +'<p class="mt-1 text-[11px] leading-relaxed text-riveu-steel">'+esc(e.message)+'</p>'
-    +'<label class="mt-2 flex cursor-pointer items-start gap-2"><input type="checkbox" id="sn" class="mt-0.5 size-4 shrink-0 accent-[#FFB300]"><span class="text-[11px] leading-relaxed text-riveu-silver">Confirmo que esta dirección no tiene número de portal.</span></label>'
-    +'<button type="button" id="snGo" class="mt-2 w-full border border-riveu-amber px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-riveu-amber hover:bg-riveu-amber hover:text-carbon-950">Recalcular</button>';
-  $('dBody').appendChild(box);
-  box.scrollIntoView({block:'nearest',behavior:'smooth'});
-  $('snGo').addEventListener('click',function(){
-    if(!$('sn').checked){toast('Marca la confirmación',true);return;}
-    box.remove();doQuote(true);
-  });
+function browserData(){
+  return {
+    width:String(screen.width||1024),
+    height:String(screen.height||768),
+    depth:String(screen.colorDepth||24),
+    tz:String(-new Date().getTimezoneOffset()),
+    language:navigator.language||'es-ES',
+    agent:navigator.userAgent,
+    accept:'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+  };
 }
 
-function stepConfirm(){
+function stepPay(){
   setStep(3);
-  var totalTxt=quote.total_pvp!=null?eur(quote.total_pvp):'Consultar';
   var h='<div class="border border-white/10 bg-carbon-850 p-3">';
   keys().forEach(function(k){
     var it=cart[k];
     h+='<div class="flex items-start justify-between gap-3 border-b border-white/5 py-2">'
       +'<span class="min-w-0 flex-1 text-[11px] leading-snug text-riveu-silver">'+esc(it.nombre)+' <span class="font-mono text-riveu-steel">× '+it.n+'</span></span>'
-      +'<span class="font-mono text-[11px] '+(it.pvp==null?'text-riveu-amber':'text-white')+'">'+(it.pvp==null?'Consultar':eur(it.pvp*it.n))+'</span></div>';
+      +'<span class="font-mono text-[11px] text-white">'+eur(it.pvp*it.n)+'</span></div>';
   });
-  h+='<div class="mt-2 flex items-baseline justify-between border-t border-white/10 pt-2"><span class="font-mono text-[10px] uppercase tracking-widest text-riveu-steel">Total con portes e impuestos</span><span class="font-display text-2xl font-bold '+(quote.total_pvp!=null?'text-white':'text-riveu-amber')+'">'+totalTxt+'</span></div>';
-  h+='<p class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-steel/70">Cotización del distribuidor · válida 10 minutos</p></div>';
+  h+='<div class="mt-2 flex items-baseline justify-between border-t border-white/10 pt-2"><span class="font-mono text-[10px] uppercase tracking-widest text-riveu-steel">Total con portes e impuestos</span><span class="font-display text-2xl font-bold text-white">'+eur(quote.total_pvp)+'</span></div>'
+    +'<p class="mt-1 font-mono text-[9px] uppercase tracking-wider text-riveu-steel/70">Importe exacto que se cargará en tu tarjeta</p></div>';
 
-  h+='<div class="mt-3 border border-white/10 bg-carbon-850 p-3"><p class="lbl">Enviar a</p><p class="text-[11px] leading-relaxed text-riveu-silver">'
+  h+='<div class="mt-3 border border-white/10 bg-carbon-850 p-3"><p class="lbl">Enviar a (España)</p><p class="text-[11px] leading-relaxed text-riveu-silver">'
     +esc(addr.first_name+(addr.last_name?' '+addr.last_name:''))
     +(addr.company?'<br>'+esc(addr.company):'')
     +'<br>'+esc(addr.address_1)+(addr.address_2?'<br>'+esc(addr.address_2):'')
     +'<br>'+esc(addr.postcode+' '+addr.city)+(addr.state?' ('+esc(addr.state)+')':'')
-    +'<br>'+esc(addr.country)+' · '+esc(addr.phone)
-    +(addr.email?'<br>'+esc(addr.email):'')+'</p>'
-    +'<p class="lbl mt-2">Pago</p><p class="font-mono text-[11px] text-riveu-silver">'+esc(quote.metodo_pago)+'</p></div>';
+    +'<br>España · '+esc(addr.phone)
+    +(addr.email?'<br>'+esc(addr.email):'')+'</p></div>';
 
-  if(quote.pruebas){
-    h+='<p class="mt-3 border-l-2 border-riveu-amber bg-riveu-amber/5 py-2 pl-3 text-[11px] leading-relaxed text-riveu-steel">La clave actual es de <b class="text-riveu-amber">pruebas</b>. Al confirmar se generará un pedido simulado: no se envía nada ni se cobra.</p>';
-  }
+  h+='<div class="mt-3 flex items-start gap-3 border border-wa/30 bg-wa/5 p-3"><svg class="mt-0.5 size-5 shrink-0 text-wa"><use href="#i-lock"/></svg>'
+    +'<p class="text-[11px] leading-relaxed text-riveu-steel">El cobro lo procesa <b class="text-wa">Stripe</b> en su propia pasarela. Riveu no ve ni guarda los datos de tu tarjeta. Al confirmar el pago, el pedido se registra automáticamente en el distribuidor y sale de su almacén hacia tu dirección en España.</p></div>';
+
   h+='<p id="expiry" class="mt-3 font-mono text-[10px] uppercase tracking-wider text-riveu-amber"></p>';
-  h+='<label class="mt-3 flex cursor-pointer items-start gap-2.5 border border-white/10 bg-carbon-850 p-3"><input type="checkbox" id="ok" class="mt-0.5 size-4 shrink-0 accent-[#25D366]"><span class="text-[11px] leading-relaxed text-riveu-steel">Acepto las condiciones de venta y que Riveu envíe estos datos de destinatario al distribuidor para entregar el pedido.</span></label>';
   $('dBody').innerHTML=h;
 
   $('dFoot').innerHTML='<div class="flex gap-2"><button type="button" id="backAddr" class="border border-white/20 px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-riveu-silver hover:border-riveu-red hover:text-white">Volver</button>'
-    +'<button type="button" id="doOrder" class="flex-1 bg-wa px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-[#052e16] transition-all hover:brightness-110">Confirmar pedido</button></div>'
-    +'<button type="button" id="waOrder" class="mt-2 flex w-full items-center justify-center gap-2 border border-wa/40 px-4 py-2.5 font-mono text-[10px] uppercase tracking-wider text-wa hover:bg-wa hover:text-carbon-950"><svg class="size-4"><use href="#i-wa"/></svg>Prefiero confirmarlo por WhatsApp</button>';
+    +'<button type="button" id="pay" class="flex-1 inline-flex items-center justify-center gap-2 bg-wa px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-[#052e16] transition-all hover:brightness-110"><svg class="size-4"><use href="#i-card"/></svg>Pagar '+eur(quote.total_pvp)+'</button></div>'
+    +'<p class="mt-2 text-center font-mono text-[9px] uppercase leading-relaxed tracking-wider text-riveu-steel/70">Serás redirigido a la pasarela segura de Stripe</p>';
 
   var left=quote.segundos_validez||600;
   var iv=setInterval(function(){
     var el=$('expiry');if(!el){clearInterval(iv);return;}
     left--;
-    if(left<=0){clearInterval(iv);el.textContent='Cotización caducada · vuelve a calcular';var b=$('doOrder');if(b){b.disabled=true;b.classList.add('opacity-40','cursor-not-allowed');}return;}
-    el.textContent='Caduca en '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0');
+    if(left<=0){clearInterval(iv);el.textContent='Cotización caducada · vuelve a calcular';var b=$('pay');if(b){b.disabled=true;b.classList.add('opacity-40','cursor-not-allowed');}return;}
+    el.textContent='Precio reservado '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0');
   },1000);
 
   $('backAddr').addEventListener('click',function(){clearInterval(iv);stepAddr();});
-  $('doOrder').addEventListener('click',function(){
-    if(!$('ok').checked){toast('Hay que aceptar las condiciones',true);return;}
-    var b=$('doOrder');b.disabled=true;b.textContent='Confirmando…';
-    api('/api/pedido?op=confirmar',POST({cotizacion_id:quote.cotizacion_id,acepta_condiciones:true})).then(function(j){
-      clearInterval(iv);order=j;env(j.pruebas,j.entorno);
-      cart={};saveCart();paintCount();stepDone();
+  $('pay').addEventListener('click',function(){
+    if(busy)return;busy=true;
+    var b=$('pay');b.disabled=true;b.textContent='Abriendo pasarela…';
+    api('/api/checkout',POST({
+      articulos:keys().map(function(k){return{sku:k,cantidad:cart[k].n};}),
+      direccion:addr,
+      navegador:browserData()
+    })).then(function(j){
+      try{localStorage.setItem('riveu-last-session',j.session_id);}catch(e){}
+      W.location.href=j.url;
     }).catch(function(e){
-      b.disabled=false;b.textContent='Confirmar pedido';
+      busy=false;b.disabled=false;b.innerHTML='<svg class="size-4"><use href="#i-card"/></svg>Pagar '+eur(quote.total_pvp);
       toast(e.message,true);
-      if(e.status===409)setTimeout(function(){toast('La cotización puede haber caducado. Vuelve a calcular.',true);},1200);
+      if(e.hint)setTimeout(function(){toast(e.hint,true);},1500);
     });
   });
-  $('waOrder').addEventListener('click',function(){
-    var lines=keys().map(function(k){return '• '+cart[k].n+' × '+cart[k].nombre+' ['+k+']';});
-    var msg='Hola Riveu 👋 Quiero confirmar este pedido:\n\n'+lines.join('\n')
-      +'\n\nTotal cotizado: '+(quote.total_pvp!=null?eur(quote.total_pvp):'a confirmar')+' (portes e impuestos incluidos)'
-      +'\n\nEnviar a:\n'+addr.first_name+(addr.last_name?' '+addr.last_name:'')
-      +(addr.company?'\n'+addr.company:'')+'\n'+addr.address_1+'\n'+addr.postcode+' '+addr.city
-      +(addr.state?' ('+addr.state+')':'')+'\n'+addr.country+'\n'+addr.phone+(addr.email?'\n'+addr.email:'');
-    W.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener');
-  });
 }
 
-function stepDone(){
-  setStep(4);
-  var sim=order.pruebas;
-  $('dBody').innerHTML='<div class="py-4 text-center">'
-    +'<span class="mx-auto grid size-16 place-items-center rounded-full border-2 '+(sim?'border-riveu-amber bg-riveu-amber/10 text-riveu-amber':'border-wa bg-wa/10 text-wa')+'"><svg class="size-8"><use href="#i-check"/></svg></span>'
-    +'<h3 class="mt-4 font-display text-lg font-bold uppercase text-white">'+(sim?'Pedido simulado':'Pedido confirmado')+'</h3>'
-    +'<p class="mt-2 font-mono text-[11px] break-all text-riveu-silver">'+esc(order.pedido_id||'')+'</p>'
-    +(order.estado?'<p class="mt-1 font-mono text-[10px] uppercase tracking-widest text-riveu-steel">'+esc(order.estado)+'</p>':'')
-    +(order.reintento?'<p class="mt-2 font-mono text-[10px] uppercase tracking-wider text-riveu-info">Reintento detectado · no se ha duplicado el pedido</p>':'')
-    +(order.total_pvp!=null?'<p class="mt-3 font-display text-xl font-bold text-white">'+eur(order.total_pvp)+'</p>':'')
-    +(sim?'<p class="mt-4 border-l-2 border-riveu-amber bg-riveu-amber/5 py-2 pl-3 text-left text-[11px] leading-relaxed text-riveu-steel">Entorno de <b class="text-riveu-amber">pruebas</b>: este pedido no se ha enviado a nadie ni se ha cobrado. Para vender de verdad necesitas la clave de producción.</p>':'<p class="mt-4 text-[11px] leading-relaxed text-riveu-steel">El distribuidor prepara el envío. Puedes consultar el estado cuando quieras.</p>')
-    +'</div><div id="track" class="mt-2"></div>';
-  $('dFoot').innerHTML='<button type="button" id="check" class="w-full border border-white/20 px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-riveu-silver hover:border-riveu-amber hover:text-white">Consultar estado</button>'
-    +'<button type="button" data-close class="mt-2 w-full bg-wa px-5 py-3 font-display text-xs font-bold uppercase tracking-wider text-[#052e16] hover:brightness-110">Cerrar</button>';
-  Array.prototype.forEach.call($('dFoot').querySelectorAll('[data-close]'),function(b){b.addEventListener('click',closeD);});
-  $('check').addEventListener('click',function(){
-    var b=$('check');b.disabled=true;b.textContent='Consultando…';
-    api('/api/pedido?op=estado&id='+encodeURIComponent(order.pedido_id)).then(function(j){
-      b.disabled=false;b.textContent='Consultar estado';
-      var t=j.seguimiento;
-      $('track').innerHTML='<div class="border border-white/10 bg-carbon-850 p-3"><p class="lbl">Estado</p><p class="font-display text-sm font-semibold uppercase text-white">'+esc(j.estado||'—')+'</p>'
-        +(t?'<p class="lbl mt-3">Seguimiento</p><p class="break-all font-mono text-[11px] text-riveu-silver">'+esc(typeof t==='string'?t:JSON.stringify(t))+'</p>':'<p class="mt-2 font-mono text-[10px] uppercase tracking-wider text-riveu-steel">Seguimiento aún no disponible</p>')+'</div>';
-    }).catch(function(e){b.disabled=false;b.textContent='Consultar estado';toast(e.message,true);});
-  });
-}
-
-function openD(){$('drawer').classList.add('open');D.body.style.overflow='hidden';quote?stepConfirm():stepCart();}
+function openD(){$('drawer').classList.add('open');D.body.style.overflow='hidden';stepCart();}
 function closeD(){$('drawer').classList.remove('open');D.body.style.overflow='';}
 $('cartBtn').addEventListener('click',openD);
 Array.prototype.forEach.call(D.querySelectorAll('.scrim[data-close], .panel [data-close]'),function(b){b.addEventListener('click',closeD);});
