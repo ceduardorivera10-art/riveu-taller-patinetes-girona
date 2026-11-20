@@ -1,18 +1,14 @@
-import { emove, fail, ok, readBody, pvp } from './_emove.js';
+import { emove, fail, ok, readBody, pvp, str } from './_emove.js';
 
 // Stock y precios COMPARTEN 30 consultas/min por clave.
-// Los pedimos juntos para gastar la mitad. Máx. 100 referencias, SKU ≤ 110.
+// Se piden juntos en una sola pasada para gastar la mitad.
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ ok: false, error: 'METODO', mensaje: 'Usa POST.' });
   }
-
   const skus = (readBody(req).skus || [])
-    .filter(s => typeof s === 'string' && s.trim())
-    .map(s => s.trim().slice(0, 110))
-    .slice(0, 100);
-
+    .map(s => str(s, 110)).filter(Boolean).slice(0, 100);
   if (!skus.length) {
     return res.status(400).json({ ok: false, error: 'SIN_SKUS', mensaje: 'Envía un array "skus" con al menos una referencia.' });
   }
@@ -29,12 +25,11 @@ export default async function handler(req, res) {
     (s.payload?.articulos || []).forEach(a => {
       if (!items[a.sku]) items[a.sku] = { disponible: false, pvp: null, error: null };
       items[a.sku].disponible = a.disponible === true;
-      items[a.sku].error = a.error || null; // "referencia_no_disponible"
+      items[a.sku].error = a.error || null;
     });
-
     (p.payload?.articulos || []).forEach(a => {
       if (!items[a.sku]) items[a.sku] = { disponible: false, pvp: null, error: null };
-      items[a.sku].pvp = pvp(a.precio_unitario_neto); // viene como texto decimal
+      items[a.sku].pvp = pvp(a.precio_unitario_neto);
     });
 
     return ok(res, {
