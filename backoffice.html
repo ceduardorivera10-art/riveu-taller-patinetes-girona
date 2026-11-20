@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Backoffice de pedidos · Riveu</title>
+<link rel="icon" type="image/jpeg" href="logo-riveu.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#0a0a0a;--card:#161616;--raise:#1d1d1d;--line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.20);
+--red:#E53935;--orange:#FF7043;--amber:#FFB300;--green:#25D366;--blue:#42A5F5;--silver:#C0C0C0;--steel:#9E9E9E;
+--disp:"Chakra Petch",system-ui,sans-serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#fff;font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:calc(2.5rem + env(safe-area-inset-bottom))}
+[hidden]{display:none!important}
+h1,h2,p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select{font:inherit}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+*{scrollbar-width:thin;scrollbar-color:#4a2020 #0d0d0d}
+::-webkit-scrollbar{width:10px;height:9px}::-webkit-scrollbar-track{background:#0d0d0d}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#5a2422,#2a2a2a);border:2px solid #0d0d0d;border-radius:7px}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--red),#7a2422)}
+.wrap{width:100%;max-width:860px;margin-inline:auto;padding-inline:1rem}
+@media(min-width:640px){.wrap{padding-inline:2rem}}
+.hazard{height:6px;background:repeating-linear-gradient(-45deg,var(--red) 0 12px,#0a0a0a 12px 24px)}
+.bar{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line);background:rgba(10,10,10,.94);backdrop-filter:blur(12px)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:58px}
+.brand{display:flex;align-items:center;gap:.7rem;min-width:0}
+.brand img{height:32px;width:auto;mix-blend-mode:lighten}
+.brand b{font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.26em;color:var(--steel)}
+.pill{display:inline-flex;align-items:center;gap:.45rem;border:1px solid rgba(229,57,53,.55);padding:.35rem .7rem;font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--red)}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+main{padding-top:1.4rem}
+h1{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(1.4rem,6vw,2rem);line-height:1.05}
+h1 em{font-style:normal;color:var(--red)}
+.warn{margin-top:.9rem;border:1px solid rgba(229,57,53,.5);border-left:3px solid var(--red);background:linear-gradient(150deg,#1a0d0d,#141414);padding:.85rem 1rem;font-size:.82rem;line-height:1.7;color:var(--silver)}
+.warn b{color:var(--red)}
+.panel{position:relative;margin-top:1.1rem;border:1px solid var(--line);background:var(--card);padding:1.1rem}
+.corners::before,.corners::after,.panel>.cbl,.panel>.cbr{content:"";position:absolute;width:11px;height:11px;border:2px solid rgba(229,57,53,.5);pointer-events:none}
+.corners::before{top:0;left:0;border-right:0;border-bottom:0}.corners::after{top:0;right:0;border-left:0;border-bottom:0}
+.panel>.cbl{bottom:0;left:0;border-right:0;border-top:0}.panel>.cbr{bottom:0;right:0;border-left:0;border-top:0}
+.panel h2{display:flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:var(--red)}
+.panel h2 .rule{height:1px;flex:1;background:linear-gradient(90deg,rgba(229,57,53,.55),transparent)}
+.lbl{display:block;margin:.9rem 0 .3rem;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--steel)}
+.fld{display:block;width:100%;border:1px solid var(--line2);background:#0d0d0d;color:var(--silver);padding:.65rem .75rem;font-family:var(--mono);font-size:12.5px}
+.fld:focus{outline:none;border-color:var(--amber);background:#101010}
+.hint{margin-top:.4rem;font-family:var(--mono);font-size:9.5px;line-height:1.7;text-transform:uppercase;letter-spacing:.06em;color:rgba(158,158,158,.72)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:1px solid transparent;padding:.8rem 1.15rem;font-family:var(--disp);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;transition:.2s}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.42;cursor:not-allowed}
+.btn.g{background:var(--green);color:#052e16}
+.btn.g:hover:not(:disabled){filter:brightness(1.1)}
+.btn.a{border:2px solid var(--amber);color:var(--amber)}
+.btn.a:hover:not(:disabled){background:var(--amber);color:#1a1206}
+.btn.s{border-color:var(--line2);color:var(--silver)}
+.btn.s:hover:not(:disabled){border-color:var(--red);color:#fff}
+.btn.w{width:100%}
+.acts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+.acts .btn{flex:1 1 auto;min-width:8rem}
+.out{margin-top:.9rem;border:1px solid var(--line);background:#0d0d0d;padding:.85rem;font-family:var(--mono);font-size:11.5px;line-height:1.8;color:var(--silver);white-space:pre-wrap;word-break:break-word;max-height:20rem;overflow-y:auto}
+.cards{display:grid;gap:.45rem;margin-top:.7rem}
+.tcard{display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);background:var(--raise);padding:.65rem .8rem;cursor:pointer;transition:border-color .2s}
+.tcard:hover{border-color:var(--line2)}
+.tcard[aria-checked="true"]{border-color:var(--green);background:rgba(37,211,102,.07)}
+.tcard .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--steel);flex:none}
+.tcard[aria-checked="true"] .dot{border-color:var(--green);background:var(--green);box-shadow:inset 0 0 0 2.5px #0d0d0d}
+.tcard .m{font-family:var(--mono);font-size:11.5px;color:#fff}
+.tcard .s{font-family:var(--mono);font-size:9.5px;color:var(--steel);text-transform:uppercase;letter-spacing:.1em}
+.toast{position:fixed;left:50%;bottom:calc(1.2rem + env(safe-area-inset-bottom));z-index:80;transform:translate(-50%,14px);opacity:0;pointer-events:none;border:1px solid rgba(37,211,102,.5);background:rgba(12,26,17,.97);backdrop-filter:blur(8px);padding:.6rem 1rem;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);transition:.3s;max-width:92vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.err{border-color:rgba(229,57,53,.6);background:rgba(28,12,12,.97);color:var(--red)}
+.foot{margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem;font-family:var(--mono);font-size:9.5px;line-height:1.9;text-transform:uppercase;letter-spacing:.08em;color:rgba(158,158,158,.62)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="hazard"></div>
+<header class="bar">
+  <div class="wrap bar-in">
+    <div class="brand"><img src="logo-riveu.jpg" alt="Riveu" width="140" height="105" onerror="this.style.display='none'" /><b>· BACKOFFICE</b></div>
+    <span class="pill"><i></i>PRODUCCIÓN</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Pagos pendientes<br /><em>del taller</em></h1>
+  <div class="warn"><b>Para qué sirve esta página.</b> Las ventas de la tienda se procesan solas. Aquí solo entras cuando un pedido queda en <b>verificación</b> o <b>requiere acción</b>: completas la autorización de tu banco con tu tarjeta guardada. Los pedidos que necesitan esto los ves en Stripe → Payments, en los metadatos <b>emove_pago</b> y <b>emove_pedido_id</b>.</div>
+
+  <section class="panel corners" id="gate"><span class="cbl"></span><span class="cbr"></span>
+    <h2>Acceso<span class="rule"></span></h2>
+    <label class="lbl" for="tok">Token de propietario (OWNER_TOKEN)</label>
+    <input class="fld" id="tok" type="password" autocomplete="off" spellcheck="false" placeholder="El valor que pusiste en Vercel" />
+    <p class="hint">Se guarda solo en esta pestaña. No lo compartas ni lo pegues en la tienda pública.</p>
+    <div class="acts"><button class="btn a w" id="unlock">Entrar</button></div>
+  </section>
+
+  <div id="work" hidden>
+    <section class="panel corners"><span class="cbl"></span><span class="cbr"></span>
+      <h2>1 · Consultar el pago de un pedido<span class="rule"></span></h2>
+      <label class="lbl" for="payId">Número de pedido (emove_pedido_id)</label>
+      <input class="fld" id="payId" inputmode="numeric" placeholder="Ej.: 100000" />
+      <div class="acts"><button class="btn s" id="payLoad">Consultar pago</button></div>
+      <div class="out" id="payOut" hidden></div>
+      <div class="cards" id="cards" hidden role="radiogroup" aria-label="Tarjetas guardadas"></div>
+      <div class="acts" id="payActs" hidden>
+        <button class="btn a" id="payGo" disabled>Confirmar pago</button>
+        <button class="btn s" id="pay3ds" hidden>Abrir verificación 3DS</button>
+      </div>
+    </section>
+
+    <section class="panel corners"><span class="cbl"></span><span class="cbr"></span>
+      <h2>2 · Estado y seguimiento<span class="rule"></span></h2>
+      <label class="lbl" for="stId">Número de pedido</label>
+      <input class="fld" id="stId" inputmode="numeric" placeholder="Ej.: 100000" />
+      <div class="acts"><button class="btn s" id="stGo">Consultar</button></div>
+      <div class="out" id="stOut" hidden></div>
+    </section>
+
+    <div class="acts"><button class="btn s" id="lock">Cerrar sesión</button></div>
+  </div>
+
+  <p class="foot">Riveu · Carrer Finestrelles 9 · 17006 Girona<br />Página no enlazada desde la web pública y no indexada por buscadores.</p>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var D=document,W=window,$=function(i){return D.getElementById(i);};
+var tok=null,pay=null,poll=null,tt=null;
+try{tok=sessionStorage.getItem('riveu-owner');}catch(e){}
+
+function toast(m,e){var t=$('toast');t.textContent=m;t.className='toast show'+(e?' err':'');if(tt)clearTimeout(tt);tt=setTimeout(function(){t.className='toast';},3200);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function eur(n){return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n||0);}
+function api(path,o){
+  o=o||{};
+  o.headers=Object.assign({'x-owner-token':tok||''},o.headers||{});
+  return fetch(path,o).then(function(r){
+    return r.json().catch(function(){return{ok:false,mensaje:'Respuesta no válida.'};}).then(function(j){
+      if(!r.ok||j.ok===false){var e=new Error(j.mensaje||('Error '+r.status));e.code=j.error;e.hint=j.pista;throw e;}
+      return j;
+    });
+  });
+}
+var POST=function(o){return{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)};};
+
+function enter(){$('gate').hidden=true;$('work').hidden=false;}
+if(tok)enter();
+
+$('unlock').addEventListener('click',function(){
+  var v=$('tok').value.trim();
+  if(!v){toast('Escribe el token',true);return;}
+  tok=v;try{sessionStorage.setItem('riveu-owner',v);}catch(e){}
+  api('/api/pedido?op=direcciones').then(function(){enter();toast('Sesión abierta');}).catch(function(e){
+    tok=null;try{sessionStorage.removeItem('riveu-owner');}catch(err){}
+    toast(e.message,true);
+  });
+});
+$('lock').addEventListener('click',function(){
+  tok=null;try{sessionStorage.removeItem('riveu-owner');}catch(e){}
+  if(poll)clearInterval(poll);
+  $('work').hidden=true;$('gate').hidden=false;$('tok').value='';toast('Sesión cerrada');
+});
+
+function browserData(){
+  return {
+    width:String(screen.width||1024),height:String(screen.height||768),
+    depth:String(screen.colorDepth||24),tz:String(-new Date().getTimezoneOffset()),
+    language:navigator.language||'es-ES',agent:navigator.userAgent
+  };
+}
+
+function renderPay(j){
+  pay=j;
+  var L=['PEDIDO '+j.pedido_id,'Estado del pago: '+(j.estado||'?'),'Importe: '+eur(j.total)+' '+j.moneda];
+  if(j.verificacion&&j.verificacion.url)L.push('Requiere verificación 3DS de tu banco.');
+  if(j.estado==='pagado')L.push('Ya está pagado. No hay que hacer nada.');
+  var o=$('payOut');o.hidden=false;o.textContent=L.join('\n');
+
+  var box=$('cards');box.innerHTML='';
+  var hay=!!(j.tarjetas&&j.tarjetas.length)&&j.estado!=='pagado';
+  box.hidden=!hay;$('payActs').hidden=!hay;
+  $('payGo').disabled=!j.confirmacion||j.estado==='pagado'||j.estado==='no_disponible';
+  $('pay3ds').hidden=true;
+  (j.tarjetas||[]).forEach(function(t,i){
+    var el=D.createElement('div');
+    el.className='tcard';el.setAttribute('role','radio');el.setAttribute('tabindex','0');
+    el.setAttribute('aria-checked',i===0?'true':'false');el.dataset.id=t.id;
+    el.innerHTML='<span class="dot"></span><span><span class="m">'+esc(t.marca||'Tarjeta')+' •••• '+esc(t.ultimos4||'')+'</span><br><span class="s">'+(t.predeterminada?'Predeterminada':'Disponible')+'</span></span>';
+    var pick=function(){Array.prototype.forEach.call(box.children,function(c){c.setAttribute('aria-checked','false');});el.setAttribute('aria-checked','true');};
+    el.addEventListener('click',pick);
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
+    box.appendChild(el);
+  });
+}
+
+$('payLoad').addEventListener('click',function(){
+  var id=$('payId').value.trim();
+  if(!/^[0-9]{1,12}$/.test(id)){toast('El id de producción es numérico',true);return;}
+  var b=$('payLoad');b.disabled=true;b.textContent='Consultando…';
+  api('/api/pedido?op=pago&id='+encodeURIComponent(id)).then(renderPay)
+    .catch(function(e){toast(e.message+(e.hint?' · '+e.hint:''),true);})
+    .finally(function(){b.disabled=false;b.textContent='Consultar pago';});
+});
+
+$('payGo').addEventListener('click',function(){
+  if(!pay){toast('Consulta el pago primero',true);return;}
+  var sel=$('cards').querySelector('[aria-checked="true"]');
+  if(!sel){toast('Elige una tarjeta',true);return;}
+  var b=$('payGo');b.disabled=true;b.textContent='Pagando…';
+  api('/api/pedido?op=pago-confirmar',POST({pedido_id:pay.pedido_id,tarjeta:sel.dataset.id,confirmacion:pay.confirmacion,navegador:browserData()}))
+  .then(function(j){
+    var L=['PAGO · estado: '+(j.estado||'?')];
+    if(j.verificacion&&j.verificacion.url){
+      L.push('Tu banco pide verificación 3DS. Pulsa «Abrir verificación 3DS», complétala y luego «Consultar pago» otra vez.');
+      $('pay3ds').hidden=false;$('pay3ds').dataset.url=j.verificacion.url;startPoll(j.pedido_id);
+    }else if(j.estado==='pagado'){L.push('Pagado correctamente.');if(poll)clearInterval(poll);}
+    else{L.push('Estado intermedio: '+j.estado+'. Reconsulta en unos segundos.');startPoll(j.pedido_id);}
+    $('payOut').textContent=L.join('\n');toast('Pago: '+j.estado);
+  })
+  .catch(function(e){toast(e.message+(e.hint?' · '+e.hint:''),true);})
+  .finally(function(){b.disabled=false;b.textContent='Confirmar pago';});
+});
+
+$('pay3ds').addEventListener('click',function(){var u=$('pay3ds').dataset.url;if(u)W.open(u,'_blank','noopener');});
+
+function startPoll(id){
+  if(poll)clearInterval(poll);
+  var n=0;
+  poll=setInterval(function(){
+    n++;if(n>20){clearInterval(poll);poll=null;return;}
+    api('/api/pedido?op=pago&id='+encodeURIComponent(id)).then(function(j){
+      pay=j;
+      $('payOut').textContent='PEDIDO '+j.pedido_id+'\nEstado del pago: '+j.estado+'\nImporte: '+eur(j.total)+' '+j.moneda+(j.estado==='pagado'?'\nPAGADO. Pedido listo para expedir.':'');
+      if(j.estado==='pagado'||j.estado==='no_disponible'||j.estado==='revision'){clearInterval(poll);poll=null;}
+    }).catch(function(){});
+  },6000);
+}
+
+$('stGo').addEventListener('click',function(){
+  var id=$('stId').value.trim();
+  if(!id){toast('Escribe el número de pedido',true);return;}
+  var b=$('stGo');b.disabled=true;b.textContent='Consultando…';
+  api('/api/pedido?op=estado&id='+encodeURIComponent(id)).then(function(j){
+    var L=['PEDIDO '+j.pedido_id,'Estado: '+(j.estado||'?'),'Entorno: '+(j.entorno||'?')+(j.pruebas?' (simulado)':'')];
+    if(j.total_pvp!=null)L.push('Coste equivalente PVP: '+eur(j.total_pvp));
+    L.push(j.seguimiento?('Seguimiento: '+(typeof j.seguimiento==='string'?j.seguimiento:JSON.stringify(j.seguimiento))):'Seguimiento aún no disponible.');
+    var o=$('stOut');o.hidden=false;o.textContent=L.join('\n');
+  }).catch(function(e){toast(e.message+(e.hint?' · '+e.hint:''),true);})
+  .finally(function(){b.disabled=false;b.textContent='Consultar';});
+});
+})();
+</script>
+</body>
+</html>
